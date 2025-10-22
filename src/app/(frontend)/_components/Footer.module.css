@@ -1,0 +1,209 @@
+.getInTouch {
+  background: url('/getintouchback.png') lightgray 50% / cover no-repeat;
+  padding: 5rem 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.getInTouchHeading {
+  color: #fff;
+  text-align: center;
+  font-family: var(--font-orbitron);
+  font-size: 35px;
+  font-weight: 500;
+  letter-spacing: 1.75px;
+  margin: 0;
+}
+
+.getInTouchText {
+  color: #fff;
+  text-align: center;
+  font-family: var(--font-onest);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  max-width: 600px; /* To prevent text from becoming too wide on large screens */
+  margin: 0;
+}
+
+/* The .button class is reused from below for the getInTouch button */
+
+.preFooter {
+  background: rgba(222, 175, 56, 0.8);
+  padding: 4rem 0;
+  width: 100%;
+}
+
+.preFooterContainer {
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.preFooterColumn {
+  flex: 1;
+  text-align: center;
+}
+
+.preFooterHeading {
+  color: #252525;
+  font-family: var(--font-orbitron);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 0 0 1rem 0;
+}
+
+.preFooterText {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: var(--font-onest);
+  font-size: 16px;
+  line-height: 30px;
+  margin: 0;
+}
+
+.preFooterLink {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: var(--font-onest);
+  font-size: 16px;
+  text-decoration: underline;
+}
+
+.blackFooter {
+  background-color: #000;
+  color: #fff;
+  padding: 4rem 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+  width: 100%;
+  padding: 0 2rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.topSectionRight {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.linksColumns {
+  display: flex;
+  gap: 4rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.heading {
+  font-family: var(--font-orbitron);
+  font-size: 18px;
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+  white-space: nowrap;
+}
+
+.link {
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.contactButton {
+  flex-shrink: 0;
+}
+
+.button {
+  /* Re-using button style from header for consistency */
+  text-decoration: none;
+  background-color: #deaf38;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-family: var(--font-orbitron);
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #444;
+  padding-top: 2rem;
+  gap: 1rem;
+  font-size: 15px;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.bottomLink {
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.bottomLink:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .preFooterContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .topSection {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .topSectionRight {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .linksColumns {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .bottomSection {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
