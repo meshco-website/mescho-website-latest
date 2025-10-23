@@ -1,6 +1,7 @@
 .hero {
   /* 1. Background */
-  background-image: linear-gradient(122deg, #000 -2.11%, rgba(0, 0, 0, 0) 96.46%), url('/HomeHeroBack.png');
+  background-image:
+    linear-gradient(122deg, #000 -2.11%, rgba(0, 0, 0, 0) 96.46%), url('/HomeHeroBack.png');
   background-size: cover;
   background-position: center;
 
