@@ -1,0 +1,28 @@
+/* Mobile Dropdown Styles */
+.mobileDropdownContainer {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.mobileLink {
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--font-orbitron);
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobileDropdown {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}

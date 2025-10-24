@@ -1,0 +1,11 @@
+.productDetailPage {
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .productDetailPage {
+    padding: 0;
+  }
+}
