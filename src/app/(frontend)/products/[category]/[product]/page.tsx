@@ -28,9 +28,12 @@ export default function ProductPage({ params }: ProductPageProps) {
       category={config.category}
       heroImage={config.heroImage}
       description={config.description}
+      layoutType={config.layoutType}
       specifications={config.specifications}
+      wireWallSpecifications={config.wireWallSpecifications}
       applications={config.applications}
       technicalData={config.technicalData}
+      tabs={config.tabs}
       relatedProducts={config.relatedProducts}
     />
   )

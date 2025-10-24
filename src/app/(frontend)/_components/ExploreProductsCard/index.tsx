@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import styles from './ExploreProductsCard.module.css'
 
 const ExploreProductsCard = ({
@@ -12,13 +13,13 @@ const ExploreProductsCard = ({
   link: string
 }) => {
   return (
-    <div className={styles.productCategory}>
+    <Link href={link} className={styles.productCategory}>
       <div className={styles.productImage}>
-        <img src={image} alt={title} />
+        <Image src={image} alt={title} width={420} height={350} />
       </div>
       <div className={styles.productLabel}>
         <span>{title}</span>
-        <Link href={link}>
+        <div className={styles.arrowIcon}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="19"
@@ -33,9 +34,9 @@ const ExploreProductsCard = ({
               fill="#DEAF38"
             />
           </svg>
-        </Link>
+        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

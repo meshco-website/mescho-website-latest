@@ -3,6 +3,13 @@
   display: flex;
   flex-direction: column;
   text-align: left;
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
 }
 
 .imageSection {
@@ -54,6 +61,7 @@
   text-align: left;
   overflow: hidden;
   display: -webkit-box;
+  line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   max-height: 52px;
@@ -68,6 +76,5 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.27px;
-  cursor: pointer;
   margin-top: 0.5rem;
 }

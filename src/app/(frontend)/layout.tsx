@@ -15,8 +15,9 @@ const onest = Onest({
 })
 
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  description:
+    'Menscho is a leading manufacturer of quality wire, fencing and reinforcing products.',
+  title: 'Menscho',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
@@ -26,9 +27,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
     <html lang="en" className={`${orbitron.variable} ${onest.variable}`}>
       <body>
         <Header />
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

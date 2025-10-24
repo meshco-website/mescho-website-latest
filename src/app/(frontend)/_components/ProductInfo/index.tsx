@@ -26,7 +26,6 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   return (
     <div className={styles.productInfo}>
       <div className={styles.container}>
-        {/* Breadcrumb */}
         <div className={styles.breadcrumb}>
           <Link href="/" className={styles.breadcrumbLink}>
             Home
@@ -36,23 +35,20 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
             Products
           </Link>
           <span className={styles.breadcrumbSeparator}>{' > '}</span>
-          <Link href={`/products/${category}`} className={styles.breadcrumbLink}>
+          <Link href={`/products/${category.toLowerCase()}`} className={styles.breadcrumbLink}>
             {category.charAt(0).toUpperCase() + category.slice(1)}
           </Link>
           <span className={styles.breadcrumbSeparator}>{' > '}</span>
           <span className={styles.breadcrumbCurrent}>{title}</span>
         </div>
 
-        {/* Two Column Layout */}
         <div className={styles.productLayout}>
-          {/* Left Column - Product Image */}
           <div className={styles.imageColumn}>
             <div className={styles.imageContainer}>
               <Image src={heroImage} alt={title} fill className={styles.productImage} priority />
             </div>
           </div>
 
-          {/* Right Column - Product Details */}
           <div className={styles.detailsColumn}>
             <div className={styles.detailsBlock}>
               <div className={styles.categoryLabel}>{category.toUpperCase()}</div>
@@ -62,7 +58,6 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                 <p>{description}</p>
               </div>
 
-              {/* Specifications */}
               <div className={styles.specifications}>
                 {specifications.map((spec, index) => (
                   <div key={index} className={styles.specItem}>
@@ -72,7 +67,6 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                 ))}
               </div>
 
-              {/* Get Quote Button */}
               <div className={styles.quoteButton}>
                 <button className={styles.quoteBtn}>Get a quote</button>
               </div>

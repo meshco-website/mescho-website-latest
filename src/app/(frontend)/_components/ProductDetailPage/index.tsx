@@ -9,10 +9,28 @@ interface Specification {
   value: string
 }
 
+interface WireWallSpecification {
+  height: string[]
+  vBends: string[]
+  length: string[]
+  aperture: string[]
+  wireDiameter: string[]
+  zincCoating: string[]
+  tensileStrength: string[]
+  weldStrength: string[]
+  colourCoating: string[]
+}
+
 interface TechnicalData {
   property: string
   value: string
   unit?: string
+}
+
+interface TabData {
+  id: string
+  label: string
+  content: string[]
 }
 
 interface RelatedProduct {
@@ -23,14 +41,19 @@ interface RelatedProduct {
   category: string
 }
 
+type LayoutType = 'standard' | 'wirewall' | 'simple'
+
 interface ProductDetailPageProps {
   title: string
   category: string
   heroImage: string
   description: string
+  layoutType: LayoutType
   specifications: Specification[]
+  wireWallSpecifications?: WireWallSpecification
   applications: string[]
   technicalData: TechnicalData[]
+  tabs?: TabData[]
   relatedProducts: RelatedProduct[]
 }
 
@@ -39,9 +62,12 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   category,
   heroImage,
   description,
+  layoutType,
   specifications,
+  wireWallSpecifications,
   applications,
   technicalData,
+  tabs,
   relatedProducts,
 }) => {
   return (
@@ -54,7 +80,13 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         specifications={specifications}
       />
 
-      <ProductDetails applications={applications} technicalData={technicalData} />
+      <ProductDetails
+        layoutType={layoutType}
+        applications={applications}
+        technicalData={technicalData}
+        wireWallSpecifications={wireWallSpecifications}
+        tabs={tabs}
+      />
 
       <RelatedProducts products={relatedProducts} />
     </div>

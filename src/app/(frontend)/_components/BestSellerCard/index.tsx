@@ -1,18 +1,33 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import styles from './bestSellerCard.module.css'
 
-const BestSellerCard = () => {
+interface BestSellerCardProps {
+  title: string
+  image: string
+  description: string
+  linkText: string
+  linkHref: string
+}
+
+const BestSellerCard: React.FC<BestSellerCardProps> = ({
+  title,
+  image,
+  description,
+  linkText,
+  linkHref,
+}) => {
   return (
-    <div className={styles.productCard}>
+    <Link href={linkHref} className={styles.productCard}>
       <div className={styles.imageSection}>
-        <img src="/placeholder.svg" alt="Product" />
+        <Image src={image} alt={title} width={300} height={200} />
       </div>
       <div className={styles.contentSection}>
-        <h3 className={styles.productCardTitle}>WireWall 3510</h3>
-        <p className={styles.productCardDescription}>Lorem ipsum dolor sit amet consectetur</p>
+        <h3 className={styles.productCardTitle}>{title}</h3>
+        <p className={styles.productCardDescription}>{description}</p>
         <div className={styles.productCardLink}>
-          <span>Learn More</span>
+          <span>{linkText}</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="14"
@@ -29,7 +44,7 @@ const BestSellerCard = () => {
           </svg>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

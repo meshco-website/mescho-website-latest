@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles.css'
-import styles from './_components/HomePage.module.css'
+import styles from './homepage.module.css'
 import ExploreProductsCard from './_components/ExploreProductsCard'
 import BestSellerCard from './_components/BestSellerCard'
 
@@ -34,7 +34,7 @@ export default function HomePage() {
               link="/products/reinforcing"
             />
             <ExploreProductsCard
-              image="/image.png"
+              image="/placeholder.svg"
               title="Mining Support"
               link="/products/mining-support"
             />
@@ -43,7 +43,11 @@ export default function HomePage() {
               title="Fasteners"
               link="/products/fasteners"
             />
-            <ExploreProductsCard image="/image.png" title="Utility" link="/products/utility" />
+            <ExploreProductsCard
+              image="/placeholder.svg"
+              title="Utility"
+              link="/products/utility"
+            />
           </div>
         </div>
       </section>
@@ -60,11 +64,41 @@ export default function HomePage() {
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Best Sellers</h2>
           <div className={styles.productGrid}>
-            <BestSellerCard />
-            <BestSellerCard />
-            <BestSellerCard />
-            <BestSellerCard />
-            <BestSellerCard />
+            <BestSellerCard
+              title="WireWall 3510"
+              image="/placeholder.svg"
+              description="Lorem ipsum dolor sit amet consectetur"
+              linkText="Learn More"
+              linkHref="/products/wirewall/3510"
+            />
+            <BestSellerCard
+              title="Hard Drawn Wire"
+              image="/placeholder.svg"
+              description="High-quality wire for construction"
+              linkText="Learn More"
+              linkHref="/products/wire/hard-drawn-wire"
+            />
+            <BestSellerCard
+              title="Brickforce"
+              image="/placeholder.svg"
+              description="Premium reinforcement mesh"
+              linkText="Learn More"
+              linkHref="/products/reinforcing/brickforce"
+            />
+            <BestSellerCard
+              title="Welded Fence Mesh"
+              image="/placeholder.svg"
+              description="Durable security fencing"
+              linkText="Learn More"
+              linkHref="/products/fencing/welded-fence-mesh"
+            />
+            <BestSellerCard
+              title="Galvanised Wire"
+              image="/placeholder.svg"
+              description="Corrosion-resistant wire"
+              linkText="Learn More"
+              linkHref="/products/wire/galvanised-wire"
+            />
           </div>
         </div>
       </section>

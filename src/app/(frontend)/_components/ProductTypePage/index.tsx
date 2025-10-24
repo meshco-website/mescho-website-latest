@@ -47,7 +47,7 @@ const ProductTypePage: React.FC<ProductTypePageProps> = ({
   cardSize,
   layoutType,
   products,
-  filterOptions,
+  filterOptions: _filterOptions,
   showTypesFilter = true,
   showIndustriesFilter = true,
   spanningProduct,

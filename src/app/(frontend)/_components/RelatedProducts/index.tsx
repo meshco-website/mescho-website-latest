@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import BestSellerCard from '../BestSellerCard'
 import styles from './relatedProducts.module.css'
 
@@ -27,19 +26,14 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ products }) => {
 
         <div className={styles.productsGrid}>
           {products.map((product) => (
-            <Link
+            <BestSellerCard
               key={product.id}
-              href={`/products/${product.category}/${product.slug}`}
-              className={styles.productLink}
-            >
-              <BestSellerCard
-                title={product.name}
-                image={product.image}
-                description=""
-                linkText="View Product"
-                linkHref={`/products/${product.category}/${product.slug}`}
-              />
-            </Link>
+              title={product.name}
+              image={product.image}
+              description=""
+              linkText="View Product"
+              linkHref={`/products/${product.category}/${product.slug}`}
+            />
           ))}
         </div>
       </div>

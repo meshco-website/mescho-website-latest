@@ -4,6 +4,14 @@
   overflow: hidden;
   height: 350px;
   /* width: 420px; */
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.productCategory:hover {
+  transform: translateY(-4px);
 }
 
 .productImage {
@@ -40,4 +48,9 @@
   font-family: var(--font-orbitron);
   font-size: 25px;
   font-weight: 400;
+}
+
+.arrowIcon {
+  display: flex;
+  align-items: center;
 }

@@ -9,7 +9,7 @@ import MobileMenuItem from '../MobileMenuItem'
 import styles from './Header.module.css'
 
 const Header = () => {
-  const router = useRouter()
+  const _router = useRouter()
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null)
@@ -192,7 +192,7 @@ const Header = () => {
     { label: 'Product Catalogs', href: '/resources/catalogs' },
   ]
 
-  const handleDropdownClose = () => {
+  const _handleDropdownClose = () => {
     setActiveDropdown(null)
   }
 

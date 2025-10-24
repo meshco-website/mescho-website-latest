@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import styles from './productCard.module.css'
 
 interface ProductCardProps {
@@ -12,7 +13,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
-  id,
+  id: _id,
   name,
   image,
   slug,
@@ -20,13 +21,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
   size = 'small',
 }) => {
   return (
-    <div className={`${styles.productCard} ${styles[size]}`}>
+    <Link
+      href={`/products/${category}/${slug}`}
+      className={`${styles.productCard} ${styles[size]}`}
+    >
       <div className={styles.imageSection}>
-        <img src={image} alt={name} />
+        <Image src={image} alt={name} width={300} height={200} />
       </div>
       <div className={styles.contentSection}>
         <h3 className={styles.productCardTitle}>{name}</h3>
-        <Link href={`/products/${category}/${slug}`} className={styles.productCardLink}>
+        <div className={styles.productCardLink}>
           <span>Learn More</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -42,9 +46,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
               fill="#DEAF38"
             />
           </svg>
-        </Link>
+        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
