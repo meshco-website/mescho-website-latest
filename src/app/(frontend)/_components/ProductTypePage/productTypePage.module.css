@@ -1,0 +1,264 @@
+.productTypePage {
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  height: 313px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 313px;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: local;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(42, 45, 47, 0.3);
+}
+
+.heroTitle {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-family: var(--font-orbitron);
+  font-size: 50px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 2.5px;
+  text-align: center;
+  margin: 0;
+  max-width: 865px;
+}
+
+/* Main Content */
+.pageContent {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 4.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Products Grid */
+.productsGrid {
+  display: grid;
+  gap: 1.6875rem;
+  flex: 1;
+  padding-bottom: 2rem;
+  min-width: 0;
+  overflow-x: auto;
+}
+
+/* Layout Type Variations */
+.grid3x3 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+}
+
+.grid3x3WithSpan {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+}
+
+.grid3x1 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.grid2x1 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.grid3x2WithSpan {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+.grid4x3 {
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+}
+
+.grid3x2 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+/* Spanning Card Support */
+.spanningCard {
+  grid-column: 1 / -1;
+  width: 100%;
+  max-width: 1309px; /* Match Figma design width */
+  margin: 0 auto;
+}
+
+.spanningCard .productCard {
+  width: 100%;
+}
+
+/* Card Size Variations */
+.large {
+  gap: 1.5rem;
+}
+
+.small {
+  gap: 1.6875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .pageContent {
+    padding: 2rem 3rem;
+  }
+
+  .grid4x3 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .pageContent {
+    padding: 2rem 2.5rem;
+  }
+
+  .grid3x3,
+  .grid3x3WithSpan,
+  .grid3x1,
+  .grid3x2WithSpan,
+  .grid3x2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .grid4x3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .grid2x1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .pageContent {
+    flex-direction: column;
+    padding: 2rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .heroSection {
+    height: 250px;
+  }
+
+  .heroTitle {
+    font-size: 40px;
+    letter-spacing: 2px;
+  }
+
+  .grid3x3,
+  .grid3x3WithSpan,
+  .grid3x1,
+  .grid3x2WithSpan,
+  .grid3x2,
+  .grid4x3,
+  .grid2x1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageContent {
+    padding: 1.5rem;
+  }
+
+  .heroSection {
+    height: 200px;
+    padding: 0 1.5rem;
+  }
+
+  .heroTitle {
+    font-size: 35px;
+    letter-spacing: 1.75px;
+  }
+
+  .productsGrid {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .pageContent {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .heroSection {
+    height: 180px;
+    padding: 0 1rem;
+  }
+
+  .heroTitle {
+    font-size: 28px;
+    letter-spacing: 1.4px;
+  }
+
+  .grid3x3,
+  .grid3x3WithSpan,
+  .grid3x1,
+  .grid3x2WithSpan,
+  .grid3x2,
+  .grid4x3,
+  .grid2x1 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageContent {
+    padding: 0.75rem;
+  }
+
+  .heroSection {
+    height: 160px;
+    padding: 0 0.75rem;
+  }
+
+  .heroTitle {
+    font-size: 24px;
+    letter-spacing: 1.2px;
+  }
+
+  .productsGrid {
+    gap: 0.75rem;
+  }
+}

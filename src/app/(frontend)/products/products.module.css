@@ -1,0 +1,171 @@
+.productsPage {
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.pageHeader {
+  background-color: #c0c0c0;
+  height: 313px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.pageTitle {
+  color: #2a2d2f;
+  font-family: var(--font-orbitron);
+  font-size: 50px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 2.5px;
+  text-align: center;
+  margin: 0;
+  max-width: 865px;
+}
+
+.pageContent {
+  display: flex;
+  gap: 2rem;
+  padding: 0 4.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6875rem;
+  flex: 1;
+  padding-bottom: 2rem;
+  min-width: 0; /* Prevents grid overflow */
+  overflow-x: auto; /* Allows horizontal scroll if needed */
+}
+
+/* Large desktop and zoomed screens */
+@media (max-width: 1400px) {
+  .productsGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pageContent {
+    padding: 0 3rem;
+  }
+}
+
+/* High zoom levels - force 3 columns */
+@media (max-width: 1600px) and (min-width: 1401px) {
+  .productsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .pageContent {
+    padding: 0 2rem;
+  }
+}
+
+/* Tablet and smaller desktop */
+@media (max-width: 1200px) {
+  .productsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pageContent {
+    padding: 0 2.5rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .pageContent {
+    flex-direction: column;
+    padding: 0 2rem;
+    gap: 1.5rem;
+  }
+
+  .pageHeader {
+    height: 250px;
+    margin-bottom: 1.5rem;
+  }
+
+  .pageTitle {
+    font-size: 40px;
+    letter-spacing: 2px;
+  }
+}
+
+/* Mobile landscape */
+@media (max-width: 768px) {
+  .pageContent {
+    padding: 0 1.5rem;
+  }
+
+  .pageHeader {
+    height: 200px;
+    padding: 0 1.5rem;
+  }
+
+  .pageTitle {
+    font-size: 35px;
+    letter-spacing: 1.75px;
+  }
+
+  .productsGrid {
+    gap: 1rem;
+  }
+}
+
+/* Mobile portrait */
+@media (max-width: 600px) {
+  .productsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .pageContent {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .pageHeader {
+    height: 180px;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .pageTitle {
+    font-size: 28px;
+    letter-spacing: 1.4px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .pageContent {
+    padding: 0 0.75rem;
+  }
+
+  .pageHeader {
+    height: 160px;
+    padding: 0 0.75rem;
+  }
+
+  .pageTitle {
+    font-size: 24px;
+    letter-spacing: 1.2px;
+  }
+
+  .productsGrid {
+    gap: 0.75rem;
+  }
+}

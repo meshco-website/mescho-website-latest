@@ -1,0 +1,154 @@
+.filterSidebar {
+  width: 250px;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .filterSidebar {
+    width: 100%;
+    padding: 1.5rem 0;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .filterSidebar {
+    padding: 1rem 0;
+    gap: 0.75rem;
+  }
+
+  .filterTitle {
+    font-size: 18px;
+    letter-spacing: 0.36px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+    letter-spacing: 0.32px;
+  }
+
+  .optionText {
+    font-size: 14px;
+    line-height: 30px;
+  }
+}
+
+.filterHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filterIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.filterTitle {
+  color: #2a2d2f;
+  font-family: var(--font-orbitron);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 0.4px;
+  margin: 0;
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0.25rem 0;
+}
+
+.sectionTitle {
+  color: #2a2d2f;
+  font-family: var(--font-orbitron);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.36px;
+  margin: 0;
+}
+
+.dropdownArrow {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.dropdownArrow.expanded {
+  transform: rotate(180deg);
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+.filterOption {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.125rem 0;
+}
+
+.checkbox {
+  width: 15px;
+  height: 15px;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.checkbox:checked {
+  background-color: #deaf38;
+  border-color: #deaf38;
+}
+
+.checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.optionText {
+  color: #2a2d2f;
+  font-family: var(--font-onest);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 35px;
+  cursor: pointer;
+}
+
+.filterOption:hover .optionText {
+  opacity: 0.8;
+}
+
+.sectionBorder {
+  height: 1px;
+  background-color: #c0c0c0;
+  margin-top: 0.5rem;
+}
