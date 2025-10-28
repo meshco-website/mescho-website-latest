@@ -27,8 +27,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(42, 45, 47, 0.7);
   pointer-events: none;
+  border-radius: 10px;
 }
 
 .productImage img {
@@ -53,4 +54,29 @@
 .arrowIcon {
   display: flex;
   align-items: center;
+}
+
+.contentContainer {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3125rem;
+  max-width: calc(100% - 2rem);
+}
+
+.contentContainer .productLabel {
+  position: relative;
+  bottom: auto;
+  left: auto;
+}
+
+.productDescription {
+  color: #fff;
+  font-family: var(--font-onest);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  margin: 0;
 }

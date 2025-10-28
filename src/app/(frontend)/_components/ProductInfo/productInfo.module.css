@@ -165,6 +165,11 @@
   transition: background-color 0.2s ease;
   width: 100%;
   max-width: 579px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
 }
 
 .quoteBtn:hover {

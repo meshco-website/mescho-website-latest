@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { notFound } from 'next/navigation'
 import ProductTypePage from '../../_components/ProductTypePage'
@@ -11,8 +9,17 @@ interface ProductCategoryPageProps {
   }>
 }
 
-export default function ProductCategoryPage({ params }: ProductCategoryPageProps) {
-  const { category } = React.use(params)
+// Generate static params for all category pages
+export async function generateStaticParams() {
+  const allCategories = Object.keys(productTypeConfigs).map((category) => ({
+    category,
+  }))
+
+  return allCategories
+}
+
+export default async function ProductCategoryPage({ params }: ProductCategoryPageProps) {
+  const { category } = await params
 
   const config = productTypeConfigs[category]
 

@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { notFound } from 'next/navigation'
 import ProductDetailPage from '../../../_components/ProductDetailPage'
@@ -12,8 +10,18 @@ interface ProductPageProps {
   }>
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const { category, product } = React.use(params)
+// Generate static params for all product pages
+export async function generateStaticParams() {
+  const allProducts = Object.keys(productDetailConfigs).map((key) => {
+    const [category, product] = key.split('-')
+    return { category, product }
+  })
+
+  return allProducts
+}
+
+export default async function ProductPage({ params }: ProductPageProps) {
+  const { category, product } = await params
 
   const productKey = `${category}-${product}`
   const config = productDetailConfigs[productKey]
