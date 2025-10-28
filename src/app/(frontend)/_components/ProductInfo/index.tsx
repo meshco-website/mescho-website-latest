@@ -68,7 +68,12 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
               </div>
 
               <div className={styles.quoteButton}>
-                <button className={styles.quoteBtn}>Get a quote</button>
+                <Link
+                  href={category.toLowerCase() === 'wirewall' ? '/wirewall-quote' : '/quote'}
+                  className={styles.quoteBtn}
+                >
+                  Get a quote
+                </Link>
               </div>
             </div>
           </div>
