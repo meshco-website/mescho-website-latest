@@ -1,0 +1,285 @@
+.page {
+  background-color: #ffffff;
+  color: #2a2d2f;
+}
+
+.heroSection {
+  background-color: #d0d2d3;
+  height: 313px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroTitle {
+  font-family: var(--font-orbitron);
+  font-size: 50px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  color: #2a2d2f;
+  margin: 0;
+  text-align: center;
+}
+
+.introSection {
+  padding: 120px 68px 80px;
+}
+
+.introContainer {
+  display: grid;
+  grid-template-columns: minmax(0, 598px) minmax(0, 1fr);
+  gap: 60px;
+  max-width: 1300px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.introContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.introHeading {
+  font-family: var(--font-orbitron);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  margin: 0;
+  color: #2a2d2f;
+}
+
+.introText {
+  font-family: var(--font-onest);
+  font-size: 16px;
+  line-height: 30px;
+  margin: 0;
+  color: #2a2d2f;
+}
+
+.introImage {
+  width: 100%;
+  aspect-ratio: 628 / 545;
+  border-radius: 10px;
+  background-color: #bcbfc2;
+  position: relative;
+  overflow: hidden;
+}
+
+.introImage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='82'%20height='72'%20viewBox='0%200%2082%2072'%20fill='none'%3E%3Cpath%20d='M41.1623%2071.1786C29.1752%2071.1786%2017.1881%2071.1786%205.20102%2071.1786C4.61546%2071.1786%204.02233%2071.1786%203.43425%2071.1188C0.433271%2070.8422%20-0.773179%2068.8463%200.506466%2066.1477C1.61701%2063.8178%202.8285%2061.5478%204.00467%2059.2429C9.55737%2048.3903%2015.1101%2037.5393%2020.6628%2026.69C20.8344%2026.3586%2021.0136%2026.0272%2021.213%2025.7107C22.6113%2023.498%2024.8828%2023.1865%2026.6723%2025.0952C27.9343%2026.4308%2029.0019%2027.9309%2030.1276%2029.3786C35.8486%2036.7594%2041.5695%2044.1434%2047.2905%2051.5308C49.7892%2054.7452%2052.9366%2054.9196%2055.8719%2052.0291C57.3283%2050.5938%2058.7518%2049.1212%2060.2258%2047.6984C62.8835%2045.1318%2065.8996%2045.2863%2068.0702%2048.279C72.4265%2054.2842%2076.6744%2060.3692%2080.9424%2066.4342C81.2759%2066.91%2081.5314%2067.4348%2081.6996%2067.9891C82.1135%2069.382%2081.5279%2070.5033%2080.0968%2070.8746C79.1995%2071.0867%2078.2784%2071.1847%2077.3558%2071.1662C65.2981%2071.1861%2053.2336%2071.1902%2041.1623%2071.1786Z'%20fill='white'/%3E%3Cpath%20d='M68.0449%2011.7118C68.0419%2014.0282%2067.3422%2016.2916%2066.0346%2018.2149C64.727%2020.1383%2062.8704%2021.635%2060.7002%2022.5154C58.5299%2023.3957%2056.1438%2023.6201%2053.8442%2023.16C51.5447%2022.6999%2049.4353%2021.576%2047.7835%2019.9309C46.1317%2018.2858%2045.0118%2016.1935%2044.5659%2013.9193C44.1201%2011.6451%2044.3682%209.29139%2045.2789%207.15658C46.1896%205.02177%2047.7219%203.20201%2049.6814%201.92798C51.641%200.65396%2053.9396-0.0169448%2056.2858%200.000325215C59.4101%200.039522%2062.3937%201.2892%2064.5933%203.47996C66.793%205.67072%2068.0326%208.6271%2068.0449%2011.7118Z'%20fill='white'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 14%;
+  background-position: center;
+  opacity: 0.8;
+}
+
+.bimSection {
+  padding: 80px 68px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.bimHeading {
+  font-family: var(--font-orbitron);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  margin: 0;
+  color: #2a2d2f;
+}
+
+.bimSubheading {
+  font-family: var(--font-onest);
+  font-size: 20px;
+  margin: 0;
+  color: #2a2d2f;
+}
+
+.resourcesSection {
+  padding: 40px 68px 100px;
+}
+
+.resourcesContainer {
+  max-width: 1309px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 62px;
+}
+
+.sectionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.sectionHeading {
+  font-family: var(--font-orbitron);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.resourceList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.resourceRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 13px 41px;
+  min-height: 82px;
+  border-radius: 5px;
+  background-color: rgba(192, 192, 192, 0.3);
+}
+
+.resourceName {
+  font-family: var(--font-onest);
+  font-size: 18px;
+  line-height: 30px;
+  margin: 0;
+}
+
+.downloadButton {
+  background-color: #deaf38;
+  color: #2a2d2f;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 44px;
+  font-family: var(--font-orbitron);
+  font-size: 17.987px;
+  font-weight: 600;
+  letter-spacing: 0.899px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.downloadButton:hover {
+  opacity: 0.9;
+}
+
+.downloadButton:focus-visible {
+  outline: 2px solid #2a2d2f;
+  outline-offset: 2px;
+}
+
+.infoSection {
+  padding: 40px 68px 120px;
+}
+
+.infoContent {
+  max-width: 1309px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.infoHeading {
+  font-family: var(--font-orbitron);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.infoText {
+  font-family: var(--font-onest);
+  font-size: 18px;
+  line-height: 30px;
+  margin: 0;
+}
+
+.infoLink {
+  color: #deaf38;
+  text-decoration: underline;
+}
+
+@media (max-width: 1200px) {
+  .introSection {
+    padding: 100px 40px 60px;
+  }
+
+  .bimSection {
+    padding: 60px 40px 32px;
+  }
+
+  .resourcesSection,
+  .infoSection {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .introContainer {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  .resourceRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .downloadButton {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    height: 240px;
+  }
+
+  .heroTitle {
+    font-size: 42px;
+    letter-spacing: 2px;
+  }
+
+  .introSection,
+  .resourcesSection,
+  .infoSection,
+  .bimSection {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .introHeading {
+    font-size: 26px;
+  }
+
+  .introText {
+    font-size: 15px;
+  }
+
+  .bimHeading {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 520px) {
+  .heroTitle {
+    font-size: 36px;
+  }
+
+  .downloadButton {
+    padding: 12px 24px;
+  }
+}
+

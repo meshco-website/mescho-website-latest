@@ -1,0 +1,413 @@
+.page {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.heroSection {
+  position: relative;
+  height: 360px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImageWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImageWrapper :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 45, 47, 0.68);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.heroTitle {
+  font-family: var(--font-orbitron);
+  font-size: 50px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.introSection {
+  padding: 80px 68px 60px;
+}
+
+.introContainer {
+  max-width: 862px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.introHeading {
+  font-family: var(--font-orbitron);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: #2a2d2f;
+  margin: 0;
+}
+
+.introText {
+  font-family: var(--font-onest);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  color: #2a2d2f;
+  margin: 0;
+}
+
+.introHighlight {
+  font-family: var(--font-onest);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 30px;
+  color: #2a2d2f;
+  margin: 0;
+}
+
+.cardsSection {
+  padding: 0 68px 80px;
+}
+
+.cardsContainer {
+  max-width: 1309px;
+  margin: 0 auto;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 21px;
+}
+
+.cardLink {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+.detailsSection {
+  padding: 0 68px 80px;
+}
+
+.detailsContainer {
+  max-width: 1309px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 122px;
+}
+
+.detailRow {
+  display: flex;
+  gap: 53px;
+  align-items: center;
+}
+
+.detailRow.reverse {
+  flex-direction: row-reverse;
+}
+
+.detailImageWrapper {
+  position: relative;
+  width: 50%;
+  height: 600px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.detailImageWrapper :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detailContent {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detailTitle {
+  font-family: var(--font-onest);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 30px;
+  color: #2a2d2f;
+  margin: 0;
+}
+
+.detailTagline {
+  font-family: var(--font-onest);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  color: #2a2d2f;
+  margin: 4px 0 0;
+}
+
+.detailBody {
+  font-family: var(--font-onest);
+  font-size: 16px;
+  line-height: 26px;
+  color: #2a2d2f;
+  margin: 0;
+}
+
+.listTitle {
+  font-family: var(--font-onest);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 30px;
+  color: #2a2d2f;
+  margin: 12px 0 0;
+}
+
+.list {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 4px;
+}
+
+.listItem {
+  font-family: var(--font-onest);
+  font-size: 16px;
+  line-height: 26px;
+  color: #2a2d2f;
+}
+
+.ctaSection {
+  position: relative;
+  height: 360px;
+  width: calc(100% - 76px);
+  margin: 0 auto 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.ctaImageWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.ctaImageWrapper :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ctaOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 45, 47, 0.7);
+}
+
+.ctaContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 640px;
+  padding: 0 24px;
+}
+
+.ctaTitle {
+  font-family: var(--font-orbitron);
+  font-size: 35px;
+  font-weight: 500;
+  letter-spacing: 1.75px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.ctaText {
+  font-family: var(--font-onest);
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #deaf38;
+  color: #2a2d2f;
+  font-family: var(--font-onest);
+  font-size: 17.987px;
+  font-weight: 600;
+  letter-spacing: 0.3597px;
+  padding: 12px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background-color: #c9a033;
+}
+
+@media (max-width: 1400px) {
+  .cardsGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .detailRow,
+  .detailRow.reverse {
+    flex-direction: column;
+  }
+
+  .detailImageWrapper,
+  .detailContent {
+    width: 100%;
+  }
+
+  .detailImageWrapper {
+    height: 520px;
+  }
+
+  .detailsContainer {
+    gap: 80px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .cardsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ctaSection {
+    width: calc(100% - 48px);
+  }
+}
+
+@media (max-width: 900px) {
+  .heroSection {
+    height: 280px;
+  }
+
+  .heroTitle {
+    font-size: 40px;
+    letter-spacing: 2px;
+  }
+
+  .introSection,
+  .cardsSection,
+  .detailsSection {
+    padding: 60px 40px;
+  }
+
+  .cardsSection {
+    padding-bottom: 60px;
+  }
+
+  .ctaSection {
+    margin: 0 auto 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .introSection,
+  .cardsSection,
+  .detailsSection {
+    padding: 50px 24px;
+  }
+
+  .introHeading {
+    font-size: 26px;
+  }
+
+  .introText {
+    font-size: 15px;
+    line-height: 26px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .detailImageWrapper {
+    height: 380px;
+  }
+
+  .detailTitle {
+    font-size: 22px;
+  }
+
+  .detailTagline {
+    font-size: 18px;
+  }
+
+  .detailBody,
+  .listItem {
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .ctaSection {
+    width: calc(100% - 32px);
+  }
+
+  .ctaTitle {
+    font-size: 30px;
+  }
+
+  .ctaText {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 540px) {
+  .heroTitle {
+    font-size: 32px;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .detailImageWrapper {
+    height: 240px;
+  }
+
+  .detailContent {
+    gap: 12px;
+  }
+
+  .ctaSection {
+    height: auto;
+    padding: 60px 0;
+  }
+}

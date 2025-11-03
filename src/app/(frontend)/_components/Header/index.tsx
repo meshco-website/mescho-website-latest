@@ -164,17 +164,17 @@ const Header = () => {
   ]
 
   const wireWallItems = [
-    { label: 'WireWall Systems', href: '/wirewall/systems' },
-    { label: 'Security Solutions', href: '/wirewall/security' },
-    { label: 'Custom Applications', href: '/wirewall/custom' },
+    { label: 'WireWall Systems', href: '/wirewall' },
+    { label: 'Security Solutions', href: '/wirewall' },
+    { label: 'Custom Applications', href: '/wirewall' },
   ]
 
   const industriesItems = [
-    { label: 'Construction', href: '/industries/construction' },
-    { label: 'Mining', href: '/industries/mining' },
-    { label: 'Agriculture', href: '/industries/agriculture' },
-    { label: 'Security', href: '/industries/security' },
-    { label: 'Industrial', href: '/industries/industrial' },
+    { label: 'Construction', href: '/industries' },
+    { label: 'Mining', href: '/industries' },
+    { label: 'Agriculture', href: '/industries' },
+    { label: 'Security', href: '/industries' },
+    { label: 'Industrial', href: '/industries' },
   ]
 
   const whoWeAreItems = [
@@ -186,10 +186,10 @@ const Header = () => {
   ]
 
   const resourcesItems = [
-    { label: 'Technical Specifications', href: '/resources/technical' },
-    { label: 'Installation Guides', href: '/resources/installation' },
-    { label: 'Safety Guidelines', href: '/resources/safety' },
-    { label: 'Product Catalogs', href: '/resources/catalogs' },
+    { label: 'Technical Specifications', href: '/resources' },
+    { label: 'Installation Guides', href: '/resources' },
+    { label: 'Safety Guidelines', href: '/resources' },
+    { label: 'Product Catalogs', href: '/resources' },
   ]
 
   const _handleDropdownClose = () => {
