@@ -1,18 +1,27 @@
 .hero {
-  /* 1. Background */
-  background-image:
-    linear-gradient(122deg, #000 -2.11%, rgba(0, 0, 0, 0) 96.46%), url('/HomeHeroBack.png');
-  background-size: cover;
-  background-position: center;
-
-  /* Layout */
+  position: relative;
   width: 100%;
   height: 640px;
   flex-shrink: 0;
-
-  /* Content positioning */
   display: flex;
   align-items: center;
+  overflow: hidden;
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(122deg, #000 -2.11%, rgba(0, 0, 0, 0) 96.46%);
+  z-index: 1;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 2;
 }
 
 .container {
@@ -21,7 +30,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Push content to the bottom */
+  justify-content: flex-end;
   padding: 4rem;
 }
 
@@ -31,8 +40,8 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
+  justify-content: center;
+  align-items: center;
   padding: 3rem;
   position: relative;
   z-index: 1;

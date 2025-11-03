@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import './styles.css'
 import styles from './homepage.module.css'
 import ExploreProductsCard from './_components/ExploreProductsCard'
@@ -8,7 +9,17 @@ export default function HomePage() {
   return (
     <div>
       <section className={styles.hero}>
-        <div className={styles.container}>
+        <Image
+          src="/HomeHeroBack.png"
+          alt=""
+          fill
+          priority
+          className={styles.heroImage}
+          sizes="(min-width: 1440px) 100vw, 100vw"
+          quality={85}
+        />
+        <div className={styles.heroOverlay} />
+        <div className={`${styles.container} ${styles.heroContainer}`}>
           <div className={styles.content}>
             <h1 className={styles.mainHeading}>
               The Leading Manufacturer of Quality Wire, Fencing and Reinforcing Products

@@ -1,13 +1,14 @@
 .card {
   background-color: #f7dc97;
   border-radius: 10px;
-  padding: 40px 20px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 24px;
   align-items: flex-start;
-  justify-content: flex-start;
   min-height: 261px;
+  height: 100%;
   text-align: left;
 }
 
@@ -15,13 +16,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 10px;
+  padding-top: 4px;
 }
 
-.icon {
+.iconWrapper svg {
   width: 56px;
-  height: 49px;
-  object-fit: contain;
+  height: 56px;
+  flex-shrink: 0;
 }
 
 .title {
@@ -32,6 +33,34 @@
   color: #2a2d2f;
   margin: 0;
   width: 100%;
+  padding-bottom: 4px;
+}
+
+.centerAlign {
+  align-items: center;
+  text-align: center;
+}
+
+.centerAlign .iconWrapper {
+  justify-content: center;
+}
+
+.centerAlign .title {
+  text-align: center;
+}
+
+.centerIcon {
+  justify-content: center;
+}
+
+.compactCard {
+  min-height: 216px;
+  padding: 28px 32px;
+  gap: 24px;
+}
+
+.compactIconWrapper {
+  padding-top: 0;
 }
 
 /* Mobile responsive */
@@ -39,6 +68,11 @@
   .card {
     padding: 30px 15px;
     min-height: 200px;
+  }
+
+  .compactCard {
+    min-height: 190px;
+    padding: 26px 20px;
   }
 
   .title {
