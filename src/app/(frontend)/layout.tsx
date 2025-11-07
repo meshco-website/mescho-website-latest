@@ -16,8 +16,8 @@ const onest = Onest({
 
 export const metadata = {
   description:
-    'Menscho is a leading manufacturer of quality wire, fencing and reinforcing products.',
-  title: 'Menscho',
+    'Meshco is a leading manufacturers of quality wire, fencing and reinforcing products.',
+  title: 'Meshco',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
