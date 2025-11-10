@@ -4,9 +4,48 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { products } from '@/data/products'
 import DropdownContainer from '../DropdownContainer'
 import MobileMenuItem from '../MobileMenuItem'
 import styles from './Header.module.css'
+
+type DropdownItem = {
+  label: string
+  href: string
+}
+
+type DropdownSection = {
+  title: string
+  items: DropdownItem[]
+}
+
+const PRODUCT_CATEGORY_CONFIG: Array<{ key: string; title: string }> = [
+  { key: 'wire', title: 'WIRE' },
+  { key: 'utility', title: 'UTILITY' },
+  { key: 'wirewall', title: 'WIREWALL' },
+  { key: 'fencing', title: 'FENCING' },
+  { key: 'reinforcing', title: 'REINFORCING' },
+  { key: 'mining-support', title: 'MINING SUPPORT' },
+  { key: 'fasteners', title: 'FASTENERS' },
+]
+
+const productSections: DropdownSection[] = PRODUCT_CATEGORY_CONFIG.reduce(
+  (sections, { key, title }) => {
+    const items = products
+      .filter((product) => product.category === key)
+      .map((product) => ({
+        label: product.name,
+        href: `/products/${product.category}/${product.slug}`,
+      }))
+
+    if (items.length > 0) {
+      sections.push({ title, items })
+    }
+
+    return sections
+  },
+  [] as DropdownSection[],
+)
 
 const Header = () => {
   const _router = useRouter()
@@ -80,89 +119,6 @@ const Header = () => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown)
   }
 
-  const productsSections = [
-    {
-      title: 'WIRE',
-      items: [
-        { label: 'Hard Drawn Wire', href: '/products/wire/hard-drawn-wire' },
-        { label: 'Galvanised Wire', href: '/products/wire/galvanised-wire' },
-        { label: 'High Strain Wire', href: '/products/wire/high-strain-wire' },
-        { label: 'Black Annealed Wire', href: '/products/wire/black-annealed-wire' },
-        { label: 'PVC Coated Wire', href: '/products/wire/pvc-coated-wire' },
-        { label: 'Straight and Cut Wire', href: '/products/wire/straight-cut-wire' },
-        { label: 'Slab Wire', href: '/products/wire/slab-wire' },
-      ],
-    },
-    {
-      title: 'UTILITY',
-      items: [
-        { label: 'Precision Welded Mesh', href: '/products/utility/precision-welded-mesh' },
-        { label: 'Growing Stakes', href: '/products/utility/growing-stakes' },
-        { label: 'SpeciMesh Panels', href: '/products/utility/specimesh-panels' },
-      ],
-    },
-    {
-      title: 'WIREWALL',
-      items: [
-        { label: 'DoubleWall (12.5mm x 12.5mm)', href: '/products/wirewall/doublewall' },
-        { label: '355 (4mm on 5.6mm - 75mm x 12.7mm)', href: '/products/wirewall/355' },
-        { label: '358 (4mm on 4mm - 75mm x 12.7mm)', href: '/products/wirewall/358' },
-        { label: '3510 (3mm on 4mm - 75mm x 12.7mm)', href: '/products/wirewall/3510' },
-        { label: '3110 (3mm on 4mm - 75mm x 25mm)', href: '/products/wirewall/3110' },
-        { label: '3210 (3mm on 4mm - 75mm x 50mm)', href: '/products/wirewall/3210' },
-        { label: 'AF100 (4mm on 4mm - 50mm x 100mm)', href: '/products/wirewall/af100' },
-        { label: 'Gates', href: '/products/wirewall/gates' },
-        { label: 'Spikes', href: '/products/wirewall/spikes' },
-        { label: 'UnderDig Panel', href: '/products/wirewall/underdig-panel' },
-      ],
-    },
-    {
-      title: 'FENCING',
-      items: [
-        { label: 'Welded Fence Mesh', href: '/products/fencing/welded-fence-mesh' },
-        { label: 'Welded Fence Mesh (PVC)', href: '/products/fencing/welded-fence-mesh-pvc' },
-        { label: 'Diamond Mesh', href: '/products/fencing/diamond-mesh' },
-        { label: 'Barbed Wire', href: '/products/fencing/barbed-wire' },
-        { label: 'Razor Wire', href: '/products/fencing/razor-wire' },
-        { label: 'RazorWall', href: '/products/fencing/razorwall' },
-        { label: 'Hexagonal Netting', href: '/products/fencing/hexagonal-netting' },
-        { label: 'Field & Game Fence', href: '/products/fencing/field-game-fence' },
-        { label: 'Standards', href: '/products/fencing/standards' },
-        { label: 'Droppers', href: '/products/fencing/droppers' },
-      ],
-    },
-    {
-      title: 'REINFORCING',
-      items: [
-        { label: 'Brickforce', href: '/products/reinforcing/brickforce' },
-        { label: 'Reinforcing Mesh', href: '/products/reinforcing/reinforcing-mesh' },
-        { label: 'Hoop Iron', href: '/products/reinforcing/hoop-iron' },
-        { label: 'Cavity Wall Ties', href: '/products/reinforcing/cavity-wall-ties' },
-        { label: 'Reinforcing Steel', href: '/products/reinforcing/reinforcing-steel' },
-        { label: 'Ceramic Door Anchors', href: '/products/reinforcing/ceramic-door-anchors' },
-      ],
-    },
-    {
-      title: 'MINING SUPPORT',
-      items: [
-        { label: 'Mining Mesh', href: '/products/mining-support/mining-mesh' },
-        { label: 'Backfill Mesh', href: '/products/mining-support/backfill-mesh' },
-      ],
-    },
-    {
-      title: 'FASTENERS',
-      items: [
-        { label: 'Round Wire Nails', href: '/products/fasteners/round-wire-nails' },
-        { label: 'Staples', href: '/products/fasteners/staples' },
-        { label: 'Clout Nails', href: '/products/fasteners/clout-nails' },
-        { label: 'Hog Rings', href: '/products/fasteners/hog-rings' },
-        { label: 'Hog Ring Pliers', href: '/products/fasteners/hog-ring-pliers' },
-        { label: 'Pliers', href: '/products/fasteners/pliers' },
-        { label: 'Cutting Nippers', href: '/products/fasteners/cutting-nippers' },
-      ],
-    },
-  ]
-
   const wireWallItems = [
     { label: 'WireWall Systems', href: '/wirewall' },
     { label: 'Security Solutions', href: '/wirewall' },
@@ -211,7 +167,7 @@ const Header = () => {
             onMouseLeave={handleDropdownLeave}
             onItemClick={handleMenuItemClick}
             dropdownType="fullwidth"
-            sections={productsSections}
+            sections={productSections}
             dropdownSize="large"
           >
             Products
@@ -244,7 +200,7 @@ const Header = () => {
           </DropdownContainer>
 
           <DropdownContainer
-            href="/about"
+            href="/whoweare/about-us"
             isActive={activeDropdown === 'whoweare'}
             onMouseEnter={() => handleDropdownEnter('whoweare')}
             onMouseLeave={handleDropdownLeave}
@@ -288,7 +244,7 @@ const Header = () => {
             isOpen={activeDropdown === 'products'}
             onToggle={() => handleDropdownToggle('products')}
             dropdownType="fullwidth"
-            sections={productsSections}
+            sections={productSections}
           />
 
           <MobileMenuItem

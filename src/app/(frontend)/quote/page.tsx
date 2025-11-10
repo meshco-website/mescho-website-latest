@@ -1,23 +1,37 @@
 'use client'
 
-import React from 'react'
+import React, { useActionState, useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import FormSubmitButton from '../_components/FormSubmitButton'
+import { submitQuoteForm, type FormState } from '../_actions/form-submissions'
 import styles from './quote.module.css'
 
-export default function QuotePage() {
-  const router = useRouter()
+const initialState: FormState = {
+  status: 'idle',
+  message: null,
+  fields: {},
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    router.push('/review')
-  }
+export default function QuotePage() {
+  const [state, formAction] = useActionState(submitQuoteForm, initialState)
+  const formRef = useRef<HTMLFormElement>(null)
+
+  useEffect(() => {
+    if (state.status === 'success') {
+      formRef.current?.reset()
+    }
+  }, [state.status])
+
+  const shouldShowMessage = state.status !== 'idle' && Boolean(state.message)
+  const messageClassName =
+    state.status === 'success' ? styles.successMessage : styles.errorMessage
+
   return (
     <div className={styles.quotePage}>
       <div className={styles.container}>
         <h1 className={styles.title}>Get a Quote</h1>
 
-        <form className={styles.form}>
+        <form ref={formRef} className={styles.form} action={formAction} noValidate>
           <div className={styles.formRow}>
             <div className={styles.formField}>
               <label htmlFor="product" className={styles.label}>
@@ -64,6 +78,7 @@ export default function QuotePage() {
                 name="firstName"
                 className={styles.input}
                 placeholder=""
+                required
               />
             </div>
 
@@ -77,6 +92,7 @@ export default function QuotePage() {
                 name="lastName"
                 className={styles.input}
                 placeholder=""
+                required
               />
             </div>
           </div>
@@ -93,7 +109,14 @@ export default function QuotePage() {
               <label htmlFor="email" className={styles.label}>
                 Email
               </label>
-              <input type="email" id="email" name="email" className={styles.input} placeholder="" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className={styles.input}
+                placeholder=""
+                required
+              />
             </div>
           </div>
 
@@ -142,7 +165,7 @@ export default function QuotePage() {
               name="inquiry"
               className={styles.textarea}
               rows={10}
-              placeholder=""
+                required
             />
           </div>
 
@@ -155,10 +178,14 @@ export default function QuotePage() {
               className={styles.captchaImage}
             />
           </div>
-
-          <button type="submit" className={styles.submitButton} onClick={handleSubmit}>
+          <FormSubmitButton className={styles.submitButton} pendingLabel="Sending...">
             Submit
-          </button>
+          </FormSubmitButton>
+          {shouldShowMessage && (
+            <p className={`${styles.formMessage} ${messageClassName}`} role="status" aria-live="polite">
+              {state.message}
+            </p>
+          )}
         </form>
       </div>
     </div>

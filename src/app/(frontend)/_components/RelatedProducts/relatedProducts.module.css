@@ -22,7 +22,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
-  justify-items: center;
+  justify-items: stretch;
   justify-content: center;
   max-width: 1000px;
   margin: 0 auto;

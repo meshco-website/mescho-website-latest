@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './productCard.module.css'
@@ -12,6 +14,8 @@ interface ProductCardProps {
   size?: 'large' | 'small'
 }
 
+const PLACEHOLDER_IMAGE = '/placeholder.svg'
+
 const ProductCard: React.FC<ProductCardProps> = ({
   id: _id,
   name,
@@ -20,13 +24,53 @@ const ProductCard: React.FC<ProductCardProps> = ({
   category,
   size = 'small',
 }) => {
+  const [hasImageError, setHasImageError] = useState(!image?.trim())
+
+  const resolvedImage = useMemo(
+    () => (!image?.trim() || hasImageError ? PLACEHOLDER_IMAGE : image),
+    [image, hasImageError],
+  )
+
+  const isPlaceholder = resolvedImage.includes('placeholder.svg')
+  const isSmall = size === 'small'
+
+  const imageSectionClassName = [
+    styles.imageSection,
+    isSmall ? styles.imageSectionSmall : styles.imageSectionLarge,
+    isPlaceholder ? styles.placeholder : styles.fullImage,
+    isPlaceholder ? (isSmall ? styles.placeholderSmall : styles.placeholderLarge) : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
   return (
     <Link
       href={`/products/${category}/${slug}`}
       className={`${styles.productCard} ${styles[size]}`}
     >
-      <div className={styles.imageSection}>
-        <Image src={image} alt={name} width={300} height={200} />
+      <div className={imageSectionClassName}>
+        {isPlaceholder ? (
+          <Image
+            src={resolvedImage}
+            alt={name}
+            width={isSmall ? 82 : 91}
+            height={isSmall ? 71 : 79}
+            className={isSmall ? styles.placeholderImageSmall : styles.placeholderImageLarge}
+          />
+        ) : (
+          <Image
+            src={resolvedImage}
+            alt={name}
+            fill
+            className={styles.image}
+            sizes="(min-width: 1200px) 300px, (min-width: 768px) 33vw, 100vw"
+            onError={() => {
+              if (!hasImageError) {
+                setHasImageError(true)
+              }
+            }}
+          />
+        )}
       </div>
       <div className={styles.contentSection}>
         <h3 className={styles.productCardTitle}>{name}</h3>

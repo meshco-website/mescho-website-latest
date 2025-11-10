@@ -1,9 +1,61 @@
 import React from 'react'
 import Image from 'next/image'
+import { getProductBySlug, productDetailConfigs } from '@/data/products'
 import './styles.css'
 import styles from './homepage.module.css'
 import ExploreProductsCard from './_components/ExploreProductsCard'
 import BestSellerCard from './_components/BestSellerCard'
+
+const BEST_SELLER_KEYS = [
+  'wirewall-3510',
+  'wire-hard-drawn-wire',
+  'reinforcing-brickforce',
+  'fencing-welded-fence-mesh',
+  'wire-galvanised-wire',
+] as const
+
+type BestSellerKey = (typeof BEST_SELLER_KEYS)[number]
+
+interface BestSellerCardData {
+  title: string
+  image: string
+  description: string
+  linkHref: string
+}
+
+const extractSummary = (text: string): string => {
+  const sentenceMatch = text.match(/[^.?!]+[.?!]/)
+  if (sentenceMatch) {
+    return sentenceMatch[0].trim()
+  }
+  return text
+}
+
+const buildBestSellerCard = (key: BestSellerKey): BestSellerCardData | null => {
+  const detail = productDetailConfigs[key]
+  if (!detail) {
+    return null
+  }
+
+  const [category, ...slugParts] = key.split('-')
+  const slug = slugParts.join('-')
+  const product = getProductBySlug(category, slug)
+
+  if (!product) {
+    return null
+  }
+
+  return {
+    title: product.title ?? product.name,
+    image: product.image,
+    description: extractSummary(detail.description),
+    linkHref: `/products/${category}/${slug}`,
+  }
+}
+
+const bestSellerCards = BEST_SELLER_KEYS.map(buildBestSellerCard).filter(
+  (card): card is BestSellerCardData => Boolean(card),
+)
 
 export default function HomePage() {
   return (
@@ -45,7 +97,7 @@ export default function HomePage() {
               link="/products/reinforcing"
             />
             <ExploreProductsCard
-              image="/placeholder.svg"
+              image="/products/Mining Support/mining-support-mesh/meshco-underground-mining-support-mesh.webp"
               title="Mining Support"
               link="/products/mining-support"
             />
@@ -55,7 +107,7 @@ export default function HomePage() {
               link="/products/fasteners"
             />
             <ExploreProductsCard
-              image="/placeholder.svg"
+              image="/products/Utility/specimesh-panels/meshco-specimesh-panel-cage-3.webp"
               title="Utility"
               link="/products/utility"
             />
@@ -75,41 +127,16 @@ export default function HomePage() {
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Best Sellers</h2>
           <div className={styles.productGrid}>
-            <BestSellerCard
-              title="WireWall 3510"
-              image="/placeholder.svg"
-              description="Lorem ipsum dolor sit amet consectetur"
-              linkText="Learn More"
-              linkHref="/products/wirewall/3510"
-            />
-            <BestSellerCard
-              title="Hard Drawn Wire"
-              image="/placeholder.svg"
-              description="High-quality wire for construction"
-              linkText="Learn More"
-              linkHref="/products/wire/hard-drawn-wire"
-            />
-            <BestSellerCard
-              title="Brickforce"
-              image="/placeholder.svg"
-              description="Premium reinforcement mesh"
-              linkText="Learn More"
-              linkHref="/products/reinforcing/brickforce"
-            />
-            <BestSellerCard
-              title="Welded Fence Mesh"
-              image="/placeholder.svg"
-              description="Durable security fencing"
-              linkText="Learn More"
-              linkHref="/products/fencing/welded-fence-mesh"
-            />
-            <BestSellerCard
-              title="Galvanised Wire"
-              image="/placeholder.svg"
-              description="Corrosion-resistant wire"
-              linkText="Learn More"
-              linkHref="/products/wire/galvanised-wire"
-            />
+            {bestSellerCards.map((card) => (
+              <BestSellerCard
+                key={card.linkHref}
+                title={card.title}
+                image={card.image}
+                description={card.description}
+                linkText="Learn More"
+                linkHref={card.linkHref}
+              />
+            ))}
           </div>
         </div>
       </section>

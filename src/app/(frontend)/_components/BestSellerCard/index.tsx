@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useState, useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './bestSellerCard.module.css'
@@ -11,6 +13,8 @@ interface BestSellerCardProps {
   linkHref: string
 }
 
+const PLACEHOLDER_IMAGE = '/placeholder.svg'
+
 const BestSellerCard: React.FC<BestSellerCardProps> = ({
   title,
   image,
@@ -18,10 +22,46 @@ const BestSellerCard: React.FC<BestSellerCardProps> = ({
   linkText,
   linkHref,
 }) => {
+  const [hasImageError, setHasImageError] = useState(!image?.trim())
+
+  const resolvedImage = useMemo(
+    () => (!image?.trim() || hasImageError ? PLACEHOLDER_IMAGE : image),
+    [image, hasImageError],
+  )
+
+  const isPlaceholder = resolvedImage.includes('placeholder.svg')
+
+  const handleImageError = () => {
+    if (!hasImageError) {
+      setHasImageError(true)
+    }
+  }
+
   return (
     <Link href={linkHref} className={styles.productCard}>
-      <div className={styles.imageSection}>
-        <Image src={image} alt={title} width={300} height={200} />
+      <div
+        className={`${styles.imageSection} ${
+          isPlaceholder ? styles.placeholder : styles.fullImage
+        }`}
+      >
+        {isPlaceholder ? (
+          <Image
+            src={resolvedImage}
+            alt={title}
+            width={150}
+            height={120}
+            className={styles.placeholderImage}
+          />
+        ) : (
+          <Image
+            src={resolvedImage}
+            alt={title}
+            fill
+            className={styles.image}
+            sizes="(min-width: 1024px) 300px, 50vw"
+            onError={handleImageError}
+          />
+        )}
       </div>
       <div className={styles.contentSection}>
         <h3 className={styles.productCardTitle}>{title}</h3>

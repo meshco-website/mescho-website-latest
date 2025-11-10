@@ -91,7 +91,7 @@ const Footer = () => {
                   </Link>
                 </div>
                 <div className={styles.column}>
-                  <Link href="/whoweare" className={styles.heading}>
+                  <Link href="/whoweare/about-us" className={styles.heading}>
                     Who We Are
                   </Link>
                   <Link href="/whoweare/about-us" className={styles.link}>
@@ -138,6 +138,17 @@ const Footer = () => {
             <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
               <Image src="/insta.png" alt="Instagram" width={24} height={24} />
             </Link>
+            <span className={styles.credit}>
+              Website by{' '}
+              <Link
+                href="https://moderndaystrategy.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.creditLink}
+              >
+                Modern Day Strategy
+              </Link>
+            </span>
           </div>
         </div>
       </section>

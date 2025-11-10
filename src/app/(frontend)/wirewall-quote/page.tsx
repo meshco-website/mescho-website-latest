@@ -1,18 +1,32 @@
 'use client'
 
-import React from 'react'
+import React, { useActionState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import FormSubmitButton from '../_components/FormSubmitButton'
+import { submitWirewallQuoteForm, type FormState } from '../_actions/form-submissions'
 import styles from './wirewall-quote.module.css'
 
-export default function WirewallQuotePage() {
-  const router = useRouter()
+const initialState: FormState = {
+  status: 'idle',
+  message: null,
+  fields: {},
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    router.push('/review')
-  }
+export default function WirewallQuotePage() {
+  const [state, formAction] = useActionState(submitWirewallQuoteForm, initialState)
+  const formRef = useRef<HTMLFormElement>(null)
+
+  useEffect(() => {
+    if (state.status === 'success') {
+      formRef.current?.reset()
+    }
+  }, [state.status])
+
+  const shouldShowMessage = state.status !== 'idle' && Boolean(state.message)
+  const messageClassName =
+    state.status === 'success' ? styles.successMessage : styles.errorMessage
+
   return (
     <div className={styles.quotePage}>
       <div className={styles.container}>
@@ -27,8 +41,7 @@ export default function WirewallQuotePage() {
           </Link>
           .
         </p>
-
-        <form className={styles.form}>
+        <form ref={formRef} className={styles.form} action={formAction} noValidate>
           <div className={styles.formGrid}>
             <div className={styles.formField}>
               <label htmlFor="firstName" className={styles.label}>
@@ -40,6 +53,7 @@ export default function WirewallQuotePage() {
                 name="firstName"
                 className={styles.input}
                 placeholder=""
+                required
               />
             </div>
 
@@ -53,6 +67,7 @@ export default function WirewallQuotePage() {
                 name="lastName"
                 className={styles.input}
                 placeholder=""
+                required
               />
             </div>
 
@@ -67,7 +82,14 @@ export default function WirewallQuotePage() {
               <label htmlFor="email" className={styles.label}>
                 Email
               </label>
-              <input type="email" id="email" name="email" className={styles.input} placeholder="" />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className={styles.input}
+                placeholder=""
+                required
+              />
             </div>
 
             <div className={styles.formField}>
@@ -253,10 +275,14 @@ export default function WirewallQuotePage() {
                 className={styles.captchaImage}
               />
             </div>
-
-            <button type="submit" className={styles.submitButton} onClick={handleSubmit}>
+            <FormSubmitButton className={styles.submitButton} pendingLabel="Sending...">
               Submit
-            </button>
+            </FormSubmitButton>
+            {shouldShowMessage && (
+              <p className={`${styles.formMessage} ${messageClassName}`} role="status" aria-live="polite">
+                {state.message}
+              </p>
+            )}
           </div>
         </form>
       </div>

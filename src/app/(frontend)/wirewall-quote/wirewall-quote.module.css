@@ -185,6 +185,26 @@
   background-color: #c49a2e;
 }
 
+.submitButton[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.formMessage {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.successMessage {
+  color: #1a7f37;
+}
+
+.errorMessage {
+  color: #b42318;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .quotePage {

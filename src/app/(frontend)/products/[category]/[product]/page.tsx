@@ -32,6 +32,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <ProductDetailPage
+      name={config.name}
       title={config.title}
       category={config.category}
       heroImage={config.heroImage}
