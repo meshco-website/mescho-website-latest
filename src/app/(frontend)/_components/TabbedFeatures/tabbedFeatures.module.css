@@ -45,6 +45,26 @@
   min-height: 200px;
 }
 
+.specificationImageWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.specificationImageInner {
+  width: 100%;
+  max-width: 900px;
+}
+
+.specificationImage {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
 .featuresList {
   display: flex;
   flex-direction: column;
@@ -81,6 +101,10 @@
 
   .tabContent {
     min-height: 150px;
+  }
+
+  .specificationImageWrapper {
+    margin-bottom: 1.5rem;
   }
 
   .featureDescription {

@@ -14,6 +14,8 @@ interface RelatedProductsProps {
   products: RelatedProduct[]
 }
 
+const PLACEHOLDER_IMAGE = '/placeholder.svg'
+
 const RelatedProducts: React.FC<RelatedProductsProps> = ({ products }) => {
   if (!products || products.length === 0) {
     return null
@@ -29,7 +31,7 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ products }) => {
             <BestSellerCard
               key={product.id}
               title={product.name}
-              image={product.image}
+              image={product.image?.trim() ? product.image : PLACEHOLDER_IMAGE}
               description=""
               linkText="View Product"
               linkHref={`/products/${product.category}/${product.slug}`}

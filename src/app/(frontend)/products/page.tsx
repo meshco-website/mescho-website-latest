@@ -1,201 +1,44 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import styles from './products.module.css'
 import FilterSidebar from '../_components/FilterSidebar'
 import ProductCard from '../_components/ProductCard'
+import { Product, products } from '@/data/products'
 
-const sampleProducts = [
+const featuredProductIds: string[] = [
   // Wire Products
-  {
-    id: '1',
-    name: 'Hard Drawn Wire',
-    image: '/placeholder.svg',
-    slug: 'hard-drawn-wire',
-    type: 'Wire',
-    industry: 'Construction',
-    category: 'wire',
-  },
-  {
-    id: '2',
-    name: 'Galvanised Wire',
-    image: '/placeholder.svg',
-    slug: 'galvanised-wire',
-    type: 'Wire',
-    industry: 'Construction',
-    category: 'wire',
-  },
-  {
-    id: '3',
-    name: 'High Strain Wire',
-    image: '/placeholder.svg',
-    slug: 'high-strain-wire',
-    type: 'Wire',
-    industry: 'Construction',
-    category: 'wire',
-  },
-  {
-    id: '4',
-    name: 'Black Annealed Wire',
-    image: '/placeholder.svg',
-    slug: 'black-annealed-wire',
-    type: 'Wire',
-    industry: 'Construction',
-    category: 'wire',
-  },
-  {
-    id: '5',
-    name: 'PVC Coated Wire',
-    image: '/placeholder.svg',
-    slug: 'pvc-coated-wire',
-    type: 'Wire',
-    industry: 'Construction',
-    category: 'wire',
-  },
-  {
-    id: '6',
-    name: 'Straight Cut Wire',
-    image: '/placeholder.svg',
-    slug: 'straight-cut-wire',
-    type: 'Wire',
-    industry: 'Construction',
-    category: 'wire',
-  },
-  {
-    id: '7',
-    name: 'Slab Wire',
-    image: '/placeholder.svg',
-    slug: 'slab-wire',
-    type: 'Wire',
-    industry: 'Construction',
-    category: 'wire',
-  },
-
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
   // WireWall Products
-  {
-    id: '8',
-    name: 'Doublewall',
-    image: '/placeholder.svg',
-    slug: 'doublewall',
-    type: 'WireWall',
-    industry: 'Property',
-    category: 'wirewall',
-  },
-  {
-    id: '9',
-    name: 'WireWall 355',
-    image: '/placeholder.svg',
-    slug: '355',
-    type: 'WireWall',
-    industry: 'Property',
-    category: 'wirewall',
-  },
-  {
-    id: '10',
-    name: 'WireWall 358',
-    image: '/placeholder.svg',
-    slug: '358',
-    type: 'WireWall',
-    industry: 'Property',
-    category: 'wirewall',
-  },
-  {
-    id: '11',
-    name: 'WireWall 3510',
-    image: '/placeholder.svg',
-    slug: '3510',
-    type: 'WireWall',
-    industry: 'Property',
-    category: 'wirewall',
-  },
-
+  '8',
+  '9',
+  '10',
+  '11',
   // Reinforcing Products
-  {
-    id: '12',
-    name: 'Brickforce',
-    image: '/placeholder.svg',
-    slug: 'brickforce',
-    type: 'Reinforcing',
-    industry: 'Construction',
-    category: 'reinforcing',
-  },
-  {
-    id: '13',
-    name: 'Reinforcing Mesh',
-    image: '/placeholder.svg',
-    slug: 'reinforcing-mesh',
-    type: 'Reinforcing',
-    industry: 'Construction',
-    category: 'reinforcing',
-  },
-  {
-    id: '14',
-    name: 'Hoop Iron',
-    image: '/placeholder.svg',
-    slug: 'hoop-iron',
-    type: 'Reinforcing',
-    industry: 'Construction',
-    category: 'reinforcing',
-  },
-
+  '18',
+  '19',
+  '20',
   // Fencing Products
-  {
-    id: '15',
-    name: 'Welded Fence Mesh',
-    image: '/placeholder.svg',
-    slug: 'welded-fence-mesh',
-    type: 'Fencing',
-    industry: 'Property',
-    category: 'fencing',
-  },
-  {
-    id: '16',
-    name: 'Diamond Mesh',
-    image: '/placeholder.svg',
-    slug: 'diamond-mesh',
-    type: 'Fencing',
-    industry: 'Property',
-    category: 'fencing',
-  },
-  {
-    id: '17',
-    name: 'Barbed Wire',
-    image: '/placeholder.svg',
-    slug: 'barbed-wire',
-    type: 'Fencing',
-    industry: 'Property',
-    category: 'fencing',
-  },
-  {
-    id: '18',
-    name: 'Razor Wire',
-    image: '/placeholder.svg',
-    slug: 'razor-wire',
-    type: 'Fencing',
-    industry: 'Property',
-    category: 'fencing',
-  },
-
+  '24',
+  '26',
+  '27',
+  '28',
   // Fasteners Products
-  {
-    id: '19',
-    name: 'Round Wire Nails',
-    image: '/placeholder.svg',
-    slug: 'round-wire-nails',
-    type: 'Fasteners',
-    industry: 'Manufacturing',
-    category: 'fasteners',
-  },
-  {
-    id: '20',
-    name: 'Staples',
-    image: '/placeholder.svg',
-    slug: 'staples',
-    type: 'Fasteners',
-    industry: 'Manufacturing',
-    category: 'fasteners',
-  },
+  '35',
+  '36',
 ]
+
+const productMap = new Map(products.map((product) => [product.id, product]))
+
+const featuredProducts: Product[] = featuredProductIds
+  .map((id) => productMap.get(id))
+  .filter((product): product is Product => Boolean(product))
 
 export default function ProductsPage() {
   const [filters, setFilters] = useState<{ types: string[]; industries: string[] }>({
@@ -205,10 +48,10 @@ export default function ProductsPage() {
 
   const filteredProducts = useMemo(() => {
     if (filters.types.length === 0 && filters.industries.length === 0) {
-      return sampleProducts
+      return featuredProducts
     }
 
-    return sampleProducts.filter((product) => {
+    return featuredProducts.filter((product) => {
       const typeMatch = filters.types.length === 0 || filters.types.includes(product.type)
       const industryMatch =
         filters.industries.length === 0 || filters.industries.includes(product.industry)

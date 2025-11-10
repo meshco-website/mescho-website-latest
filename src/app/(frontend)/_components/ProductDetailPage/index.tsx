@@ -31,6 +31,7 @@ interface TabData {
   id: string
   label: string
   content: string[]
+  image?: string
 }
 
 interface RelatedProduct {
@@ -44,6 +45,7 @@ interface RelatedProduct {
 type LayoutType = 'standard' | 'wirewall' | 'simple'
 
 interface ProductDetailPageProps {
+  name: string
   title: string
   category: string
   heroImage: string
@@ -57,7 +59,45 @@ interface ProductDetailPageProps {
   relatedProducts: RelatedProduct[]
 }
 
+const getSpecificationImagePath = (heroImage: string): string | undefined => {
+  if (!heroImage) {
+    return undefined
+  }
+
+  const segments = heroImage.split('/')
+  if (segments.length <= 1) {
+    return undefined
+  }
+
+  segments.pop()
+  segments.push('specifications.png')
+
+  return segments.join('/')
+}
+
+const addSpecificationImageToTabs = (
+  tabs: TabData[] | undefined,
+  heroImage: string,
+): TabData[] | undefined => {
+  if (!tabs || tabs.length === 0) {
+    return tabs
+  }
+
+  const specificationImage = getSpecificationImagePath(heroImage)
+
+  if (!specificationImage) {
+    return tabs
+  }
+
+  return tabs.map((tab) =>
+    tab.id === 'specifications' && !tab.image
+      ? { ...tab, image: specificationImage }
+      : tab,
+  )
+}
+
 const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
+  name,
   title,
   category,
   heroImage,
@@ -70,9 +110,12 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   tabs,
   relatedProducts,
 }) => {
+  const enhancedTabs = addSpecificationImageToTabs(tabs, heroImage)
+
   return (
     <div className={styles.productDetailPage}>
       <ProductInfo
+        name={name}
         title={title}
         category={category}
         heroImage={heroImage}
@@ -85,7 +128,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         applications={applications}
         technicalData={technicalData}
         wireWallSpecifications={wireWallSpecifications}
-        tabs={tabs}
+        tabs={enhancedTabs}
       />
 
       <RelatedProducts products={relatedProducts} />

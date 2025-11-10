@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './productInfo.module.css'
@@ -9,6 +11,7 @@ interface Specification {
 }
 
 interface ProductInfoProps {
+  name: string
   title: string
   category: string
   heroImage: string
@@ -17,12 +20,28 @@ interface ProductInfoProps {
 }
 
 const ProductInfo: React.FC<ProductInfoProps> = ({
+  name,
   title,
   category,
   heroImage,
   description,
   specifications,
 }) => {
+  const [hasImageError, setHasImageError] = useState(!heroImage?.trim())
+
+  const resolvedHeroImage = useMemo(
+    () => (!heroImage?.trim() || hasImageError ? '/placeholder.svg' : heroImage),
+    [heroImage, hasImageError],
+  )
+
+  const isPlaceholder = resolvedHeroImage.includes('placeholder.svg')
+
+  const handleImageError = () => {
+    if (!hasImageError) {
+      setHasImageError(true)
+    }
+  }
+
   return (
     <div className={styles.productInfo}>
       <div className={styles.container}>
@@ -39,13 +58,35 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
             {category.charAt(0).toUpperCase() + category.slice(1)}
           </Link>
           <span className={styles.breadcrumbSeparator}>{' > '}</span>
-          <span className={styles.breadcrumbCurrent}>{title}</span>
+          <span className={styles.breadcrumbCurrent}>{name}</span>
         </div>
 
         <div className={styles.productLayout}>
           <div className={styles.imageColumn}>
-            <div className={styles.imageContainer}>
-              <Image src={heroImage} alt={title} fill className={styles.productImage} priority />
+            <div
+              className={`${styles.imageContainer} ${
+                isPlaceholder ? styles.placeholderContainer : ''
+              }`}
+            >
+              {isPlaceholder ? (
+                <Image
+                  src={resolvedHeroImage}
+                  alt={name}
+                  width={220}
+                  height={190}
+                  className={styles.heroPlaceholderImage}
+                  priority
+                />
+              ) : (
+                <Image
+                  src={resolvedHeroImage}
+                  alt={name}
+                  fill
+                  className={styles.productImage}
+                  priority
+                  onError={handleImageError}
+                />
+              )}
             </div>
           </div>
 

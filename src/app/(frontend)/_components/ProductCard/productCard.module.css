@@ -4,7 +4,7 @@
   flex-direction: column;
   text-align: left;
   width: 100%;
-  min-width: 0; /* Prevents card from overflowing */
+  min-width: 0;
   box-sizing: border-box;
   text-decoration: none;
   color: inherit;
@@ -15,43 +15,60 @@
   transform: translateY(-4px);
 }
 
-/* Small card (default) */
-.productCard.small .imageSection {
-  background-color: #c0c0c0;
-  height: 290px;
+.imageSection {
+  position: relative;
   width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.imageSectionSmall {
+  height: 290px;
+}
+
+.imageSectionLarge {
+  height: 401px;
+}
+
+.fullImage {
+  background-color: transparent;
+  border: none;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  background-color: #c0c0c0;
+  border: 1px solid #c0c0c0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4.5rem;
-  border: 1px solid #c0c0c0;
-  border-radius: 10px;
-  flex-shrink: 0;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
-.productCard.small .imageSection img {
+.placeholderSmall {
+  padding: 4.5rem;
+}
+
+.placeholderLarge {
+  padding: 6rem;
+}
+
+.placeholderImageSmall {
   width: 82px;
   height: 71px;
   object-fit: contain;
 }
 
-/* Large card */
-.productCard.large .imageSection {
-  background-color: #c0c0c0;
-  height: 401px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6rem;
-  border: 1px solid #c0c0c0;
-  border-radius: 10px;
-  flex-shrink: 0;
-  box-sizing: border-box;
-}
-
-.productCard.large .imageSection img {
+.placeholderImageLarge {
   width: 91px;
   height: 79px;
   object-fit: contain;
@@ -91,14 +108,16 @@
   width: fit-content;
 }
 
-/* Mobile responsive */
 @media (max-width: 600px) {
-  .imageSection {
+  .imageSectionSmall {
     height: 250px;
+  }
+
+  .placeholderSmall {
     padding: 3rem;
   }
 
-  .imageSection img {
+  .placeholderImageSmall {
     width: 60px;
     height: 52px;
   }
@@ -116,12 +135,15 @@
 }
 
 @media (max-width: 480px) {
-  .imageSection {
+  .imageSectionSmall {
     height: 220px;
+  }
+
+  .placeholderSmall {
     padding: 2.5rem;
   }
 
-  .imageSection img {
+  .placeholderImageSmall {
     width: 50px;
     height: 44px;
   }
@@ -142,3 +164,4 @@
     letter-spacing: 0.22px;
   }
 }
+

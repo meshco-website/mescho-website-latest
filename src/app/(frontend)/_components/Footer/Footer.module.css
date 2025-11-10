@@ -193,6 +193,23 @@
   text-decoration: underline;
 }
 
+.credit {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 15px;
+}
+
+.creditLink {
+  color: #deaf38;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.creditLink:hover {
+  text-decoration: underline;
+}
+
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .preFooterContainer {
