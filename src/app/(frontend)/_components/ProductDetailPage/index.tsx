@@ -83,17 +83,9 @@ const addSpecificationImageToTabs = (
     return tabs
   }
 
-  const specificationImage = getSpecificationImagePath(heroImage)
-
-  if (!specificationImage) {
-    return tabs
-  }
-
-  return tabs.map((tab) =>
-    tab.id === 'specifications' && !tab.image
-      ? { ...tab, image: specificationImage }
-      : tab,
-  )
+  // Don't automatically add specification image path
+  // Only add if image is explicitly set in the tab data
+  return tabs
 }
 
 const ProductDetailPage: React.FC<ProductDetailPageProps> = ({

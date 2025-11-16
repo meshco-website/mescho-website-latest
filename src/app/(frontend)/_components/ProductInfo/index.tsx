@@ -96,7 +96,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
               <h1 className={styles.productTitle}>{title}</h1>
 
               <div className={styles.description}>
-                <p>{description}</p>
+                {description.split('\n\n').map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
               </div>
 
               <div className={styles.specifications}>
