@@ -43,6 +43,14 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
     typeof tabImage === 'string' && 
     tabImage.trim() !== '' &&
     imageError !== tabImage
+  const isGalleryTab = activeTabData?.id === 'gallery'
+
+  // Check if content items are image paths (for gallery)
+  const isImagePath = (str: string): boolean => {
+    if (!str || typeof str !== 'string') return false
+    const imageExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg']
+    return imageExtensions.some(ext => str.toLowerCase().endsWith(ext))
+  }
 
   return (
     <div className={styles.tabbedFeatures}>
@@ -61,55 +69,113 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
       <div className={styles.tabContent}>
         {activeTabData ? (
           <>
-            {hasValidImage && tabImage && typeof tabImage === 'string' && (
-              <div className={styles.specificationImageWrapper}>
-                <div className={styles.specificationImageInner}>
-                  <Image
-                    src={tabImage}
-                    alt={`${activeTabData.label} image`}
-                    width={1200}
-                    height={900}
-                    className={styles.specificationImage}
-                    onError={() => setImageError(tabImage)}
-                  />
-                </div>
-              </div>
-            )}
-
-            {activeTabData.content && Array.isArray(activeTabData.content) && activeTabData.content.length > 0 ? (
-              <div className={styles.featuresList}>
-                {activeTabData.content.map((feature, index) => {
-                  if (!feature || typeof feature !== 'string') return null
-                  
-                  // Check if feature has format "Heading - Description"
-                  const parts = feature.split(' - ')
-                  const hasHeadingWithDescription = parts.length === 2
-                  
-                  // Check if this is a standalone heading (matches known heading patterns or ends with colon)
-                  const isStandaloneHeading = !hasHeadingWithDescription && 
-                    (feature.match(/^(Butterfly Wall Ties|Crimped Wall Ties|Z-Pattern Wall Ties|Vertical Twist Wall Ties|Key Benefits of Meshco Wall Ties|Deformed Bar \(Y-bar\)|Round Bar \(R-bar\)|Key Benefits of Meshco Rebar|Masonry Reinforcement|Roof Truss Bracing|Strapping and Bracing|Timber Construction|Key Features:|Standard Spike|Heavy Spike|Raptor Tooth|Assegai|Pedestrian Gates \(Swing, Single Leaf\)|Vehicular Gates|Single and Double Leaf Swing Gates|Sliding Gates|Application:|Key features of round wire nails:)$/i) ||
-                    feature.trim().endsWith(':'))
-
-                  return (
-                    <div key={index} className={styles.featureItem}>
-                      {hasHeadingWithDescription ? (
-                        <>
-                          <p className={styles.featureHeading}>{parts[0]}</p>
-                          {parts[1] && <p className={styles.featureDescription}>{parts[1]}</p>}
-                        </>
-                      ) : isStandaloneHeading ? (
-                        <p className={styles.featureHeading}>{feature}</p>
-                      ) : (
-                        <p className={styles.featureDescription}>{feature}</p>
-                      )}
-                    </div>
+            {isGalleryTab && activeTabData.content && Array.isArray(activeTabData.content) && activeTabData.content.length > 0 ? (
+              <div className={styles.galleryContainer}>
+                {(() => {
+                  const imagePaths = activeTabData.content.filter(
+                    (path) => path && typeof path === 'string' && isImagePath(path)
                   )
-                })}
+                  const firstTwoImages = imagePaths.slice(0, 2)
+                  const remainingImages = imagePaths.slice(2)
+                  
+                  return (
+                    <>
+                      {firstTwoImages.length > 0 && (
+                        <div className={styles.galleryGrid}>
+                          {firstTwoImages.map((imagePath, index) => (
+                            <div key={index} className={styles.galleryItem}>
+                              <Image
+                                src={imagePath}
+                                alt={`Gallery image ${index + 1}`}
+                                fill
+                                className={styles.galleryImage}
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                onError={() => {}}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {remainingImages.length > 0 && (
+                        <div className={styles.galleryGridSmall}>
+                          {remainingImages.map((imagePath, index) => (
+                            <div key={index + 2} className={styles.galleryItemSmall}>
+                              <Image
+                                src={imagePath}
+                                alt={`Gallery image ${index + 3}`}
+                                fill
+                                className={styles.galleryImage}
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                                onError={() => {}}
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )
+                })()}
               </div>
             ) : (
-              <div className={styles.featuresList}>
-                <p className={styles.featureDescription}>No content available for this tab.</p>
-              </div>
+              <>
+                {hasValidImage && tabImage && typeof tabImage === 'string' && (
+                  <div className={styles.specificationImageWrapper}>
+                    <div className={styles.specificationImageInner}>
+                      <Image
+                        src={tabImage}
+                        alt={`${activeTabData.label} image`}
+                        width={1200}
+                        height={900}
+                        className={styles.specificationImage}
+                        onError={() => setImageError(tabImage)}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {activeTabData.content && Array.isArray(activeTabData.content) && activeTabData.content.length > 0 && (
+                  <div className={styles.featuresList}>
+                    {activeTabData.content.map((feature, index) => {
+                      if (!feature || typeof feature !== 'string') return null
+                      
+                      // Check if feature has format "Heading - Description"
+                      const parts = feature.split(' - ')
+                      const hasHeadingWithDescription = parts.length === 2
+                      
+                      // Check if this is a standalone heading (matches known heading patterns or ends with colon)
+                      const isStandaloneHeading = !hasHeadingWithDescription && 
+                        (feature.match(/^(Butterfly Wall Ties|Crimped Wall Ties|Z-Pattern Wall Ties|Vertical Twist Wall Ties|Key Benefits of Meshco Wall Ties|Deformed Bar \(Y-bar\)|Round Bar \(R-bar\)|Key Benefits of Meshco Rebar|Masonry Reinforcement|Roof Truss Bracing|Strapping and Bracing|Timber Construction|Key Features:|Standard Spike|Heavy Spike|Raptor Tooth|Assegai|Pedestrian Gates \(Swing, Single Leaf\)|Vehicular Gates|Single and Double Leaf Swing Gates|Sliding Gates|Application:|Key features of round wire nails:)$/i) ||
+                        feature.trim().endsWith(':'))
+
+                      // Check if this is an inline heading like "Applications"
+                      const isInlineHeading = hasHeadingWithDescription && 
+                        (parts[0].trim().toLowerCase() === 'applications' || 
+                         parts[0].trim().toLowerCase() === 'application')
+
+                      return (
+                        <div key={index} className={styles.featureItem}>
+                          {hasHeadingWithDescription ? (
+                            isInlineHeading ? (
+                              <p className={styles.featureDescription}>
+                                <span className={styles.featureHeading}>{parts[0]}</span> {parts[1]}
+                              </p>
+                            ) : (
+                              <>
+                                <p className={styles.featureHeading}>{parts[0]}</p>
+                                {parts[1] && <p className={styles.featureDescription}>{parts[1]}</p>}
+                              </>
+                            )
+                          ) : isStandaloneHeading ? (
+                            <p className={styles.featureHeading}>{feature}</p>
+                          ) : (
+                            <p className={styles.featureDescription}>{feature}</p>
+                          )}
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
+              </>
             )}
           </>
         ) : (

@@ -135,7 +135,7 @@ export default function AboutUsPage() {
       <section className={styles.valuesSection}>
         <div className={styles.valuesHeader}>
           <h2 className={styles.valuesTitle}>Company Values</h2>
-          <Link href="/whoweare" className={styles.valuesLink}>
+          <Link href="/whoweare/about-us" className={styles.valuesLink}>
             Learn about us
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -62,7 +62,6 @@
   width: 100%;
   height: auto;
   border-radius: 12px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
 }
 
 .featuresList {
@@ -105,6 +104,22 @@
 /* Reduce spacing between consecutive descriptions (points under same heading) */
 .featureItem:has(.featureDescription) + .featureItem:has(.featureDescription) .featureDescription {
   margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+/* Reduce spacing for descriptions that come after a heading */
+.featureItem:has(.featureHeading) ~ .featureItem:has(.featureDescription) .featureDescription {
+  margin-bottom: 0.25rem;
+}
+
+/* Reduce spacing for inline headings like "Applications" - bring them closer to previous items */
+.featureItem:has(.featureDescription):not(:has(.featureDescription .featureHeading)) + .featureItem:has(.featureDescription .featureHeading) {
+  margin-top: 0.25rem;
+}
+
+/* Reduce bottom margin of descriptions that come before "Applications" */
+.featureItem:has(.featureDescription):not(:has(.featureDescription .featureHeading)):has(+ .featureItem:has(.featureDescription .featureHeading)) .featureDescription {
+  margin-bottom: 0.25rem;
 }
 
 /* Add spacing before a new heading section */
@@ -118,6 +133,50 @@
 
 .featureItem:last-child .featureDescription {
   margin-bottom: 0;
+}
+
+.galleryContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.galleryItem {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+}
+
+.galleryGridSmall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.galleryItemSmall {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 /* Responsive design */
@@ -141,5 +200,16 @@
 
   .featureDescription {
     font-size: 16px;
+  }
+
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .galleryGridSmall {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
