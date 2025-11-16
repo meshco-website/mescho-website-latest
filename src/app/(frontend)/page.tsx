@@ -97,7 +97,7 @@ export default function HomePage() {
               link="/products/reinforcing"
             />
             <ExploreProductsCard
-              image="/products/Mining Support/mining-support-mesh/meshco-underground-mining-support-mesh.webp"
+              image="/products/Mining Support/mining-support-mesh/mining-support-mesh_1.webp"
               title="Mining Support"
               link="/products/mining-support"
             />
@@ -107,7 +107,7 @@ export default function HomePage() {
               link="/products/fasteners"
             />
             <ExploreProductsCard
-              image="/products/Utility/specimesh-panels/meshco-specimesh-panel-cage-3.webp"
+              image="/products/Utility/specimesh-panels/specimesh-panels_1.png"
               title="Utility"
               link="/products/utility"
             />
