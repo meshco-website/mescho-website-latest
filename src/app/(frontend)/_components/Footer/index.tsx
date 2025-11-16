@@ -1,20 +1,28 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import styles from './Footer.module.css'
 
 const Footer = () => {
+  const pathname = usePathname()
+  const isContactUsPage = pathname === '/contactus'
+
   return (
     <footer className={styles.footer}>
-      <section className={styles.getInTouch}>
-        <h2 className={styles.getInTouchHeading}>Get in touch</h2>
-        <p className={styles.getInTouchText}>
-          Contact us for expert advice, pricing, and custom solutions.
-        </p>
-        <Link href="/contactus" className={styles.button}>
-          Contact Us
-        </Link>
-      </section>
+      {!isContactUsPage && (
+        <section className={styles.getInTouch}>
+          <h2 className={styles.getInTouchHeading}>Get in touch</h2>
+          <p className={styles.getInTouchText}>
+            Contact us for expert advice, pricing, and custom solutions.
+          </p>
+          <Link href="/contactus" className={styles.button}>
+            Contact Us
+          </Link>
+        </section>
+      )}
 
       <section className={styles.preFooter}>
         <div className={styles.preFooterContainer}>
