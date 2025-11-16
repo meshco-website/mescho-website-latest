@@ -8,7 +8,7 @@ interface TabData {
   id: string
   label: string
   content: string[]
-  image?: string
+  image?: string | null
 }
 
 interface TabbedFeaturesProps {
@@ -37,11 +37,12 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
   }
 
   const activeTabData = tabs.find((tab) => tab.id === activeTab)
-  const hasValidImage = activeTabData?.image && 
-    activeTabData.image !== null && 
-    typeof activeTabData.image === 'string' && 
-    activeTabData.image.trim() !== '' &&
-    imageError !== activeTabData.image
+  const tabImage = activeTabData?.image
+  const hasValidImage = tabImage && 
+    tabImage !== null && 
+    typeof tabImage === 'string' && 
+    tabImage.trim() !== '' &&
+    imageError !== tabImage
 
   return (
     <div className={styles.tabbedFeatures}>
@@ -60,16 +61,16 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
       <div className={styles.tabContent}>
         {activeTabData ? (
           <>
-            {hasValidImage && (
+            {hasValidImage && tabImage && typeof tabImage === 'string' && (
               <div className={styles.specificationImageWrapper}>
                 <div className={styles.specificationImageInner}>
                   <Image
-                    src={activeTabData.image}
+                    src={tabImage}
                     alt={`${activeTabData.label} image`}
                     width={1200}
                     height={900}
                     className={styles.specificationImage}
-                    onError={() => setImageError(activeTabData.image || null)}
+                    onError={() => setImageError(tabImage)}
                   />
                 </div>
               </div>

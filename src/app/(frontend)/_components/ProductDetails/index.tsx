@@ -30,7 +30,7 @@ interface TabData {
   id: string
   label: string
   content: string[]
-  image?: string
+  image?: string | null
 }
 
 type LayoutType = 'standard' | 'wirewall' | 'simple'

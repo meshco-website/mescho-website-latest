@@ -31,7 +31,7 @@ interface TabData {
   id: string
   label: string
   content: string[]
-  image?: string
+  image?: string | null
 }
 
 interface RelatedProduct {
