@@ -1,8 +1,13 @@
 .link {
   text-decoration: none;
-  color: inherit;
-  font-family: var(--font-orbitron);
-  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  font-family: var(--font-orbitron, 'Orbitron', sans-serif);
+  font-size: 17.987px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.899px;
   white-space: nowrap;
   background: none;
   border: none;
@@ -23,6 +28,7 @@
 /* Media Query for medium-small screens to prevent wrapping */
 @media (max-width: 991px) {
   .link {
-    font-size: 16px;
+    font-size: 15px; /* Slightly smaller for mobile but maintaining proportions */
+    letter-spacing: 0.75px;
   }
 }
