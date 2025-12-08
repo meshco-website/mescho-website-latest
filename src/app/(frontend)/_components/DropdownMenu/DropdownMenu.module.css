@@ -2,7 +2,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #000;
+  background-color: #2a2d2f; /* Dark gray matching design */
   border-radius: 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;

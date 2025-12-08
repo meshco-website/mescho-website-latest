@@ -1,10 +1,82 @@
+.topBar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  background-color: #deaf38; /* Yellow strip */
+  height: 51px;
+  color: #2a2d2f; /* Dark gray text */
+  font-family: var(--font-onest, sans-serif);
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.topBarLink {
+  color: #2a2d2f;
+  text-decoration: underline;
+  text-underline-position: from-font;
+  cursor: pointer;
+}
+
+.topBarLink:hover {
+  opacity: 0.8;
+}
+
+.topBarText {
+  color: #2a2d2f;
+}
+
+@media (max-width: 768px) {
+  .topBar {
+    gap: 1rem;
+    padding: 0 1rem;
+    font-size: 14px;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 51px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #000; /* 1. Navbar background black */
+  padding: 1.5rem 3rem; /* Increased padding */
+  background-color: #2a2d2f; /* Dark gray background matching design */
   color: #fff; /* Set text color to white for visibility */
+}
+
+.logoLink {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px; /* Increased gap between SVG and text */
+}
+
+.logoSvg {
+  display: block;
+  width: 226px;
+  height: 36px;
+}
+
+.logoText {
+  color: #deaf38;
+  text-align: center;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: var(--font-orbitron, 'Orbitron', sans-serif);
+  font-size: 24.136px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.965px;
 }
 
 .desktopMenu {
@@ -26,11 +98,16 @@
 .button {
   text-decoration: none;
   background-color: #deaf38; /* 3. Button color */
-  color: #000; /* 3. Text inside button is black */
+  color: #2a2d2f; /* Text color */
+  text-align: center;
   padding: 0.5rem 1rem;
   border-radius: 4px; /* 3. Corner radius 4 */
-  font-family: var(--font-orbitron); /* Also apply font to button */
-  font-size: 18px; /* Also apply font size to button */
+  font-family: var(--font-orbitron, 'Orbitron', sans-serif);
+  font-size: 17.987px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.899px;
   white-space: nowrap; /* Prevent button text from wrapping */
 }
 
@@ -64,7 +141,7 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  background: #000;
+  background: #2a2d2f; /* Dark gray background matching design */
   height: 100vh;
   width: 100%;
   text-align: center;
@@ -78,11 +155,16 @@
   /* Inherited from .button */
   text-decoration: none;
   background-color: #deaf38;
-  color: #000;
+  color: #2a2d2f;
+  text-align: center;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  font-family: var(--font-orbitron);
-  font-size: 24px;
+  font-family: var(--font-orbitron, 'Orbitron', sans-serif);
+  font-size: 17.987px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.899px;
 }
 
 /* Media Query for mobile devices */
