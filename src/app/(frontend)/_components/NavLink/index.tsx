@@ -31,7 +31,7 @@ const NavLink: React.FC<NavLinkProps> = ({
       onClick={onClick}
     >
       {children}
-      {hasDropdown && <ArrowIcon />}
+      {hasDropdown && <ArrowIcon isActive={isActive} />}
     </Link>
   )
 }

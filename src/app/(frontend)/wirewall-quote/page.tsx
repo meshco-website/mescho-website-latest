@@ -24,8 +24,7 @@ export default function WirewallQuotePage() {
   }, [state.status])
 
   const shouldShowMessage = state.status !== 'idle' && Boolean(state.message)
-  const messageClassName =
-    state.status === 'success' ? styles.successMessage : styles.errorMessage
+  const messageClassName = state.status === 'success' ? styles.successMessage : styles.errorMessage
 
   return (
     <div className={styles.quotePage}>
@@ -189,8 +188,7 @@ export default function WirewallQuotePage() {
                   <option value="spikes">Spikes</option>
                   <option value="underdig">Underdig Panel</option>
                   <option value="barbed-wire">Barbed Wire</option>
-                  <option value="top-rail">Top Rail</option>
-                  <option value="tension-wire">Tension Wire</option>
+                  <option value="razor-wire">Razor Wire</option>
                   <option value="none">None</option>
                 </select>
                 <span className={styles.selectArrow}>▼</span>
@@ -279,7 +277,11 @@ export default function WirewallQuotePage() {
               Submit
             </FormSubmitButton>
             {shouldShowMessage && (
-              <p className={`${styles.formMessage} ${messageClassName}`} role="status" aria-live="polite">
+              <p
+                className={`${styles.formMessage} ${messageClassName}`}
+                role="status"
+                aria-live="polite"
+              >
                 {state.message}
               </p>
             )}

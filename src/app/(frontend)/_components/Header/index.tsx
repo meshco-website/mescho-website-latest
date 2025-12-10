@@ -119,9 +119,10 @@ const Header = () => {
   }
 
   const wireWallItems = [
-    { label: 'WireWall Systems', href: '/wirewall' },
-    { label: 'Security Solutions', href: '/wirewall' },
-    { label: 'Custom Applications', href: '/wirewall' },
+    { label: 'WireWall Overview', href: '/wirewall' },
+    { label: 'Panel Options', href: '/wirewall/panel-options' },
+    { label: 'Engineering Centre', href: '/wirewall/engineering-centre' },
+    { label: 'Case Studies & References', href: '/wirewall/case-studies' },
   ]
 
   const industriesItems = [
@@ -152,7 +153,7 @@ const Header = () => {
   }
 
   return (
-    <header>
+    <header className={styles.header}>
       <div className={styles.topBar}>
         <a href="mailto:sales@meshco.co.za" className={styles.topBarLink}>
           sales@meshco.co.za
@@ -170,71 +171,19 @@ const Header = () => {
               xmlns="http://www.w3.org/2000/svg"
               className={styles.logoSvg}
             >
-              <path
-                d="M7.38098 1.10767L75.0739 34.9505"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M218.104 0.96167L150.411 34.8045"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M40.6172 1.20288L82.2356 34.9507"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M184.868 1.0564L143.249 34.8042"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M71.1422 0.333008L91.692 34.8554"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M154.342 0.187012L133.793 34.7094"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M99.0511 0.552246L105.679 34.4389"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M126.434 0.40625L119.806 34.2929"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M225.879 6.25244H0"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M209.195 14.7444L16.6766 14.7444"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M193.264 21.3652L32.6078 21.3652"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M177.947 27.3723L47.9251 27.3723"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
-              <path
-                d="M164.252 30.8948L61.62 30.8948"
-                stroke="#DEAF38"
-                strokeWidth="0.730788"
-              />
+              <path d="M7.38098 1.10767L75.0739 34.9505" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M218.104 0.96167L150.411 34.8045" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M40.6172 1.20288L82.2356 34.9507" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M184.868 1.0564L143.249 34.8042" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M71.1422 0.333008L91.692 34.8554" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M154.342 0.187012L133.793 34.7094" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M99.0511 0.552246L105.679 34.4389" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M126.434 0.40625L119.806 34.2929" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M225.879 6.25244H0" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M209.195 14.7444L16.6766 14.7444" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M193.264 21.3652L32.6078 21.3652" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M177.947 27.3723L47.9251 27.3723" stroke="#DEAF38" strokeWidth="0.730788" />
+              <path d="M164.252 30.8948L61.62 30.8948" stroke="#DEAF38" strokeWidth="0.730788" />
             </svg>
             <span className={styles.logoText}>MESHCO</span>
           </div>
