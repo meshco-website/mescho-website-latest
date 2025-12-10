@@ -389,7 +389,7 @@ export const products: Product[] = [
     name: 'Razor Wire - Flatwrap',
     title: 'Razor Wire - Flatwrap',
     imageFolder: '/products/Fencing/razor-wire-flatwrap',
-    image: '/products/Fencing/razor-wire-flatwrap/razor-wire-flatwrap_1.png',
+    image: '/products/Fencing/razor-wire-flatwrap/razor-wire-flatwrap_1.webp',
     slug: 'razor-wire-flatwrap',
     type: 'Fencing',
     industry: 'Property',

@@ -66,8 +66,78 @@ const Footer = () => {
         <div className={styles.container}>
           <div className={styles.topSection}>
             <div className={styles.logo}>
-              <Link href="/">
-                <Image src="/logo.png" alt="Mescho Logo" width={326} height={106} />
+              <Link href="/" className={styles.logoLink}>
+                <svg
+                  width="226"
+                  height="36"
+                  viewBox="0 0 226 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={styles.logoSvg}
+                >
+                  <path
+                    d="M7.38098 1.10767L75.0739 34.9505"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M218.104 0.96167L150.411 34.8045"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M40.6172 1.20288L82.2356 34.9507"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M184.868 1.0564L143.249 34.8042"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M71.1422 0.333008L91.692 34.8554"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M154.342 0.187012L133.793 34.7094"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M99.0511 0.552246L105.679 34.4389"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M126.434 0.40625L119.806 34.2929"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path d="M225.879 6.25244H0" stroke="#DEAF38" strokeWidth="0.730788" />
+                  <path
+                    d="M209.195 14.7444L16.6766 14.7444"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M193.264 21.3652L32.6078 21.3652"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M177.947 27.3723L47.9251 27.3723"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                  <path
+                    d="M164.252 30.8948L61.62 30.8948"
+                    stroke="#DEAF38"
+                    strokeWidth="0.730788"
+                  />
+                </svg>
+                <span className={styles.logoText}>MESHCO</span>
               </Link>
             </div>
             <div className={styles.topSectionRight}>
@@ -137,26 +207,27 @@ const Footer = () => {
             <Link href="/paia" className={styles.bottomLink}>
               PAIA Manual
             </Link>
-            <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://za.linkedin.com/company/meshco"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image src="/linkedin.png" alt="LinkedIn" width={24} height={24} />
             </Link>
-            <Link href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-              <Image src="/youtube.png" alt="YouTube" width={24} height={24} />
-            </Link>
-            <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://www.instagram.com/meshcowireproducts?igsh=d2lyb2g0dDZwY3p0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image src="/insta.png" alt="Instagram" width={24} height={24} />
             </Link>
-            <span className={styles.credit}>
-              Website by{' '}
-              <Link
-                href="https://moderndaystrategy.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.creditLink}
-              >
-                Modern Day Strategy
-              </Link>
-            </span>
+            <Link
+              href="https://www.youtube.com/watch?v=qkUgOVArjRk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image src="/youtube.png" alt="YouTube" width={24} height={24} />
+            </Link>
           </div>
         </div>
       </section>

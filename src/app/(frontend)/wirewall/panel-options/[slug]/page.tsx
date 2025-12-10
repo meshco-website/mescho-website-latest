@@ -158,19 +158,6 @@ export default async function PanelOptionDetailPage({ params }: PanelOptionDetai
           ))}
         </div>
       </section>
-
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaOverlay} />
-        <div className={styles.ctaContent}>
-          <h2 className={styles.ctaTitle}>Get in touch</h2>
-          <p className={styles.ctaDescription}>
-            Contact us for expert advice, pricing, and custom solutions.
-          </p>
-          <Link href="/contactus" className={styles.ctaButton}>
-            Contact Us
-          </Link>
-        </div>
-      </section>
     </div>
   )
 }
