@@ -118,6 +118,7 @@
   display: flex;
   flex-direction: column;
   gap: 27px;
+  scroll-margin-top: 80px;
 }
 
 .sectionHeading {
@@ -282,4 +283,3 @@
     padding: 12px 24px;
   }
 }
-

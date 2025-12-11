@@ -122,6 +122,8 @@
   display: flex;
   gap: 53px;
   align-items: center;
+  /* Provide spacing when linked via anchors */
+  scroll-margin-top: 80px;
 }
 
 .detailRow.reverse {

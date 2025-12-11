@@ -120,32 +120,32 @@ const Header = () => {
 
   const wireWallItems = [
     { label: 'WireWall Overview', href: '/wirewall' },
-    { label: 'Panel Options', href: '/wirewall/panel-options' },
-    { label: 'Engineering Centre', href: '/wirewall/engineering-centre' },
+    { label: 'Panel Options', href: '/products/wirewall' },
+    { label: 'Engineering Centre', href: '/resources' },
     { label: 'Case Studies & References', href: '/wirewall/case-studies' },
   ]
 
   const industriesItems = [
-    { label: 'Construction', href: '/industries' },
-    { label: 'Mining', href: '/industries' },
-    { label: 'Agriculture', href: '/industries' },
-    { label: 'Security', href: '/industries' },
-    { label: 'Industrial', href: '/industries' },
+    { label: 'Construction', href: '/industries#construction-infrastructure' },
+    { label: 'Mining', href: '/industries#mining' },
+    { label: 'Agriculture', href: '/industries#agriculture' },
+    { label: 'Security', href: '/industries#security-perimeter-protection' },
+    { label: 'Industrial', href: '/industries#manufacturing-industrial' },
   ]
 
   const whoWeAreItems = [
     { label: 'About Us', href: '/whoweare/about-us' },
-    { label: 'Industries We Serve', href: '/whoweare/industries' },
+    { label: 'Industries We Serve', href: '/industries' },
     { label: 'Support', href: '/whoweare/support' },
     { label: 'Commitment to Service', href: '/whoweare/commitment' },
     { label: 'Careers', href: '/whoweare/careers' },
   ]
 
   const resourcesItems = [
-    { label: 'Technical Specifications', href: '/resources' },
-    { label: 'Installation Guides', href: '/resources' },
-    { label: 'Safety Guidelines', href: '/resources' },
-    { label: 'Product Catalogs', href: '/resources' },
+    { label: 'Technical Specifications', href: '/resources#technical-specifications' },
+    { label: 'Installation Guides', href: '/resources#installation-guides' },
+    { label: 'Safety Guidelines', href: '/resources#safety-guidelines' },
+    { label: 'Product Catalogs', href: '/resources#product-catalogs' },
   ]
 
   const _handleDropdownClose = () => {

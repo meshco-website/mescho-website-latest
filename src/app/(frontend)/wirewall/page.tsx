@@ -129,13 +129,13 @@ export default function WireWallPage() {
           <ExploreProductsCard
             image="/meshcowirewall.png"
             title="Panel Options"
-            link="/wirewall/panel-options"
+            link="/products/wirewall"
             description="View sizes, apertures, and wire diameters"
           />
           <ExploreProductsCard
             image="/meshcowirewall.png"
             title="Engineering Centre"
-            link="/wirewall/engineering-centre"
+            link="/resources"
             description="CAD drawings, Revit files, and install guides"
           />
           <ExploreProductsCard

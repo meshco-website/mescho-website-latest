@@ -81,7 +81,7 @@ export default function HomePage() {
           priority
           className={styles.heroImage}
           sizes="(min-width: 1440px) 100vw, 100vw"
-          quality={85}
+          quality={75}
         />
         <div className={styles.heroOverlay} />
         <div className={`${styles.container} ${styles.heroContainer}`}>
