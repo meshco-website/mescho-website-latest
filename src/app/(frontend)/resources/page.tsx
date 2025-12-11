@@ -9,6 +9,7 @@ const INTRO_PARAGRAPHS = [
 
 const RESOURCE_SECTIONS = [
   {
+    id: 'technical-specifications',
     heading: 'Product Datasheets',
     items: [
       { label: 'Reinforcing Mesh Specifications', href: '#' },
@@ -19,10 +20,20 @@ const RESOURCE_SECTIONS = [
     ],
   },
   {
+    id: 'installation-guides',
     heading: 'Installation Guides',
     items: [{ label: 'WireWall Installation Manual', href: '#' }],
   },
   {
+    id: 'safety-guidelines',
+    heading: 'Safety Guidelines',
+    items: [
+      { label: 'General Site Safety Checklist', href: '#' },
+      { label: 'PPE Requirements Overview', href: '#' },
+    ],
+  },
+  {
+    id: 'product-catalogs',
     heading: 'Brochures & Catalogues',
     items: [
       { label: 'Full Meshco Product Catalogue', href: '#' },
@@ -60,7 +71,7 @@ export default function ResourcesPage() {
       <section className={styles.resourcesSection}>
         <div className={styles.resourcesContainer}>
           {RESOURCE_SECTIONS.map((section) => (
-            <div className={styles.sectionBlock} key={section.heading}>
+            <div className={styles.sectionBlock} id={section.id} key={section.heading}>
               <h3 className={styles.sectionHeading}>{section.heading}</h3>
               <div className={styles.resourceList}>
                 {section.items.map((item) => (

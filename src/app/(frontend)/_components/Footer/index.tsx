@@ -175,7 +175,7 @@ const Footer = () => {
                   <Link href="/whoweare/about-us" className={styles.link}>
                     About Us
                   </Link>
-                  <Link href="/whoweare/industries" className={styles.link}>
+                  <Link href="/industries" className={styles.link}>
                     Industries We Serve
                   </Link>
                   <Link href="/whoweare/support" className={styles.link}>
@@ -204,7 +204,7 @@ const Footer = () => {
             <Link href="/privacy" className={styles.bottomLink}>
               Privacy Policy
             </Link>
-            <Link href="/paia" className={styles.bottomLink}>
+            <Link href="#" className={styles.bottomLink}>
               PAIA Manual
             </Link>
             <Link

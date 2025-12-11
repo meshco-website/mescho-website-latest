@@ -267,7 +267,12 @@ const ContactForm: React.FC = () => {
             Country
           </label>
           <div className={styles.selectWrapper}>
-            <select id="country" name="country" className={styles.select} defaultValue="">
+            <select
+              id="country"
+              name="country"
+              className={styles.select}
+              defaultValue="south-africa"
+            >
               <option value="">Select</option>
               {COUNTRIES.map((country) => (
                 <option key={country} value={country.toLowerCase().replace(/\s+/g, '-')}>
