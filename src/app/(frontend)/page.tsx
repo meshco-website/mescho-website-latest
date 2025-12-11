@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { getProductBySlug, productDetailConfigs } from '@/data/products'
 import './styles.css'
 import styles from './homepage.module.css'
@@ -132,7 +133,9 @@ export default function HomePage() {
         <div className={styles.containerCentered}>
           <h2 className={styles.wirewallTitle}>Meshco WireWall</h2>
           <p className={styles.wirewallSubtitle}>Securing what matters to you</p>
-          <button className={styles.wirewallButton}>Learn more</button>
+          <Link href="/wirewall" className={styles.wirewallButton}>
+            Learn more
+          </Link>
         </div>
       </section>
 

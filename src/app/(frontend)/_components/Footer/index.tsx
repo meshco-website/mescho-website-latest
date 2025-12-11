@@ -207,27 +207,29 @@ const Footer = () => {
             <Link href="#" className={styles.bottomLink}>
               PAIA Manual
             </Link>
-            <Link
-              href="https://za.linkedin.com/company/meshco"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src="/linkedin.png" alt="LinkedIn" width={24} height={24} />
-            </Link>
-            <Link
-              href="https://www.instagram.com/meshcowireproducts?igsh=d2lyb2g0dDZwY3p0"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src="/insta.png" alt="Instagram" width={24} height={24} />
-            </Link>
-            <Link
-              href="https://www.youtube.com/watch?v=qkUgOVArjRk"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src="/youtube.png" alt="YouTube" width={24} height={24} />
-            </Link>
+            <div className={styles.socialIcons}>
+              <Link
+                href="https://za.linkedin.com/company/meshco"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image src="/linkedin.png" alt="LinkedIn" width={24} height={24} />
+              </Link>
+              <Link
+                href="https://www.instagram.com/meshcowireproducts?igsh=d2lyb2g0dDZwY3p0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image src="/insta.png" alt="Instagram" width={24} height={24} />
+              </Link>
+              <Link
+                href="https://www.youtube.com/watch?v=qkUgOVArjRk"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image src="/youtube.png" alt="YouTube" width={24} height={24} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
