@@ -8,13 +8,22 @@ import BestSellerCard from './_components/BestSellerCard'
 
 const BEST_SELLER_KEYS = [
   'wirewall-3510',
-  'wire-hard-drawn-wire',
+  'fencing-razor-wire-flatwrap',
+  'reinforcing-reinforcing-mesh',
   'reinforcing-brickforce',
-  'fencing-welded-fence-mesh',
-  'wire-galvanised-wire',
+  'wire-high-strain-wire',
 ] as const
 
 type BestSellerKey = (typeof BEST_SELLER_KEYS)[number]
+
+// Custom titles for best sellers - add your custom titles here
+const BEST_SELLER_CUSTOM_TITLES: Record<BestSellerKey, string> = {
+  'wirewall-3510': 'WireWall 3510',
+  'fencing-razor-wire-flatwrap': 'Razor Wire 500mm',
+  'reinforcing-reinforcing-mesh': 'Ref193 Mesh',
+  'reinforcing-brickforce': '75mm Brickforce NHBRC',
+  'wire-high-strain-wire': '2mm LG H/S  Wire 50KG',
+}
 
 interface BestSellerCardData {
   title: string
@@ -45,8 +54,12 @@ const buildBestSellerCard = (key: BestSellerKey): BestSellerCardData | null => {
     return null
   }
 
+  // Use custom title if provided, otherwise fall back to product title or name
+  const customTitle = BEST_SELLER_CUSTOM_TITLES[key]
+  const title = customTitle || product.title || product.name
+
   return {
-    title: product.title ?? product.name,
+    title,
     image: product.image,
     description: extractSummary(detail.description),
     linkHref: `/products/${category}/${slug}`,
