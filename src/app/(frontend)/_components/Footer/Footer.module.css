@@ -273,7 +273,28 @@
   gap: 0.6rem;
 }
 
+
+.contactButtonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.bottomLinks {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
 /* Responsive adjustments */
+@media (max-width: 1024px) {
+  .preFooterContainer {
+    flex-wrap: wrap; 
+    justify-content: center;
+  }
+}
+
 @media (max-width: 992px) {
   .preFooterContainer {
     flex-direction: column;
@@ -290,17 +311,57 @@
   .topSectionRight {
     flex-direction: column;
     align-items: center;
+    gap: 3rem;
+    width: 100%;
   }
 
   .linksColumns {
-    flex-direction: column;
-    text-align: center;
+    /* Keep side-by-side even on tablet/mobile if space permits, 
+       but centering suggests we might want them stacked or just centered. 
+       Let's keep them side-by-side but centered container */
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    text-align: left;
+    gap: 2rem;
   }
-}
 
-@media (max-width: 768px) {
+  .contactButtonContainer {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .contactButtonContainer .button {
+    width: 100%;
+    max-width: 400px; /* Optional cap */
+    display: block;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .bottomSection {
     flex-direction: column;
     gap: 1.5rem;
+    padding-bottom: 2rem; /* Add some bottom padding for mobile */
+  }
+  
+  .bottomLinks {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .linksColumns {
+    flex-direction: row; /* Still keep side by side if possible, otherwise stack */
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .column {
+    flex: 1;
   }
 }

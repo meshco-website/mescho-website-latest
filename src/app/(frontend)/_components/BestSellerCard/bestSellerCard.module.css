@@ -98,3 +98,19 @@
   letter-spacing: 0.27px;
   margin-top: 0.5rem;
 }
+
+@media (max-width: 768px) {
+  .imageSection {
+    height: 160px;
+  }
+  
+  .productCardTitle {
+    font-size: 16px;
+    line-height: normal;
+  }
+  
+  .productCardDescription {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
