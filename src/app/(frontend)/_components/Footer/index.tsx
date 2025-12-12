@@ -189,7 +189,7 @@ const Footer = () => {
                   </Link>
                 </div>
               </div>
-              <div className={styles.contactButton}>
+              <div className={styles.contactButtonContainer}>
                 <Link href="/contactus" className={styles.button}>
                   Contact Us
                 </Link>
@@ -197,38 +197,40 @@ const Footer = () => {
             </div>
           </div>
           <div className={styles.bottomSection}>
-            <span>© 2025 MESHCO. All Rights Reserved</span>
-            <Link href="/terms" className={styles.bottomLink}>
-              Terms & Conditions
-            </Link>
-            <Link href="/privacy" className={styles.bottomLink}>
-              Privacy Policy
-            </Link>
-            <Link href="#" className={styles.bottomLink}>
-              PAIA Manual
-            </Link>
-            <div className={styles.socialIcons}>
-              <Link
-                href="https://za.linkedin.com/company/meshco"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image src="/linkedin.png" alt="LinkedIn" width={24} height={24} />
+            <span>© 2025 MESHCO. All Rights Reserved.</span>
+            <div className={styles.bottomLinks}>
+              <Link href="/terms" className={styles.bottomLink}>
+                Terms & Conditions
               </Link>
-              <Link
-                href="https://www.instagram.com/meshcowireproducts?igsh=d2lyb2g0dDZwY3p0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image src="/insta.png" alt="Instagram" width={24} height={24} />
+              <Link href="/privacy" className={styles.bottomLink}>
+                Privacy Policy
               </Link>
-              <Link
-                href="https://www.youtube.com/watch?v=qkUgOVArjRk"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image src="/youtube.png" alt="YouTube" width={24} height={24} />
+              <Link href="#" className={styles.bottomLink}>
+                PAIA Manual
               </Link>
+              <div className={styles.socialIcons}>
+                <Link
+                  href="https://za.linkedin.com/company/meshco"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src="/linkedin.png" alt="LinkedIn" width={32} height={32} />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/meshcowireproducts?igsh=d2lyb2g0dDZwY3p0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src="/insta.png" alt="Instagram" width={32} height={32} />
+                </Link>
+                <Link
+                  href="https://www.youtube.com/watch?v=qkUgOVArjRk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src="/youtube.png" alt="YouTube" width={32} height={32} />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

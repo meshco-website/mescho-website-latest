@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { products } from '@/data/products'
 import DropdownContainer from '../DropdownContainer'
-import MobileMenuItem from '../MobileMenuItem'
+import MobileMenu from '../MobileMenu'
 import styles from './Header.module.css'
 
 type DropdownItem = {
@@ -267,57 +267,15 @@ const Header = () => {
         </button>
       </nav>
 
-      {isMobileMenuOpen && (
-        <div className={styles.mobileMenu}>
-          <MobileMenuItem
-            label="Products"
-            isOpen={activeDropdown === 'products'}
-            onToggle={() => handleDropdownToggle('products')}
-            dropdownType="fullwidth"
-            sections={productSections}
-          />
-
-          <MobileMenuItem
-            label="WireWall"
-            isOpen={activeDropdown === 'wirewall'}
-            onToggle={() => handleDropdownToggle('wirewall')}
-            dropdownType="regular"
-            items={wireWallItems}
-          />
-
-          <MobileMenuItem
-            label="Industries"
-            isOpen={activeDropdown === 'industries'}
-            onToggle={() => handleDropdownToggle('industries')}
-            dropdownType="regular"
-            items={industriesItems}
-          />
-
-          <MobileMenuItem
-            label="Who We Are"
-            isOpen={activeDropdown === 'whoweare'}
-            onToggle={() => handleDropdownToggle('whoweare')}
-            dropdownType="regular"
-            items={whoWeAreItems}
-          />
-
-          <MobileMenuItem
-            label="Resources"
-            isOpen={activeDropdown === 'resources'}
-            onToggle={() => handleDropdownToggle('resources')}
-            dropdownType="regular"
-            items={resourcesItems}
-          />
-
-          <Link
-            href="/contactus"
-            className={styles.mobileButton}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Contact Us
-          </Link>
-        </div>
-      )}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        productSections={productSections}
+        wireWallItems={wireWallItems}
+        industriesItems={industriesItems}
+        whoWeAreItems={whoWeAreItems}
+        resourcesItems={resourcesItems}
+      />
     </header>
   )
 }
