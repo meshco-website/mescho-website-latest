@@ -1,52 +1,50 @@
 import React from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import styles from './panel-detail.module.css'
-import { panelOptionsConfig, allPanelOptions } from '../configs'
+import styles from './case-detail.module.css'
+import { caseStudiesConfig, allCaseStudies } from '../configs'
 
-interface PanelOptionDetailPageProps {
+interface CaseDetailPageProps {
   params: Promise<{
     slug: string
   }>
 }
 
 export async function generateStaticParams() {
-  return allPanelOptions.map((option) => ({
-    slug: option.slug,
+  return allCaseStudies.map((caseStudy) => ({
+    slug: caseStudy.slug,
   }))
 }
 
-export default async function PanelOptionDetailPage({ params }: PanelOptionDetailPageProps) {
+export default async function CaseDetailPage({ params }: CaseDetailPageProps) {
   const { slug } = await params
-  const panelOption = panelOptionsConfig[slug]
+  const caseStudy = caseStudiesConfig[slug]
 
-  if (!panelOption) {
+  if (!caseStudy) {
     notFound()
   }
 
-  const breadcrumb = 'Panel Options'
-  const optionTitle = panelOption.title
+  const breadcrumb = 'Case Studies & References'
+  const caseTitle = caseStudy.title
 
-  const relatedOptions = panelOption.relatedOptions
-    ? panelOption.relatedOptions
-        .map((relatedSlug) => panelOptionsConfig[relatedSlug])
-        .filter(Boolean)
-    : allPanelOptions.slice(0, 3)
+  const relatedCases = caseStudy.relatedCases
+    ? caseStudy.relatedCases.map((relatedSlug) => caseStudiesConfig[relatedSlug]).filter(Boolean)
+    : allCaseStudies.slice(0, 3)
 
   return (
-    <div className={styles.panelDetailPage}>
+    <div className={styles.caseDetailPage}>
       <section className={styles.breadcrumbSection}>
         <p className={styles.breadcrumb}>
-          <Link href="/wirewall/panel-options" className={styles.breadcrumbLink}>
+          <Link href="/wirewall/case-studies" className={styles.breadcrumbLink}>
             {breadcrumb}
           </Link>
           <span className={styles.breadcrumbSeparator}> | </span>
-          <span className={styles.breadcrumbCurrent}>{optionTitle}</span>
+          <span className={styles.breadcrumbCurrent}>{caseTitle}</span>
         </p>
       </section>
 
       <section className={styles.heroSection}>
-        <h1 className={styles.heroTitle}>{optionTitle}</h1>
+        <h1 className={styles.heroTitle}>{caseTitle}</h1>
       </section>
 
       <section className={styles.contentSection}>
@@ -69,14 +67,14 @@ export default async function PanelOptionDetailPage({ params }: PanelOptionDetai
           </div>
         </div>
         <div className={styles.textContent}>
-          {panelOption.content.paragraphs.map((paragraph, index) => (
+          {caseStudy.content.paragraphs.map((paragraph, index) => (
             <React.Fragment key={index}>
               {index > 0 && <br />}
               <p className={styles.paragraph}>{paragraph}</p>
-              {index < panelOption.content.paragraphs.length - 1 && <br />}
-              {panelOption.content.subheadings[index] && (
+              {index < caseStudy.content.paragraphs.length - 1 && <br />}
+              {caseStudy.content.subheadings[index] && (
                 <>
-                  <h2 className={styles.subheading}>{panelOption.content.subheadings[index]}</h2>
+                  <h2 className={styles.subheading}>{caseStudy.content.subheadings[index]}</h2>
                   <br />
                 </>
               )}
@@ -114,10 +112,10 @@ export default async function PanelOptionDetailPage({ params }: PanelOptionDetai
       <section className={styles.relatedSection}>
         <h2 className={styles.relatedTitle}>Related Insights</h2>
         <div className={styles.relatedGrid}>
-          {relatedOptions.map((relatedOption, index) => (
+          {relatedCases.map((relatedCase, index) => (
             <Link
               key={index}
-              href={`/wirewall/panel-options/${relatedOption.slug}`}
+              href={`/wirewall/case-studies/${relatedCase.slug}`}
               className={styles.relatedCard}
             >
               <div className={styles.imagePlaceholder}>
@@ -137,8 +135,8 @@ export default async function PanelOptionDetailPage({ params }: PanelOptionDetai
                 </div>
               </div>
               <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{relatedOption.title}</h3>
-                <p className={styles.cardDescription}>{relatedOption.description}</p>
+                <h3 className={styles.cardTitle}>{relatedCase.title}</h3>
+                <p className={styles.cardDescription}>{relatedCase.description}</p>
                 <div className={styles.readMore}>
                   <span>Read More</span>
                   <div className={styles.arrowIcon}>
@@ -156,6 +154,19 @@ export default async function PanelOptionDetailPage({ params }: PanelOptionDetai
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaOverlay} />
+        <div className={styles.ctaContent}>
+          <h2 className={styles.ctaTitle}>Get in touch</h2>
+          <p className={styles.ctaDescription}>
+            Contact us for expert advice, pricing, and custom solutions.
+          </p>
+          <Link href="/contactus" className={styles.ctaButton}>
+            Contact Us
+          </Link>
         </div>
       </section>
     </div>
