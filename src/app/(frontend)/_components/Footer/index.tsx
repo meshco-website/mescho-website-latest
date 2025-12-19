@@ -205,9 +205,14 @@ const Footer = () => {
               <Link href="/privacy" className={styles.bottomLink}>
                 Privacy Policy
               </Link>
-              <Link href="#" className={styles.bottomLink}>
+              <a
+                href="/MESHCO PAIA MANUAL.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.bottomLink}
+              >
                 PAIA Manual
-              </Link>
+              </a>
               <div className={styles.socialIcons}>
                 <Link
                   href="https://za.linkedin.com/company/meshco"

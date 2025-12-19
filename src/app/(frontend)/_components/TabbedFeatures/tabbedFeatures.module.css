@@ -43,25 +43,33 @@
 
 .tabContent {
   min-height: 200px;
+  overflow: visible;
+  padding: 0;
 }
 
 .specificationImageWrapper {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   margin-bottom: 2rem;
+  overflow: visible;
 }
 
 .specificationImageInner {
   width: 100%;
-  max-width: 900px;
+  max-width: 90%;
+  overflow: visible;
+  position: relative;
 }
 
 .specificationImage {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 0;
+  object-fit: contain;
+  display: block;
+  max-width: 100%;
 }
 
 .featuresList {
@@ -82,6 +90,65 @@
   font-family: var(--font-onest);
   font-size: 18px;
   font-weight: 700;
+  line-height: 1.2;
+  color: #2a2d2f;
+  margin: 0;
+  padding: 0;
+}
+
+/* Reduce spacing when featureHeading and featureDescription are in the same featureItem (heading - description format) */
+.featureItem:has(.featureHeading):has(.featureDescription) .featureHeading {
+  margin-bottom: 0.1rem;
+}
+
+.featureItem:has(.featureHeading):has(.featureDescription) .featureDescription {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+/* Reduce gap when heading is in one item and description is in the next item (for Specifications and Features tabs like barbed-wire) */
+/* Target the heading when it's followed by a description item */
+.featureItem:has(.featureHeading):not(:has(.featureDescription)) + .featureItem:has(.featureDescription):not(:has(.featureHeading)) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.featureItem:has(.featureHeading):not(:has(.featureDescription)):has(+ .featureItem:has(.featureDescription):not(:has(.featureHeading))) .featureHeading {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1 !important;
+}
+
+.featureItem:has(.featureHeading):not(:has(.featureDescription)) + .featureItem:has(.featureDescription):not(:has(.featureHeading)) .featureDescription {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+/* Ensure spacing between different heading sections is preserved (when description item is followed by next heading item) */
+.featureItem:has(.featureDescription):not(:has(.featureHeading)) + .featureItem:has(.featureHeading):not(:has(.featureDescription)) {
+  margin-top: 1.5rem !important;
+}
+
+/* Also preserve spacing when heading-description item is followed by another heading-description item (like Razor Wire - Flatwrap) */
+.featureItem:has(.featureHeading):has(.featureDescription) + .featureItem:has(.featureHeading):has(.featureDescription) {
+  margin-top: 1.5rem !important;
+}
+
+.mainHeading {
+  font-family: var(--font-onest);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #2a2d2f;
+  margin: 0 0 0.5rem 0;
+}
+
+.subHeading {
+  font-family: var(--font-onest);
+  font-size: 18px;
+  font-weight: 600;
   line-height: 1.6;
   color: #2a2d2f;
   margin: 0 0 0.5rem 0;
@@ -91,20 +158,101 @@
   font-family: var(--font-onest);
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.4;
   color: #2a2d2f;
   margin: 0 0 0.5rem 0;
+  white-space: pre-line;
 }
 
-/* Add more spacing after headings and between sections */
-.featureItem:has(.featureHeading) + .featureItem:has(.featureDescription) .featureDescription {
+/* When description immediately follows a heading (in same item or next item), remove top margin */
+.featureItem:has(.featureHeading):not(:has(.featureDescription)) + .featureItem:has(.featureDescription):not(:has(.featureHeading)) .featureDescription {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.featureItem:has(.featureHeading):has(.featureDescription) .featureDescription {
   margin-top: 0;
 }
 
-/* Reduce spacing between consecutive descriptions (points under same heading) */
+
+/* Add spacing between descriptions under headings */
+.featureItem:has(.subHeading) + .featureItem:has(.featureDescription) .featureDescription {
+  margin-top: 0.5rem;
+}
+
+/* Reduce spacing between subtitle and its description (heading - description format) */
+.featureItem:has(.featureDescription .featureHeading) .featureDescription {
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1.4;
+}
+
+/* Reduce spacing when subtitle is in separate paragraph above description */
+.featureItem:has(.featureHeading)
+  + .featureItem:has(.featureDescription):not(:has(.featureDescription .featureHeading))
+  .featureDescription {
+  margin-top: 0;
+}
+
+/* Reduce margin-bottom on heading when followed by description in same item */
+.featureItem:has(.featureHeading):has(+ .featureItem:has(.featureDescription)) .featureHeading {
+  margin-bottom: 0.1rem;
+}
+
+/* Reduce spacing between consecutive subtitle-description items */
+.featureItem:has(.featureDescription .featureHeading)
+  + .featureItem:has(.featureDescription .featureHeading) {
+  margin-top: 0.25rem;
+}
+
+/* Add huge gap between consecutive descriptions under same subheading */
 .featureItem:has(.featureDescription) + .featureItem:has(.featureDescription) .featureDescription {
-  margin-top: 0;
+  margin-top: 2rem;
   margin-bottom: 0.25rem;
+}
+
+/* Add gap before subheadings */
+.featureItem:has(.featureDescription) + .featureItem:has(.subHeading) {
+  margin-top: 1.5rem;
+}
+
+/* Add gap after subheadings like Spacing, Distribution */
+.featureItem:has(.subHeading) {
+  margin-bottom: 0.5rem;
+}
+
+/* Spacing divider for empty lines */
+.spacingDivider {
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* Add spacing after spacing divider */
+.spacingDivider + .featureItem {
+  margin-top: 1.5rem !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure spacing when spacing divider is followed by a description */
+.spacingDivider + .featureItem:has(.featureDescription) {
+  margin-top: 1.5rem !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure spacing when spacing divider is followed by any content */
+.spacingDivider ~ .featureItem:first-of-type {
+  margin-top: 1.5rem !important;
+}
+
+/* Apply same spacing to main headings as feature headings (1.5rem) */
+.featureItem:has(.mainHeading) {
+  margin-top: 1.5rem;
+}
+
+.featureItem:first-child:has(.mainHeading) {
+  margin-top: 0;
 }
 
 /* Reduce spacing for descriptions that come after a heading */
@@ -113,12 +261,35 @@
 }
 
 /* Reduce spacing for inline headings like "Applications" - bring them closer to previous items */
-.featureItem:has(.featureDescription):not(:has(.featureDescription .featureHeading)) + .featureItem:has(.featureDescription .featureHeading) {
+.featureItem:has(.featureDescription):not(:has(.featureDescription .featureHeading))
+  + .featureItem:has(.featureDescription .featureHeading) {
   margin-top: 0.25rem;
 }
 
+.bulletList {
+  list-style-type: disc;
+  margin: 0 0 0.5rem 1.5rem;
+  padding: 0;
+}
+
+.bulletItem {
+  font-family: var(--font-onest);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #2a2d2f;
+  margin: 0 0 0.25rem 0;
+}
+
+.boldLabel {
+  font-weight: 700;
+}
+
 /* Reduce bottom margin of descriptions that come before "Applications" */
-.featureItem:has(.featureDescription):not(:has(.featureDescription .featureHeading)):has(+ .featureItem:has(.featureDescription .featureHeading)) .featureDescription {
+.featureItem:has(.featureDescription):not(:has(.featureDescription .featureHeading)):has(
+    + .featureItem:has(.featureDescription .featureHeading)
+  )
+  .featureDescription {
   margin-bottom: 0.25rem;
 }
 
@@ -129,6 +300,21 @@
 
 .featureItem:first-child:has(.featureHeading) {
   margin-top: 0;
+}
+
+/* Increase spacing between subheadings (when description is followed by next heading) */
+.featureItem:has(.featureDescription) + .featureItem:has(.featureHeading) {
+  margin-top: 1.5rem;
+}
+
+/* Reduce gap between main heading and following feature heading (e.g., Vehicular Gates -> Single and Double Leaf Swing Gates) */
+.featureItem:has(.mainHeading) + .featureItem:has(.featureHeading) {
+  margin-top: 0.1rem;
+}
+
+/* Reduce bottom margin of main heading when followed by feature heading */
+.featureItem:has(.mainHeading):has(+ .featureItem:has(.featureHeading)) .mainHeading {
+  margin-bottom: 0.1rem;
 }
 
 .featureItem:last-child .featureDescription {
@@ -212,4 +398,60 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+}
+
+/* Two-column layout for Nail Size Guide */
+.twoColumnLayout {
+  display: flex;
+  max-width: 700px; /* allow a bit more room overall, while keeping columns close */
+  width: 100%;
+  column-gap: 0.75rem; /* horizontal space between columns */
+  margin: 0 0 1rem 0;
+  align-items: flex-start;
+}
+
+.twoColumnLeft,
+.twoColumnRight {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Make the APPLICATION column narrow so the two columns sit closer together */
+.twoColumnLeft {
+  flex: 0 0 210px; /* slightly narrower left column */
+}
+
+.twoColumnRight {
+  flex: 1.4; /* give more space to the Recommended Nail Size column */
+}
+
+.twoColumnLeft .featureDescription,
+.twoColumnRight .featureDescription {
+  margin: 0 0 0.5rem 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Two-column layout for Nail Size Guide */
+.twoColumnLayout {
+  display: flex;
+  gap: 2.625rem; /* 42px */
+  margin: 0 0 1rem 0;
+  align-items: flex-start;
+}
+
+.twoColumnLeft,
+.twoColumnRight {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.twoColumnLeft .featureDescription,
+.twoColumnRight .featureDescription {
+  margin: 0 0 0.5rem 0;
+  font-size: 16px;
+  line-height: 1.6;
 }
