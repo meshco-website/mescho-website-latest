@@ -15,6 +15,7 @@ export interface Product {
 export interface Specification {
   label: string
   value: string
+  format?: 'inline' | 'list'
 }
 
 export interface WireWallSpecification {
@@ -40,6 +41,8 @@ export interface TabData {
   label: string
   content: string[]
   image?: string | null
+  format?: 'bullet' | 'heading-description' | 'heading-colon' | 'plain'
+  imageMaxWidth?: string
 }
 
 export interface RelatedProductConfig {
@@ -262,7 +265,7 @@ export const products: Product[] = [
   {
     id: '17',
     name: 'UnderDigs',
-    title: 'WireWall UnderDig Panel',
+    title: 'UnderDig Panel',
     imageFolder: '/products/WireWall/underdig-panel',
     image: '/products/WireWall/underdig-panel/meshco-wirewall-underdig.webp',
     slug: 'underdig-panel',
@@ -761,22 +764,19 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'overview',
         label: 'Overview',
         content: [
-          'Wire Diameter:',
-          '1.40mm to 12.00mm',
-          'Tensile Strength:',
-          'Mild Steel 350-575MPa\nHigh Tensile 950MPa min.\nVery High Tensile 1250MPa min.',
-          'Form:',
-          'Supplied in tightly wound coils',
-          'Finish:',
-          'Bright steel (uncoated)',
-          'Standard Coil Mass:',
-          '5kg, 50kg and Jumbos (custom coil sizes available on request)',
-          'Manufactured to conform with SANS 675 standards for plain hard drawn wire.',
+          'Wire Diameter - 1.40mm to 12.00mm',
+          'Tensile Strength - Mild Steel 350-575MPa\nHigh Tensile 950MPa min.\nVery High Tensile 1250MPa min.',
+          'Form - Supplied in tightly wound coils',
+          'Finish - Bright steel (uncoated)',
+          'Standard Coil Mass - 5kg, 50kg and Jumbos (custom coil sizes available on request)',
+          ' - Manufactured to conform with SANS 675 standards for plain hard drawn wire.',
         ],
       },
       {
         id: 'applications',
         label: 'Applications',
+        imageMaxWidth: '80%',
+        image: '/products/Wire/hard-drawn-wire/applications.png',
         content: [
           'Hard drawn wire is a staple across industries where strength, stiffness, and cost-efficiency matter. Common applications include:',
           'Reinforcing components in welded mesh and precast concrete',
@@ -789,6 +789,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'advantages',
         label: 'Advantages',
+        image: '/products/Wire/hard-drawn-wire/advantages.png',
+        imageMaxWidth: '60%',
         content: [
           'Higher tensile strength - than annealed wire for improved rigidity and load-bearing',
           'Cost-effective - solution for structural and industrial use',
@@ -799,6 +801,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'customisation',
         label: 'Customisation',
+        image: '/products/Wire/hard-drawn-wire/customisation.png',
         content: [
           'Available in various coil weights and internal diameters to suit automated processing',
           'Can be straightened and cut to custom lengths upon request',
@@ -841,19 +844,16 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Continuous Hot-dip Galvanised:',
-          'Uniform zinc coating provides long-lasting protection from rust and weathering.',
-          'Clean Finish:',
-          "Smooth, scale-free surface that's easy to handle and work with.",
-          'Coil Options:',
-          'Available in loose coils, bundles, spools, or hardware-ready packs.',
-          'Flexible Supply',
-          'Low and medium tensile strength options for easy forming, tying, and shaping.',
+          'Continuous Hot-dip Galvanised - Uniform zinc coating provides long-lasting protection from rust and weathering.',
+          "Clean Finish - Smooth, scale-free surface that's easy to handle and work with.",
+          'Coil Options - Available in loose coils, bundles, spools, or hardware-ready packs.',
+          'Flexible Supply - Low and medium tensile strength options for easy forming, tying, and shaping.',
         ],
       },
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Mesh, fence and other wire products manufacturing',
           'Tying, lacing, binding, straining',
@@ -867,14 +867,10 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [
-          'Wire Diameter:',
-          '1.25mm to 5.6mm',
-          'Coil Weights:',
-          '500g, 2kg, 5kg, 25kg, 50kg, 500kg, and 1-tonne jumbos (other coil sizes to order)',
-          'Coating:',
-          'Class A and C continuous hot-dip galvanised',
-          'Standards:',
-          'Manufactured to SANS 10244-2:2010, ensuring reliable performance across all uses.',
+          'Wire Diameter - 1.25mm to 5.6mm',
+          'Coil Weights - 500g, 2kg, 5kg, 25kg, 50kg, 500kg, and 1-tonne jumbos (other coil sizes to order)',
+          'Coating - Class A and C continuous hot-dip galvanised',
+          'Standards - Manufactured to SANS 10244-2:2010, ensuring reliable performance across all uses.',
         ],
       },
       {
@@ -919,21 +915,17 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'High Tensile Strength:',
-          'Rated at 1200–1350 MPa, ideal for large spans with minimal post spacing.',
-          'Long-term tension retention:',
-          'Less maintenance over time, even under animal pressure or environmental stress.',
-          'Uniform zinc coating:',
-          'Hot-dip galvanised to prevent rust and ensure extended outdoor performance.',
-          'Lightweight yet strong:',
-          'Easier to handle than thicker mild steel wire, but with much higher performance.',
-          'Low elongation:',
-          'Holds tension over time without stretching.',
+          'High Tensile Strength - Rated at 1200–1350 MPa, ideal for large spans with minimal post spacing.',
+          'Long-term tension retention - Less maintenance over time, even under animal pressure or environmental stress.',
+          'Uniform zinc coating - Hot-dip galvanised to prevent rust and ensure extended outdoor performance.',
+          'Lightweight yet strong - Easier to handle than thicker mild steel wire, but with much higher performance.',
+          'Low elongation - Holds tension over time without stretching.',
         ],
       },
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Netting Structures',
           'Livestock fencing (cattle, game, perimeter control)',
@@ -948,16 +940,11 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [
-          'Wire Diameter:',
-          '2.00mm, 2.24mm, 3.06mm and Oval',
-          'Tensile Strength:',
-          '1200–1350 MPa',
-          'Coil Weights:',
-          '2kg, 5kg, 50kg, Jumbos',
-          'Finish:',
-          'Hot-dip galvanised, class C and class A',
-          'Packaging:',
-          'Loose or layer-wound coils, strapped or wrapped',
+          'Wire Diameter - 2.00mm, 2.24mm, 3.06mm and Oval',
+          'Tensile Strength - 1200–1350 MPa',
+          'Coil Weights - 2kg, 5kg, 50kg, Jumbos',
+          'Finish - Hot-dip galvanised, class C and class A',
+          'Packaging - Loose or layer-wound coils, strapped or wrapped',
         ],
       },
       {
@@ -1003,18 +990,12 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Enhanced Flexibility:',
-          'The annealing process increases ductility, allowing for easy bending and tying without breakage.',
-          'Corrosion Resistance:',
-          'The black oxide layer, combined with optional oiling, offers mild protection against rust and oxidation.',
-          'Uniform zinc coating:',
-          'Hot-dip galvanised to prevent rust and ensure extended outdoor performance.',
-          'Versatility:',
-          'Suitable for various applications across multiple industries.',
-          'Ease of Use:',
-          'Smooth surface finish ensures safe and efficient handling during manual or automated operations.',
-          'Budget-friendly:',
-          'Significantly lower cost per unit comapred to straps and ropes.',
+          'Enhanced Flexibility - The annealing process increases ductility, allowing for easy bending and tying without breakage.',
+          'Corrosion Resistance - The black oxide layer, combined with optional oiling, offers mild protection against rust and oxidation.',
+          'Uniform zinc coating - Hot-dip galvanised to prevent rust and ensure extended outdoor performance.',
+          'Versatility - Suitable for various applications across multiple industries.',
+          'Ease of Use - Smooth surface finish ensures safe and efficient handling during manual or automated operations.',
+          'Budget-friendly - Significantly lower cost per unit comapred to straps and ropes.',
         ],
       },
       {
@@ -1027,19 +1008,16 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'applications',
         label: 'Applications',
         content: [
-          'Construction:',
-          'Tying and securing rebar, binding construction materials, and general-purpose fastening.',
-          'Agriculture:',
-          'Baling hay, tying vines, and general farm maintenance tasks.',
-          'Packaging:',
-          'Securing bundles, boxes, and pallets for storage or transport.',
-          'Recycling:',
-          'Binding recyclable materials like cardboard, paper, and metals. This includes baling with a baling machine. Our Black Annealed Autobale wire is for use with automatic baling machines and is a great option to increase efficiency within your business.',
+          'Construction - Tying and securing rebar, binding construction materials, and general-purpose fastening.',
+          'Agriculture - Baling hay, tying vines, and general farm maintenance tasks.',
+          'Packaging - Securing bundles, boxes, and pallets for storage or transport.',
+          'Recycling - Binding recyclable materials like cardboard, paper, and metals. This includes baling with a baling machine. Our Black Annealed Autobale wire is for use with automatic baling machines and is a great option to increase efficiency within your business.',
         ],
       },
       {
         id: 'guide-for-fixing-on-site',
         label: 'Guide for Fixing on Site',
+        image: '/products/Wire/black-annealed-wire/guide.png',
         content: [
           'The quantity of black annealed tying wire required to secure reinforcement bars (rebar) on a construction site in South Africa depends on the diameter of the rebar being tied. The required amount can vary based on tying method, bar spacing, and site specifics. A general guideline is:',
           'Most projects:',
@@ -1066,13 +1044,15 @@ const productDetailData: Record<string, ProductDetail> = {
     layoutType: 'standard',
     specifications: [
       {
-        label: 'Available Stock Sizes',
+        label: 'AVAILABLE STOCK SIZES',
         value:
-          '1.60MM*50KG, 2.00MM*50KG, 2.50MM*50KG, 3.15MM*50KG, 4.00MM*50KG, 1.60MM*5KG, 2.00MM*5KG, 2.50MM*5KG, 3.15MM*5KG, 4.00MM*5KG',
+          '1.60MM*50KG\n2.00MM*50KG\n2.50MM*50KG\n3.15MM*50KG\n4.00MM*50KG\n1.60MM*5KG\n2.00MM*5KG\n2.50MM*5KG\n3.15MM*5KG\n4.00MM*5KG',
+        format: 'list',
       },
       {
-        label: 'Length / Coil',
-        value: '± 2450m, ±1650m, ±1150m, ±700m, ±450m, ±245m, ±165m, ±115m, ±70m, ±45m',
+        label: 'LENGTH / COIL',
+        value: '± 2450m\n±1650m\n±1150m\n±700m\n±450m\n±245m\n±165m\n±115m\n±70m\n±45m',
+        format: 'list',
       },
     ],
     applications: [
@@ -1095,14 +1075,10 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Dual Layer Protection:',
-          'Galvanised core with a tough PVC outer coating ensures excellent rust resistance and a longer service life.',
-          'Weather and UV Resistant:',
-          'Designed to withstand harsh sunlight, rain, and coastal conditions.',
-          'Flexible and Easy to Work With:',
-          'The PVC coating provides smooth handling and reduces wire kinking during installation.',
-          'Available in Different Diameters:',
-          'Choose the right wire thickness for your specific fencing or agricultural needs.',
+          'Dual Layer Protection - Galvanised core with a tough PVC outer coating ensures excellent rust resistance and a longer service life.',
+          'Weather and UV Resistant - Designed to withstand harsh sunlight, rain, and coastal conditions.',
+          'Flexible and Easy to Work With - The PVC coating provides smooth handling and reduces wire kinking during installation.',
+          'Available in Different Diameters - Choose the right wire thickness for your specific fencing or agricultural needs.',
           'Available in diameters from 1.6mm to 4.0mm, each size is suited to specific uses — from light binding to heavy-duty straining.',
         ],
       },
@@ -1110,11 +1086,14 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
+        imageMaxWidth: '80%',
         image: '/products/Wire/pvc-coated-wire/specifications.png',
       },
       {
         id: 'benefits',
         label: 'Benefits',
+        image: '/products/Wire/pvc-coated-wire/benefits.png',
+        imageMaxWidth: '80%',
         content: [
           "Why Choose Meshco's PVC Coated Wire?:",
           'Enhanced Longevity:',
@@ -1136,7 +1115,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wire-straight-cut-wire': {
     description:
-      "Precision Cut. Purpose Ready.\n\nAt Meshco, we understand that every construction or manufacturing project starts with the basics—but that doesn't mean the basics should be average. Our straight and cut wire is manufactured with precision and durability in mind, offering consistent quality in every length.\n\nAvailable in:\n\nHard Drawn Wire – for strength and rigidity\n\nGalvanised Wire – for corrosion resistance and longevity\n\nBlack Annealed Wire –  for flexibility, ease of handling, and tying applications",
+      "Precision Cut. Purpose Ready.\n\nAt Meshco, we understand that every construction or manufacturing project starts with the basics—but that doesn't mean the basics should be average. Our straight and cut wire is manufactured with precision and durability in mind, offering consistent quality in every length.\n\nAVAILABLE IN:\n\nHard Drawn Wire – for strength and rigidity\n\nGalvanised Wire – for corrosion resistance and longevity\n\nBlack Annealed Wire –  for flexibility, ease of handling, and tying applications",
     layoutType: 'standard',
     specifications: [],
     applications: [
@@ -1158,6 +1137,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'options',
         label: 'Options',
+        format: 'bullet',
         content: [
           'Custom cut lengths from 300mm to 6000mm',
           'Wire diameters ranging from 1.4mm to 12.0mm',
@@ -1169,6 +1149,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Reinforcing panels in precast concrete products',
           'Welded mesh frame components',
@@ -1180,6 +1161,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'quality-assurance',
         label: 'Quality Assurance',
+        image: '/products/Wire/straight-and-cut-wire/quality.png',
+        imageMaxWidth: '80%',
         content: [
           'Our straight and cut wire is:',
           'Drawn from high-quality SAE steel wire rod',
@@ -1204,11 +1187,20 @@ const productDetailData: Record<string, ProductDetail> = {
     layoutType: 'standard',
     specifications: [
       {
-        label: 'Available Sizes',
-        value:
-          'SLABWIRE 2.50MM, SLABWIRE 3.15MM, NB: Bundles of mixed diameters also available for reduced pricing',
+        label: 'AVAILABLE SIZES',
+        value: 'SLABWIRE 2.50MM\nSLABWIRE 3.15MM',
+        format: 'list',
       },
-      { label: 'Unit of Sale', value: '25KG BUNDLES - 1420MM LENGTHS' },
+      {
+        label: 'UNIT OF SALE',
+        value: '25KG BUNDLES - 1420MM LENGTHS\n25KG BUNDLES - 1420MM LENGTHS',
+        format: 'list',
+      },
+      {
+        label: '',
+        value: 'NB: Bundles of mixed diameters also available for reduced pricing',
+        format: 'inline',
+      },
     ],
     applications: [
       'Precast concrete slab reinforcement',
@@ -1230,16 +1222,11 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Straight and cut to length:',
-          'No need for on-site straightening or cutting — every wire is ready to use.',
-          'High-tensile strength:',
-          'Supports structural load-bearing and improves crack resistance in vibracrete slabs.',
-          'Galvanised for corrosion resistance:',
-          'Ensures long-term durability and performance within concrete.',
-          'Consistent lengths and finishes:',
-          'Produced to precise specifications for reliable concrete casting and reinforcement.',
-          'Custom sizing available:',
-          'Cut to match your mould or product specs — no waste, no delays.',
+          'Straight and cut to length - No need for on-site straightening or cutting — every wire is ready to use.',
+          'High-tensile strength - Supports structural load-bearing and improves crack resistance in vibracrete slabs.',
+          'Galvanised for corrosion resistance - Ensures long-term durability and performance within concrete.',
+          'Consistent lengths and finishes - Produced to precise specifications for reliable concrete casting and reinforcement.',
+          'Custom sizing available - Cut to match your mould or product specs — no waste, no delays.',
         ],
       },
       {
@@ -1531,8 +1518,8 @@ const productDetailData: Record<string, ProductDetail> = {
         label: 'Gallery',
         content: [
           '/products/WireWall/3510/3510_1.png',
-          '/products/WireWall/3510/3510_2.webp',
-          '/products/WireWall/3510/3510_3.webp',
+          // '/products/WireWall/3510/3510_2.webp',
+          // '/products/WireWall/3510/3510_3.webp',
           '/products/WireWall/3510/3510_4.png',
           '/products/WireWall/3510/3510_5.png',
           '/products/WireWall/3510/3510_6.png',
@@ -1616,8 +1603,8 @@ const productDetailData: Record<string, ProductDetail> = {
         label: 'Gallery',
         content: [
           '/products/WireWall/3110/3110_1.png',
-          '/products/WireWall/3110/3110_2.webp',
-          '/products/WireWall/3110/3110_3.webp',
+          // '/products/WireWall/3110/3110_2.webp',
+          // '/products/WireWall/3110/3110_3.webp',
           '/products/WireWall/3110/3110_4.png',
           '/products/WireWall/3110/3110_5.png',
           '/products/WireWall/3110/3110_6.png',
@@ -1689,8 +1676,8 @@ const productDetailData: Record<string, ProductDetail> = {
         label: 'Gallery',
         content: [
           '/products/WireWall/3210/3210_1.png',
-          '/products/WireWall/3210/3210_2.webp',
-          '/products/WireWall/3210/3210_3.webp',
+          // '/products/WireWall/3210/3210_2.webp',
+          // '/products/WireWall/3210/3210_3.webp',
           '/products/WireWall/3210/3210_4.png',
         ],
       },
@@ -1766,9 +1753,9 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/af-100/af-100_1.png',
-          '/products/WireWall/af-100/af-100_2.webp',
-          '/products/WireWall/af-100/af-100_3.webp',
+          // '/products/WireWall/af-100/af-100_1.png',
+          '/products/WireWall/af-100/af-100_2.png',
+          '/products/WireWall/af-100/af-100_3.png',
         ],
       },
     ],
@@ -1805,18 +1792,21 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'types-of-wirewall-gates',
         label: 'Types of WireWall Gates',
+        format: 'bullet',
         content: [
           'Pedestrian Gates (Swing, Single Leaf)',
           'Typically 1m wide; height matches adjoining WireWall fence.',
           'Provides secure access for foot traffic while maintaining anti-climb and anti-cut performance.',
           'Available with lock boxes, closers, and access control integration.',
           'Applications: Staff entrances, visitor access, controlled pedestrian points.',
+          '',
           'Vehicular Gates',
           'Single and Double Leaf Swing Gates',
           'Available in standard clear openings of 4m and 6m, with customer sizes on request.',
           'Designed for medium- to large-vehicle access.',
           'Heavy-duty hinges and lock systems ensure long service life.',
           'Ideal where space allows for swing operation.',
+          '',
           'Sliding Gates',
           'Manufactured for smooth, secure operation in high-traffic environments.',
           'Eliminates the need for a large swing area (clearance space) in front of or behind the gate. This makes them ideal when space is tight, like along roads, parking areas, or high-traffic sites.',
@@ -1855,24 +1845,33 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'types-of-spike-strips',
         label: 'Types of Spike Strips',
+        format: 'bullet',
         content: [
           'Standard Spike',
           'Traditional deterrent profile.',
           'Economical and effective for general perimeter protection.',
           'Applications: Commercial, residential, light industrial.',
+          '',
           'Heavy Spike',
           'Larger, reinforced spike profile for maximum physical deterrence.',
           'Designed for high-risk perimeters requiring extra strength.',
           'Applications: Industrial sites, logistics hubs, substations.',
+          '',
           'Raptor Tooth',
           'Aggressive design with angled teeth for maximum bite.',
           'Creates a more intimidating visual deterrent.',
           'Applications: High-security zones, correctional facilities, restricted government areas.',
+          '',
           'Assegai',
           'Long, tapered spear-point design inspired by traditional assegai blades.',
           'Provides extreme anti-climb resistance with striking visual presence.',
           'Applications: Military, airports, critical infrastructure.',
         ],
+      },
+      {
+        id: 'specifications',
+        label: 'Specifications',
+        content: [],
       },
     ],
     relatedProductKeys: [
@@ -1906,6 +1905,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'features',
         label: 'Features',
+        format: 'bullet',
         content: [
           'Manufactured from heavy-duty welded mesh panels.',
           'Standard galvanised finish, with optional plastic coating for enhanced corrosion protection.',
@@ -1917,12 +1917,13 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'specifications',
         label: 'Specifications',
+        format: 'bullet',
         content: [
-          'Panel depth - Typically 400mm or 600mm (others available on request).',
-          'Panel length - 3000mm',
-          'Wire diameters - 3.0mm - 5.6mm',
-          'Aperture sizes - 75mm x 12.7mm (customisable to requirements)',
-          'Finishes - Galvanised, Plastic coated',
+          'Panel depth: Typically 400mm or 600mm (others available on request).',
+          'Panel length: 3000mm',
+          'Wire diameters: 3.0mm - 5.6mm',
+          'Aperture sizes: 75mm x 12.7mm (customisable to requirements)',
+          'Finishes: Galvanised, Plastic coated',
         ],
       },
     ],
@@ -1936,12 +1937,12 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'reinforcing-brickforce': {
     description:
-      "Brickforce is a welded steel mesh used as horizontal reinforcement in masonry construction. It is laid in the mortar joints of brick or block walls to improve stability and reduce cracking. Meshco's Brickforce is manufactured from high-strength galvanised steel wire that is welded into a ladder-like mesh.",
+      "Brickforce is a welded steel mesh used as horizontal reinforcement in masonry construction. It is laid in the mortar joints of brick or block walls to improve stability and reduce cracking.\n\nMeshco's Brickforce is manufactured from high-strength galvanised steel wire that is welded into a ladder-like mesh.",
     layoutType: 'standard',
     specifications: [
-      { label: 'Standard', value: 'SANS 10400-A:2022' },
-      { label: 'Length of Roll', value: '20m' },
-      { label: 'Available Sizes', value: '57mm, 75mm, 100mm, 150mm, 230mm' },
+      { label: 'Standard', value: 'SANS 10400-A:2022', format: 'inline' },
+      { label: 'Length of Roll', value: '20m', format: 'inline' },
+      { label: 'Available Sizes', value: '57MM\n75MM\n100MM\n150MM\n230MM', format: 'list' },
     ],
     applications: [
       'Reinforcement of masonry walls',
@@ -1981,7 +1982,7 @@ const productDetailData: Record<string, ProductDetail> = {
           'Crack Prevention - Brickforce minimises the risk of cracking due to thermal expansion, contraction and structural settlement.',
           'Durability - Increases the durability of masonry structures, making them last longer and maintaining their structural integrity.',
           'Installation - Generally installed during masonry installation, steel strengthening being placed between brick lessons during the construction of the wall.',
-          'Applications - Common in residential and commercial construction projects, in particular in high wind load areas, seismic risks or unstable soil conditions. This form of reinforcement is often used in combination with other building practices to improve overall structural performance.',
+          'Applications: Common in residential and commercial construction projects, in particular in high wind load areas, seismic risks or unstable soil conditions. This form of reinforcement is often used in combination with other building practices to improve overall structural performance.',
           'High-Grade Steel - The best Brickforce is made from high-quality, low-carbon steel, which ensures strength without brittleness.',
           'Galvanisation - A thicker zinc coating (e.g., minimum 80g/m²) prevents rust and extends lifespan, especially in coastal or humid areas.',
           'High tensile strength - Ensures the mesh resists bending and breaking under pressure.',
@@ -1989,29 +1990,6 @@ const productDetailData: Record<string, ProductDetail> = {
           'Consistent spacing - Ensures even load distribution, reducing weak points in the wall.',
           'Tightly wound rolls - With uniform layers make transport and handling easier.',
           'Flexible but not flimsy - Rolls uncoil smoothly without excessive bending or kinking.',
-        ],
-      },
-      {
-        id: 'applications',
-        label: 'Applications',
-        content: [
-          'Residential construction projects',
-          'Commercial building construction',
-          'High wind load areas',
-          'Seismic risk zones',
-          'Unstable soil conditions',
-          'Coastal and humid environments',
-        ],
-      },
-      {
-        id: 'installation',
-        label: 'Installation',
-        content: [
-          'Installed between brick courses during masonry construction',
-          'Available in multiple widths to suit wall thickness',
-          'Supplied in 20m rolls for easy handling',
-          'Compatible with standard masonry practices',
-          'Professional installation recommended for best performance',
         ],
       },
     ],
@@ -2025,14 +2003,16 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'reinforcing-reinforcing-mesh': {
     description:
-      'Reinforcing mesh provides structural reinforcement for concrete slabs and precast elements. Manufactured to precise dimensional tolerances, the welded mesh improves crack control and load distribution in concrete construction.',
+      "Strengthen Your Structures with Meshco's Durable Reinforcing Mesh\n\nMeshco's Reinforcing Mesh, also known as Welded Mesh Reinforcement, Fabric Mesh and Ref Mesh, is engineered to enhance the tensile strength of concrete structures, mitigating the risk of cracking and structural failures. Ideal for a variety of applications, our mesh ensures durability and longevity in construction projects.",
     layoutType: 'standard',
     specifications: [
-      { label: 'Material', value: 'High tensile steel' },
-      { label: 'Mesh Size', value: 'Standard 100mm x 100mm or custom' },
-      { label: 'Wire Diameter', value: '4.0mm - 12.0mm' },
-      { label: 'Sheet Size', value: '2.4m x 6.0m standard' },
-      { label: 'Standards', value: 'SANS specifications for reinforcing' },
+      {
+        label: 'Available Sizes',
+        value: '2.4m x 6m sheets and 60m x 2.4m rolls (for wire diameters up to 5.6mm)',
+        format: 'inline',
+      },
+      { label: 'Unit of Sale', value: 'Sheets or rolls', format: 'inline' },
+      { label: 'Standard', value: 'SANS 1024:2024', format: 'inline' },
     ],
     applications: [
       'Concrete slabs and flooring',
@@ -2114,13 +2094,23 @@ const productDetailData: Record<string, ProductDetail> = {
       'Meshco manufactures a complete range of galvanised cavity wall ties, designed to securely connect brick or block leaves in cavity wall construction. Each type provides different structural and thermal performance to suit various building requirements.',
     layoutType: 'standard',
     specifications: [
-      { label: 'Standard', value: 'SANS 28:2023' },
-      { label: 'Available Sizes', value: '150mm, 200mm, 225mm, 250mm, 300mm, Butterfly extension' },
-      { label: 'Unit of Sale', value: 'Bundle of 100 (Butterfly extension: Bundle of 50)' },
       {
         label: 'Types',
         value:
-          'Butterfly Wall Ties, Crimped Wall Ties, Z-Pattern Wall Ties, Vertical Twist Wall Ties',
+          'Butterfly Wall Ties\nCrimped Wall Ties\nZ-Pattern Wall Ties\nVertical Twist Wall Ties',
+        format: 'list',
+      },
+      { label: 'Standard', value: 'SANS 28:2023', format: 'inline' },
+      {
+        label: 'Available Sizes',
+        value: '150MM\n200MM\n225MM\n250MM\n300MM\nBUTTERFLY EXTENSION',
+        format: 'list',
+      },
+      {
+        label: 'Unit of Sale',
+        value:
+          'Bundle of 100\nBundle of 100\nBundle of 100\nBundle of 100\nBundle of 100\nBundle of 50',
+        format: 'list',
       },
     ],
     applications: [
@@ -2141,6 +2131,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'types-of-wall-ties',
         label: 'Types of Wall Ties',
+        format: 'bullet',
         content: [
           'Butterfly Wall Ties',
           'Simple wire design that reduces thermal bridging.',
@@ -2174,20 +2165,24 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'pro-tip',
         label: 'Pro-Tip',
+        image: '/products/Reinforcing/cavity-wall-ties/protip.png',
         content: [
           'How many wall ties to use? - As a rule of thumb, 2.5 wall ties per square meter is the standard density for masonry cavity walls, with the following specifics:',
           'Spacing:',
           'Horizontal: 900mm maximum.',
           'Vertical: 450mm maximum.',
+          '',
           'Distribution:',
           'Ties should be evenly staggered across the wall, except around openings (e.g., windows, doors), where they are spaced every 300mm vertically and within 225mm of the edge.',
           'For timber frame walls, the density increases:',
           '4.4 ties/m² for basic wind speeds ≤25m/s.',
           '7 ties/m² in high-wind areas.',
+          '',
           'Key exceptions:',
           'Insulated cavities: Ties may need closer spacing (e.g., 600mm horizontally) to secure insulation boards.',
           'Remedial work: Follow the same 2.5 ties/m² guideline unless specified otherwise.',
-          'Note: This assumes standard masonry walls with both leaves (walls) ≥90mm thick. Always confirm spacing with local building codes or structural engineers for atypical designs.',
+          'Note:',
+          'This assumes standard masonry walls with both leaves (walls) ≥90mm thick. Always confirm spacing with local building codes or structural engineers for atypical designs.',
         ],
       },
     ],
@@ -2201,11 +2196,15 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'reinforcing-reinforcing-steel': {
     description:
-      "Meshco manufactures a wide range of high-quality Reinforcing Steel Bar (Rebar), designed to add strength, durability, and resilience to concrete structures. Because concrete has low tensile strength, it relies on rebar as a substitute tension component to prevent cracking and structural failure. Whether you're reinforcing residential slabs or building large-scale infrastructure, Meshco's rebar delivers the structural performance you can trust.",
+      "Meshco manufactures a wide range of high-quality Reinforcing Steel Bar (Rebar), designed to add strength, durability, and resilience to concrete structures. Because concrete has low tensile strength, it relies on rebar as a robust structural component to prevent cracking and structural failure.\n\nWhether you're reinforcing residential slabs or building large-scale infrastructure, Meshco's rebar delivers the structural performance you can trust.",
     layoutType: 'standard',
     specifications: [
-      { label: 'Standard Diameters', value: '6mm, 8mm, 12mm, 16mm, 20mm, 25mm, 32mm and 40mm' },
-      { label: 'Standard', value: 'SANS 920:2011' },
+      {
+        label: 'Standard Diameters',
+        value: '6mm, 8mm, 10mm, 12mm, 16mm, 20mm, 25mm, 32mm and 40mm',
+        format: 'list',
+      },
+      { label: 'Standard', value: 'SANS 920:2011', format: 'inline' },
     ],
     applications: [
       'Reinforced concrete structures',
@@ -2226,6 +2225,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'types-of-rebar',
         label: 'Types of Rebar',
+        format: 'bullet',
         content: [
           'Deformed Bar (Y-bar)',
           'High-tensile reinforcing steel bar with surface deformations (ridges) designed to form a strong mechanical bond with concrete.',
@@ -2237,7 +2237,7 @@ const productDetailData: Record<string, ProductDetail> = {
           'Mild steel reinforcing bar with a smooth surface and lower yield strength than deformed bar.',
           'Typically used in non-structural applications where high tensile performance is not required.',
           'Applications: Light reinforcement, dowel bars, architectural concrete elements, general construction uses.',
-          'Standard sizes: 6mm, 8mm, 10mm, 12mm, 16mm',
+          'Standard sizes: 6mm, 8mm, 10mm, 12mm',
           'Standard lengths: 6m and 12m (custom lengths available).',
           'Key Benefits of Meshco Rebar',
           'Manufactured to national standards for consistency and safety.',
@@ -2325,21 +2325,17 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Strong welded joints:',
-          'Each intersection is electronically welded for strength and shape retention.',
-          'Galvanised for longevity:',
-          'Available in lightly (Class C) and fully galvanised (Class A) material, our welded fencing products are manufactured to resist corrosion and withstand harsh weather conditions.',
-          'Wide range of mesh sizes:',
-          'Available in various aperture sizes and wire diameters to suit your specific application.',
-          'Easy to cut, shape and install:',
-          'Suitable for mounting on posts, frames, or walls.',
-          'Rigid yet lightweight:',
-          'Maintains structural integrity while remaining easy to handle and transport.',
+          'Strong welded joints - Each intersection is electronically welded for strength and shape retention.',
+          'Galvanised for longevity - Available in lightly (Class C) and fully galvanised (Class A) material, our welded fencing products are manufactured to resist corrosion and withstand harsh weather conditions.',
+          'Wide range of mesh sizes - Available in various aperture sizes and wire diameters to suit your specific application.',
+          'Easy to cut, shape and install - Suitable for mounting on posts, frames, or walls.',
+          'Rigid yet lightweight - Maintains structural integrity while remaining easy to handle and transport.',
         ],
       },
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Animal enclosures and poultry cages',
           'Agricultural fencing',
@@ -2354,7 +2350,8 @@ const productDetailData: Record<string, ProductDetail> = {
         label: 'Benefits',
         content: [
           "Why Choose Meshco's Welded Fencing Mesh?:",
-          "As a trusted name in fencing for over 60 years, Meshco's welded mesh products combine reliable strength with cost-efficiency. Manufactured to strict quality standards, our galvanised mesh is easy to work with, long-lasting, and adaptable to a wide range of uses. Whether you're fencing a farm, enclosing a warehouse, or building a custom gate or frame, Meshco provides the foundation you can depend on.",
+          "As a trusted name in fencing for over 60 years, Meshco's welded mesh products combine reliable strength with cost-efficiency. Manufactured to strict quality standards, our galvanised mesh is easy to work with, long-lasting, and adaptable to a wide range of uses.",
+          "Whether you\'re fencing a farm, enclosing a warehouse, or building a custom gate or frame, Meshco provides the foundation you can depend on.",
         ],
       },
     ],
@@ -2390,16 +2387,11 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [
-          'Wire diameters (after coating):',
-          '1.80mm',
-          'Aperture sizes:',
-          '50 × 50mm (only available option)',
-          'Height:',
-          '2000mm (only available option)',
-          'Roll Lengths:',
-          '25m',
-          'Finish:',
-          'Galvanised wire with PVC coating',
+          'Wire diameters (after coating) - 1.80mm',
+          'Aperture sizes - 50 × 50mm (only available option)',
+          'Height - 2000mm (only available option)',
+          'Roll Lengths - 25m',
+          'Finish - Galvanised wire with PVC coating',
         ],
         image: null,
       },
@@ -2448,6 +2440,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Coastal and humid environment fencing',
           'Sports field and tennis court demarcations',
@@ -2458,22 +2451,23 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'specifications',
         label: 'Specifications',
+        format: 'bullet',
         content: [
           'Finish Options:',
           'Lightly Galvanised:',
           'Affordable protection against rust and corrosion in low- to moderate-exposure environments.',
           'Lightweight, easy to tension, and secure to posts and wires.',
-          'Applications - Residential fencing, agricultural enclosures, light commercial use.',
+          'Applications: Residential fencing, agricultural enclosures, light commercial use.',
           'Fully Galvanised:',
           'Galvanised for superior resistance to rust and weathering.',
           'Long service life with minimal maintenance.',
-          'Applications - Perimeter fencing, industrial sites, residential boundaries, sports facilities.',
+          'Applications: Perimeter fencing, industrial sites, residential boundaries, sports facilities.',
           'PVC Coated (Green or Black):',
           'Dual protection: galvanised steel wire core with a UV-resistant PVC coating.',
           'Smooth finish reduces risk of injury and provides a neat, aesthetic appearance.',
           'Withstands harsh coastal and high-sun environments.',
           'Low maintenance: resistant to dirt and pollutants.',
-          'Applications - Schools, parks, residential estates, coastal fencing, sports grounds.',
+          'Applications: Schools, parks, residential estates, coastal fencing, sports grounds.',
         ],
       },
     ],
@@ -2511,12 +2505,9 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Galvanised for longevity:',
-          'Available in lightly (Class C) and fully galvanised (Class A) material, our barbed wire products are manufactured to resist corrosion and withstand harsh weather conditions.',
-          'Sharp steel barbs:',
-          'Four-point barbs spaced at standard intervals create a strong deterrent to climbing or breaching.',
-          'Easy to install:',
-          'Can be used on its own, or mounted atop diamond mesh and other fencing for added protection.',
+          'Galvanised for longevity - Available in lightly (Class C) and fully galvanised (Class A) material, our barbed wire products are manufactured to resist corrosion and withstand harsh weather conditions.',
+          'Sharp steel barbs - Four-point barbs spaced at standard intervals create a strong deterrent to climbing or breaching.',
+          'Easy to install - Can be used on its own, or mounted atop diamond mesh and other fencing for added protection.',
         ],
       },
       {
@@ -2528,6 +2519,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Agricultural fencing and livestock control',
           'Property demarcation',
@@ -2560,12 +2552,14 @@ const productDetailData: Record<string, ProductDetail> = {
     layoutType: 'simple',
     specifications: [
       {
-        label: 'Available Sizes',
-        value: '500MM, 700MM, 900MM, UNCLIPPED GALV RAZOR TAPE',
+        label: 'AVAILABLE SIZES',
+        value: '500MM\n700MM\n900MM\nUNCLIPPED GALV RAZOR TAPE',
+        format: 'list',
       },
       {
-        label: 'Sheet Length',
-        value: '15M (for 500MM, 700MM, 900MM), 200M (for UNCLIPPED GALV RAZOR TAPE)',
+        label: 'SHEET LENGTH',
+        value: '15M\n15M\n15M\n200M',
+        format: 'list',
       },
     ],
     applications: [
@@ -2598,6 +2592,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Industrial and commercial perimeters',
           'Warehouses and logistics hubs',
@@ -2629,8 +2624,16 @@ const productDetailData: Record<string, ProductDetail> = {
       "Maximum deterrence. Maximum protection.\n\nMeshco's Concertina Razor Wire, also known as BTC (Barbed Tape Concertina), is engineered for the highest levels of perimeter security. Designed to expand into large, sharp coils with strong spring-back action, this type of razor wire forms an unbreachable barrier that is both physically dangerous and psychologically intimidating.\n\nWhether protecting high-risk infrastructure or securing remote boundaries, our concertina coils offer a proven, cost-effective solution trusted across defence, correctional, commercial and infrastructure sites.",
     layoutType: 'simple',
     specifications: [
-      { label: 'Available Sizes', value: '450MM, 730MM, 980MM' },
-      { label: 'Sheet Length', value: '10M (for 450MM), 12M (for 730MM), 14M (for 980MM)' },
+      {
+        label: 'AVAILABLE SIZES',
+        value: '250MM\n730MM\n900MM',
+        format: 'list',
+      },
+      {
+        label: 'SHEET LENGTH',
+        value: '10M\n12M\n14M',
+        format: 'list',
+      },
     ],
     applications: [
       'Military and defence installations',
@@ -2661,6 +2664,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           '450MM Standard perimeter and residential protection',
           '730MM Medium to high-security applications',
@@ -2697,8 +2701,16 @@ const productDetailData: Record<string, ProductDetail> = {
       "When you need security with teeth.\n\nMaximum security. Minimal compromise.\n\nMeshco's RazorWall, also known as Razor Mesh, delivers mean security—no-nonsense perimeter protection designed to send a clear message: keep out. This aggressive barrier combines the penetration resistance of razor wire with the rigidity of welded mesh, making it one of the toughest and most intimidating fencing solutions on the market.\n\nWith its diamond mesh pattern and welded intersection points, every strand is armed with razor-sharp barbs that are virtually impossible to climb, cut, or bypass.",
     layoutType: 'simple',
     specifications: [
-      { label: 'Available Sizes', value: '1.8 x 6.0m, 2.1 x 6.0m, 2.4 x 6.0m' },
-      { label: 'Unit of Sale', value: 'Bundles of 5 sheets' },
+      {
+        label: 'Available Sizes',
+        value: '1.0 x 6.0m\n2.1 x 6.0m\n2.4 x 6.0m',
+        format: 'list',
+      },
+      {
+        label: 'Unit of Sale',
+        value: 'BUNDLES OF 5 SHEETS\nBUNDLES OF 5 SHEETS\nBUNDLES OF 5 SHEETS',
+        format: 'list',
+      },
     ],
     applications: [
       'High-security perimeter upgrades',
@@ -2718,6 +2730,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'features',
         label: 'Features',
+        image: '/products/Fencing/razor-wall/features.png',
+        imageMaxWidth: '60%',
         content: [
           'Mean, aggressive appearance:',
           "Razor Wall doesn't just stop intruders—it scares them off before they even try.",
@@ -2736,6 +2750,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'specifications',
         label: 'Specifications',
+        image: '/products/Fencing/razor-wall/specifications.png',
+        imageMaxWidth: '30%',
         content: [
           'Sheet Height:',
           '1800mm, 2100mm, 2400mm',
@@ -2750,6 +2766,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Prisons and correctional facilities',
           'Military installations and border control',
@@ -2808,21 +2825,17 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'High-tensile steel wire:',
-          'Strong, springy, and corrosion-resistant—perfect for long fence runs.',
-          'Flexible hinge joints:',
-          'Absorbs animal impact and prevents wire shifting or deformation.',
-          'Graduated spacing:',
-          'Smaller gaps at the bottom for small animals, wider gaps at the top for visibility and material efficiency.',
-          'Galvanised coating:',
-          'Protects against rust and corrosion in harsh outdoor environments.',
-          'Cost-effective long runs:',
-          'Lightweight, easy to install, and requires fewer posts due to tensile strength.',
+          'High-tensile steel wire - Strong, springy, and corrosion-resistant—perfect for long fence runs.',
+          'Flexible hinge joints - Absorbs animal impact and prevents wire shifting or deformation.',
+          'Graduated spacing - Smaller gaps at the bottom for small animals, wider gaps at the top for visibility and material efficiency.',
+          'Galvanised coating - Protects against rust and corrosion in harsh outdoor environments.',
+          'Cost-effective long runs - Lightweight, easy to install, and requires fewer posts due to tensile strength.',
         ],
       },
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Livestock enclosures (sheep, cattle, goats)',
           'Game reserves and wildlife control',
@@ -2836,7 +2849,8 @@ const productDetailData: Record<string, ProductDetail> = {
         label: 'Benefits',
         content: [
           "Why Choose Meshco's Field Fence?:",
-          "Rugged, reliable, and ready for the wild—Meshco's Field Fence is built to handle Southern Africa's toughest environments. Whether you're fencing a smallholding or managing thousands of hectares of game reserve, our field fencing delivers a long-term, low-maintenance solution. Let Meshco help you contain what matters—naturally.",
+          "Rugged, reliable, and ready for the wild—Meshco's Field Fence is built to handle Southern Africa's toughest environments. Whether you're fencing a smallholding or managing thousands of hectares of game reserve, our field fencing delivers a long-term, low-maintenance solution.",
+          'Let Meshco help you contain what matters—naturally.',
         ],
       },
     ],
@@ -2879,22 +2893,18 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Hexagonal weave for flexibility:',
-          "Won't unravel when cut, and adapts easily to uneven surfaces and curved structures.",
-          'Corrosion-resistant galvanised wire:',
-          'Ensures long-term durability outdoors or in contact with cement.',
-          'Multiple aperture sizes:',
-          'From fine 13mm mesh for bird cages to large 90mm mesh for pig enclosures.',
-          'Available in rolls:',
-          'Supplied in convenient 50m roll lengths for easy transport, cutting, and installation.',
-          'Light to medium duty:',
-          'Offers containment and structure without excessive weight.',
+          "Hexagonal weave for flexibility - Won't unravel when cut, and adapts easily to uneven surfaces and curved structures.",
+          'Corrosion-resistant galvanised wire - Ensures long-term durability outdoors or in contact with cement.',
+          'Multiple aperture sizes - From fine 13mm mesh for bird cages to large 90mm mesh for pig enclosures.',
+          'Available in rolls - Supplied in convenient 50m roll lengths for easy transport, cutting, and installation.',
+          'Light to medium duty - Offers containment and structure without excessive weight.',
           'The aperture size determines what can pass through or be contained by the mesh. Smaller apertures offer finer control, while larger ones allow better airflow and cost efficiency over large areas.',
         ],
       },
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Poultry and pet enclosures',
           'Bird aviaries and rabbit runs',
@@ -2946,17 +2956,15 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Lengths:',
-          '1.40m, 1.50m, 1.70m, 1.85m, 2.15m, 2.45m, 3.05m and 3.60m',
-          'Finish:',
-          'Bitumen-dipped',
-          'Punch Pattern:',
-          'Pre-punched holes for easy attachment of wires',
+          'Lengths - 1.40m, 1.50m, 1.70m, 1.85m, 2.15m, 2.45m, 3.05m and 3.60m',
+          'Finish - Bitumen-dipped',
+          'Punch Pattern - Pre-punched holes for easy attachment of wires',
         ],
       },
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Livestock and game fencing',
           'Security and perimeter control',
@@ -2967,14 +2975,16 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'benefits',
         label: 'Benefits',
+        image: '/products/Fencing/standards/benefits.png',
+        imageMaxWidth: '81%',
         content: [
           'Why Choose Meshco?:',
           'Made from high-strength steel for long-lasting performance',
           'Pre-punched for fast and accurate wire placement',
           'Compatible with a wide range of fencing wires and accessories',
           'Proven in the field across Southern Africa',
-          'Strong lines start with strong supports.',
-          "Whether you're fencing off farmland or securing industrial sites, Meshco's Y-Standards and Droppers deliver strength you can stake your reputation on.",
+          '',
+          "Strong lines start with strong supports - Whether you're fencing off farmland or securing industrial sites, Meshco's Y-Standards and Droppers deliver strength you can stake your reputation on.",
         ],
       },
     ],
@@ -3010,17 +3020,15 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Lengths:',
-          '0.95m, 1.10m, 1.25m, 1.40m, 1.55m, 1.85m and 2.45m',
-          'Finish:',
-          'Bitumen dipped for durability',
-          'Fixing:',
-          'Available pre-notched for quick wire tying',
+          'Lengths - 0.95m, 1.10m, 1.25m, 1.40m, 1.55m, 1.85m and 2.45m',
+          'Finish - Bitumen dipped for durability',
+          'Fixing - Available pre-notched for quick wire tying',
         ],
       },
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Supporting fencing wire between Y-Standards or poles',
           'Game, stock, and perimeter fencing',
@@ -3030,6 +3038,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'benefits',
         label: 'Benefits',
+        image: '/products/Fencing/droppers/benefits.png',
         content: [
           'Why Choose Meshco?:',
           'Manufactured from high-strength steel for long service life',
@@ -3057,9 +3066,15 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         label: 'Available Sizes',
         value:
-          '50MM (2 inch), 63MM (2.5 inch), 75MM (3 inch), 100MM (4 inch), 125MM (5 inch), 150MM (6 inch)',
+          '50MM (2 inch)\n63MM (2.5 inch)\n75MM (3 inch)\n100MM (4 inch)\n125MM (5 inch)\n150MM (6 inch)',
+        format: 'list',
       },
-      { label: 'Unit of Sale', value: '25KG or 25X1KG' },
+      {
+        label: 'Unit of Sale',
+        value:
+          '25KG or 25X1KG\n25KG or 25X1KG\n25KG or 25X1KG\n25KG or 25X1KG\n25KG or 25X1KG\n25KG or 25X1KG',
+        format: 'list',
+      },
     ],
     applications: [
       'General construction',
@@ -3081,6 +3096,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'application',
         label: 'Application',
+        format: 'bullet',
         content: [
           'Application:',
           'Timber construction and carpentry',
@@ -3089,10 +3105,14 @@ const productDetailData: Record<string, ProductDetail> = {
           'Formwork and shuttering',
           'Fencing and general repairs',
           'DIY and maintenance work',
+          '',
           'Key features of round wire nails:',
-          'Shank - The round shank is smooth, which can reduce splitting in the material being nailed.',
-          'Head - The flat, consistently round, head provides a surface for a hammer to strike, helping drive the nail into materials.',
-          'Material - Manufactured from the highest quality, low carbon steel.',
+          '',
+          'Shank: The round shank is smooth, which can reduce splitting in the material being nailed.',
+          '',
+          'Head: The flat, consistently round, head provides a surface for a hammer to strike, helping drive the nail into materials.',
+          '',
+          'Material: Manufactured from the highest quality, low carbon steel.',
         ],
       },
       {
@@ -3100,13 +3120,24 @@ const productDetailData: Record<string, ProductDetail> = {
         label: 'Nail Size Guide',
         content: [
           'Choosing the Right Round Wire Nail Size',
-          'Light Carpentry (e.g., frames, trims) - 30–40 mm length, 2.0–2.5 mm diameter',
-          'Roofing Battens - 50 mm length, 3.0mm diameter',
-          'General Timber Work - 50–75 mm length, 3.0–3.5 mm diameter',
-          'Pallets & Crates - 75 mm length, 3.5 mm diameter',
-          'Heavy Construction (e.g., beams, trusses) - 100–125 mm length, 4.0–5.0 mm diameter',
-          'Formwork & Shuttering - 75–100 mm length, 3.5–4.0 mm diameter',
-          'Fencing - 40–75 mm length, galvanised nails recommended',
+          '',
+          'Application:',
+          'Light Carpentry (e.g., frames, trims)',
+          'Roofing Battens',
+          'General Timber Work',
+          'Pallets & Crates',
+          'Heavy Construction (e.g., beams, trusses)',
+          'Formwork & Shuttering',
+          'Fencing',
+          '',
+          'Recommended Nail Size:',
+          '30–40 mm length, 2.0–2.5 mm diameter',
+          '50 mm length, 3.0mm diameter',
+          '50–75 mm length, 3.0–3.5 mm diameter',
+          '75 mm length, 3.5 mm diameter',
+          '100–125 mm length, 4.0–5.0 mm diameter',
+          '75–100 mm length, 3.5–4.0 mm diameter',
+          '40–75 mm length, galvanised nails recommended',
         ],
       },
       {
@@ -3132,8 +3163,16 @@ const productDetailData: Record<string, ProductDetail> = {
       "Meshco's Plain and Barbed Galvanised Fencing Staples (also referred to as U Nails) are designed to provide a strong, reliable fastening solution for securing barbed wire, netting and other wire and fencing products to wooden poles. Made from high-quality steel, these staples are built to withstand the toughest conditions, ensuring your fence stays intact and secure for years to come.",
     layoutType: 'standard',
     specifications: [
-      { label: 'Available Sizes', value: '25MM (Plain only), 32MM, 40MM' },
-      { label: 'Unit of Sale', value: '25kg Bucket' },
+      {
+        label: 'Available Sizes',
+        value: '25MM (Plain only)\n32MM\n40MM',
+        format: 'list',
+      },
+      {
+        label: 'Unit of Sale',
+        value: '25kg Bucket\n25kg Bucket\n25kg Bucket',
+        format: 'list',
+      },
     ],
     applications: [
       'Upholstery and furniture',
@@ -3176,10 +3215,21 @@ const productDetailData: Record<string, ProductDetail> = {
       "Meshco's galvanised Clout Nails are designed to provide a strong, reliable fastening solution for a variety of applications. Whether you're working with roofing, cladding, or timber, these nails ensure a secure, long-lasting bond that withstands the elements. Made from high-quality steel and galvanised for corrosion resistance, our clout nails are the perfect choice for both professional contractors and DIY enthusiasts.",
     layoutType: 'standard',
     specifications: [
-      { label: 'Available Sizes', value: '20MM, 25MM, 32MM, 40MM, 50MM' },
+      {
+        label: 'Available Sizes',
+        value: '20MM\n25MM\n32MM\n40MM\n50MM',
+        format: 'list',
+      },
       {
         label: 'Unit of Sale',
-        value: '25X1KG (Box of 25kgs, inside the 25kg box there are packs of 1kgs x 25)',
+        value: '25X1KG\n25X1KG\n25X1KG\n25X1KG\n25X1KG',
+        format: 'list',
+      },
+      {
+        label: '',
+        value:
+          'These are sold in a box of 25kgs, inside the 25kg box there are packs of 1kgs x 25.',
+        format: 'inline',
       },
     ],
     applications: [
@@ -3223,13 +3273,15 @@ const productDetailData: Record<string, ProductDetail> = {
     layoutType: 'standard',
     specifications: [
       {
-        label: 'Available Clip and Pack Sizes',
-        value: '16MM*250 GALV, 16MM*2500 GALV, 20MM*1000 GALV',
+        label: 'AVAILABLE CLIP AND PACK SIZES',
+        value: '16MM*250 GALV\n16MM*2500 GALV\n20MM*1000 GALV',
+        format: 'list',
       },
       {
-        label: 'Inner Dimension',
+        label: '',
         value:
           '16mm hog ring when installed leaves an inner dimension of 6mm. 20mm hog ring when installed leaves an inner dimension of 8mm.',
+        format: 'inline',
       },
     ],
     applications: [
@@ -3273,7 +3325,13 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "Essential Tool for Quick and Secure Hog Ring Installation\n\nThe EDMA Hog Ring Pliers are the professional's choice for installing fencing hog rings quickly, efficiently, and securely. Specially designed for use with EDMA staples (hog rings), these pliers make it easy to fasten fencing wire, mesh, and netting to poles or other wire structures on-site.",
     layoutType: 'standard',
-    specifications: [{ label: 'Available Sizes', value: 'TOP GRAF PLIER, BABY GRAF PLIER' }],
+    specifications: [
+      {
+        label: 'AVAILABLE IN THE FOLLOWING TWO SIZES:',
+        value: 'TOP GRAF PLIER\nBABY GRAF PLIER',
+        format: 'list',
+      },
+    ],
     applications: [
       'Installing hog rings on fencing',
       'Upholstery fastening',
@@ -3335,7 +3393,13 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "Essential Tool for Quick and Secure Hog Ring Installation\n\nThe EDMA Pliers are the professional's choice for installing fencing hog rings quickly, efficiently, and securely. Specially designed for use with EDMA staples (hog rings), these pliers make it easy to fasten fencing wire, mesh, and netting to poles or other wire structures on-site.",
     layoutType: 'standard',
-    specifications: [{ label: 'Available Sizes', value: 'TOP GRAF PLIER, BABY GRAF PLIER' }],
+    specifications: [
+      {
+        label: 'AVAILABLE IN THE FOLLOWING TWO SIZES:',
+        value: 'TOP GRAF PLIER\nBABY GRAF PLIER',
+        format: 'list',
+      },
+    ],
     applications: [
       'Fence installation and maintenance',
       'Wire bending and tying',
@@ -3398,7 +3462,11 @@ const productDetailData: Record<string, ProductDetail> = {
       'Heavy-Duty Wire and Fencing Cutter for Professional Use\n\nThe EDMA Cutting Nippers are the go-to tool for cleanly and efficiently cutting wire, hog rings, and fencing materials. Built to withstand the rigours of fencing, construction, and agricultural work, these nippers deliver powerful cutting performance when you need it most.',
     layoutType: 'standard',
     specifications: [
-      { label: 'Available Sizes', value: 'CUTTING NIPPERS 220MM, CUTTING NIPPERS 250MM' },
+      {
+        label: 'AVAILABLE IN THE FOLLOWING TWO SIZES:',
+        value: 'CUTTING NIPPERS 220MM\nCUTTING NIPPERS 250MM',
+        format: 'list',
+      },
     ],
     applications: [
       'Wire mesh trimming',
@@ -3438,6 +3506,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'application',
         label: 'Application',
+        format: 'bullet',
         content: [
           'Cutting fencing wire, hog rings, barbed wire, and mesh',
           'Trimming excess wire during fencing installation',
@@ -3478,21 +3547,18 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Heavy-duty welded construction:',
-          'High tensile strength steel wires are welded for consistent performance under stress.',
-          'Flush-cut ends:',
-          'Panels are manufactured with flush cut edges, free of burring',
-          'Corrosion protection options:',
-          'Available in black, galvanised, or epoxy-coated finishes to suit various underground conditions.',
-          'Designed for underground environments:',
-          'Withstands deformation and absorbs energy from shifting strata or blast vibration.',
-          'Quick installation:',
-          'Compatible with standard rock bolts, plates, and installation tools for rapid deployment.',
+          'Heavy-duty welded construction - High tensile strength steel wires are welded for consistent performance under stress.',
+          'Flush-cut ends - Panels are manufactured with flush cut edges, free of burring',
+          'Corrosion protection options - Available in black, galvanised, or epoxy-coated finishes to suit various underground conditions.',
+          'Designed for underground environments - Withstands deformation and absorbs energy from shifting strata or blast vibration.',
+          'Quick installation - Compatible with standard rock bolts, plates, and installation tools for rapid deployment.',
         ],
       },
       {
         id: 'specifications',
         label: 'Specifications',
+        image: '/products/Mining Support/mining-support-mesh/specifications.png',
+        imageMaxWidth: '50%',
         content: [
           "(Meshco can customise to your mine's specifications)",
           'Wire Diameter:',
@@ -3508,6 +3574,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Underground mine roof and sidewall support',
           'Tunnels and shafts',
@@ -3551,6 +3618,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'features',
         label: 'Features',
+        format: 'bullet',
         content: [
           'Manufactured from high-strength, low-carbon steel wire.',
           'Precision welding ensures consistent strength and performance.',
@@ -3601,12 +3669,9 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Welded joints:',
-          'Each intersection is precisely welded for consistent strength and shape retention.',
-          'Tight tolerances:',
-          'Precision manufacturing ensures uniform mesh openings.',
-          'Anti-corrosive protection:',
-          'Manufactured with galvanised wire as standard',
+          'Welded joints - Each intersection is precisely welded for consistent strength and shape retention.',
+          'Tight tolerances - Precision manufacturing ensures uniform mesh openings.',
+          'Anti-corrosive protection - Manufactured with galvanised wire as standard',
         ],
       },
       {
@@ -3618,6 +3683,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        format: 'bullet',
         content: [
           'Machine guarding and partitioning',
           'Racking and shelving systems',
@@ -3663,6 +3729,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        image: '/products/Utility/growing-stakes/applications.png',
         content: [
           'Support for young trees and saplings',
           'Training of grapevines and fruit trees',
@@ -3678,6 +3745,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'benefits',
         label: 'Benefits',
+        imageMaxWidth: '70%',
+        image: '/products/Utility/growing-stakes/benefits.png',
         content: [
           'Why Choose Meshco Growing Stakes?:',
           'Durable steel core provides superior strength over bamboo or wooden stakes',
@@ -3712,6 +3781,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'features',
         label: 'Features',
+        imageMaxWidth: '60%',
+        image: '/products/Utility/specimesh-panels/features.png',
         content: [
           'Wire Diameter:',
           '2.0mm to 6.0mm',
@@ -3727,6 +3798,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
+        image: '/products/Utility/specimesh-panels/applications.png',
         content: [
           'SpeciMesh is trusted across industries for its adaptability and structural reliability. Typical applications include:',
           'Machine and equipment guards',
@@ -3741,6 +3813,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'customisation',
         label: 'Customisation',
+        imageMaxWidth: '60%',
+        image: '/products/Utility/specimesh-panels/customisation.png',
         content: [
           'Panel length, width, and wire spacing tailored to project requirements',
           'Edge trimming or overhangs available',
@@ -3750,6 +3824,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'benefits',
         label: 'Benefits',
+        imageMaxWidth: '50%',
+        image: '/products/Utility/specimesh-panels/benefits.png',
         content: [
           "Why Choose Meshco's SpeciMesh?:",
           'Precision welding ensures strength and rigidity',
@@ -3761,6 +3837,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'packaging',
         label: 'Packaging',
+        imageMaxWidth: '80%',
+        image: '/products/Utility/specimesh-panels/packaging.png',
         content: [
           'Packaging & Delivery:',
           'Supplied flat or stacked in bulk',
