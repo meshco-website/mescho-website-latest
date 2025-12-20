@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import styles from './FullWidthDropdown.module.css'
 
@@ -31,11 +31,37 @@ const FullWidthDropdown: React.FC<FullWidthDropdownProps> = ({
   onMouseLeave,
   onItemClick,
 }) => {
+  const [topPosition, setTopPosition] = useState<number>(0)
+
+  useEffect(() => {
+    const calculatePosition = () => {
+      const header = document.querySelector('header')
+      if (header) {
+        const rect = header.getBoundingClientRect()
+        setTopPosition(rect.bottom)
+      }
+    }
+
+    if (isOpen) {
+      // Calculate position immediately when dropdown opens
+      calculatePosition()
+      // Recalculate on scroll and resize to maintain correct position
+      window.addEventListener('scroll', calculatePosition, true)
+      window.addEventListener('resize', calculatePosition)
+      
+      return () => {
+        window.removeEventListener('scroll', calculatePosition, true)
+        window.removeEventListener('resize', calculatePosition)
+      }
+    }
+  }, [isOpen])
+
   if (!isOpen) return null
 
   return (
     <div
       className={`${styles.fullWidthDropdown} ${className}`}
+      style={{ top: `${topPosition}px` }}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

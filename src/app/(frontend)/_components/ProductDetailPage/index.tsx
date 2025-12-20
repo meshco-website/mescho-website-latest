@@ -57,6 +57,7 @@ interface ProductDetailPageProps {
   technicalData: TechnicalData[]
   tabs?: TabData[]
   relatedProducts: RelatedProduct[]
+  images?: string[]
 }
 
 const getSpecificationImagePath = (heroImage: string): string | undefined => {
@@ -101,6 +102,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
   technicalData,
   tabs,
   relatedProducts,
+  images,
 }) => {
   const enhancedTabs = addSpecificationImageToTabs(tabs, heroImage)
 
@@ -113,6 +115,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
         heroImage={heroImage}
         description={description}
         specifications={specifications}
+        images={images}
       />
 
       <ProductDetails
