@@ -1,9 +1,9 @@
 .fullWidthDropdown {
   position: fixed;
-  top: var(--header-height, 80px); /* Use CSS custom property for header height */
   left: 0;
   width: 100vw;
   background-color: #2a2d2f; /* Dark gray matching design */
+  border-top: 1px solid rgba(255, 255, 255, 0.40);
   z-index: 1000;
   opacity: 0;
   visibility: hidden;

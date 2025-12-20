@@ -44,6 +44,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       technicalData={config.technicalData}
       tabs={config.tabs}
       relatedProducts={config.relatedProducts}
+      images={config.images}
     />
   )
 }

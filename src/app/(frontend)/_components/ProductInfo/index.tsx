@@ -1,14 +1,50 @@
 'use client'
 
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './productInfo.module.css'
+
+// Thumbnail component that only renders if image loads successfully
+const ThumbnailImage: React.FC<{
+  src: string
+  alt: string
+  isSelected: boolean
+  onClick: () => void
+}> = ({ src, alt, isSelected, onClick }) => {
+  const [imageLoaded, setImageLoaded] = useState(false)
+  const [hasError, setHasError] = useState(false)
+
+  useEffect(() => {
+    const img = new window.Image()
+    img.onload = () => setImageLoaded(true)
+    img.onerror = () => setHasError(true)
+    img.src = src
+  }, [src])
+
+  if (!imageLoaded || hasError) {
+    return null
+  }
+
+  return (
+    <button
+      type="button"
+      className={`${styles.thumbnail} ${isSelected ? styles.thumbnailSelected : ''}`}
+      onClick={onClick}
+      aria-label={alt}
+    >
+      <Image src={src} alt={alt} fill className={styles.thumbnailImage} sizes="80px" />
+    </button>
+  )
+}
 
 interface Specification {
   label: string
   value: string
   format?: 'inline' | 'list'
+  labelBold?: boolean
+  labelMediumBold?: boolean
+  wrapAlign?: boolean
 }
 
 interface ProductInfoProps {
@@ -18,6 +54,7 @@ interface ProductInfoProps {
   heroImage: string
   description: string
   specifications: Specification[]
+  images?: string[]
 }
 
 const ProductInfo: React.FC<ProductInfoProps> = ({
@@ -27,20 +64,60 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   heroImage,
   description,
   specifications,
+  images,
 }) => {
-  const [hasImageError, setHasImageError] = useState(!heroImage?.trim())
+  // Use images prop if available, otherwise fall back to heroImage only
+  const availableImages = useMemo(() => {
+    if (images && images.length > 0) {
+      return images
+    }
+    return heroImage ? [heroImage] : []
+  }, [images, heroImage])
+
+  // Initialize selected image to the first available image
+  const [selectedImage, setSelectedImage] = useState(() => {
+    if (images && images.length > 0) {
+      return images[0]
+    }
+    return heroImage || ''
+  })
+
+  // Update selected image when availableImages changes
+  useEffect(() => {
+    if (availableImages.length > 0 && !availableImages.includes(selectedImage)) {
+      setSelectedImage(availableImages[0])
+    }
+  }, [availableImages, selectedImage])
+
+  const [hasImageError, setHasImageError] = useState(!selectedImage?.trim())
 
   const resolvedHeroImage = useMemo(
-    () => (!heroImage?.trim() || hasImageError ? '/placeholder.svg' : heroImage),
-    [heroImage, hasImageError],
+    () => (!selectedImage?.trim() || hasImageError ? '/placeholder.svg' : selectedImage),
+    [selectedImage, hasImageError],
   )
 
   const isPlaceholder = resolvedHeroImage.includes('placeholder.svg')
+
+  // Helper function to get label CSS class based on bold/mediumBold props
+  const getLabelClassName = (spec: Specification) => {
+    if (spec.labelBold) {
+      return styles.specLabelBold
+    }
+    if (spec.labelMediumBold) {
+      return styles.specLabelMediumBold
+    }
+    return ''
+  }
 
   const handleImageError = () => {
     if (!hasImageError) {
       setHasImageError(true)
     }
+  }
+
+  const handleThumbnailClick = (imagePath: string) => {
+    setSelectedImage(imagePath)
+    setHasImageError(false)
   }
 
   return (
@@ -89,6 +166,22 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                 />
               )}
             </div>
+            {!isPlaceholder && availableImages.length > 0 && (
+              <div className={styles.thumbnailContainer}>
+                {availableImages.slice(0, 5).map((imagePath, index) => {
+                  const isSelected = imagePath === selectedImage
+                  return (
+                    <ThumbnailImage
+                      key={`${imagePath}-${index}`}
+                      src={imagePath}
+                      alt={`${name} view ${index + 1}`}
+                      isSelected={isSelected}
+                      onClick={() => handleThumbnailClick(imagePath)}
+                    />
+                  )
+                })}
+              </div>
+            )}
           </div>
 
           <div className={styles.detailsColumn}>
@@ -98,7 +191,10 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
 
               <div className={styles.description}>
                 {description.split('\n\n').map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
+                  <p
+                    key={index}
+                    dangerouslySetInnerHTML={{ __html: paragraph.replace(/\n/g, '<br />') }}
+                  />
                 ))}
               </div>
 
@@ -150,7 +246,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                   const shouldDisplaySideBySide =
                     availableSizesIndexLower !== -1 &&
                     unitOfSaleIndex !== -1 &&
-                    Math.abs(availableSizesIndexLower - unitOfSaleIndex) === 1
+                    Math.abs(availableSizesIndexLower - unitOfSaleIndex) === 1 &&
+                    specifications[availableSizesIndexLower]?.format === 'list' &&
+                    specifications[unitOfSaleIndex]?.format === 'list'
 
                   const renderedSpecs: React.ReactElement[] = []
                   let i = 0
@@ -177,7 +275,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                           <div className={styles.tableLabelsRow}>
                             {tableSpecs.map((tableSpec, tableIndex) => (
                               <div key={`label-${tableIndex}`} className={styles.tableLabelCell}>
-                                <div className={styles.specLabel}>{tableSpec.label}:</div>
+                                <div
+                                  className={`${styles.specLabel} ${getLabelClassName(tableSpec)}`}
+                                >
+                                  {tableSpec.label}:
+                                </div>
                               </div>
                             ))}
                           </div>
@@ -222,7 +324,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                           <div className={styles.tableLabelsRow}>
                             {tableSpecs.map((tableSpec, tableIndex) => (
                               <div key={`label-${tableIndex}`} className={styles.tableLabelCell}>
-                                <div className={styles.specLabel}>{tableSpec.label}:</div>
+                                <div
+                                  className={`${styles.specLabel} ${getLabelClassName(tableSpec)}`}
+                                >
+                                  {tableSpec.label}:
+                                </div>
                               </div>
                             ))}
                           </div>
@@ -267,7 +373,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                           <div className={styles.tableLabelsRow}>
                             {tableSpecs.map((tableSpec, tableIndex) => (
                               <div key={`label-${tableIndex}`} className={styles.tableLabelCell}>
-                                <div className={styles.specLabel}>{tableSpec.label}:</div>
+                                <div
+                                  className={`${styles.specLabel} ${getLabelClassName(tableSpec)}`}
+                                >
+                                  {tableSpec.label}:
+                                </div>
                               </div>
                             ))}
                           </div>
@@ -310,7 +420,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                               key={`list-${sideIndex}`}
                               className={styles.specItemListSideBySide}
                             >
-                              <div className={styles.specLabel}>{sideSpec.label}:</div>
+                              <div className={`${styles.specLabel} ${getLabelClassName(sideSpec)}`}>
+                                {sideSpec.label}:
+                              </div>
                               <div className={styles.specValueList}>
                                 {sideSpec.value.split('\n').map((item, itemIndex) => (
                                   <div key={itemIndex} className={styles.listItem}>
@@ -358,9 +470,14 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                     // Render inline spec
                     if (spec.format === 'inline' || !spec.format) {
                       renderedSpecs.push(
-                        <div key={`inline-${i}`} className={styles.specItemInline}>
+                        <div
+                          key={`inline-${i}`}
+                          className={`${styles.specItemInline} ${spec.wrapAlign ? styles.specItemWrapAlign : ''}`}
+                        >
                           {spec.label?.trim() && (
-                            <span className={styles.specLabel}>{spec.label}:</span>
+                            <span className={`${styles.specLabel} ${getLabelClassName(spec)}`}>
+                              {spec.label}:
+                            </span>
                           )}
                           <span className={styles.specValue}>{spec.value}</span>
                         </div>,
@@ -371,7 +488,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                       renderedSpecs.push(
                         <div key={`list-${i}`} className={styles.specItemList}>
                           {spec.label?.trim() && (
-                            <div className={styles.specLabel}>{spec.label}:</div>
+                            <div className={`${styles.specLabel} ${getLabelClassName(spec)}`}>
+                              {spec.label}:
+                            </div>
                           )}
                           <div className={styles.specValueList}>
                             {spec.value.split('\n').map((item, itemIndex) => (
