@@ -190,12 +190,64 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
               <h1 className={styles.productTitle}>{title}</h1>
 
               <div className={styles.description}>
-                {description.split('\n\n').map((paragraph, index) => (
-                  <p
-                    key={index}
-                    dangerouslySetInnerHTML={{ __html: paragraph.replace(/\n/g, '<br />') }}
-                  />
-                ))}
+                {(() => {
+                  // First split by triple newlines to identify those breaks
+                  console.log('Description:', description)
+                  console.log('Has triple newline:', description.includes('\n\n\n'))
+                  const tripleSplit = description.split(/\n\n\n/)
+                  console.log('Triple split length:', tripleSplit.length)
+                  console.log('Triple split:', tripleSplit)
+                  const paragraphs: Array<{
+                    text: string
+                    isAfterTriple: boolean
+                    isBeforeTriple: boolean
+                  }> = []
+
+                  tripleSplit.forEach((section, sectionIndex) => {
+                    // Split each section by double newlines
+                    const doubleSplit = section.split(/\n\n/).filter((p) => p.trim())
+                    console.log(`Section ${sectionIndex}, doubleSplit length:`, doubleSplit.length)
+                    doubleSplit.forEach((para, paraIndex) => {
+                      const isAfterTriple = sectionIndex > 0 && paraIndex === 0
+                      const isBeforeTriple =
+                        sectionIndex < tripleSplit.length - 1 &&
+                        paraIndex === doubleSplit.length - 1
+                      console.log(
+                        `  Para ${paraIndex}: isAfterTriple=${isAfterTriple}, isBeforeTriple=${isBeforeTriple}`,
+                      )
+                      paragraphs.push({
+                        text: para.trim(),
+                        isAfterTriple,
+                        isBeforeTriple,
+                      })
+                    })
+                  })
+
+                  return paragraphs.map((para, index) => {
+                    const processed = para.text.replace(
+                      /\n/g,
+                      '<br class="description-line-break" />',
+                    )
+                    const className = [
+                      para.isAfterTriple ? styles.descriptionParagraphTriple : '',
+                      para.isBeforeTriple ? styles.descriptionParagraphBeforeTriple : '',
+                    ]
+                      .filter(Boolean)
+                      .join(' ')
+                    console.log(
+                      `Para ${index}: isAfterTriple=${para.isAfterTriple}, isBeforeTriple=${para.isBeforeTriple}, className=${className}`,
+                    )
+                    return (
+                      <p
+                        key={index}
+                        className={className || undefined}
+                        dangerouslySetInnerHTML={{
+                          __html: processed,
+                        }}
+                      />
+                    )
+                  })
+                })()}
               </div>
 
               <div className={styles.specifications}>
