@@ -88,3 +88,13 @@ a {
 svg {
   vertical-align: middle;
 }
+
+/* Reduce spacing for line breaks in product descriptions */
+.description-line-break {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 0.3;
+  height: 0.3em;
+  content: '';
+}

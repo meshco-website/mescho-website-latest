@@ -1352,7 +1352,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wirewall-355': {
     description:
-      '<b>Extreme perimeter protection for the highest security sites</b>\n\n<b>The WireWall 355 Supermax</b> panel is engineered for the most demanding security environments, <b>including supermax prisons, defence facilities, and high-risk government installations.</b>\n\nHistorically government specifications called for a double 4mm vertical wire panel. However the weld strength between the three wires was found to be inadequate, with welds coming apart on site either by themselves or through the application of minimal force. This led to requests for a new, superior specification. Enter the WireWall 355 Supermax. The weight per meter of the SuperMax panel is the same as the double 4mm wire option, but with superior weld strength and an increased difficulty to cut. The SuperMax design also allows the same security across the full height of panels while still allowing the top of the panel to be bowed.\n\nWith its <b>5.6mm vertical wires</b> combined with <b>4.0mm horizontal wires</b>, the 355 Supermax provides unparalleled rigidity and resistance to impact, forcing, and cutting.',
+      '<b>Extreme perimeter protection for the highest security sites</b>\n\n\n<b>The WireWall 355 Supermax</b> panel is engineered for the most demanding security environments, <b>including supermax prisons, defence facilities, and high-risk government installations.</b>\n\nHistorically government specifications called for a double 4mm vertical wire panel. However the weld strength between the three wires was found to be inadequate, with welds coming apart on site either by themselves or through the application of minimal force. This led to requests for a new, superior specification. Enter the WireWall 355 Supermax. The weight per meter of the SuperMax panel is the same as the double 4mm wire option, but with superior weld strength and an increased difficulty to cut. The SuperMax design also allows the same security across the full height of panels while still allowing the top of the panel to be bowed.\n\nWith its <b>5.6mm vertical wires</b> combined with <b>4.0mm horizontal wires</b>, the 355 Supermax provides unparalleled rigidity and resistance to impact, forcing, and cutting.',
     layoutType: 'wirewall',
     specifications: [],
     wireWallSpecifications: {
@@ -1492,7 +1492,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wirewall-3510': {
     description:
-      '<strong>High security, anti-climb and anti-cut</strong>\n\nDesigned for South African security requirements, the WireWall 3510 panel offers small openings, making it anti-climb and anti-cut. Trusted to protect police stations, schools, corporate head offices, solar plants, golf courses and farms.',
+      '<strong>High security, anti-climb and anti-cut</strong>\n\n\nDesigned for South African security requirements, the WireWall 3510 panel offers small openings, making it anti-climb and anti-cut. Trusted to protect police stations, schools, corporate head offices, solar plants, golf courses and farms.',
     layoutType: 'wirewall',
     images: [
       '/products/WireWall/3510/3510_1.png',
@@ -1586,7 +1586,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wirewall-3110': {
     description:
-      '<strong>Medium security, high-visibility</strong>\n\nDesigned for South African security requirements, the WireWall 3110 panel offers larger openings than the 3510 panel, with the same anti-cut strength and rigidity. Classified as medium security, it can be upgraded to high security with electrification or razor wire topping. Trusted to protect residential buildings, parks, golf courses, corporate offices and farms.',
+      '<strong>Medium security, high-visibility</strong>\n\n\nDesigned for South African security requirements, the WireWall 3110 panel offers larger openings than the 3510 panel, with the same anti-cut strength and rigidity. Classified as medium security, it can be upgraded to high security with electrification or razor wire topping. Trusted to protect residential buildings, parks, golf courses, corporate offices and farms.',
     layoutType: 'wirewall',
     images: [
       '/products/WireWall/3110/3110_1.png',
@@ -1673,7 +1673,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wirewall-3210': {
     description:
-      '<strong>Budget friendly security option, high-visibility</strong>\n\nThe WireWall 3210 panel offers larger (75mm x 50mm) openings than the 3110 panel, with a similar look and feel. This is a budget friendly option, ideal for demarcation of boundaries, where restricting access to a property is important.',
+      '<strong>Budget friendly security option, high-visibility</strong>\n\n\nThe WireWall 3210 panel offers larger (75mm x 50mm) openings than the 3110 panel, with a similar look and feel. This is a budget friendly option, ideal for demarcation of boundaries, where restricting access to a property is important.',
     layoutType: 'wirewall',
     images: ['/products/WireWall/3210/3210_1.png', '/products/WireWall/3210/3210_4.png'],
     specifications: [],
@@ -1745,7 +1745,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wirewall-af100': {
     description:
-      '<strong>Low security, high-visibility</strong>\n\nAn older design, still popular throughout the country. The panel sports 50 by 100mm gaps with 4mm diameter for both the vertical and horizontal wires. Classified as low security, the security can be upgraded with electrification or razor wire topping. Chosen for boundary demarcation in residential and lower cost commercial applications.',
+      '<strong>Low security, high-visibility</strong>\n\n\nAn older design, still popular throughout the country. The panel sports 50 by 100mm gaps with 4mm diameter for both the vertical and horizontal wires. Classified as low security, the security can be upgraded with electrification or razor wire topping. Chosen for boundary demarcation in residential and lower cost commercial applications.',
     layoutType: 'wirewall',
     images: [
       '/products/WireWall/af-100/af-100_1.png',
@@ -1829,7 +1829,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wirewall-gates': {
     description:
-      '<b>Seamless access with uncompromising security</b>\n\nMeshco offers a full range of <b>WireWall pedestrian and vehicular gates,</b> designed to integrate seamlessly with WireWall fencing systems. Built with the same high-strength anti-cut, anti-climb mesh panels and robust steel frames, our gates provide secure access points without compromising perimeter protection.\n\nAll WireWall gates are <b>made to order</b> to meet site-specific requirements, ensuring the perfect balance of strength, durability, and functionality.',
+      '<b>Seamless access with uncompromising security</b>\n\n\nMeshco offers a full range of <b>WireWall pedestrian and vehicular gates,</b> designed to integrate seamlessly with WireWall fencing systems. Built with the same high-strength anti-cut, anti-climb mesh panels and robust steel frames, our gates provide secure access points without compromising perimeter protection.\n\nAll WireWall gates are <b>made to order</b> to meet site-specific requirements, ensuring the perfect balance of strength, durability, and functionality.',
     layoutType: 'wirewall',
     specifications: [],
     wireWallSpecifications: undefined,
@@ -1950,7 +1950,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wirewall-underdig-panel': {
     description:
-      "<b>Prevent intrusions from below</b>\n\nMeshco's Underdig (Anti-burrow) panels are designed to prevent unauthorised entry by stopping attempts to dig underneath perimeter fences. Manufactured from high-strength welded mesh, these panels are buried below ground level and securely fixed to the main fence line, creating an effective underground barrier against intrusion.\n\nUsed in combination with above ground fencing systems such as WireWall, underdig panels ensure that perimeter security extends below ground as well as above it.",
+      "<b>Prevent intrusions from below</b>\n\n\nMeshco's Underdig (Anti-burrow) panels are designed to prevent unauthorised entry by stopping attempts to dig underneath perimeter fences. Manufactured from high-strength welded mesh, these panels are buried below ground level and securely fixed to the main fence line, creating an effective underground barrier against intrusion.\n\nUsed in combination with above ground fencing systems such as WireWall, underdig panels ensure that perimeter security extends below ground as well as above it.",
     layoutType: 'wirewall',
     specifications: [],
     wireWallSpecifications: undefined,
@@ -3482,7 +3482,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'fasteners-hog-ring-pliers': {
     description:
-      "<b>Essential Tool for Quick and Secure Hog Ring Installation</b>\n\nThe <b>EDMA Hog Ring Pliers</b> are the professional's choice for installing fencing hog rings quickly, efficiently, and securely. Specially designed for use with EDMA staples (hog rings), these pliers make it easy to fasten fencing wire, mesh, and netting to poles or other wire structures on-site.",
+      "<b>Essential Tool for Quick and Secure Hog Ring Installation</b>\n\n\nThe <b>EDMA Hog Ring Pliers</b> are the professional's choice for installing fencing hog rings quickly, efficiently, and securely. Specially designed for use with EDMA staples (hog rings), these pliers make it easy to fasten fencing wire, mesh, and netting to poles or other wire structures on-site.",
     layoutType: 'standard',
     images: [
       '/products/Fasteners/hog-ring-pliers/hog-ring-pliers_1.webp',
@@ -3554,7 +3554,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'fasteners-pliers': {
     description:
-      "<b>Essential Tool for Quick and Secure Hog Ring Installation</b>\n\nThe <b>EDMA Pliers</b> are the professional's choice for installing fencing hog rings quickly, efficiently, and securely. Specially designed for use with EDMA staples (hog rings), these pliers make it easy to fasten fencing wire, mesh, and netting to poles or other wire structures on-site.",
+      "<b>Essential Tool for Quick and Secure Hog Ring Installation</b>\n\n\nThe <b>EDMA Pliers</b> are the professional's choice for installing fencing hog rings quickly, efficiently, and securely. Specially designed for use with EDMA staples (hog rings), these pliers make it easy to fasten fencing wire, mesh, and netting to poles or other wire structures on-site.",
     layoutType: 'standard',
     images: ['/products/Fasteners/pliers/pliers_1.webp'],
     specifications: [
@@ -3623,7 +3623,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'fasteners-cutting-nippers': {
     description:
-      '<b>Heavy-Duty Wire and Fencing Cutter for Professional Use</b>\n\nThe <b>EDMA Cutting Nippers</b> are the go-to tool for cleanly and efficiently cutting wire, hog rings, and fencing materials. Built to withstand the rigours of fencing, construction, and agricultural work, these nippers deliver powerful cutting performance when you need it most.',
+      '<b>Heavy-Duty Wire and Fencing Cutter for Professional Use</b>\n\n\nThe <b>EDMA Cutting Nippers</b> are the go-to tool for cleanly and efficiently cutting wire, hog rings, and fencing materials. Built to withstand the rigours of fencing, construction, and agricultural work, these nippers deliver powerful cutting performance when you need it most.',
     layoutType: 'standard',
     images: ['/products/Fasteners/cutting-nippers/cutting-nippers_1.webp'],
     specifications: [
