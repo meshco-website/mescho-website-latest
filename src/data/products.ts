@@ -94,7 +94,7 @@ export const products: Product[] = [
     name: 'Hard Drawn Wire',
     title: 'Hard Drawn Wire',
     imageFolder: '/products/Wire/hard-drawn-wire',
-    image: '/products/Wire/hard-drawn-wire/hard-drawn-wire_1.webp',
+    image: '/products/Wire/hard-drawn-wire/meshco-hard-drawn-wire_1.webp',
     slug: 'hard-drawn-wire',
     type: 'Wire',
     industry: 'Construction',
@@ -105,7 +105,7 @@ export const products: Product[] = [
     name: 'Galvanised Wire',
     title: 'Galvanised Wire',
     imageFolder: '/products/Wire/galvanised-wire',
-    image: '/products/Wire/galvanised-wire/galvanised-wire_1.webp',
+    image: '/products/Wire/galvanised-wire/meshco-galvanised-wire_1.webp',
     slug: 'galvanised-wire',
     type: 'Wire',
     industry: 'Construction',
@@ -116,7 +116,7 @@ export const products: Product[] = [
     name: 'High Strain Wire',
     title: 'High Strain Wire',
     imageFolder: '/products/Wire/high-strain-wire',
-    image: '/products/Wire/high-strain-wire/high-strain-wire_1.webp',
+    image: '/products/Wire/high-strain-wire/meshco-high-strain-wire_1.webp',
     slug: 'high-strain-wire',
     type: 'Wire',
     industry: 'Construction',
@@ -127,7 +127,7 @@ export const products: Product[] = [
     name: 'Black Annealed Wire',
     title: 'Black Annealed Wire (including Autobale Wire)',
     imageFolder: '/products/Wire/black-annealed-wire',
-    image: '/products/Wire/black-annealed-wire/black-annealed-wire_1.png',
+    image: '/products/Wire/black-annealed-wire/meshco-black-annealed-wire_1.png',
     slug: 'black-annealed-wire',
     type: 'Wire',
     industry: 'Construction',
@@ -138,7 +138,7 @@ export const products: Product[] = [
     name: 'PVC Coated Wire',
     title: 'PVC Coated Wire',
     imageFolder: '/products/Wire/pvc-coated-wire',
-    image: '/products/Wire/pvc-coated-wire/pvc-coated-wire_1.png',
+    image: '/products/Wire/pvc-coated-wire/meshco-pvc-coated-wire_1.png',
     slug: 'pvc-coated-wire',
     type: 'Wire',
     industry: 'Construction',
@@ -149,7 +149,7 @@ export const products: Product[] = [
     name: 'Straight & Cut Wire',
     title: 'Straight & Cut Wire',
     imageFolder: '/products/Wire/straight-and-cut-wire',
-    image: '/products/Wire/straight-and-cut-wire/straight-and-cut-wire_1.png',
+    image: '/products/Wire/straight-and-cut-wire/meshco-straight-and-cut-wire_1.png',
     slug: 'straight-cut-wire',
     type: 'Wire',
     industry: 'Construction',
@@ -160,7 +160,7 @@ export const products: Product[] = [
     name: 'Slab Wire',
     title: 'Slab Wire (Straight & Cut Wire for Precast Concrete)',
     imageFolder: '/products/Wire/slab-wire',
-    image: '/products/Wire/slab-wire/slab-wire_1.webp',
+    image: '/products/Wire/slab-wire/meshco-slab-wire_1.webp',
     slug: 'slab-wire',
     type: 'Wire',
     industry: 'Construction',
@@ -206,7 +206,7 @@ export const products: Product[] = [
     name: '3510 Panel (75 x 12.7mm)',
     title: '3510 Panel (75 x 12.7mm)',
     imageFolder: '/products/WireWall/3510',
-    image: '/products/WireWall/3510/3510_1.png',
+    image: '/products/WireWall/3510/meshco-3510_1.png',
     slug: '3510',
     type: 'WireWall',
     industry: 'Property',
@@ -217,7 +217,7 @@ export const products: Product[] = [
     name: '3110 Panel (75 x 25mm)',
     title: '3110 Medium Panel (75mm x 25mm)',
     imageFolder: '/products/WireWall/3110',
-    image: '/products/WireWall/3110/3110_1.png',
+    image: '/products/WireWall/3110/meshco-3110_1.png',
     slug: '3110',
     type: 'WireWall',
     industry: 'Property',
@@ -228,7 +228,7 @@ export const products: Product[] = [
     name: '3210 Panel (75x50mm)',
     title: '3210 Light Panel (75mm x 50mm)',
     imageFolder: '/products/WireWall/3210',
-    image: '/products/WireWall/3210/3210_1.png',
+    image: '/products/WireWall/3210/meshco-3210_1.png',
     slug: '3210',
     type: 'WireWall',
     industry: 'Property',
@@ -239,7 +239,7 @@ export const products: Product[] = [
     name: 'AF100 Panel (50 x 100mm)',
     title: 'AF100 Panel (50 x 100mm)',
     imageFolder: '/products/WireWall/af-100',
-    image: '/products/WireWall/af-100/af-100_1.png',
+    image: '/products/WireWall/af-100/meshco-af-100_1.png',
     slug: 'af100',
     type: 'WireWall',
     industry: 'Property',
@@ -261,7 +261,7 @@ export const products: Product[] = [
     name: 'Spikes',
     title: 'Spikes',
     imageFolder: '/products/WireWall/spikes',
-    image: '/products/WireWall/spikes/spikes_1.webp',
+    image: '/products/WireWall/spikes/meshco-spikes_1.webp',
     slug: 'spikes',
     type: 'WireWall',
     industry: 'Property',
@@ -285,7 +285,7 @@ export const products: Product[] = [
     name: 'Brickforce',
     title: 'Galvanised Brickforce NHBRC and STANDARD',
     imageFolder: '/products/Reinforcing/brick-force',
-    image: '/products/Reinforcing/brick-force/brick-force_1.png',
+    image: '/products/Reinforcing/brick-force/meshco-brick-force_1.png',
     slug: 'brickforce',
     type: 'Reinforcing',
     industry: 'Construction',
@@ -296,7 +296,7 @@ export const products: Product[] = [
     name: 'Reinforcing Mesh',
     title: 'Reinforcing Mesh',
     imageFolder: '/products/Reinforcing/reinforcing-mesh',
-    image: '/products/Reinforcing/reinforcing-mesh/reinforcing-mesh_1.webp',
+    image: '/products/Reinforcing/reinforcing-mesh/meshco-reinforcing-mesh_1.webp',
     slug: 'reinforcing-mesh',
     type: 'Reinforcing',
     industry: 'Construction',
@@ -307,7 +307,7 @@ export const products: Product[] = [
     name: 'Hoop Iron',
     title: 'Hoop Iron',
     imageFolder: '/products/Reinforcing/hoop-iron',
-    image: '/products/Reinforcing/hoop-iron/hoop-iron_1.png',
+    image: '/products/Reinforcing/hoop-iron/meshco-hoop-iron_1.png',
     slug: 'hoop-iron',
     type: 'Reinforcing',
     industry: 'Construction',
@@ -318,7 +318,7 @@ export const products: Product[] = [
     name: 'Cavity Wall Ties',
     title: 'Cavity Wall Ties',
     imageFolder: '/products/Reinforcing/cavity-wall-ties',
-    image: '/products/Reinforcing/cavity-wall-ties/cavity-wall-ties_1.png',
+    image: '/products/Reinforcing/cavity-wall-ties/meshco-cavity-wall-ties_1.png',
     slug: 'cavity-wall-ties',
     type: 'Reinforcing',
     industry: 'Construction',
@@ -329,7 +329,7 @@ export const products: Product[] = [
     name: 'Reinforcing Steel',
     title: 'Reinforcing Steel Bars (Rebar)',
     imageFolder: '/products/Reinforcing/reinforcing-steel-bars',
-    image: '/products/Reinforcing/reinforcing-steel-bars/reinforcing-steel-bars_1.webp',
+    image: '/products/Reinforcing/reinforcing-steel-bars/meshco-reinforcing-steel-bars_1.webp',
     slug: 'reinforcing-steel',
     type: 'Reinforcing',
     industry: 'Construction',
@@ -340,7 +340,7 @@ export const products: Product[] = [
     name: 'Ceramic Door Anchors',
     title: 'Ceramic Door Anchors',
     imageFolder: '/products/Reinforcing/ceramic-door-anchors',
-    image: '/products/Reinforcing/ceramic-door-anchors/ceramic-door-anchors_1.webp',
+    image: '/products/Reinforcing/ceramic-door-anchors/meshco-ceramic-door-anchors_1.webp',
     slug: 'ceramic-door-anchors',
     type: 'Reinforcing',
     industry: 'Construction',
@@ -353,7 +353,7 @@ export const products: Product[] = [
     name: 'Welded Fence Mesh',
     title: 'Welded Fence Mesh',
     imageFolder: '/products/Fencing/welded-fence-mesh',
-    image: '/products/Fencing/welded-fence-mesh/welded-fence-mesh_1.webp',
+    image: '/products/Fencing/welded-fence-mesh/meshco-welded-fence-mesh_1.webp',
     slug: 'welded-fence-mesh',
     type: 'Fencing',
     industry: 'Property',
@@ -364,7 +364,7 @@ export const products: Product[] = [
     name: 'Welded Fence Mesh (PVC)',
     title: 'PVC-Coated Welded Fence Mesh',
     imageFolder: '/products/Fencing/welded-fence-mesh-pvc',
-    image: '/products/Fencing/welded-fence-mesh-pvc/welded-fence-mesh-pvc_1.webp',
+    image: '/products/Fencing/welded-fence-mesh-pvc/meshco-welded-fence-mesh-pvc_1.webp',
     slug: 'welded-fence-mesh-pvc',
     type: 'Fencing',
     industry: 'Property',
@@ -375,7 +375,7 @@ export const products: Product[] = [
     name: 'Diamond Mesh',
     title: 'Diamond Mesh Fencing',
     imageFolder: '/products/Fencing/diamond-mesh',
-    image: '/products/Fencing/diamond-mesh/diamond-mesh_1.png',
+    image: '/products/Fencing/diamond-mesh/meshco-diamond-mesh_1.png',
     slug: 'diamond-mesh',
     type: 'Fencing',
     industry: 'Property',
@@ -386,7 +386,7 @@ export const products: Product[] = [
     name: 'Barbed Wire',
     title: 'Barbed Wire',
     imageFolder: '/products/Fencing/barbed-wire',
-    image: '/products/Fencing/barbed-wire/barbed-wire_1.webp',
+    image: '/products/Fencing/barbed-wire/meshco-barbed-wire_1.webp',
     slug: 'barbed-wire',
     type: 'Fencing',
     industry: 'Property',
@@ -397,7 +397,7 @@ export const products: Product[] = [
     name: 'Razor Wire - Flatwrap',
     title: 'Razor Wire - Flatwrap',
     imageFolder: '/products/Fencing/razor-wire-flatwrap',
-    image: '/products/Fencing/razor-wire-flatwrap/razor-wire-flatwrap_1.png',
+    image: '/products/Fencing/razor-wire-flatwrap/meshco-razor-wire-flatwrap_1.png',
     slug: 'razor-wire-flatwrap',
     type: 'Fencing',
     industry: 'Property',
@@ -408,7 +408,7 @@ export const products: Product[] = [
     name: 'Razor Wire (BTC)',
     title: 'Razor Wire - Concertina (BTC)',
     imageFolder: '/products/Fencing/razor-wire-btc',
-    image: '/products/Fencing/razor-wire-btc/razor-wire-btc_1.webp',
+    image: '/products/Fencing/razor-wire-btc/meshco-razor-wire-btc_1.webp',
     slug: 'razor-wire-btc',
     type: 'Fencing',
     industry: 'Property',
@@ -419,7 +419,7 @@ export const products: Product[] = [
     name: 'Razor Wall',
     title: 'RazorWall',
     imageFolder: '/products/Fencing/razor-wall',
-    image: '/products/Fencing/razor-wall/razor-wall_1.webp',
+    image: '/products/Fencing/razor-wall/meshco-razor-wall_1.webp',
     slug: 'razorwall',
     type: 'Fencing',
     industry: 'Property',
@@ -430,7 +430,7 @@ export const products: Product[] = [
     name: 'Field & Game Fence',
     title: 'Field & Game Fence',
     imageFolder: '/products/Fencing/field-and-game-fence',
-    image: '/products/Fencing/field-and-game-fence/field-and-game-fence_1.png',
+    image: '/products/Fencing/field-and-game-fence/meshco-field-and-game-fence_1.png',
     slug: 'field-game-fence',
     type: 'Fencing',
     industry: 'Agricultural',
@@ -441,7 +441,7 @@ export const products: Product[] = [
     name: 'Hexagonal Wire Netting',
     title: 'Hexagonal Wire Netting',
     imageFolder: '/products/Fencing/hexagonal-wire-netting',
-    image: '/products/Fencing/hexagonal-wire-netting/hexagonal-wire-netting_1.png',
+    image: '/products/Fencing/hexagonal-wire-netting/meshco-hexagonal-wire-netting_1.png',
     slug: 'hexagonal-netting',
     type: 'Fencing',
     industry: 'Property',
@@ -452,7 +452,7 @@ export const products: Product[] = [
     name: 'Standards',
     title: 'Standards',
     imageFolder: '/products/Fencing/standards',
-    image: '/products/Fencing/standards/standards_1.webp',
+    image: '/products/Fencing/standards/meshco-standards_1.webp',
     slug: 'standards',
     type: 'Fencing',
     industry: 'Property',
@@ -476,7 +476,7 @@ export const products: Product[] = [
     name: 'Round Wire Nails',
     title: 'Round Wire Nails',
     imageFolder: '/products/Fasteners/round-wire-nails',
-    image: '/products/Fasteners/round-wire-nails/round-wire-nails_1.png',
+    image: '/products/Fasteners/round-wire-nails/meshco-round-wire-nails_1.png',
     slug: 'round-wire-nails',
     type: 'Fasteners',
     industry: 'Manufacturing',
@@ -487,7 +487,7 @@ export const products: Product[] = [
     name: 'Staples',
     title: 'Fencing Staples (Plain and Barbed)',
     imageFolder: '/products/Fasteners/fencing-staples',
-    image: '/products/Fasteners/fencing-staples/fencing-staples_1.png',
+    image: '/products/Fasteners/fencing-staples/meshco-fencing-staples_1.png',
     slug: 'staples',
     type: 'Fasteners',
     industry: 'Manufacturing',
@@ -498,7 +498,7 @@ export const products: Product[] = [
     name: 'Clout Nails',
     title: 'Clout Nails',
     imageFolder: '/products/Fasteners/clout-nails',
-    image: '/products/Fasteners/clout-nails/clout-nails_1.webp',
+    image: '/products/Fasteners/clout-nails/meshco-clout-nails_1.webp',
     slug: 'clout-nails',
     type: 'Fasteners',
     industry: 'Manufacturing',
@@ -509,7 +509,7 @@ export const products: Product[] = [
     name: 'Hog Rings',
     title: 'Hog Rings',
     imageFolder: '/products/Fasteners/hog-rings',
-    image: '/products/Fasteners/hog-rings/hog-rings_1.webp',
+    image: '/products/Fasteners/hog-rings/meshco-hog-rings_1.webp',
     slug: 'hog-rings',
     type: 'Fasteners',
     industry: 'Manufacturing',
@@ -520,7 +520,7 @@ export const products: Product[] = [
     name: 'Hog Ring Pliers',
     title: 'Hog Ring Pliers',
     imageFolder: '/products/Fasteners/hog-ring-pliers',
-    image: '/products/Fasteners/hog-ring-pliers/hog-ring-pliers_1.webp',
+    image: '/products/Fasteners/hog-ring-pliers/meshco-hog-ring-pliers_1.webp',
     slug: 'hog-ring-pliers',
     type: 'Fasteners',
     industry: 'Manufacturing',
@@ -531,7 +531,7 @@ export const products: Product[] = [
     name: 'Pliers',
     title: 'Pliers',
     imageFolder: '/products/Fasteners/pliers',
-    image: '/products/Fasteners/pliers/pliers_1.webp',
+    image: '/products/Fasteners/pliers/meshco-pliers_1.webp',
     slug: 'pliers',
     type: 'Fasteners',
     industry: 'Manufacturing',
@@ -542,7 +542,7 @@ export const products: Product[] = [
     name: 'Cutting Nippers',
     title: 'Cutting Nippers',
     imageFolder: '/products/Fasteners/cutting-nippers',
-    image: '/products/Fasteners/cutting-nippers/cutting-nippers_1.webp',
+    image: '/products/Fasteners/cutting-nippers/meshco-cutting-nippers_1.webp',
     slug: 'cutting-nippers',
     type: 'Fasteners',
     industry: 'Manufacturing',
@@ -555,7 +555,7 @@ export const products: Product[] = [
     name: 'Mining Support Mesh',
     title: 'Mining Support Mesh',
     imageFolder: '/products/Mining Support/mining-support-mesh',
-    image: '/products/Mining Support/mining-support-mesh/mining-support-mesh_1.webp',
+    image: '/products/Mining Support/mining-support-mesh/meshco-mining-support-mesh_1.webp',
     slug: 'mining-mesh',
     type: 'Mining Support',
     industry: 'Mining',
@@ -579,7 +579,7 @@ export const products: Product[] = [
     name: 'Precision Welded Mesh',
     title: 'Precision Welded Mesh',
     imageFolder: '/products/Utility/precision-welded-mesh',
-    image: '/products/Utility/precision-welded-mesh/precision-welded-mesh_1.png',
+    image: '/products/Utility/precision-welded-mesh/meshco-precision-welded-mesh_1.png',
     slug: 'precision-welded-mesh',
     type: 'Utility',
     industry: 'Construction',
@@ -590,7 +590,7 @@ export const products: Product[] = [
     name: 'Growing Stakes',
     title: 'Growing Stakes',
     imageFolder: '/products/Utility/growing-stakes',
-    image: '/products/Utility/growing-stakes/growing-stakes_1.webp',
+    image: '/products/Utility/growing-stakes/meshco-growing-stakes_1.webp',
     slug: 'growing-stakes',
     type: 'Utility',
     industry: 'Agricultural',
@@ -601,7 +601,7 @@ export const products: Product[] = [
     name: 'SpeciMesh Panels',
     title: 'SpeciMesh Panels',
     imageFolder: '/products/Utility/specimesh-panels',
-    image: '/products/Utility/specimesh-panels/specimesh-panels_1.png',
+    image: '/products/Utility/specimesh-panels/meshco-specimesh-panels_1.png',
     slug: 'specimesh-panels',
     type: 'Utility',
     industry: 'Construction',
@@ -749,7 +749,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "<b>Tough. Reliable. Purpose-Built.</b>\n\n\nMeshco's <b>Hard Drawn Wire</b> in Coils is trusted across South Africa for its uncompromising strength, uniformity, and durability. Manufactured from high-quality low-carbon steel, this wire undergoes a precision cold-drawing process that enhances tensile strength and dimensional accuracy—making it ideal for a wide range of structural and industrial applications.",
     layoutType: 'standard',
-    images: ['/products/Wire/hard-drawn-wire/hard-drawn-wire_1.webp'],
+    images: ['/products/Wire/hard-drawn-wire/meshco-hard-drawn-wire_1.webp'],
     specifications: [],
     applications: [
       'General construction reinforcement',
@@ -797,7 +797,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'advantages',
         label: 'Advantages',
-        image: '/products/Wire/hard-drawn-wire/advantages.png',
+        image: '/products/Wire/hard-drawn-wire/meshco-advantages.png',
         imageMaxWidth: '60%',
         content: [
           'Higher tensile strength - than annealed wire for improved rigidity and load-bearing',
@@ -832,8 +832,8 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Fully (Class A) and Lightly (Class C) Galvanised Wire Coils</b>\n\n\n<b>Strength in every wire</b>\n\n\nMeshco's <b>Galvanised Wire in Coils</b> are the gold standard for general-purpose wire across Southern Africa. Drawn and galvanised in-house with tight process control, this wire delivers consistent quality, excellent workability, and superior corrosion resistance. Conforming to SANS 10244-2:2010 standards, it's trusted for everything from high strain wire supporting our locally grown produce to underground mining support mesh.",
     layoutType: 'standard',
     images: [
-      '/products/Wire/galvanised-wire/galvanised-wire_1.webp',
-      '/products/Wire/galvanised-wire/galvanised-wire_2.webp',
+      '/products/Wire/galvanised-wire/meshco-galvanised-wire_1.webp',
+      '/products/Wire/galvanised-wire/meshco-galvanised-wire_2.webp',
     ],
     specifications: [],
     applications: [
@@ -907,10 +907,10 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Tension that holds. Quality that lasts.</b>\n\n\nMeshco's <b>High Strain Wire</b> is engineered for long-distance fencing applications where superior tension, minimal sag, and long-term durability are non-negotiable. Manufactured using high-tensile wire and galvanised for corrosion resistance, this product is the go-to solution for farmers, fencing contractors, and security professionals across Southern Africa.",
     layoutType: 'standard',
     images: [
-      '/products/Wire/high-strain-wire/high-strain-wire_1.webp',
-      '/products/Wire/high-strain-wire/high-strain-wire_2.webp',
-      '/products/Wire/high-strain-wire/high-strain-wire_3.webp',
-      '/products/Wire/high-strain-wire/high-strain-wire_4.webp',
+      '/products/Wire/high-strain-wire/meshco-high-strain-wire_1.webp',
+      '/products/Wire/high-strain-wire/meshco-high-strain-wire_2.webp',
+      '/products/Wire/high-strain-wire/meshco-high-strain-wire_3.webp',
+      '/products/Wire/high-strain-wire/meshco-high-strain-wire_4.webp',
     ],
     specifications: [],
     applications: [
@@ -988,10 +988,10 @@ const productDetailData: Record<string, ProductDetail> = {
       "Meshco's easy to work with Black Annealed Wire is a versatile, soft, and flexible low-carbon steel wire, heat-treated to enhance ductility and strength, whilst making the wire less brittle. Its pliability and durability make it ideal for a wide range of applications, including construction, agriculture, packaging, and general-purpose binding. One of the most common uses in construction is to fix steel reinforcement and mesh to prevent movemenet while concrete is poured, as well as to attached concrete and wire spacers. The annealing process imparts a black oxide finish, providing mild corrosion resistance and a smooth surface for easy handling.​\n\nBaling wire is a type of wire used primarily to bind, secure, or package materials.\n\nBaling wire is often used in balers, which are machines that compress large amounts of material, such as hay, cardboard, paper, and scrap metal, into compact bales.",
     layoutType: 'standard',
     images: [
-      '/products/Wire/black-annealed-wire/black-annealed-wire_1.png',
-      '/products/Wire/black-annealed-wire/black-annealed-wire_2.webp',
-      '/products/Wire/black-annealed-wire/black-annealed-wire_3.webp',
-      '/products/Wire/black-annealed-wire/black-annealed-wire_4.webp',
+      '/products/Wire/black-annealed-wire/meshco-black-annealed-wire_1.png',
+      '/products/Wire/black-annealed-wire/meshco-black-annealed-wire_2.webp',
+      '/products/Wire/black-annealed-wire/meshco-black-annealed-wire_3.webp',
+      '/products/Wire/black-annealed-wire/meshco-black-annealed-wire_4.webp',
     ],
     specifications: [],
     applications: [
@@ -1041,7 +1041,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'guide-for-fixing-on-site',
         label: 'Guide for Fixing on Site',
-        image: '/products/Wire/black-annealed-wire/guide.png',
+        image: '/products/Wire/black-annealed-wire/meshco-guide.png',
         content: [
           'The quantity of black annealed tying wire required to secure reinforcement bars (rebar) on a construction site in South Africa depends on the diameter of the rebar being tied. The required amount can vary based on tying method, bar spacing, and site specifics. A general guideline is:',
           'Most projects:',
@@ -1067,9 +1067,9 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Versatile, Durable and Weather-Resistant Fencing Wire</b>\n\n\nMeshco's <b>PVC Coated Wire</b> offers the perfect combination of strength, flexibility, and corrosion resistance. Manufactured by applying a tough, UV-resistant PVC coating over galvanised steel wire, it delivers long-lasting performance across a wide range of fencing and general-purpose applications. Standard colours are black and green.",
     layoutType: 'standard',
     images: [
-      '/products/Wire/pvc-coated-wire/pvc-coated-wire_1.png',
-      '/products/Wire/pvc-coated-wire/pvc-coated-wire_2.webp',
-      '/products/Wire/pvc-coated-wire/pvc-coated-wire_3.webp',
+      '/products/Wire/pvc-coated-wire/meshco-pvc-coated-wire_1.png',
+      '/products/Wire/pvc-coated-wire/meshco-pvc-coated-wire_2.webp',
+      '/products/Wire/pvc-coated-wire/meshco-pvc-coated-wire_3.webp',
     ],
     specifications: [
       {
@@ -1147,10 +1147,10 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Precision Cut. Purpose Ready.</b>\n\n\nAt Meshco, we understand that every construction or manufacturing project starts with the basics—but that doesn't mean the basics should be average. Our straight and cut wire is manufactured with precision and durability in mind, offering consistent quality in every length.\n\nAVAILABLE IN:\n\n<b>Hard Drawn Wire</b> – for strength and rigidity\n\n<b>Galvanised Wire</b> – for corrosion resistance and longevity\n\n<b>Black Annealed Wire</b> –  for flexibility, ease of handling, and tying applications",
     layoutType: 'standard',
     images: [
-      '/products/Wire/straight-and-cut-wire/straight-and-cut-wire_1.png',
-      '/products/Wire/straight-and-cut-wire/straight-and-cut-wire_2.webp',
-      '/products/Wire/straight-and-cut-wire/straight-and-cut-wire_3.webp',
-      '/products/Wire/straight-and-cut-wire/straight-and-cut-wire_4.webp',
+      '/products/Wire/straight-and-cut-wire/meshco-straight-and-cut-wire_1.png',
+      '/products/Wire/straight-and-cut-wire/meshco-straight-and-cut-wire_2.webp',
+      '/products/Wire/straight-and-cut-wire/meshco-straight-and-cut-wire_3.webp',
+      '/products/Wire/straight-and-cut-wire/meshco-straight-and-cut-wire_4.webp',
     ],
     specifications: [],
     applications: [
@@ -1196,7 +1196,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'quality-assurance',
         label: 'Quality Assurance',
-        image: '/products/Wire/straight-and-cut-wire/quality.png',
+        image: '/products/Wire/straight-and-cut-wire/meshco-quality.png',
         imageMaxWidth: '80%',
         content: [
           'Our straight and cut wire is:',
@@ -1220,7 +1220,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "<b>Invisible strength. Essential support.</b>\n\n\nMeshco's <b>Slab Wire</b> is straightened and cut black or galvanised wire used to reinforce precast concrete walling, including vibracrete slabs. Manufactured with precision and supplied in consistent lengths, this wire provides structural integrity and crack resistance during and after the concrete curing process.\n\nTrusted by leading precast manufacturers across South Africa, Meshco's Slab Wire is made to spec, delivered on time, and backed by 60+ years of wire expertise.",
     layoutType: 'standard',
-    images: ['/products/Wire/slab-wire/slab-wire_1.webp'],
+    images: ['/products/Wire/slab-wire/meshco-slab-wire_1.webp'],
     specifications: [
       {
         label: 'AVAILABLE SIZES',
@@ -1495,14 +1495,14 @@ const productDetailData: Record<string, ProductDetail> = {
       '<strong>High security, anti-climb and anti-cut</strong>\n\n\nDesigned for South African security requirements, the WireWall 3510 panel offers small openings, making it anti-climb and anti-cut. Trusted to protect police stations, schools, corporate head offices, solar plants, golf courses and farms.',
     layoutType: 'wirewall',
     images: [
-      '/products/WireWall/3510/3510_1.png',
-      '/products/WireWall/3510/3510_4.png',
-      '/products/WireWall/3510/3510_5.png',
-      '/products/WireWall/3510/3510_6.png',
-      '/products/WireWall/3510/3510_7.png',
-      '/products/WireWall/3510/3510_8.png',
-      '/products/WireWall/3510/3510_9.png',
-      '/products/WireWall/3510/3510_10.png',
+      '/products/WireWall/3510/meshco-3510_1.png',
+      '/products/WireWall/3510/meshco-3510_4.png',
+      '/products/WireWall/3510/meshco-3510_5.png',
+      '/products/WireWall/3510/meshco-3510_6.png',
+      '/products/WireWall/3510/meshco-3510_7.png',
+      '/products/WireWall/3510/meshco-3510_8.png',
+      '/products/WireWall/3510/meshco-3510_9.png',
+      '/products/WireWall/3510/meshco-3510_10.png',
     ],
     specifications: [],
     wireWallSpecifications: {
@@ -1563,16 +1563,16 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/3510/3510_1.png',
+          '/products/WireWall/3510/meshco-3510_1.png',
           // '/products/WireWall/3510/3510_2.webp',
           // '/products/WireWall/3510/3510_3.webp',
-          '/products/WireWall/3510/3510_4.png',
-          '/products/WireWall/3510/3510_5.png',
-          '/products/WireWall/3510/3510_6.png',
-          '/products/WireWall/3510/3510_7.png',
-          '/products/WireWall/3510/3510_8.png',
-          '/products/WireWall/3510/3510_9.png',
-          '/products/WireWall/3510/3510_10.png',
+          '/products/WireWall/3510/meshco-3510_4.png',
+          '/products/WireWall/3510/meshco-3510_5.png',
+          '/products/WireWall/3510/meshco-3510_6.png',
+          '/products/WireWall/3510/meshco-3510_7.png',
+          '/products/WireWall/3510/meshco-3510_8.png',
+          '/products/WireWall/3510/meshco-3510_9.png',
+          '/products/WireWall/3510/meshco-3510_10.png',
         ],
       },
     ],
@@ -1589,10 +1589,10 @@ const productDetailData: Record<string, ProductDetail> = {
       '<strong>Medium security, high-visibility</strong>\n\n\nDesigned for South African security requirements, the WireWall 3110 panel offers larger openings than the 3510 panel, with the same anti-cut strength and rigidity. Classified as medium security, it can be upgraded to high security with electrification or razor wire topping. Trusted to protect residential buildings, parks, golf courses, corporate offices and farms.',
     layoutType: 'wirewall',
     images: [
-      '/products/WireWall/3110/3110_1.png',
-      '/products/WireWall/3110/3110_4.png',
-      '/products/WireWall/3110/3110_5.png',
-      '/products/WireWall/3110/3110_6.png',
+      '/products/WireWall/3110/meshco-3110_1.png',
+      '/products/WireWall/3110/meshco-3110_4.png',
+      '/products/WireWall/3110/meshco-3110_5.png',
+      '/products/WireWall/3110/meshco-3110_6.png',
     ],
     specifications: [],
     wireWallSpecifications: {
@@ -1654,12 +1654,12 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/3110/3110_1.png',
+          '/products/WireWall/3110/meshco-3110_1.png',
           // '/products/WireWall/3110/3110_2.webp',
           // '/products/WireWall/3110/3110_3.webp',
-          '/products/WireWall/3110/3110_4.png',
-          '/products/WireWall/3110/3110_5.png',
-          '/products/WireWall/3110/3110_6.png',
+          '/products/WireWall/3110/meshco-3110_4.png',
+          '/products/WireWall/3110/meshco-3110_5.png',
+          '/products/WireWall/3110/meshco-3110_6.png',
         ],
       },
     ],
@@ -1675,7 +1675,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       '<strong>Budget friendly security option, high-visibility</strong>\n\n\nThe WireWall 3210 panel offers larger (75mm x 50mm) openings than the 3110 panel, with a similar look and feel. This is a budget friendly option, ideal for demarcation of boundaries, where restricting access to a property is important.',
     layoutType: 'wirewall',
-    images: ['/products/WireWall/3210/3210_1.png', '/products/WireWall/3210/3210_4.png'],
+    images: ['/products/WireWall/3210/meshco-3210_1.png', '/products/WireWall/3210/meshco-3210_4.png'],
     specifications: [],
     wireWallSpecifications: {
       height: ['1200', '1800', '2100', '2400'],
@@ -1728,10 +1728,10 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/3210/3210_1.png',
+          '/products/WireWall/3210/meshco-3210_1.png',
           // '/products/WireWall/3210/3210_2.webp',
           // '/products/WireWall/3210/3210_3.webp',
-          '/products/WireWall/3210/3210_4.png',
+          '/products/WireWall/3210/meshco-3210_4.png',
         ],
       },
     ],
@@ -1748,11 +1748,11 @@ const productDetailData: Record<string, ProductDetail> = {
       '<strong>Low security, high-visibility</strong>\n\n\nAn older design, still popular throughout the country. The panel sports 50 by 100mm gaps with 4mm diameter for both the vertical and horizontal wires. Classified as low security, the security can be upgraded with electrification or razor wire topping. Chosen for boundary demarcation in residential and lower cost commercial applications.',
     layoutType: 'wirewall',
     images: [
-      '/products/WireWall/af-100/af-100_1.png',
-      '/products/WireWall/af-100/af-100_2.png',
-      '/products/WireWall/af-100/af-100_3.png',
-      '/products/WireWall/af-100/af-100_4.webp',
-      '/products/WireWall/af-100/af-100_5.webp',
+      '/products/WireWall/af-100/meshco-af-100_1.png',
+      '/products/WireWall/af-100/meshco-af-100_2.png',
+      '/products/WireWall/af-100/meshco-af-100_3.png',
+      '/products/WireWall/af-100/meshco-af-100_4.webp',
+      '/products/WireWall/af-100/meshco-af-100_5.webp',
     ],
     specifications: [],
     wireWallSpecifications: {
@@ -1813,9 +1813,9 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          // '/products/WireWall/af-100/af-100_1.png',
-          '/products/WireWall/af-100/af-100_2.png',
-          '/products/WireWall/af-100/af-100_3.png',
+          // '/products/WireWall/af-100/meshco-af-100_1.png',
+          '/products/WireWall/af-100/meshco-af-100_2.png',
+          '/products/WireWall/af-100/meshco-af-100_3.png',
         ],
       },
     ],
@@ -1888,10 +1888,10 @@ const productDetailData: Record<string, ProductDetail> = {
       "Meshco's Spike Strips are designed for maximum deterrence, to enhance perimeter protection by preventing climbing or tampering on WireWall and other fencing systems. Manufactured from heavy-duty steel and engineered for durability, our spike strips provide a sharp, visible, and highly effective deterrent to intrusion.\n\nAvailable in four profiles — Standard Spike, Heavy Spike, Raptor Tooth, and Assegai — Meshco spike strips deliver a layered security solution for any site, from commercial to high-security infrastructure.",
     layoutType: 'wirewall',
     images: [
-      '/products/WireWall/spikes/spikes_1.webp',
-      '/products/WireWall/spikes/spikes_2.webp',
-      '/products/WireWall/spikes/spikes_3.webp',
-      '/products/WireWall/spikes/spikes_4.webp',
+      '/products/WireWall/spikes/meshco-spikes_1.webp',
+      '/products/WireWall/spikes/meshco-spikes_2.webp',
+      '/products/WireWall/spikes/meshco-spikes_3.webp',
+      '/products/WireWall/spikes/meshco-spikes_4.webp',
     ],
     specifications: [],
     wireWallSpecifications: undefined,
@@ -2006,8 +2006,8 @@ const productDetailData: Record<string, ProductDetail> = {
       "Brickforce is a welded steel mesh used as horizontal reinforcement in masonry construction. It is laid in the mortar joints of brick or block walls to improve stability and reduce cracking.\n\nMeshco's Brickforce is manufactured from high-strength galvanised steel wire that is welded into a ladder-like mesh.",
     layoutType: 'standard',
     images: [
-      '/products/Reinforcing/brick-force/brick-force_1.png',
-      '/products/Reinforcing/brick-force/brick-force_2.webp',
+      '/products/Reinforcing/brick-force/meshco-brick-force_1.png',
+      '/products/Reinforcing/brick-force/meshco-brick-force_2.webp',
     ],
     specifications: [
       { label: 'Standard', labelBold: true, value: 'SANS 10400-A:2022', format: 'inline' },
@@ -2081,9 +2081,9 @@ const productDetailData: Record<string, ProductDetail> = {
       "Strengthen Your Structures with Meshco's Durable Reinforcing Mesh\n\nMeshco's Reinforcing Mesh, also known as Welded Mesh Reinforcement, Fabric Mesh and Ref Mesh, is engineered to enhance the tensile strength of concrete structures, mitigating the risk of cracking and structural failures. Ideal for a variety of applications, our mesh ensures durability and longevity in construction projects.",
     layoutType: 'standard',
     images: [
-      '/products/Reinforcing/reinforcing-mesh/reinforcing-mesh_1.webp',
-      '/products/Reinforcing/reinforcing-mesh/reinforcing-mesh_2.webp',
-      '/products/Reinforcing/reinforcing-mesh/reinforcing-mesh_3.webp',
+      '/products/Reinforcing/reinforcing-mesh/meshco-reinforcing-mesh_1.webp',
+      '/products/Reinforcing/reinforcing-mesh/meshco-reinforcing-mesh_2.webp',
+      '/products/Reinforcing/reinforcing-mesh/meshco-reinforcing-mesh_3.webp',
     ],
     specifications: [
       {
@@ -2132,8 +2132,8 @@ const productDetailData: Record<string, ProductDetail> = {
       'Meshco supplies high-quality Hoop Iron, a versatile and essential building material used for bracing, strapping, and reinforcing masonry and timber structures.\n\nThe material is galvanised to prevent rusting and corrosion, increasing its longevity.',
     layoutType: 'standard',
     images: [
-      '/products/Reinforcing/hoop-iron/hoop-iron_1.png',
-      '/products/Reinforcing/hoop-iron/hoop-iron_2.webp',
+      '/products/Reinforcing/hoop-iron/meshco-hoop-iron_1.png',
+      '/products/Reinforcing/hoop-iron/meshco-hoop-iron_2.webp',
     ],
     specifications: [],
     applications: [
@@ -2180,11 +2180,11 @@ const productDetailData: Record<string, ProductDetail> = {
       'Meshco manufactures a complete range of galvanised cavity wall ties, designed to securely connect brick or block leaves in cavity wall construction. Each type provides different structural and thermal performance to suit various building requirements.',
     layoutType: 'standard',
     images: [
-      '/products/Reinforcing/cavity-wall-ties/cavity-wall-ties_1.png',
-      '/products/Reinforcing/cavity-wall-ties/cavity-wall-ties_2.webp',
-      '/products/Reinforcing/cavity-wall-ties/cavity-wall-ties_3.webp',
-      '/products/Reinforcing/cavity-wall-ties/cavity-wall-ties_4.webp',
-      '/products/Reinforcing/cavity-wall-ties/cavity-wall-ties_5.webp',
+      '/products/Reinforcing/cavity-wall-ties/meshco-cavity-wall-ties_1.png',
+      '/products/Reinforcing/cavity-wall-ties/meshco-cavity-wall-ties_2.webp',
+      '/products/Reinforcing/cavity-wall-ties/meshco-cavity-wall-ties_3.webp',
+      '/products/Reinforcing/cavity-wall-ties/meshco-cavity-wall-ties_4.webp',
+      '/products/Reinforcing/cavity-wall-ties/meshco-cavity-wall-ties_5.webp',
     ],
     specifications: [
       {
@@ -2294,9 +2294,9 @@ const productDetailData: Record<string, ProductDetail> = {
       "Meshco manufactures a wide range of high-quality Reinforcing Steel Bar (Rebar), designed to add strength, durability, and resilience to concrete structures. Because concrete has low tensile strength, it relies on rebar as a robust structural component to prevent cracking and structural failure.\n\nWhether you're reinforcing residential slabs or building large-scale infrastructure, Meshco's rebar delivers the structural performance you can trust.",
     layoutType: 'standard',
     images: [
-      '/products/Reinforcing/reinforcing-steel-bars/reinforcing-steel-bars_1.webp',
-      '/products/Reinforcing/reinforcing-steel-bars/reinforcing-steel-bars_2.webp',
-      '/products/Reinforcing/reinforcing-steel-bars/reinforcing-steel-bars_3.webp',
+      '/products/Reinforcing/reinforcing-steel-bars/meshco-reinforcing-steel-bars_1.webp',
+      '/products/Reinforcing/reinforcing-steel-bars/meshco-reinforcing-steel-bars_2.webp',
+      '/products/Reinforcing/reinforcing-steel-bars/meshco-reinforcing-steel-bars_3.webp',
     ],
     specifications: [
       {
@@ -2360,7 +2360,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       'Our Ceramic Door Anchors are engineered for maximum strength and reliability, ensuring that your doors are securely fastened and able to withstand the elements. Made from high-quality ceramic materials, these anchors provide exceptional resistance to wear, corrosion, and environmental stresses.',
     layoutType: 'standard',
-    images: ['/products/Reinforcing/ceramic-door-anchors/ceramic-door-anchors_1.webp'],
+    images: ['/products/Reinforcing/ceramic-door-anchors/meshco-ceramic-door-anchors_1.webp'],
     specifications: [],
     applications: [
       'Heavy-duty door installations',
@@ -2403,8 +2403,8 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Reliable, versatile, and built to last.</b>\n\n\nMeshco's <b>Galvanised Welded Fencing Mesh</b> is a strong, cost-effective solution for perimeter protection, containment, and barrier control. Made from precision-welded steel wire and coated with a durable zinc layer, this mesh provides long-lasting resistance to corrosion while maintaining excellent rigidity and strength.\n\nFrom agricultural fencing to commercial enclosures and residential boundaries, our welded mesh panels and rolls offer security without compromising visibility.",
     layoutType: 'simple',
     images: [
-      '/products/Fencing/welded-fence-mesh/welded-fence-mesh_1.webp',
-      '/products/Fencing/welded-fence-mesh/welded-fence-mesh_2.webp',
+      '/products/Fencing/welded-fence-mesh/meshco-welded-fence-mesh_1.webp',
+      '/products/Fencing/welded-fence-mesh/meshco-welded-fence-mesh_2.webp',
     ],
     specifications: [],
     applications: [
@@ -2473,7 +2473,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       '<b>Strong, durable, and low-maintenance fencing</b>\n\n\nThe PVC-Coated Welded Fence Mesh is a versatile fencing solution designed for residential, commercial, and light agricultural applications. Manufactured from high-quality galvanised steel wire that is welded at 50mm spacings, the mesh is then coated in UV-resistant PVC to provide dual protection against rust and corrosion.\n\nThe smooth PVC finish not only extends the lifespan of the mesh but also offers an attractive appearance, making it ideal for gardens and light boundary fencing.',
     layoutType: 'simple',
-    images: ['/products/Fencing/welded-fence-mesh-pvc/welded-fence-mesh-pvc_1.webp'],
+    images: ['/products/Fencing/welded-fence-mesh-pvc/meshco-welded-fence-mesh-pvc_1.webp'],
     specifications: [],
     applications: [
       'Residential estates',
@@ -2516,12 +2516,12 @@ const productDetailData: Record<string, ProductDetail> = {
       "Meshco's Diamond Mesh (also known as Chainlink or Tennis Court Mesh) is a versatile and durable fencing solution used across residential, agricultural, commercial, and recreational applications.\n\nManufactured by weaving high-quality steel wire into an interlocking diamond pattern, Diamond Mesh provides excellent strength, flexibility, and security while remaining cost-effectiveness and ease of installation.\n\nAvailable in lightly and fully galvanised as well as pvc coated galvanised wire.\n\n<b>Standard:</b> SANS 1373:2018 and SANS 675:2011",
     layoutType: 'simple',
     images: [
-      '/products/Fencing/diamond-mesh/diamond-mesh_1.png',
-      '/products/Fencing/diamond-mesh/diamond-mesh_2.webp',
-      '/products/Fencing/diamond-mesh/diamond-mesh_3.webp',
-      '/products/Fencing/diamond-mesh/diamond-mesh_4.webp',
-      '/products/Fencing/diamond-mesh/diamond-mesh_5.webp',
-      '/products/Fencing/diamond-mesh/diamond-mesh_6.webp',
+      '/products/Fencing/diamond-mesh/meshco-diamond-mesh_1.png',
+      '/products/Fencing/diamond-mesh/meshco-diamond-mesh_2.webp',
+      '/products/Fencing/diamond-mesh/meshco-diamond-mesh_3.webp',
+      '/products/Fencing/diamond-mesh/meshco-diamond-mesh_4.webp',
+      '/products/Fencing/diamond-mesh/meshco-diamond-mesh_5.webp',
+      '/products/Fencing/diamond-mesh/meshco-diamond-mesh_6.webp',
     ],
     specifications: [],
     applications: [
@@ -2599,9 +2599,9 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Classic perimeter security. Trusted protection.</b>\n\n\nMeshco's <b>Barbed Wire</b> is manufactured from high-strength steel wire, designed for reliable perimeter security and property protection. With sharp barbs twisted around the line wires at regular intervals, barbed wire provides an effective deterrent to intruders while remaining a cost-effective fencing solution.\n\nBarbed wire can be installed as a standalone fence or in combination with other fencing systems (such as diamond mesh, field fence, or WireWall) to increase height and security.",
     layoutType: 'simple',
     images: [
-      '/products/Fencing/barbed-wire/barbed-wire_1.webp',
-      '/products/Fencing/barbed-wire/barbed-wire_2.webp',
-      '/products/Fencing/barbed-wire/barbed-wire_3.webp',
+      '/products/Fencing/barbed-wire/meshco-barbed-wire_1.webp',
+      '/products/Fencing/barbed-wire/meshco-barbed-wire_2.webp',
+      '/products/Fencing/barbed-wire/meshco-barbed-wire_3.webp',
     ],
     specifications: [],
     applications: [
@@ -2671,8 +2671,8 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>High-security perimeter protection in a compact, low-profile design.</b>\n\n\n<b>Meshco's Flat Wrap Razor Wire</b> is the ideal deterrent where space is limited but uncompromising security is essential. Designed to lay flat against and above fences or walls, it delivers a neat, discreet, and highly effective barrier that's difficult to climb, cut, or bypass.\n\nWhether used alone or as an upgrade to existing security fencing, our flat wrap design offers the same intimidating appearance and defensive strength of traditional concertina razor wire—without the excessive bulk.",
     layoutType: 'simple',
     images: [
-      '/products/Fencing/razor-wire-flatwrap/razor-wire-flatwrap_1.png',
-      '/products/Fencing/razor-wire-flatwrap/razor-wire-flatwrap_2.webp',
+      '/products/Fencing/razor-wire-flatwrap/meshco-razor-wire-flatwrap_1.png',
+      '/products/Fencing/razor-wire-flatwrap/meshco-razor-wire-flatwrap_2.webp',
     ],
     specifications: [
       {
@@ -2748,8 +2748,8 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Maximum deterrence. Maximum protection.</b>\n\n\nMeshco's <b>Concertina Razor Wire</b>, also known as <b>BTC (Barbed Tape Concertina)</b>, is engineered for the highest levels of perimeter security. Designed to expand into large, sharp coils with strong spring-back action, this type of razor wire forms an unbreachable barrier that is both physically dangerous and psychologically intimidating.\n\nWhether protecting high-risk infrastructure or securing remote boundaries, our concertina coils offer a proven, cost-effective solution trusted across defence, correctional, commercial and infrastructure sites.",
     layoutType: 'simple',
     images: [
-      '/products/Fencing/razor-wire-btc/razor-wire-btc_1.webp',
-      '/products/Fencing/razor-wire-btc/razor-wire-btc_2.webp',
+      '/products/Fencing/razor-wire-btc/meshco-razor-wire-btc_1.webp',
+      '/products/Fencing/razor-wire-btc/meshco-razor-wire-btc_2.webp',
     ],
     specifications: [
       {
@@ -2829,8 +2829,8 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>When you need security with teeth.</b>\n\n\n<b>Maximum security. Minimal compromise.</b>\n\n\nMeshco's <b>RazorWall</b>, also known as <b>Razor Mesh</b>, delivers mean security—no-nonsense perimeter protection designed to send a clear message: keep out. This aggressive barrier combines the penetration resistance of razor wire with the rigidity of welded mesh, making it one of the toughest and most intimidating fencing solutions on the market.\n\nWith its diamond mesh pattern and welded intersection points, every strand is armed with razor-sharp barbs that are virtually impossible to climb, cut, or bypass.",
     layoutType: 'simple',
     images: [
-      '/products/Fencing/razor-wall/razor-wall_1.webp',
-      '/products/Fencing/razor-wall/razor-wall_2.webp',
+      '/products/Fencing/razor-wall/meshco-razor-wall_1.webp',
+      '/products/Fencing/razor-wall/meshco-razor-wall_2.webp',
     ],
     specifications: [
       {
@@ -2930,9 +2930,9 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Field Fence / Game Fence (used where Bonnox or Veldspan-type fences are specified)</b>\n\n\n<b>Tough. Flexible. Made for Africa.</b>\n\n\nMeshco's <b>Field Fence</b> is a high-tensile, wire-knotted fencing solution engineered for agricultural and wildlife control. Designed to withstand the movement and pressure of animals while maintaining structure over long distances, Field Fence is ideal for farms, game reserves, and rural boundary applications.\n\nIts graduated aperture design allows for versatility across livestock types, while the flexible knot system absorbs impact and resists sagging—even across uneven terrain.",
     layoutType: 'simple',
     images: [
-      '/products/Fencing/field-and-game-fence/field-and-game-fence_1.png',
-      '/products/Fencing/field-and-game-fence/field-and-game-fence_2.webp',
-      '/products/Fencing/field-and-game-fence/field-and-game-fence_3.webp',
+      '/products/Fencing/field-and-game-fence/meshco-field-and-game-fence_1.png',
+      '/products/Fencing/field-and-game-fence/meshco-field-and-game-fence_2.webp',
+      '/products/Fencing/field-and-game-fence/meshco-field-and-game-fence_3.webp',
     ],
     specifications: [],
     applications: [
@@ -3004,8 +3004,8 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Flexible, multipurpose, and built to last.</b>\n\n\nMeshco's <b>Hexagonal Wire Netting</b> is a lightweight yet durable mesh made from galvanised wire woven into a continuous hexagonal pattern. Its flexibility, ease of use, and wide range of aperture sizes make it ideal for agricultural, industrial, and domestic applications — from poultry enclosures to erosion control and masonry reinforcement.\n\nWhether you're building a chicken coop, lining a fence, or reinforcing plaster, Meshco has the right size and strength netting to suit your project.",
     layoutType: 'simple',
     images: [
-      '/products/Fencing/hexagonal-wire-netting/hexagonal-wire-netting_1.png',
-      '/products/Fencing/hexagonal-wire-netting/hexagonal-wire-netting_2.webp',
+      '/products/Fencing/hexagonal-wire-netting/meshco-hexagonal-wire-netting_1.png',
+      '/products/Fencing/hexagonal-wire-netting/meshco-hexagonal-wire-netting_2.webp',
     ],
     specifications: [],
     applications: [
@@ -3078,8 +3078,8 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Dependable Support for Stronger Fences</b>\n\n\nSteel Fencing Y-Standards, also known as Y-posts or Y-sections, are the backbone of wire fence installations. Manufactured from durable steel and engineered for strength, their distinctive Y-shape offers outstanding rigidity and durability, making them ideal for use in demanding environments. Whether securing game farms, agricultural boundaries, or critical infrastructure, Meshco's Y-Sections provide dependable support where it matters most.",
     layoutType: 'simple',
     images: [
-      '/products/Fencing/standards/standards_1.webp',
-      '/products/Fencing/standards/standards_2.webp',
+      '/products/Fencing/standards/meshco-standards_1.webp',
+      '/products/Fencing/standards/meshco-standards_2.webp',
     ],
     specifications: [],
     applications: [
@@ -3208,8 +3208,8 @@ const productDetailData: Record<string, ProductDetail> = {
       'Meshco supplies a wide range of Round Wire Nails, trusted for their strength, durability, and versatility across construction and general-purpose applications.\n\nManufactured from high-quality steel and available in a variety of sizes, our nails are the reliable choice for fastening wood, securing formwork, and general building tasks.\n\nAvailable in convenient <b>packets, boxes, and buckets</b> — Meshco makes it easy to choose the right quantity for your project needs.',
     layoutType: 'standard',
     images: [
-      '/products/Fasteners/round-wire-nails/round-wire-nails_1.png',
-      '/products/Fasteners/round-wire-nails/round-wire-nails_2.webp',
+      '/products/Fasteners/round-wire-nails/meshco-round-wire-nails_1.png',
+      '/products/Fasteners/round-wire-nails/meshco-round-wire-nails_2.webp',
     ],
     specifications: [
       {
@@ -3312,9 +3312,9 @@ const productDetailData: Record<string, ProductDetail> = {
       "Meshco's <b>Plain</b> and <b>Barbed Galvanised Fencing Staples</b> (also referred to as <b>U Nails</b>) are designed to provide a strong, reliable fastening solution for securing barbed wire, netting and other wire and fencing products to wooden poles. Made from high-quality steel, these staples are built to withstand the toughest conditions, ensuring your fence stays intact and secure for years to come.",
     layoutType: 'standard',
     images: [
-      '/products/Fasteners/fencing-staples/fencing-staples_1.png',
-      '/products/Fasteners/fencing-staples/fencing-staples_2.webp',
-      '/products/Fasteners/fencing-staples/fencing-staples_3.webp',
+      '/products/Fasteners/fencing-staples/meshco-fencing-staples_1.png',
+      '/products/Fasteners/fencing-staples/meshco-fencing-staples_2.webp',
+      '/products/Fasteners/fencing-staples/meshco-fencing-staples_3.webp',
     ],
     specifications: [
       {
@@ -3368,7 +3368,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "Meshco's galvanised <b>Clout Nails</b> are designed to provide a strong, reliable fastening solution for a variety of applications. Whether you're working with roofing, cladding, or timber, these nails ensure a secure, long-lasting bond that withstands the elements. Made from high-quality steel and galvanised for corrosion resistance, our clout nails are the perfect choice for both professional contractors and DIY enthusiasts.",
     layoutType: 'standard',
-    images: ['/products/Fasteners/clout-nails/clout-nails_1.webp'],
+    images: ['/products/Fasteners/clout-nails/meshco-clout-nails_1.webp'],
     specifications: [
       {
         label: 'Available Sizes',
@@ -3427,8 +3427,8 @@ const productDetailData: Record<string, ProductDetail> = {
       '<b>EDMA Hog Rings</b> are designed to provide a quick, strong, and secure way to fasten wire to posts, mesh, and other wire products. Ideal for agricultural, commercial, and residential fencing, these high-quality hog rings are perfect for securing wire fences, wire mesh, and other fencing materials, ensuring a long-lasting, tight connection.',
     layoutType: 'standard',
     images: [
-      '/products/Fasteners/hog-rings/hog-rings_1.webp',
-      '/products/Fasteners/hog-rings/hog-rings_2.webp',
+      '/products/Fasteners/hog-rings/meshco-hog-rings_1.webp',
+      '/products/Fasteners/hog-rings/meshco-hog-rings_2.webp',
     ],
     specifications: [
       {
@@ -3485,8 +3485,8 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Essential Tool for Quick and Secure Hog Ring Installation</b>\n\n\nThe <b>EDMA Hog Ring Pliers</b> are the professional's choice for installing fencing hog rings quickly, efficiently, and securely. Specially designed for use with EDMA staples (hog rings), these pliers make it easy to fasten fencing wire, mesh, and netting to poles or other wire structures on-site.",
     layoutType: 'standard',
     images: [
-      '/products/Fasteners/hog-ring-pliers/hog-ring-pliers_1.webp',
-      '/products/Fasteners/hog-ring-pliers/hog-ring-pliers_2.webp',
+      '/products/Fasteners/hog-ring-pliers/meshco-hog-ring-pliers_1.webp',
+      '/products/Fasteners/hog-ring-pliers/meshco-hog-ring-pliers_2.webp',
     ],
     specifications: [
       {
@@ -3556,7 +3556,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "<b>Essential Tool for Quick and Secure Hog Ring Installation</b>\n\n\nThe <b>EDMA Pliers</b> are the professional's choice for installing fencing hog rings quickly, efficiently, and securely. Specially designed for use with EDMA staples (hog rings), these pliers make it easy to fasten fencing wire, mesh, and netting to poles or other wire structures on-site.",
     layoutType: 'standard',
-    images: ['/products/Fasteners/pliers/pliers_1.webp'],
+    images: ['/products/Fasteners/pliers/meshco-pliers_1.webp'],
     specifications: [
       {
         label: 'AVAILABLE IN THE FOLLOWING TWO SIZES:',
@@ -3625,7 +3625,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       '<b>Heavy-Duty Wire and Fencing Cutter for Professional Use</b>\n\n\nThe <b>EDMA Cutting Nippers</b> are the go-to tool for cleanly and efficiently cutting wire, hog rings, and fencing materials. Built to withstand the rigours of fencing, construction, and agricultural work, these nippers deliver powerful cutting performance when you need it most.',
     layoutType: 'standard',
-    images: ['/products/Fasteners/cutting-nippers/cutting-nippers_1.webp'],
+    images: ['/products/Fasteners/cutting-nippers/meshco-cutting-nippers_1.webp'],
     specifications: [
       {
         label: 'AVAILABLE IN THE FOLLOWING TWO SIZES:',
@@ -3692,7 +3692,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "<b>Reliable underground reinforcement. Built for harsh environments.</b>\n\n\nMeshco's <b>Mining Support Mesh</b> is a high-strength welded wire mesh designed to provide critical ground support in underground mining and tunnelling operations. Manufactured from heavy-duty steel wire and welded for maximum durability, it reinforces rock faces, tunnel roofs, and mine walls—minimising the risk of rock falls and ensuring safer working conditions.\n\nTried and trusted across South African, African, North American and Australian mining operations, our mesh is engineered to handle dynamic loads, corrosive environments, and the toughest underground conditions.",
     layoutType: 'standard',
-    images: ['/products/Mining Support/mining-support-mesh/mining-support-mesh_1.webp'],
+    images: ['/products/Mining Support/mining-support-mesh/meshco-mining-support-mesh_1.webp'],
     specifications: [],
     applications: [
       'Underground mine excavation support',
@@ -3876,7 +3876,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "<b>Support Nature. Built to Last.</b>\n\n\nMeshco's <b>Steel Growing Stakes</b> offer long-lasting, reliable support for plants, vines, and saplings in agricultural, landscaping, and horticultural applications. Manufactured from durable steel and coated for weather resistance, these stakes are designed to withstand harsh outdoor conditions while promoting healthy, upright growth.",
     layoutType: 'standard',
-    images: ['/products/Utility/growing-stakes/growing-stakes_1.webp'],
+    images: ['/products/Utility/growing-stakes/meshco-growing-stakes_1.webp'],
     specifications: [],
     applications: [
       'Vineyard trellising',
@@ -3930,10 +3930,10 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Engineered Precision. Tailored Strength.</b>\n\n\n<b>SpeciMesh Panels</b> are Meshco's premium range of <b>customisable welded mesh panels</b>, manufactured to meet the exacting demands of contractors, fabricators, engineers, and OEMs. Whether you're reinforcing, enclosing, securing, or fabricating, SpeciMesh offers the flexibility and consistency your project needs.",
     layoutType: 'standard',
     images: [
-      '/products/Utility/specimesh-panels/specimesh-panels_1.png',
-      '/products/Utility/specimesh-panels/specimesh-panels_2.webp',
-      '/products/Utility/specimesh-panels/specimesh-panels_3.webp',
-      '/products/Utility/specimesh-panels/specimesh-panels_4.webp',
+      '/products/Utility/specimesh-panels/meshco-specimesh-panels_1.png',
+      '/products/Utility/specimesh-panels/meshco-specimesh-panels_2.webp',
+      '/products/Utility/specimesh-panels/meshco-specimesh-panels_3.webp',
+      '/products/Utility/specimesh-panels/meshco-specimesh-panels_4.webp',
     ],
     specifications: [],
     applications: [
