@@ -100,7 +100,7 @@ export default function HomePage() {
           <div className={styles.productCategories}>
             <ExploreProductsCard image="/wire.jpg" title="Wire" link="/products/wire" />
             <ExploreProductsCard
-              image="/products/Utility/specimesh-panels/specimesh-panels_1.png"
+              image="/products/Utility/specimesh-panels/meshco-specimesh-panels_1.png"
               title="Utility"
               link="/products/utility"
             />
@@ -111,7 +111,7 @@ export default function HomePage() {
               link="/products/reinforcing"
             />
             <ExploreProductsCard
-              image="/products/Mining Support/mining-support-mesh/mining-support-mesh_1.webp"
+              image="/products/Mining Support/mining-support-mesh/meshco-mining-support-mesh_1.webp"
               title="Mining Support"
               link="/products/mining-support"
             />
