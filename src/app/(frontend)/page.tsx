@@ -100,9 +100,9 @@ export default function HomePage() {
           <div className={styles.productCategories}>
             <ExploreProductsCard image="/wire.jpg" title="Wire" link="/products/wire" />
             <ExploreProductsCard
-              image="/products/Utility/specimesh-panels/meshco-specimesh-panels_1.png"
-              title="Utility"
-              link="/products/utility"
+              image="/wirewallfencing.jpg"
+              title="WireWall Fencing"
+              link="/products/wirewall"
             />
             <ExploreProductsCard image="/fencing.png" title="Fencing" link="/products/fencing" />
             <ExploreProductsCard
@@ -120,10 +120,11 @@ export default function HomePage() {
               title="Fasteners"
               link="/products/fasteners"
             />
+
             <ExploreProductsCard
-              image="/wirewallfencing.jpg"
-              title="WireWall Fencing"
-              link="/products/wirewall"
+              image="/products/Utility/specimesh-panels/meshco-specimesh-panels_1.png"
+              title="Utility"
+              link="/products/utility"
             />
           </div>
         </div>
