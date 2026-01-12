@@ -46,9 +46,9 @@ const ExploreProductsCard = ({
         </div>
       ) : (
         <div className={styles.productLabel}>
-          <span>{title}</span>
+          <span className={styles.titleText}>{title}</span>
           {link && (
-            <div className={styles.arrowIcon}>
+            <span className={styles.arrowIcon}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="19"
@@ -63,7 +63,7 @@ const ExploreProductsCard = ({
                   fill="#DEAF38"
                 />
               </svg>
-            </div>
+            </span>
           )}
         </div>
       )}

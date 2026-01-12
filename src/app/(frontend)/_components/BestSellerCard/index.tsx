@@ -65,7 +65,7 @@ const BestSellerCard: React.FC<BestSellerCardProps> = ({
       </div>
       <div className={styles.contentSection}>
         <h3 className={styles.productCardTitle}>{title}</h3>
-        <p className={styles.productCardDescription}>{description}</p>
+        {/* <p className={styles.productCardDescription}>{description}</p> */}
         <div className={styles.productCardLink}>
           <span>{linkText}</span>
           <svg
