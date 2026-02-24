@@ -111,7 +111,7 @@ export default function HomePage() {
               link="/products/reinforcing"
             />
             <ExploreProductsCard
-              image="/products/Mining Support/mining-support-mesh/public/products/Mining Support/mining-support-mesh/meshco-underground-mining-support-mesh.webp"
+              image="/products/Mining Support/mining-support-mesh/meshco-underground-mining-support-mesh.webp"
               title="Mining Support"
               link="/products/mining-support"
             />
