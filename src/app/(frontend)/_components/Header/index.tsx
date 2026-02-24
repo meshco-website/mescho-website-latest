@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import NavLink from '../NavLink'
 import { useRouter } from 'next/navigation'
 import { products } from '@/data/products'
 import DropdownContainer from '../DropdownContainer'
@@ -16,6 +17,7 @@ type DropdownItem = {
 type DropdownSection = {
   title: string
   items: DropdownItem[]
+  href: string
 }
 
 const PRODUCT_CATEGORY_CONFIG: Array<{ key: string; title: string }> = [
@@ -38,7 +40,11 @@ const productSections: DropdownSection[] = PRODUCT_CATEGORY_CONFIG.reduce(
       }))
 
     if (items.length > 0) {
-      sections.push({ title, items })
+      sections.push({
+        title,
+        items,
+        href: `/products/${key}`,
+      })
     }
 
     return sections
@@ -102,7 +108,7 @@ const Header = () => {
   const handleDropdownLeave = () => {
     const timeout = setTimeout(() => {
       setActiveDropdown(null)
-    }, 150)
+    }, 300)
     setHoverTimeout(timeout)
   }
 
@@ -125,13 +131,13 @@ const Header = () => {
     { label: 'Case Studies & References', href: '/wirewall/case-studies' },
   ]
 
-  const industriesItems = [
-    { label: 'Construction', href: '/industries#construction-infrastructure' },
-    { label: 'Mining', href: '/industries#mining' },
-    { label: 'Agriculture', href: '/industries#agriculture' },
-    { label: 'Security', href: '/industries#security-perimeter-protection' },
-    { label: 'Industrial', href: '/industries#manufacturing-industrial' },
-  ]
+  // const industriesItems = [
+  //   { label: 'Construction', href: '/industries#construction-infrastructure' },
+  //   { label: 'Mining', href: '/industries#mining' },
+  //   { label: 'Agriculture', href: '/industries#agriculture' },
+  //   { label: 'Security', href: '/industries#security-perimeter-protection' },
+  //   { label: 'Industrial', href: '/industries#manufacturing-industrial' },
+  // ]
 
   const whoWeAreItems = [
     { label: 'About Us', href: '/whoweare/about-us' },
@@ -216,18 +222,9 @@ const Header = () => {
             WireWall
           </DropdownContainer>
 
-          <DropdownContainer
-            href="/industries"
-            isActive={activeDropdown === 'industries'}
-            onMouseEnter={() => handleDropdownEnter('industries')}
-            onMouseLeave={handleDropdownLeave}
-            onItemClick={handleMenuItemClick}
-            dropdownType="regular"
-            items={industriesItems}
-            dropdownSize="medium"
-          >
+          <NavLink href="/industries" onClick={handleMenuItemClick}>
             Industries
-          </DropdownContainer>
+          </NavLink>
 
           <DropdownContainer
             href="/whoweare/about-us"
@@ -272,7 +269,7 @@ const Header = () => {
         onClose={() => setMobileMenuOpen(false)}
         productSections={productSections}
         wireWallItems={wireWallItems}
-        industriesItems={industriesItems}
+        // industriesItems={industriesItems}
         whoWeAreItems={whoWeAreItems}
         resourcesItems={resourcesItems}
       />

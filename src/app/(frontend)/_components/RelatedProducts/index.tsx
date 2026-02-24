@@ -6,6 +6,7 @@ interface RelatedProduct {
   id: string
   name: string
   image: string
+  otherTitle?: string
   slug: string
   category: string
 }
@@ -21,16 +22,18 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ products }) => {
     return null
   }
 
+  console.log('products', products)
+
   return (
     <section className={styles.relatedProducts}>
       <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>You might also like</h2>
+        <h2 className={styles.sectionTitle}>You may also like</h2>
 
         <div className={styles.productsGrid}>
           {products.map((product) => (
             <BestSellerCard
               key={product.id}
-              title={product.name}
+              title={product.otherTitle ? product.otherTitle : product.name}
               image={product.image?.trim() ? product.image : PLACEHOLDER_IMAGE}
               description=""
               linkText="View Product"

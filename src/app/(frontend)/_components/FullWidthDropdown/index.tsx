@@ -12,6 +12,7 @@ interface DropdownItem {
 interface DropdownSection {
   title: string
   items: DropdownItem[]
+  href: string
 }
 
 interface FullWidthDropdownProps {
@@ -69,7 +70,11 @@ const FullWidthDropdown: React.FC<FullWidthDropdownProps> = ({
         <div className={styles.grid}>
           <div className={styles.gridColumn}>
             <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>{sections[0].title}</h3>
+              <h3 className={styles.sectionTitle}>
+                <Link href={sections[0].href} onClick={onItemClick}>
+                  {sections[0].title}
+                </Link>
+              </h3>
               <ul className={styles.itemList}>
                 {sections[0].items.map((item, itemIndex) => (
                   <li key={itemIndex}>
@@ -81,7 +86,11 @@ const FullWidthDropdown: React.FC<FullWidthDropdownProps> = ({
               </ul>
             </div>
             <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>{sections[5].title}</h3>
+              <h3 className={styles.sectionTitle}>
+                <Link href={sections[5].href} onClick={onItemClick}>
+                  {sections[5].title}
+                </Link>
+              </h3>
               <ul className={styles.itemList}>
                 {sections[5].items.map((item, itemIndex) => (
                   <li key={itemIndex}>
@@ -96,7 +105,11 @@ const FullWidthDropdown: React.FC<FullWidthDropdownProps> = ({
 
           <div className={styles.gridColumn}>
             <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>{sections[1].title}</h3>
+              <h3 className={styles.sectionTitle}>
+                <Link href={sections[1].href} onClick={onItemClick}>
+                  {sections[1].title}
+                </Link>
+              </h3>
               <ul className={styles.itemList}>
                 {sections[1].items.map((item, itemIndex) => (
                   <li key={itemIndex}>
@@ -108,7 +121,11 @@ const FullWidthDropdown: React.FC<FullWidthDropdownProps> = ({
               </ul>
             </div>
             <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>{sections[6].title}</h3>
+              <h3 className={styles.sectionTitle}>
+                <Link href={sections[6].href} onClick={onItemClick}>
+                  {sections[6].title}
+                </Link>
+              </h3>
               <ul className={styles.itemList}>
                 {sections[6].items.map((item, itemIndex) => (
                   <li key={itemIndex}>
@@ -123,7 +140,11 @@ const FullWidthDropdown: React.FC<FullWidthDropdownProps> = ({
 
           <div className={styles.gridColumn}>
             <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>{sections[2].title}</h3>
+              <h3 className={styles.sectionTitle}>
+                <Link href={sections[2].href} onClick={onItemClick}>
+                  {sections[2].title}
+                </Link>
+              </h3>
               <ul className={styles.itemList}>
                 {sections[2].items.map((item, itemIndex) => (
                   <li key={itemIndex}>
@@ -138,7 +159,11 @@ const FullWidthDropdown: React.FC<FullWidthDropdownProps> = ({
 
           <div className={styles.gridColumn}>
             <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>{sections[3].title}</h3>
+              <h3 className={styles.sectionTitle}>
+                <Link href={sections[3].href} onClick={onItemClick}>
+                  {sections[3].title}
+                </Link>
+              </h3>
               <ul className={styles.itemList}>
                 {sections[3].items.map((item, itemIndex) => (
                   <li key={itemIndex}>
@@ -153,7 +178,11 @@ const FullWidthDropdown: React.FC<FullWidthDropdownProps> = ({
 
           <div className={styles.gridColumn}>
             <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>{sections[4].title}</h3>
+              <h3 className={styles.sectionTitle}>
+                <Link href={sections[4].href} onClick={onItemClick}>
+                  {sections[4].title}
+                </Link>
+              </h3>
               <ul className={styles.itemList}>
                 {sections[4].items.map((item, itemIndex) => (
                   <li key={itemIndex}>
