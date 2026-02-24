@@ -12,6 +12,7 @@ interface DropdownItem {
 interface DropdownSection {
   title: string
   items: DropdownItem[]
+  href: string
 }
 
 interface DropdownContainerProps {

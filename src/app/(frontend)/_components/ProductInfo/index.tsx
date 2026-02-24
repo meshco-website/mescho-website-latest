@@ -90,6 +90,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   }, [availableImages, selectedImage])
 
   const [hasImageError, setHasImageError] = useState(!selectedImage?.trim())
+  const [hasWhiteBackground, setHasWhiteBackground] = useState(false)
 
   const resolvedHeroImage = useMemo(
     () => (!selectedImage?.trim() || hasImageError ? '/placeholder.svg' : selectedImage),
@@ -97,6 +98,80 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   )
 
   const isPlaceholder = resolvedHeroImage.includes('placeholder.svg')
+
+  // Detect if image has white background
+  useEffect(() => {
+    if (isPlaceholder || !resolvedHeroImage) {
+      setHasWhiteBackground(false)
+      return
+    }
+
+    const detectWhiteBackground = async () => {
+      try {
+        const img = new window.Image()
+        img.crossOrigin = 'anonymous'
+        
+        img.onload = () => {
+          const canvas = document.createElement('canvas')
+          const ctx = canvas.getContext('2d')
+          
+          if (!ctx) {
+            setHasWhiteBackground(false)
+            return
+          }
+
+          // Set canvas size to match image
+          canvas.width = img.width
+          canvas.height = img.height
+          
+          // Draw image on canvas
+          ctx.drawImage(img, 0, 0)
+          
+          // Sample pixels from corners and edges
+          const samplePoints = [
+            { x: 10, y: 10 }, // top-left
+            { x: img.width - 10, y: 10 }, // top-right
+            { x: 10, y: img.height - 10 }, // bottom-left
+            { x: img.width - 10, y: img.height - 10 }, // bottom-right
+            { x: img.width / 2, y: 10 }, // top-center
+            { x: img.width / 2, y: img.height - 10 }, // bottom-center
+            { x: 10, y: img.height / 2 }, // left-center
+            { x: img.width - 10, y: img.height / 2 }, // right-center
+          ]
+          
+          let whitePixelCount = 0
+          const threshold = 240 // RGB values above this are considered white/near-white
+          
+          samplePoints.forEach(point => {
+            const pixel = ctx.getImageData(point.x, point.y, 1, 1).data
+            const r = pixel[0]
+            const g = pixel[1]
+            const b = pixel[2]
+            
+            // Check if pixel is white or near-white
+            if (r > threshold && g > threshold && b > threshold) {
+              whitePixelCount++
+            }
+          })
+          
+          // If more than 60% of sampled pixels are white, consider it a white background
+          const whitePercentage = whitePixelCount / samplePoints.length
+          setHasWhiteBackground(whitePercentage > 0.6)
+        }
+        
+        img.onerror = () => {
+          setHasWhiteBackground(false)
+        }
+        
+        img.src = resolvedHeroImage
+      } catch (error) {
+        console.error('Error detecting image background:', error)
+        setHasWhiteBackground(false)
+      }
+    }
+
+    detectWhiteBackground()
+  }, [resolvedHeroImage, isPlaceholder])
 
   // Helper function to get label CSS class based on bold/mediumBold props
   const getLabelClassName = (spec: Specification) => {
@@ -144,7 +219,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
             <div
               className={`${styles.imageContainer} ${
                 isPlaceholder ? styles.placeholderContainer : ''
-              }`}
+              } ${hasWhiteBackground ? styles.whiteBackgroundContainer : ''}`}
             >
               {isPlaceholder ? (
                 <Image
@@ -160,7 +235,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                   src={resolvedHeroImage}
                   alt={name}
                   fill
-                  className={styles.productImage}
+                  className={`${styles.productImage} ${
+                    hasWhiteBackground ? styles.whiteBackgroundImage : ''
+                  }`}
                   priority
                   onError={handleImageError}
                 />

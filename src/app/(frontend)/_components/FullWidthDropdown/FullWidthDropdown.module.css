@@ -64,6 +64,16 @@
   padding: 0;
 }
 
+.sectionTitle a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sectionTitle a:hover {
+  text-decoration: underline;
+}
+
 .itemList {
   display: flex;
   flex-direction: column;

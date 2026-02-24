@@ -20,7 +20,7 @@ interface MobileMenuProps {
   onClose: () => void
   productSections: DropdownSection[]
   wireWallItems: DropdownItem[]
-  industriesItems: DropdownItem[]
+  industriesItems?: DropdownItem[]
   whoWeAreItems: DropdownItem[]
   resourcesItems: DropdownItem[]
 }
@@ -96,21 +96,15 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         </span>
       </button>
 
-      <button
+      <Link
+        href="/industries"
         className={styles.menuItem}
-        onClick={() =>
-          pushView({
-            id: 'industries',
-            title: 'Industries',
-            items: industriesItems,
-            type: 'list',
-          })
-        }
+        onClick={onClose}
       >
         <span className={styles.itemLabel}>
           Industries
         </span>
-      </button>
+      </Link>
 
       <button
         className={styles.menuItem}

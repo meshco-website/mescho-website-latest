@@ -55,6 +55,16 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
     return imageExtensions.some((ext) => str.toLowerCase().endsWith(ext))
   }
 
+  // Helper function to render heading text - hides colon if present and makes text bold
+  const renderHeadingText = (text: string): React.ReactNode => {
+    if (!text || typeof text !== 'string') return text
+    if (text.trim().endsWith(':')) {
+      const textWithoutColon = text.trim().slice(0, -1)
+      return <span className={styles.boldLabel}>{textWithoutColon}</span>
+    }
+    return text
+  }
+
   return (
     <div className={styles.tabbedFeatures}>
       <div className={styles.tabNavigation}>
@@ -202,7 +212,7 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                               className={styles.twoColumnLayout}
                             >
                               <div className={styles.twoColumnLeft}>
-                                <p className={styles.featureHeading}>APPLICATION:</p>
+                                <p className={styles.featureHeading}>{renderHeadingText('APPLICATION:')}</p>
                                 {applicationItems.map((item, index) => (
                                   <p key={index} className={styles.featureDescription}>
                                     {item}
@@ -210,7 +220,7 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                                 ))}
                               </div>
                               <div className={styles.twoColumnRight}>
-                                <p className={styles.featureHeading}>RECOMMENDED NAIL SIZE</p>
+                                <p className={styles.featureHeading}>{renderHeadingText('RECOMMENDED NAIL SIZE')}</p>
                                 {recommendedSizeItems.map((item, index) => (
                                   <p key={index} className={styles.featureDescription}>
                                     {item}
@@ -392,11 +402,11 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                           items.push(
                             <div key={`heading-${index}`} className={styles.featureItem}>
                               {isMainHeading ? (
-                                <p className={styles.mainHeading}>{feature}</p>
+                                <p className={styles.mainHeading}>{renderHeadingText(feature)}</p>
                               ) : isSubHeading ? (
-                                <p className={styles.subHeading}>{feature}</p>
+                                <p className={styles.subHeading}>{renderHeadingText(feature)}</p>
                               ) : (
-                                <p className={styles.featureHeading}>{feature}</p>
+                                <p className={styles.featureHeading}>{renderHeadingText(feature)}</p>
                               )}
                             </div>,
                           )
@@ -443,30 +453,30 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                               {hasHeadingWithDescription ? (
                                 isMainHeading ? (
                                   <>
-                                    <p className={styles.mainHeading}>{parts[0]}</p>
+                                    <p className={styles.mainHeading}>{renderHeadingText(parts[0])}</p>
                                     {parts[1] && (
                                       <p className={styles.featureDescription}>{parts[1]}</p>
                                     )}
                                   </>
                                 ) : isInlineHeading ? (
                                   <p className={styles.featureDescription}>
-                                    <span className={styles.featureHeading}>{parts[0]}</span>{' '}
+                                    <span className={styles.featureHeading}>{renderHeadingText(parts[0])}</span>{' '}
                                     {parts[1]}
                                   </p>
                                 ) : (
                                   <>
-                                    <p className={styles.featureHeading}>{parts[0]}</p>
+                                    <p className={styles.featureHeading}>{renderHeadingText(parts[0])}</p>
                                     {parts[1] && (
                                       <p className={styles.featureDescription}>{parts[1]}</p>
                                     )}
                                   </>
                                 )
                               ) : isMainHeading ? (
-                                <p className={styles.mainHeading}>{feature}</p>
+                                <p className={styles.mainHeading}>{renderHeadingText(feature)}</p>
                               ) : isSubHeading ? (
-                                <p className={styles.subHeading}>{feature}</p>
+                                <p className={styles.subHeading}>{renderHeadingText(feature)}</p>
                               ) : isStandaloneHeading ? (
-                                <p className={styles.featureHeading}>{feature}</p>
+                                <p className={styles.featureHeading}>{renderHeadingText(feature)}</p>
                               ) : (
                                 <p className={styles.featureDescription}>{feature}</p>
                               )}
