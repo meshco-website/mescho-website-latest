@@ -699,23 +699,23 @@ const cloneWireWallSpecifications = (
     : undefined
 
 const buildRelatedProducts = (keys: string[] = []): RelatedProductConfig[] =>
-  keys
-    .map((key) => {
-      const product = productsByKey.get(key)
-      if (!product) {
-        return undefined
-      }
+  keys.flatMap((key) => {
+    const product = productsByKey.get(key)
+    if (!product) {
+      return []
+    }
 
-      return {
+    return [
+      {
         id: product.id,
         name: product.name,
         otherTitle: product.otherTitle,
         image: product.image,
         slug: product.slug,
         category: product.category,
-      }
-    })
-    .filter((related): related is RelatedProductConfig => Boolean(related))
+      },
+    ]
+  })
 
 const createProductDetail = (detail: ProductDetail): ProductDetail => ({
   description: detail.description,
