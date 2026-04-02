@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -14,10 +16,20 @@ const ExploreProductsCard = ({
   link: string
   description?: string
 }) => {
+  const [hasImageError, setHasImageError] = React.useState(false)
+
   const cardContent = (
     <>
-      <div className={styles.productImage}>
-        <Image src={image} alt={title} width={420} height={350} />
+      <div className={`${styles.productImage} ${hasImageError ? styles.noImage : ''}`}>
+        {!hasImageError ? (
+          <Image
+            src={image}
+            alt={title}
+            width={420}
+            height={350}
+            onError={() => setHasImageError(true)}
+          />
+        ) : null}
       </div>
       {description ? (
         <div className={styles.contentContainer}>
