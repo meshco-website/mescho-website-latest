@@ -61,7 +61,7 @@ const getSpanningProduct = (slug: string) => {
 
 export const reinforcingConfig: ProductTypeConfig = {
   title: 'Reinforcing',
-  backgroundImage: '/reinforcing.png',
+  backgroundImage: '/reinforcing.jpg',
   hasFilter: false,
   cardSize: 'large',
   layoutType: 'grid3x2',
@@ -106,7 +106,7 @@ export const fastenersConfig: ProductTypeConfig = {
   cardSize: 'large',
   layoutType: 'grid3x2WithSpan',
   products: getProductsByCategory('fasteners'),
-  spanningProduct: getSpanningProduct('droppers'),
+  // spanningProduct: getSpanningProduct('droppers'),
 }
 
 export const miningSupportConfig: ProductTypeConfig = {
