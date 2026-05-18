@@ -49,10 +49,18 @@ export interface TabData {
   imageMaxWidth?: string
 }
 
+export type RelatedProductRef =
+  | string
+  | {
+      key: string
+      displayTitle: string
+    }
+
 export interface RelatedProductConfig {
   id: string
   name: string
   otherTitle?: string
+  displayTitle?: string
   image: string
   slug: string
   category: string
@@ -68,7 +76,7 @@ export interface ProductDetail {
   applications: string[]
   technicalData: TechnicalData[]
   tabs?: TabData[]
-  relatedProductKeys?: string[]
+  relatedProductKeys?: RelatedProductRef[]
   images?: string[]
 }
 
@@ -162,7 +170,7 @@ export const products: Product[] = [
   {
     id: '7',
     name: 'Slab Wire',
-    title: 'Slab Wire',
+    title: 'Slab Wire (Straight & Cut Wire for Precast Concrete)',
     imageFolder: '/products/Wire/slab-wire',
     image: '/products/Wire/slab-wire/meshco-slab-wire.webp',
     slug: 'slab-wire',
@@ -698,8 +706,10 @@ const cloneWireWallSpecifications = (
       }
     : undefined
 
-const buildRelatedProducts = (keys: string[] = []): RelatedProductConfig[] =>
-  keys.flatMap((key) => {
+const buildRelatedProducts = (refs: RelatedProductRef[] = []): RelatedProductConfig[] =>
+  refs.flatMap((ref) => {
+    const key = typeof ref === 'string' ? ref : ref.key
+    const displayTitle = typeof ref === 'string' ? undefined : ref.displayTitle
     const product = productsByKey.get(key)
     if (!product) {
       return []
@@ -710,6 +720,7 @@ const buildRelatedProducts = (keys: string[] = []): RelatedProductConfig[] =>
         id: product.id,
         name: product.name,
         otherTitle: product.otherTitle,
+        displayTitle,
         image: product.image,
         slug: product.slug,
         category: product.category,
@@ -725,7 +736,9 @@ const createProductDetail = (detail: ProductDetail): ProductDetail => ({
   applications: [...detail.applications],
   technicalData: detail.technicalData.map((item) => ({ ...item })),
   tabs: cloneTabs(detail.tabs),
-  relatedProductKeys: detail.relatedProductKeys ? [...detail.relatedProductKeys] : undefined,
+  relatedProductKeys: detail.relatedProductKeys
+    ? detail.relatedProductKeys.map((ref) => (typeof ref === 'string' ? ref : { ...ref }))
+    : undefined,
   images: detail.images ? [...detail.images] : undefined,
 })
 
@@ -832,11 +845,14 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wire-straight-cut-wire',
-      'wire-galvanised-wire',
-      'wire-hard-drawn-wire',
-      'wire-black-annealed-wire',
-      'wire-high-strain-wire',
+      { key: 'wire-straight-cut-wire', displayTitle: 'Straight and Cut Wire' },
+      { key: 'wire-galvanised-wire', displayTitle: 'Galvanised Wire (Coils)' },
+      'wire-slab-wire',
+      {
+        key: 'wire-black-annealed-wire',
+        displayTitle: 'Black Annealed Wire (including Autobale Wire)',
+      },
+      { key: 'wire-high-strain-wire', displayTitle: 'High Strain wire' },
     ],
   },
   'wire-galvanised-wire': {
@@ -988,11 +1004,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-standards',
-      'fencing-droppers',
-      'fasteners-staples',
-      'fencing-field-game-fence',
-      'fencing-hexagonal-netting',
+      { key: 'fencing-standards', displayTitle: 'Steel Fencing Y-Standards' },
+      { key: 'fencing-droppers', displayTitle: 'Steel Droppers' },
+      { key: 'fasteners-staples', displayTitle: 'Fence Staples' },
+      'wire-slab-wire',
+      'wire-hard-drawn-wire',
     ],
   },
   'wire-black-annealed-wire': {
@@ -1066,8 +1082,8 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     relatedProductKeys: [
       'reinforcing-reinforcing-mesh',
-      'reinforcing-reinforcing-steel',
-      'wire-galvanised-wire',
+      { key: 'reinforcing-reinforcing-steel', displayTitle: 'Deformed Bar (Y-bar)' },
+      { key: 'wire-galvanised-wire', displayTitle: 'Galvanised Wire (Coils)' },
       'wire-slab-wire',
       'wire-hard-drawn-wire',
     ],
@@ -1145,9 +1161,12 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     relatedProductKeys: [
       'wire-slab-wire',
-      'wire-galvanised-wire',
+      { key: 'wire-galvanised-wire', displayTitle: 'Galvanised Wire (Coils)' },
       'wire-hard-drawn-wire',
-      'wire-black-annealed-wire',
+      {
+        key: 'wire-black-annealed-wire',
+        displayTitle: 'Black Annealed Wire (including Autobale Wire)',
+      },
       'wire-high-strain-wire',
     ],
   },
@@ -1218,9 +1237,12 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     relatedProductKeys: [
       'wire-slab-wire',
-      'wire-galvanised-wire',
+      { key: 'wire-galvanised-wire', displayTitle: 'Galvanised Wire (Coils)' },
       'wire-hard-drawn-wire',
-      'wire-black-annealed-wire',
+      {
+        key: 'wire-black-annealed-wire',
+        displayTitle: 'Black Annealed Wire (including Autobale Wire)',
+      },
       'wire-high-strain-wire',
     ],
   },
@@ -1284,10 +1306,13 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wire-straight-cut-wire',
-      'wire-galvanised-wire',
+      { key: 'wire-straight-cut-wire', displayTitle: 'Straight and Cut Wire' },
+      { key: 'wire-galvanised-wire', displayTitle: 'Galvanised Wire (Coils)' },
       'wire-hard-drawn-wire',
-      'wire-black-annealed-wire',
+      {
+        key: 'wire-black-annealed-wire',
+        displayTitle: 'Black Annealed Wire (including Autobale Wire)',
+      },
       'wire-high-strain-wire',
     ],
   },
@@ -1425,11 +1450,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wirewall-3510',
-      'wirewall-3110',
-      'wirewall-af100',
-      'wirewall-spikes',
-      'wirewall-underdig-panel',
+      { key: 'wirewall-3110', displayTitle: 'WireWall 3110' },
+      { key: 'wirewall-3510', displayTitle: 'WireWall 3510' },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100' },
+      { key: 'wirewall-spikes', displayTitle: 'WireWall Spike' },
+      { key: 'wirewall-358', displayTitle: 'WireWall 358' },
     ],
   },
   'wirewall-358': {
@@ -1491,11 +1516,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wirewall-355',
-      'wirewall-3510',
-      'wirewall-af100',
-      'wirewall-gates',
-      'wirewall-spikes',
+      { key: 'wirewall-3110', displayTitle: 'WireWall 3110' },
+      { key: 'wirewall-3510', displayTitle: 'WireWall 3510' },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100' },
+      { key: 'wirewall-spikes', displayTitle: 'WireWall Spike' },
+      { key: 'wirewall-3210', displayTitle: 'WireWall 3210' },
     ],
   },
   'wirewall-3510': {
@@ -1571,11 +1596,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wirewall-355',
-      'wirewall-3110',
-      'wirewall-3210',
-      'wirewall-gates',
-      'wirewall-spikes',
+      { key: 'wirewall-3110', displayTitle: 'WireWall 3110' },
+      { key: 'wirewall-spikes', displayTitle: 'WireWall Spike' },
+      { key: 'wirewall-underdig-panel', displayTitle: 'WireWall Underdig' },
+      { key: 'wirewall-358', displayTitle: 'WireWall 358' },
+      { key: 'wirewall-3210', displayTitle: 'WireWall 3210' },
     ],
   },
   'wirewall-3110': {
@@ -1652,11 +1677,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wirewall-3510',
-      'wirewall-3210',
-      'wirewall-gates',
-      'wirewall-spikes',
-      'wirewall-underdig-panel',
+      { key: 'wirewall-3510', displayTitle: 'WireWall 3510' },
+      { key: 'wirewall-3210', displayTitle: 'WireWall 3210' },
+      { key: 'wirewall-underdig-panel', displayTitle: 'WireWall Underdig' },
+      { key: 'wirewall-spikes', displayTitle: 'WireWall Spike' },
+      { key: 'wirewall-358', displayTitle: 'WireWall 358' },
     ],
   },
   'wirewall-3210': {
@@ -1725,11 +1750,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wirewall-3110',
-      'wirewall-3510',
-      'wirewall-gates',
-      'wirewall-spikes',
-      'wirewall-underdig-panel',
+      { key: 'wirewall-3110', displayTitle: 'WireWall 3110' },
+      { key: 'wirewall-3510', displayTitle: 'WireWall 3510' },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100' },
+      { key: 'wirewall-spikes', displayTitle: 'WireWall Spike' },
+      { key: 'wirewall-358', displayTitle: 'WireWall 358' },
     ],
   },
   'wirewall-af100': {
@@ -1806,11 +1831,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wirewall-355',
-      'wirewall-3510',
-      'wirewall-spikes',
-      'wirewall-underdig-panel',
-      'wirewall-gates',
+      { key: 'wirewall-3210', displayTitle: 'WireWall 3210' },
+      { key: 'wirewall-3510', displayTitle: 'WireWall 3510' },
+      { key: 'wirewall-3110', displayTitle: 'WireWall 3110' },
+      { key: 'wirewall-spikes', displayTitle: 'WireWall Spike' },
+      { key: 'wirewall-underdig-panel', displayTitle: 'WireWall Underdig' },
     ],
   },
   'wirewall-gates': {
@@ -1862,11 +1887,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wirewall-355',
-      'wirewall-3510',
-      'wirewall-358',
-      'wirewall-spikes',
-      'wirewall-underdig-panel',
+      { key: 'wirewall-3110', displayTitle: 'WireWall 3110' },
+      { key: 'wirewall-3510', displayTitle: 'WireWall 3510' },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100' },
+      { key: 'wirewall-spikes', displayTitle: 'WireWall Spike' },
+      { key: 'wirewall-358', displayTitle: 'WireWall 358' },
     ],
   },
   'wirewall-spikes': {
@@ -1927,11 +1952,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wirewall-355',
-      'wirewall-3510',
-      'wirewall-3110',
-      'wirewall-gates',
-      'wirewall-underdig-panel',
+      { key: 'wirewall-3110', displayTitle: 'WireWall 3110' },
+      { key: 'wirewall-3510', displayTitle: 'WireWall 3510' },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100' },
+      { key: 'wirewall-underdig-panel', displayTitle: 'WireWall Underdig' },
+      { key: 'wirewall-358', displayTitle: 'WireWall 358' },
     ],
   },
   'wirewall-underdig-panel': {
@@ -1980,11 +2005,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wirewall-355',
-      'wirewall-3510',
-      'wirewall-af100',
-      'wirewall-spikes',
-      'wirewall-gates',
+      { key: 'wirewall-3110', displayTitle: 'WireWall 3110' },
+      { key: 'wirewall-3510', displayTitle: 'WireWall 3510' },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100' },
+      { key: 'wirewall-spikes', displayTitle: 'WireWall Spike' },
+      { key: 'wirewall-358', displayTitle: 'WireWall 358' },
     ],
   },
   'reinforcing-brickforce': {
@@ -2103,11 +2128,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
+      'wire-black-annealed-wire',
+      { key: 'reinforcing-reinforcing-steel', displayTitle: 'Reinforcing Steel Bar' },
       'reinforcing-brickforce',
       'reinforcing-hoop-iron',
       'reinforcing-cavity-wall-ties',
-      'reinforcing-reinforcing-steel',
-      'reinforcing-ceramic-door-anchors',
     ],
   },
   'reinforcing-hoop-iron': {
@@ -2148,11 +2173,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'reinforcing-brickforce',
-      'reinforcing-cavity-wall-ties',
-      'reinforcing-reinforcing-mesh',
-      'reinforcing-reinforcing-steel',
+      { key: 'reinforcing-brickforce', displayTitle: 'Galvanised Brickforce Standard' },
+      { key: 'reinforcing-brickforce', displayTitle: 'Galvanised Brickforce NHBRC' },
+      { key: 'reinforcing-cavity-wall-ties', displayTitle: 'Butterfly Wall Ties' },
       'reinforcing-ceramic-door-anchors',
+      'reinforcing-reinforcing-mesh',
     ],
   },
   'reinforcing-cavity-wall-ties': {
@@ -2261,11 +2286,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'reinforcing-brickforce',
+      { key: 'reinforcing-brickforce', displayTitle: 'Galvanised Brickforce Standard' },
+      { key: 'reinforcing-brickforce', displayTitle: 'Galvanised Brickforce NHBRC' },
       'reinforcing-hoop-iron',
-      'reinforcing-reinforcing-mesh',
-      'reinforcing-reinforcing-steel',
       'reinforcing-ceramic-door-anchors',
+      'reinforcing-reinforcing-mesh',
     ],
   },
   'reinforcing-reinforcing-steel': {
@@ -2328,11 +2353,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
+      'wire-black-annealed-wire',
       'reinforcing-reinforcing-mesh',
-      'reinforcing-brickforce',
       'reinforcing-hoop-iron',
-      'reinforcing-cavity-wall-ties',
       'reinforcing-ceramic-door-anchors',
+      'reinforcing-brickforce',
     ],
   },
   'reinforcing-ceramic-door-anchors': {
@@ -2370,11 +2395,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'reinforcing-brickforce',
+      { key: 'reinforcing-brickforce', displayTitle: 'Galvanised Brickforce Standard' },
+      { key: 'reinforcing-brickforce', displayTitle: 'Galvanised Brickforce NHBRC' },
+      { key: 'reinforcing-cavity-wall-ties', displayTitle: 'Butterfly Wall Ties' },
       'reinforcing-hoop-iron',
       'reinforcing-reinforcing-mesh',
-      'reinforcing-reinforcing-steel',
-      'reinforcing-ceramic-door-anchors',
     ],
   },
   'fencing-welded-fence-mesh': {
@@ -2441,11 +2466,17 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-welded-fence-mesh',
-      'fencing-barbed-wire',
-      'wirewall-af100',
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Fully Galvanised)',
+      },
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Lightly Galvanised)',
+      },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100 Panel (50 x 100mm)' },
       'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
     ],
   },
   'fencing-welded-fence-mesh-pvc': {
@@ -2483,11 +2514,17 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-welded-fence-mesh',
-      'fencing-barbed-wire',
-      'wirewall-af100',
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Fully Galvanised)',
+      },
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Lightly Galvanised)',
+      },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100 Panel (50 x 100mm)' },
       'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
     ],
   },
   'fencing-diamond-mesh': {
@@ -2565,11 +2602,17 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-welded-fence-mesh',
-      'fencing-barbed-wire',
-      'wirewall-af100',
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Fully Galvanised)',
+      },
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Lightly Galvanised)',
+      },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100 Panel (50 x 100mm)' },
       'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
     ],
   },
   'fencing-barbed-wire': {
@@ -2637,11 +2680,17 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-welded-fence-mesh',
-      'fencing-barbed-wire',
-      'wirewall-af100',
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Fully Galvanised)',
+      },
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Lightly Galvanised)',
+      },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100 Panel (50 x 100mm)' },
       'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
     ],
   },
   'fencing-razor-wire-flatwrap': {
@@ -2711,11 +2760,17 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-welded-fence-mesh',
-      'fencing-barbed-wire',
-      'wirewall-af100',
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Fully Galvanised)',
+      },
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Lightly Galvanised)',
+      },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100 Panel (50 x 100mm)' },
       'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
     ],
   },
   'fencing-razor-wire-btc': {
@@ -2792,11 +2847,17 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-welded-fence-mesh',
-      'fencing-barbed-wire',
-      'wirewall-af100',
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Fully Galvanised)',
+      },
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Lightly Galvanised)',
+      },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100 Panel (50 x 100mm)' },
       'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
     ],
   },
   'fencing-razorwall': {
@@ -2893,11 +2954,17 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-welded-fence-mesh',
-      'fencing-barbed-wire',
-      'wirewall-af100',
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Fully Galvanised)',
+      },
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Lightly Galvanised)',
+      },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100 Panel (50 x 100mm)' },
       'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
     ],
   },
   'fencing-field-game-fence': {
@@ -2966,11 +3033,17 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-welded-fence-mesh',
-      'fencing-barbed-wire',
-      'wirewall-af100',
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Fully Galvanised)',
+      },
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Lightly Galvanised)',
+      },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100 Panel (50 x 100mm)' },
       'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
     ],
   },
   'fencing-hexagonal-netting': {
@@ -3037,11 +3110,17 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-welded-fence-mesh',
-      'fencing-barbed-wire',
-      'wirewall-af100',
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Fully Galvanised)',
+      },
+      {
+        key: 'fencing-diamond-mesh',
+        displayTitle: 'Diamond Mesh Fencing (Lightly Galvanised)',
+      },
+      { key: 'wirewall-af100', displayTitle: 'WireWall AF100 Panel (50 x 100mm)' },
       'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
     ],
   },
   'fencing-standards': {
@@ -3105,10 +3184,13 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-droppers',
+      { key: 'fencing-droppers', displayTitle: 'Steel Fencing Droppers' },
       'fencing-field-game-fence',
       'wire-hard-drawn-wire',
-      'wire-black-annealed-wire',
+      {
+        key: 'wire-black-annealed-wire',
+        displayTitle: 'Black Annealed Wire (including Autobale Wire)',
+      },
       'wire-high-strain-wire',
     ],
   },
@@ -3167,10 +3249,13 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fencing-standards',
-      'wire-galvanised-wire',
+      { key: 'fencing-standards', displayTitle: 'Steel Fencing Y-Standards' },
+      { key: 'wire-galvanised-wire', displayTitle: 'Galvanised Wire (Coils)' },
       'wire-hard-drawn-wire',
-      'wire-black-annealed-wire',
+      {
+        key: 'wire-black-annealed-wire',
+        displayTitle: 'Black Annealed Wire (including Autobale Wire)',
+      },
       'wire-high-strain-wire',
     ],
   },
@@ -3268,11 +3353,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fasteners-cutting-nippers',
-      'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
-      'fasteners-round-wire-nails',
+      'wire-black-annealed-wire',
       'fasteners-clout-nails',
+      { key: 'fasteners-staples', displayTitle: 'Fence Staples' },
+      { key: 'fasteners-hog-rings', displayTitle: 'EDMA Hog Rings' },
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'EDMA Pliers' },
     ],
   },
   'fasteners-staples': {
@@ -3324,11 +3409,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fasteners-round-wire-nails',
-      'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
-      // 'fasteners-pliers',
-      'fasteners-cutting-nippers',
+      { key: 'fencing-field-game-fence', displayTitle: 'Field Fence' },
+      'fencing-diamond-mesh',
+      'fencing-welded-fence-mesh',
+      { key: 'fasteners-hog-rings', displayTitle: 'EDMA Hog Rings' },
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'EDMA Pliers' },
     ],
   },
   'fasteners-clout-nails': {
@@ -3383,10 +3468,10 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     relatedProductKeys: [
       'fasteners-round-wire-nails',
-      'fasteners-staples',
-      'fasteners-hog-rings',
-      // 'fasteners-pliers',
-      'fasteners-cutting-nippers',
+      'fencing-diamond-mesh',
+      'fencing-welded-fence-mesh',
+      { key: 'fasteners-hog-rings', displayTitle: 'EDMA Hog Rings' },
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'EDMA Pliers' },
     ],
   },
   'fasteners-hog-rings': {
@@ -3440,11 +3525,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fasteners-hog-ring-pliers',
-      'fasteners-round-wire-nails',
-      'fasteners-staples',
-      'fasteners-clout-nails',
-      // 'fasteners-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
+      'fasteners-cutting-nippers',
+      'fencing-welded-fence-mesh',
+      { key: 'fasteners-hog-rings', displayTitle: 'EDMA Hog Rings' },
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'EDMA Pliers' },
     ],
   },
   'fasteners-hog-ring-pliers': {
@@ -3513,11 +3598,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'fasteners-hog-rings',
-      // 'fasteners-pliers',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
       'fasteners-cutting-nippers',
-      'fasteners-round-wire-nails',
-      'fasteners-clout-nails',
+      'fencing-welded-fence-mesh',
+      { key: 'fasteners-hog-rings', displayTitle: 'EDMA Hog Rings' },
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'EDMA Pliers' },
     ],
   },
   // 'fasteners-pliers': {
@@ -3649,11 +3734,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      // 'fasteners-pliers',
-      'fasteners-hog-rings',
-      'fasteners-hog-ring-pliers',
-      'fasteners-clout-nails',
-      'fasteners-round-wire-nails',
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'Hog Ring Pliers' },
+      { key: 'fasteners-hog-rings', displayTitle: 'Hog Ring' },
+      'fencing-welded-fence-mesh',
+      { key: 'fasteners-hog-rings', displayTitle: 'EDMA Hog Rings' },
+      { key: 'fasteners-hog-ring-pliers', displayTitle: 'EDMA Pliers' },
     ],
   },
   'mining-support-mining-mesh': {
@@ -3731,9 +3816,9 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'utility-specimesh-panels',
-      'fencing-standards',
-      'fencing-diamond-mesh',
+      { key: 'utility-specimesh-panels', displayTitle: 'Specimesh' },
+      { key: 'wirewall-3510', displayTitle: 'WireWall' },
+      { key: 'fencing-diamond-mesh', displayTitle: 'Diamond Mesh' },
       'utility-precision-welded-mesh',
       'wire-hard-drawn-wire',
     ],
@@ -3786,9 +3871,9 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'utility-specimesh-panels',
-      'fencing-standards',
-      'fencing-diamond-mesh',
+      { key: 'utility-specimesh-panels', displayTitle: 'Specimesh' },
+      { key: 'wirewall-3510', displayTitle: 'WireWall' },
+      { key: 'fencing-diamond-mesh', displayTitle: 'Diamond Mesh' },
       'utility-precision-welded-mesh',
       'wire-hard-drawn-wire',
     ],
@@ -3854,9 +3939,9 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'utility-specimesh-panels',
-      'fasteners-staples',
-      'wire-galvanised-wire',
+      { key: 'utility-specimesh-panels', displayTitle: 'Specimesh' },
+      { key: 'fasteners-staples', displayTitle: 'Fencing Staples' },
+      { key: 'wire-galvanised-wire', displayTitle: 'Galvanised Wire (Coils)' },
       'wire-slab-wire',
       'wire-hard-drawn-wire',
     ],
@@ -3913,9 +3998,9 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'utility-specimesh-panels',
-      'fencing-standards',
-      'fencing-droppers',
+      { key: 'utility-specimesh-panels', displayTitle: 'Specimesh' },
+      { key: 'fencing-standards', displayTitle: 'Steel Fencing Y-Standards' },
+      { key: 'fencing-droppers', displayTitle: 'Steel Fencing Droppers' },
       'utility-precision-welded-mesh',
       'wire-hard-drawn-wire',
     ],
@@ -4017,9 +4102,9 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'utility-specimesh-panels',
-      'fencing-standards',
-      'fencing-droppers',
+      { key: 'utility-specimesh-panels', displayTitle: 'Specimesh' },
+      { key: 'fencing-standards', displayTitle: 'Steel Fencing Y-Standards' },
+      { key: 'fencing-droppers', displayTitle: 'Steel Fencing Droppers' },
       'utility-precision-welded-mesh',
       'wire-hard-drawn-wire',
     ],
