@@ -10,13 +10,42 @@ interface TabData {
   content: string[]
   html?: string
   image?: string | null
-  format?: 'bullet' | 'heading-description' | 'heading-colon' | 'plain'
+  format?: 'bullet' | 'sectioned-bullet' | 'heading-description' | 'heading-colon' | 'plain'
   imageMaxWidth?: string
 }
 
 interface TabbedFeaturesProps {
   tabs: TabData[]
 }
+
+const BOLD_INLINE_LABELS = [
+  'Applications:',
+  'Available sizes:',
+  'Unit of sale:',
+  'Standard sizes:',
+  'Standard lengths:',
+  'Application:',
+  'Standard size:',
+  'Standard length:',
+  'Panel depth:',
+  'Panel length:',
+  'Wire diameters:',
+  'Aperture sizes:',
+  'Finishes:',
+  'Shank:',
+  'Head:',
+  'Material:',
+]
+
+const SECTION_HEADING_PATTERN =
+  /^(Butterfly Wall Ties|Crimped Wall Ties|Z-Pattern Wall Ties|Vertical Twist Wall Ties|Key Benefits of Meshco Wall Ties|Deformed Bar \(Y-bar\)|Round Bar \(R-bar\)|Key Benefits of Meshco Rebar|Masonry Reinforcement|Roof Truss Bracing|Strapping and Bracing|Timber Construction|Key Features:|Standard Spike|Heavy Spike|Raptor Tooth|Assegai|Pedestrian Gates \(Swing, Single Leaf\)|Vehicular Gates|Single and Double Leaf Swing Gates|Sliding Gates|Application:|Recommended Nail Size:|Key features of round wire nails:)$/i
+
+const isSectionHeading = (line: string): boolean =>
+  SECTION_HEADING_PATTERN.test(line.trim()) || line.trim().endsWith(':')
+
+const isBulletMarkerLine = (line: string): boolean => /^[•*]\s/.test(line.trim())
+
+const stripBulletMarker = (line: string): string => line.trim().replace(/^[•*]\s*/, '')
 
 const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]?.id || '')
@@ -246,6 +275,97 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                         return items
                       }
 
+                      if (activeTabData.format === 'sectioned-bullet') {
+                        let currentHeading: string | null = null
+                        let awaitingIntro = false
+                        let sectionBulletItems: string[] = []
+
+                        const isSectionedFooterLine = (line: string) => {
+                          const trimmed = line.trim()
+                          return (
+                            trimmed.startsWith('Available sizes:') ||
+                            trimmed.startsWith('Unit of sale:')
+                          )
+                        }
+
+                        const renderSectionedParagraph = (text: string, key: string) => (
+                          <div
+                            key={key}
+                            className={`${styles.featureItem} ${styles.sectionedItem}${
+                              isSectionedFooterLine(text) ? ` ${styles.sectionedFooterLine}` : ''
+                            }`}
+                          >
+                            <p className={styles.featureDescription}>{text}</p>
+                          </div>
+                        )
+
+                        const flushSectionBullets = (keySuffix: string) => {
+                          if (sectionBulletItems.length === 0) return
+
+                          items.push(
+                            <ul
+                              key={`section-bullets-${keySuffix}`}
+                              className={`${styles.bulletList} ${styles.sectionedBulletList}`}
+                            >
+                              {sectionBulletItems.map((item, bulletIndex) => (
+                                <li key={bulletIndex} className={styles.bulletItem}>
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>,
+                          )
+                          sectionBulletItems = []
+                        }
+
+                        activeTabData.content.forEach((feature, index) => {
+                          if (typeof feature !== 'string') return
+
+                          if (!feature.trim()) {
+                            return
+                          }
+
+                          if (isSectionHeading(feature)) {
+                            flushSectionBullets(`heading-${index}`)
+                            currentHeading = feature
+                            awaitingIntro = true
+                            items.push(
+                              <div
+                                key={`section-heading-${index}`}
+                                className={`${styles.featureItem} ${styles.sectionedItem} ${styles.sectionedHeading}`}
+                              >
+                                <p className={styles.featureHeading}>{renderHeadingText(feature)}</p>
+                              </div>,
+                            )
+                            return
+                          }
+
+                          if (!currentHeading) return
+
+                          if (awaitingIntro && !isBulletMarkerLine(feature)) {
+                            items.push(renderSectionedParagraph(feature, `section-intro-${index}`))
+                            awaitingIntro = false
+                            return
+                          }
+
+                          if (isBulletMarkerLine(feature)) {
+                            awaitingIntro = false
+                            sectionBulletItems.push(stripBulletMarker(feature))
+                            return
+                          }
+
+                          flushSectionBullets(`para-${index}`)
+                          awaitingIntro = false
+                          items.push(renderSectionedParagraph(feature, `section-para-${index}`))
+                        })
+
+                        flushSectionBullets('final')
+                        return [
+                          <div key="sectioned-list" className={styles.sectionedList}>
+                            {items}
+                          </div>,
+                        ]
+                      }
+
                       activeTabData.content.forEach((feature, index) => {
                         if (!feature || typeof feature !== 'string') return
 
@@ -282,12 +402,6 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                           ) ||
                             feature.trim().endsWith(':'))
 
-                        // Check if this is an inline heading like "Applications"
-                        const isInlineHeading =
-                          hasHeadingWithDescription &&
-                          (parts[0].trim().toLowerCase() === 'applications' ||
-                            parts[0].trim().toLowerCase() === 'application')
-
                         if (
                           isBulletFormat &&
                           (isStandaloneHeading || isMainHeading || isSubHeading)
@@ -309,6 +423,8 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
 
                                 const boldLabels = [
                                   'Applications:',
+                                  'Available sizes:',
+                                  'Unit of sale:',
                                   'Standard sizes:',
                                   'Standard lengths:',
                                   'Application:',
@@ -366,6 +482,8 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                                     // Check if item starts with bold labels
                                     const boldLabels = [
                                       'Applications:',
+                                      'Available sizes:',
+                                      'Unit of sale:',
                                       'Standard sizes:',
                                       'Standard lengths:',
                                       'Application:',
@@ -470,11 +588,6 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                                       <p className={styles.featureDescription}>{parts[1]}</p>
                                     )}
                                   </>
-                                ) : isInlineHeading ? (
-                                  <p className={styles.featureDescription}>
-                                    <span className={styles.featureHeading}>{renderHeadingText(parts[0])}</span>{' '}
-                                    {parts[1]}
-                                  </p>
                                 ) : (
                                   <>
                                     <p className={styles.featureHeading}>{renderHeadingText(parts[0])}</p>
@@ -514,6 +627,8 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
 
                             const boldLabels = [
                               'Applications:',
+                              'Available sizes:',
+                              'Unit of sale:',
                               'Standard sizes:',
                               'Standard lengths:',
                               'Application:',
@@ -571,6 +686,8 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                                 // Check if item starts with bold labels
                                 const boldLabels = [
                                   'Applications:',
+                                  'Available sizes:',
+                                  'Unit of sale:',
                                   'Standard sizes:',
                                   'Standard lengths:',
                                   'Application:',

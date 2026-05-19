@@ -58,7 +58,8 @@ const BestSellerCard: React.FC<BestSellerCardProps> = ({
             alt={title}
             fill
             className={styles.image}
-            sizes="(min-width: 1024px) 300px, 50vw"
+            sizes="(min-width: 1200px) 400px, (min-width: 768px) 50vw, 100vw"
+            quality={90}
             onError={handleImageError}
           />
         )}

@@ -24,21 +24,33 @@ export const escapeHtml = (value: string): string =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;')
 
+export interface EmailAttachment {
+  filename: string
+  content: Buffer
+}
+
 interface SendEmailOptions {
   subject: string
   html: string
   replyTo?: string
+  to?: string | string[]
+  attachments?: EmailAttachment[]
 }
 
-export const sendEmail = async ({ subject, html, replyTo }: SendEmailOptions) => {
+export const sendEmail = async ({ subject, html, replyTo, to, attachments }: SendEmailOptions) => {
   const resend = getResendClient()
+  const recipients = to ? (Array.isArray(to) ? to : [to]) : [DEFAULT_TO_EMAIL]
 
   await resend.emails.send({
     from: DEFAULT_FROM_EMAIL,
-    to: [DEFAULT_TO_EMAIL],
+    to: recipients,
     subject,
     html,
     replyTo,
+    attachments: attachments?.map(({ filename, content }) => ({
+      filename,
+      content,
+    })),
   })
 }
 

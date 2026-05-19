@@ -34,7 +34,15 @@ const CompanyValueCard: React.FC<CompanyValueCardProps> = ({
           {icon}
         </div>
       )}
-      <p className={clsx(styles.title, align === 'center' && styles.centerTitle)}>{title}</p>
+      <p
+        className={clsx(
+          styles.title,
+          align === 'center' && styles.centerTitle,
+          variant === 'compact' && styles.compactTitle,
+        )}
+      >
+        {title}
+      </p>
     </div>
   )
 }

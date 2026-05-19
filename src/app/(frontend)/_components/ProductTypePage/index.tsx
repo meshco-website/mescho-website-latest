@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
+import { filterProducts } from '@/data/products'
 import styles from './productTypePage.module.css'
 import FilterSidebar from '../FilterSidebar'
 import ProductCard from '../ProductCard'
@@ -10,6 +11,7 @@ interface Product {
   name: string
   image: string
   slug: string
+  category: string
   type?: string
   industry?: string
 }
@@ -53,27 +55,20 @@ const ProductTypePage: React.FC<ProductTypePageProps> = ({
   spanningProduct,
   category,
 }) => {
-  const [filters, setFilters] = useState<{ types: string[]; industries: string[] }>({
+  const [filters, setFilters] = useState<{ types: string[]; productKeys: string[] }>({
     types: [],
-    industries: [],
+    productKeys: [],
   })
 
   const filteredProducts = useMemo(() => {
-    if (!hasFilter || (filters.types.length === 0 && filters.industries.length === 0)) {
+    if (!hasFilter) {
       return products
     }
 
-    return products.filter((product) => {
-      const typeMatch =
-        filters.types.length === 0 || (product.type && filters.types.includes(product.type))
-      const industryMatch =
-        filters.industries.length === 0 ||
-        (product.industry && filters.industries.includes(product.industry))
-      return typeMatch && industryMatch
-    })
+    return filterProducts(products, filters)
   }, [filters, products, hasFilter])
 
-  const handleFilterChange = (newFilters: { types: string[]; industries: string[] }) => {
+  const handleFilterChange = (newFilters: { types: string[]; productKeys: string[] }) => {
     setFilters(newFilters)
   }
 
@@ -82,7 +77,9 @@ const ProductTypePage: React.FC<ProductTypePageProps> = ({
       <div className={styles.heroSection}>
         <div
           className={styles.heroBackground}
-          style={{ backgroundImage: `url(${backgroundImage})` }}
+          style={{
+            backgroundImage: `url("${encodeURI(backgroundImage)}")`,
+          }}
         />
         <div className={styles.heroOverlay} />
         <h1 className={styles.heroTitle}>{title}</h1>

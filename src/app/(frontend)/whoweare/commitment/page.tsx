@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import Accordion from '../../_components/Accordion'
@@ -72,15 +73,34 @@ export default function CommitmentPage() {
   return (
     <div className={styles.page}>
       <section className={styles.heroSection}>
-        <h1 className={styles.heroTitle}>Commitment to Service</h1>
+        <Image
+          src="/case-studies/Aerial_CapeTown2.jpg"
+          alt="Aerial view of Meshco WireWall installation in Cape Town"
+          fill
+          priority
+          className={styles.heroImage}
+          sizes="(min-width: 1200px) 100vw, 100vw"
+          quality={85}
+        />
+        <div className={styles.heroOverlay} aria-hidden />
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Commitment to Service</h1>
+        </div>
       </section>
 
       <section className={styles.introSection}>
         <div className={styles.introContainer}>
-          <div className={styles.introImage} aria-hidden />
+          <div className={`${styles.introImage} ${styles.introImageFilled}`}>
+            <Image
+              src="/about/meshco-commitment-service.jpg"
+              alt="Meshco team demonstrating commitment to service"
+              fill
+              className={styles.introImagePhoto}
+              sizes="(max-width: 768px) 100vw, 628px"
+            />
+          </div>
           <div className={styles.introContent}>
             <h2 className={styles.introHeading}>Built on Trust. Delivered with Purpose.</h2>
-            <p className={styles.introParagraph}>Built on Trust. Delivered with Purpose.</p>
             <p className={styles.introParagraph}>
               At Meshco, our commitment to service runs as deep as the iron ore our wire originates
               from. For over 60 years, we’ve built more than products — we’ve built relationships

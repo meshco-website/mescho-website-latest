@@ -46,7 +46,7 @@ export interface TabData {
   content: string[]
   html?: string
   image?: string | null
-  format?: 'bullet' | 'heading-description' | 'heading-colon' | 'plain'
+  format?: 'bullet' | 'sectioned-bullet' | 'heading-description' | 'heading-colon' | 'plain'
   imageMaxWidth?: string
 }
 
@@ -297,7 +297,7 @@ export const products: Product[] = [
   {
     id: '18',
     name: 'Brickforce',
-    title: 'Galvanised Brickforce NHBRC and STANDARD',
+    title: 'Galvanised Brickforce\nNHBRC and STANDARD',
     imageFolder: '/products/Reinforcing/brick-force',
     image: '/products/Reinforcing/brick-force/meshco-brickforce-galvanised.webp',
     slug: 'brickforce',
@@ -480,7 +480,7 @@ export const products: Product[] = [
     title: 'Droppers',
     otherTitle: 'Steel Droppers',
     imageFolder: '/products/Fencing/droppers',
-    image: '/products/Fencing/droppers/meshco-droppers.webp',
+    image: '/products/Fencing/droppers/meshco-steel-fence-dropper-1.webp',
     slug: 'droppers',
     type: 'Fencing',
     industry: 'Property',
@@ -501,7 +501,7 @@ export const products: Product[] = [
   },
   {
     id: '36',
-    name: 'Staples',
+    name: 'Fence Staples',
     title: 'Fencing Staples (Plain and Barbed)',
     otherTitle: 'Fence Staples',
     imageFolder: '/products/Fasteners/fencing-staples',
@@ -661,6 +661,157 @@ export function getAllIndustries(): string[] {
   return Array.from(new Set(products.map((product) => product.industry)))
 }
 
+export function getProductFilterKey(category: string, slug: string): string {
+  return `${category}-${slug}`
+}
+
+export interface IndustryFilterProduct {
+  /** Matches `${category}-${slug}` used across the catalog. */
+  key: string
+  label: string
+}
+
+export interface IndustryFilterGroup {
+  industry: string
+  products: IndustryFilterProduct[]
+}
+
+/** Nested industry filter on All Products — products may appear under multiple industries. */
+export const INDUSTRY_FILTER_GROUPS: IndustryFilterGroup[] = [
+  {
+    industry: 'Construction',
+    products: [
+      { key: 'reinforcing-reinforcing-mesh', label: 'Reinforcing Mesh' },
+      { key: 'reinforcing-brickforce', label: 'Brickforce' },
+      { key: 'reinforcing-cavity-wall-ties', label: 'Cavity Wall Ties' },
+      { key: 'reinforcing-hoop-iron', label: 'Hoop Iron' },
+      { key: 'reinforcing-ceramic-door-anchors', label: 'Ceramic Door Anchors' },
+      { key: 'fasteners-clout-nails', label: 'Clout Nails' },
+      { key: 'wire-black-annealed-wire', label: 'Black Annealed Wire' },
+      { key: 'fasteners-round-wire-nails', label: 'Round Wire Nails' },
+      { key: 'reinforcing-reinforcing-steel', label: 'Reinforcing Steel' },
+      { key: 'wire-slab-wire', label: 'Slab Wire' },
+      { key: 'wirewall-3210', label: '3210' },
+      { key: 'wirewall-3110', label: '3110' },
+      { key: 'wirewall-3510', label: '3510' },
+    ],
+  },
+  {
+    industry: 'Agriculture',
+    products: [
+      { key: 'wire-high-strain-wire', label: 'High Strain Wire' },
+      { key: 'wire-pvc-coated-wire', label: 'PVC Coated Wire' },
+      { key: 'wire-galvanised-wire', label: 'Galvanised Wire' },
+      { key: 'utility-growing-stakes', label: 'Growing Stakes' },
+      { key: 'fencing-standards', label: 'Standards' },
+      { key: 'fencing-droppers', label: 'Droppers' },
+      { key: 'fencing-field-game-fence', label: 'Field/Game Fence' },
+      { key: 'fencing-hexagonal-netting', label: 'Hexagonal Wire Netting' },
+      { key: 'utility-precision-welded-mesh', label: 'Precision Mesh' },
+      { key: 'fencing-barbed-wire', label: 'Barbed Wire' },
+      { key: 'fencing-razor-wire-flatwrap', label: 'Razor Wire' },
+      { key: 'fencing-diamond-mesh', label: 'Diamond Mesh' },
+      { key: 'fasteners-staples', label: 'Fencing Staples' },
+      { key: 'fasteners-hog-rings', label: 'Hog Rings' },
+      { key: 'fasteners-hog-ring-pliers', label: 'Hog Ring Pliers' },
+      { key: 'fasteners-cutting-nippers', label: 'Cutting Nippers' },
+      { key: 'wirewall-3110', label: '3110 Panel' },
+    ],
+  },
+  {
+    industry: 'Mining',
+    products: [
+      { key: 'mining-support-mining-mesh', label: 'Mining Support Mesh' },
+      { key: 'mining-support-backfill-mesh', label: 'Backfill Mesh' },
+      { key: 'fencing-standards', label: 'Y-Standards' },
+      { key: 'fencing-diamond-mesh', label: 'Diamond Mesh' },
+      { key: 'wirewall-3510', label: '3510 Panel' },
+    ],
+  },
+  {
+    industry: 'Recycling',
+    products: [{ key: 'wire-black-annealed-wire', label: 'Black Annealed Wire' }],
+  },
+  {
+    industry: 'Property',
+    products: [
+      { key: 'wirewall-3510', label: '3510' },
+      { key: 'wirewall-3110', label: '3110' },
+      { key: 'wirewall-3210', label: '3210' },
+      { key: 'wire-high-strain-wire', label: 'High Strain Wire' },
+      { key: 'wirewall-gates', label: 'Gates' },
+      { key: 'wirewall-spikes', label: 'Spikes' },
+      { key: 'wirewall-underdig-panel', label: 'Underdigs' },
+    ],
+  },
+  {
+    industry: 'Manufacturing',
+    products: [
+      { key: 'wire-hard-drawn-wire', label: 'Hard Drawn Wire' },
+      { key: 'utility-specimesh-panels', label: 'SpeciMesh Panels' },
+      { key: 'utility-precision-welded-mesh', label: 'Precision Welded Mesh' },
+      { key: 'wire-galvanised-wire', label: 'Galvanised Wire' },
+      { key: 'wire-straight-cut-wire', label: 'Straight & Cut Wire' },
+      { key: 'wire-slab-wire', label: 'Slab Wire' },
+    ],
+  },
+]
+
+/** Display labels for the All Products filter sidebar (stable order). */
+export const PRODUCT_TYPE_FILTER_LABELS = [
+  'Wire',
+  'WireWall',
+  'Reinforcing',
+  'Fencing',
+  'Mining Support',
+  'Fasteners',
+  'Utility',
+] as const
+
+export const TYPE_LABEL_TO_CATEGORY: Record<string, string> = {
+  Wire: 'wire',
+  WireWall: 'wirewall',
+  Reinforcing: 'reinforcing',
+  Fencing: 'fencing',
+  'Mining Support': 'mining-support',
+  Fasteners: 'fasteners',
+  Utility: 'utility',
+}
+
+export interface ProductFilters {
+  types: string[]
+  /** `category-slug` keys from the nested industry filter. */
+  productKeys: string[]
+}
+
+export interface FilterableProduct {
+  category: string
+  slug: string
+}
+
+export function filterProducts<T extends FilterableProduct>(
+  catalog: T[],
+  filters: ProductFilters,
+): T[] {
+  if (filters.types.length === 0 && filters.productKeys.length === 0) {
+    return catalog
+  }
+
+  const selectedCategories = filters.types
+    .map((label) => TYPE_LABEL_TO_CATEGORY[label])
+    .filter((category): category is string => Boolean(category))
+
+  const selectedProductKeys = new Set(filters.productKeys)
+
+  return catalog.filter((product) => {
+    const productKey = getProductFilterKey(product.category, product.slug)
+    const typeMatch =
+      selectedCategories.length === 0 || selectedCategories.includes(product.category)
+    const industryMatch = selectedProductKeys.size === 0 || selectedProductKeys.has(productKey)
+    return typeMatch && industryMatch
+  })
+}
+
 // Export products grouped by category for convenience
 export const productsByCategory = {
   wire: getProductsByCategory('wire'),
@@ -756,7 +907,7 @@ const withProduct = (key: string, detail: ProductDetail): ProductDetailConfig =>
     name: product.name,
     title: product.title ?? product.name,
     otherTitle: product.otherTitle,
-    category: product.type,
+    category: product.category,
     heroImage: product.image,
     description: enrichedDetail.description,
     layoutType: enrichedDetail.layoutType,
@@ -1353,7 +1504,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/WireWall/358-panel/specifications.webp',
+        image: '/products/WireWall/doublewall/specifications.webp',
       },
       {
         id: 'features',
@@ -1392,7 +1543,9 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       '<b>Extreme perimeter protection for the highest security sites</b>\n\n\n<b>The WireWall 355 Supermax</b> panel is engineered for the most demanding security environments, <b>including supermax prisons, defence facilities, and high-risk government installations.</b>\n\nHistorically government specifications called for a double 4mm vertical wire panel. However the weld strength between the three wires was found to be inadequate, with welds coming apart on site either by themselves or through the application of minimal force. This led to requests for a new, superior specification. Enter the WireWall 355 Supermax. The weight per meter of the SuperMax panel is the same as the double 4mm wire option, but with superior weld strength and an increased difficulty to cut. The SuperMax design also allows the same security across the full height of panels while still allowing the top of the panel to be bowed.\n\nWith its <b>5.6mm vertical wires</b> combined with <b>4.0mm horizontal wires</b>, the 355 Supermax provides unparalleled rigidity and resistance to impact, forcing, and cutting.',
     layoutType: 'wirewall',
-    images: ['/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.webp'],
+    images: [
+      '/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.webp',
+    ],
     specifications: [],
     wireWallSpecifications: {
       height: ['1200', '1800', '2100', '2400', '3000'],
@@ -1682,8 +1835,6 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/3110/meshco-wirewall-3110-medium-security-1.webp',
-          '/products/WireWall/3110/meshco-wirewall-3110-medium-security-2.webp',
           '/products/WireWall/3110/meshco-wirewall-3110-growthpoint.webp',
           '/products/WireWall/3110/meshco-wirewall-3110-deerpark.webp',
           '/products/WireWall/3110/meshco-wirewall-3110-electricfence.webp',
@@ -1758,8 +1909,6 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/3210/meshco-wirewall-3210-medium-security-1.webp',
-          '/products/WireWall/3210/meshco-wirewall-3210-medium-security-2.webp',
           '/products/WireWall/3210/meshco-wirewall-3210-galvanised-faithcentre.webp',
           '/products/WireWall/3210/meshco-wirewall-3210-residential.webp',
         ],
@@ -1840,8 +1989,6 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/af-100/meshco-wirewall-af100-1.webp',
-          '/products/WireWall/af-100/meshco-wirewall-af100-2.webp',
           '/products/WireWall/af-100/meshco-af100-airport.webp',
           '/products/WireWall/af-100/meshco-af100-green-plascoat.webp',
         ],
@@ -2098,8 +2245,8 @@ const productDetailData: Record<string, ProductDetail> = {
           'Reinforcement - It increases the tensile strength of the wall by adding reinforcement between the mortar layers or rows of bricks.',
           'Crack Prevention - Brickforce minimises the risk of cracking due to thermal expansion, contraction and structural settlement.',
           'Durability - Increases the durability of masonry structures, making them last longer and maintaining their structural integrity.',
-          'Installation - Generally installed during masonry installation, steel strengthening being placed between brick lessons during the construction of the wall.',
-          'Applications: Common in residential and commercial construction projects, in particular in high wind load areas, seismic risks or unstable soil conditions. This form of reinforcement is often used in combination with other building practices to improve overall structural performance.',
+          'Installation - Typically installed during wall construction, positioned between brick courses in the mortar joint to reinforce the wall and help reduce cracking.',
+          'Applications - Common in residential and commercial construction projects, in particular in high wind load areas, seismic risks or unstable soil conditions. This form of reinforcement is often used in combination with other building practices to improve overall structural performance.',
           'High-Grade Steel - The best Brickforce is made from high-quality, low-carbon steel, which ensures strength without brittleness.',
           'Galvanisation - A thicker zinc coating (e.g., minimum 80g/m²) prevents rust and extends lifespan, especially in coastal or humid areas.',
           'High tensile strength - Ensures the mesh resists bending and breaking under pressure.',
@@ -2230,21 +2377,22 @@ const productDetailData: Record<string, ProductDetail> = {
         value:
           'Butterfly Wall Ties\nCrimped Wall Ties\nZ-Pattern Wall Ties\nVertical Twist Wall Ties',
         format: 'list',
+        labelBold: true,
       },
       { label: 'Standard', value: 'SANS 28:2023', format: 'inline', labelBold: true },
-      {
-        label: 'Available Sizes',
-        value: '150MM\n200MM\n225MM\n250MM\n300MM\nBUTTERFLY EXTENSION',
-        format: 'list',
-        labelBold: true,
-      },
-      {
-        label: 'Unit of Sale',
-        value:
-          'Bundle of 100\nBundle of 100\nBundle of 100\nBundle of 100\nBundle of 100\nBundle of 50',
-        format: 'list',
-        labelBold: true,
-      },
+      // {
+      //   label: 'Available Sizes',
+      //   value: '150MM\n200MM\n225MM\n250MM\n300MM\nBUTTERFLY EXTENSION',
+      //   format: 'list',
+      //   labelBold: true,
+      // },
+      // {
+      //   label: 'Unit of Sale',
+      //   value:
+      //     'Bundle of 100\nBundle of 100\nBundle of 100\nBundle of 100\nBundle of 100\nBundle of 50',
+      //   format: 'list',
+      //   labelBold: true,
+      // },
     ],
     applications: [
       'Residential cavity walls',
@@ -2264,35 +2412,52 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'types-of-wall-ties',
         label: 'Types of Wall Ties',
-        format: 'bullet',
+        format: 'sectioned-bullet',
         content: [
           'Butterfly Wall Ties',
-          'Simple wire design that reduces thermal bridging.',
-          'Cost-effective, easy to install.',
-          'Available sizes: 200mm, 250mm, 300mm, 350mm, 400mm, Butterfly extension.',
-          'Unit of sale: Bundles of 100 (Butterfly extension: Bundles of 50).',
+          'The industry-standard wall tie widely used in South African cavity wall construction.',
+          '',
+          '• Efficient wire profile provides dependable connection between wall leaves.',
+          '• Cost-effective, practical, and quick to install.',
+          '• Trusted for residential, commercial, and general masonry applications.',
+          'Calculate the required Butterfly Wall Tie size by deducting 20-50 mm from the entire wall thickness including the cavity.',
+          '',
+          'Available sizes: 150mm, 200mm, 225mm, 250mm, 300mm, Butterfly Extension.',
+          'Unit of sale: Bundles of 100 (Butterfly Extension: bundles of 50).',
+          '',
+          '',
           'Crimped Wall Ties',
-          'Crimped pattern allows for controlled movement while maintaining stiffness and improving bond with mortar. Ideal where thermal or structural shifts may occur.',
-          'Superior tensile strength and stability.',
-          'Ideal for areas with high wind loads.',
+          'Crimped profile provides flexibility while maintaining strength and improving bond with mortar.',
+          '• Suitable where minor structural movement may occur.',
+          '• High tensile strength and stability.',
+          '• Suitable for areas with high wind loads.',
+          '',
           'Available sizes: 200mm – 400mm.',
           'Unit of sale: Bundles of 100.',
+          '',
+          '',
           'Z-Pattern Wall Ties',
-          'Simple, robust angular design provides strength and stability, particularly in load-bearing applications.',
-          'Economical solution available in various lengths.',
+          'Simple, robust angular design provides strength and stability in cavity wall applications.',
+          '',
           'Available sizes: 200mm – 300mm.',
           'Unit of sale: Bundles of 100.',
+          '',
+          '',
           'Vertical Twist Wall Ties',
-          'Provide secure wall tie connections while reducing thermal bridging.',
-          'Twist enhances mechanical keying into mortar, improving stability and bonding.',
-          'Suitable for residential and commercial cavity walls.',
+          'Provides secure cavity wall connection.',
+          '',
+          '• Twisted profile improves mechanical keying into mortar for enhanced stability and bond strength.',
+          '• Suitable for residential and commercial cavity walls.',
+          '',
           'Available sizes: 250mm, 450mm.',
           'Unit of sale: Sold individually.',
+          '',
+          '',
           'Key Benefits of Meshco Wall Ties',
-          'Manufactured from high-quality galvanised steel for durability.',
-          'Available in a full range of patterns to meet SANS building standards.',
-          'Designed for strength, ease of installation, and reduced heat transfer.',
-          'Suitable for residential, commercial, and industrial masonry projects.',
+          '• Manufactured from high-quality galvanised steel for durability.',
+          '• Available in a full range of patterns to meet SANS building standards.',
+          '• Designed for strength and ease of installation.',
+          '• Suitable for residential, commercial, and industrial masonry projects.',
         ],
       },
       {
@@ -2379,7 +2544,7 @@ const productDetailData: Record<string, ProductDetail> = {
           'Standard sizes: 6mm, 8mm, 10mm, 12mm',
           'Standard lengths: 6m and 12m (custom lengths available).',
           'Key Benefits of Meshco Rebar',
-          'Manufactured to national standards for consistency and safety.',
+          // 'Manufactured to national standards for consistency and safety.',
           'Available in both high-tensile deformed bar and mild steel round bar.',
           'Supplied in a wide range of sizes and lengths, with custom lengths on request.',
           'Trusted for use in residential, commercial, and heavy infrastructure projects.',
@@ -2396,7 +2561,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'reinforcing-ceramic-door-anchors': {
     description:
-      'Our Ceramic Door Anchors are engineered for maximum strength and reliability, ensuring that your doors are securely fastened and able to withstand the elements. Made from high-quality ceramic materials, these anchors provide exceptional resistance to wear, corrosion, and environmental stresses.',
+      'Meshco’s <b>Ceramic Door Anchors</b> are designed to provide strong, reliable fixing of door frames into masonry walls. Manufactured from high-quality steel, they offer dependable strength, durability, and long-lasting performance in residential, commercial, and industrial building applications.',
     layoutType: 'standard',
     images: ['/products/Reinforcing/ceramic-door-anchors/meshco-ceramic-door-anchor.webp'],
     specifications: [],
@@ -2420,11 +2585,11 @@ const productDetailData: Record<string, ProductDetail> = {
         label: 'Features',
         content: [
           'Key Features:',
-          'Durability - Made from advanced ceramic materials, our door anchors offer superior resistance to cracking, chipping, and corrosion.',
-          'High Load Capacity - Designed to support heavy doors, ensuring long-lasting performance without compromising security.',
-          'Easy Installation - Features a user-friendly design that simplifies the installation process, saving time and effort.',
-          'Weather-Resistant - Resistant to harsh environmental conditions, making them ideal for both indoor and outdoor use.',
-          "Non-Conductive - Ceramic's non-conductive properties ensure electrical safety in sensitive areas.",
+          'Durability - Manufactured from high-quality steel for strength, durability, and long service life.',
+          'High Load Capacity - Designed to provide secure fixing and dependable support for door frame installations.',
+          'Easy Installation - Practical design allows for quick and efficient installation.',
+          'Corrosion Resistant - Suitable for indoor and general building applications, with finishes available to improve corrosion resistance where required.',
+          'Non-Conductive - Engineered to deliver consistent fastening performance in masonry construction.',
         ],
       },
     ],
@@ -2469,7 +2634,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Strong welded joints - Each intersection is electronically welded for strength and shape retention.',
+          'Strong welded joints - Each intersection is welded for strength and shape retention.',
           'Galvanised for longevity - Available in lightly (Class C) and fully galvanised (Class A) material, our welded fencing products are manufactured to resist corrosion and withstand harsh weather conditions.',
           'Wide range of mesh sizes - Available in various aperture sizes and wire diameters to suit your specific application.',
           'Easy to cut, shape and install - Suitable for mounting on posts, frames, or walls.',
@@ -2495,7 +2660,7 @@ const productDetailData: Record<string, ProductDetail> = {
         content: [
           "Why Choose Meshco's Welded Fencing Mesh?",
           "As a trusted name in fencing for over 60 years, Meshco's welded mesh products combine reliable strength with cost-efficiency. Manufactured to strict quality standards, our galvanised mesh is easy to work with, long-lasting, and adaptable to a wide range of uses.",
-          "Whether you\'re fencing a farm, enclosing a warehouse, or building a custom gate or frame, Meshco provides the foundation you can depend on.",
+          "Whether you\'re fencing a farm, enclosing a warehouse, or building a custom gate or frame, Meshco Welded Fencing Mesh provides the foundation you can depend on.",
         ],
       },
     ],
@@ -2538,7 +2703,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [
-          'Wire diameters (after coating) - 1.80mm',
+          'Wire diameters (after coating) - 2.5mm',
           'Aperture sizes - 50 × 50mm (only available option)',
           'Height - 2000mm (only available option)',
           'Roll Lengths - 25m',
@@ -2729,9 +2894,12 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'fencing-razor-wire-flatwrap': {
     description:
-      "<b>High-security perimeter protection in a compact, low-profile design.</b>\n\n\n<b>Meshco's Flat Wrap Razor Wire</b> is the ideal deterrent where space is limited but uncompromising security is essential. Designed to lay flat against and above fences or walls, it delivers a neat, discreet, and highly effective barrier that's difficult to climb, cut, or bypass.\n\nWhether used alone or as an upgrade to existing security fencing, our flat wrap design offers the same intimidating appearance and defensive strength of traditional concertina razor wire—without the excessive bulk.",
+      "<b>High-security perimeter protection in a compact, low-profile design.</b>\n\n\nMeshco's <b>Flat Wrap Razor Wire</b> is the ideal deterrent where space is limited but uncompromising security is essential. Designed to lay flat against and above fences or walls, it delivers a neat, discreet, and highly effective barrier that's difficult to climb, cut, or bypass.\n\nWhether used alone or as an upgrade to existing security fencing, our flat wrap design offers the same intimidating appearance and defensive strength of traditional concertina razor wire—without the excessive bulk.",
     layoutType: 'simple',
-    images: ['/products/Fencing/razor-wire-flatwrap/meshco-razor-flatwrap-3.webp'],
+    images: [
+      '/products/Fencing/razor-wire-flatwrap/meshco-razor-flatwrap-3.webp',
+      '/products/Fencing/razor-wire-flatwrap/meshco-razor-wire-tape-2.webp',
+    ],
     specifications: [
       {
         label: 'AVAILABLE SIZES',
@@ -2809,7 +2977,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'fencing-razor-wire-btc': {
     description:
-      "<b>Maximum deterrence. Maximum protection.</b>\n\n\nMeshco's <b>Concertina Razor Wire</b>, also known as <b>BTC (Barbed Tape Concertina)</b>, is engineered for the highest levels of perimeter security. Designed to expand into large, sharp coils with strong spring-back action, this type of razor wire forms an unbreachable barrier that is both physically dangerous and psychologically intimidating.\n\nWhether protecting high-risk infrastructure or securing remote boundaries, our concertina coils offer a proven, cost-effective solution trusted across defence, correctional, commercial and infrastructure sites.",
+      "<b>Maximum deterrence. Maximum protection.</b>\n\n\nMeshco's <b>Concertina Razor Wire</b>, also known as <b>BTC (Barbed Tape Concertina)</b>, is engineered for the highest levels of perimeter security. Designed to expand into large, sharp coils with strong spring-back action, this type of razor wire forms a barrier that is both physically dangerous and psychologically intimidating.\n\nWhether protecting high-risk infrastructure or securing remote boundaries, our concertina coils offer a proven, cost-effective solution trusted across defence, correctional, commercial and infrastructure sites.",
     layoutType: 'simple',
     images: [
       '/products/Fencing/razor-wire-btc/meshco-concertina-razor-wire-btc1.webp',
@@ -2818,7 +2986,7 @@ const productDetailData: Record<string, ProductDetail> = {
     specifications: [
       {
         label: 'AVAILABLE SIZES',
-        value: '250MM\n730MM\n900MM',
+        value: '450MM\n730MM\n900MM',
         format: 'list',
       },
       {
@@ -2896,7 +3064,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'fencing-razorwall': {
     description:
-      "<b>When you need security with teeth.</b>\n\n\n<b>Maximum security. Minimal compromise.</b>\n\n\nMeshco's <b>RazorWall</b>, also known as <b>Razor Mesh</b>, delivers mean security—no-nonsense perimeter protection designed to send a clear message: keep out. This aggressive barrier combines the penetration resistance of razor wire with the rigidity of welded mesh, making it one of the toughest and most intimidating fencing solutions on the market.\n\nWith its diamond mesh pattern and welded intersection points, every strand is armed with razor-sharp barbs that are virtually impossible to climb, cut, or bypass.",
+      "<b>When you need security with teeth.</b>\n\n\n<b>Maximum security. Minimal compromise.</b>\n\n\nMeshco's <b>RazorWall</b>, also known as <b>Razor Mesh</b>, delivers mean security—no-nonsense perimeter protection designed to send a clear message: keep out. This aggressive barrier combines the penetration resistance of razor wire with the rigidity of welded mesh, making it one of the toughest and most intimidating fencing solutions on the market.\n\nWith its diamond mesh pattern and welded intersection points, every strand is armed with razor-sharp barbs.",
     layoutType: 'simple',
     images: [
       '/products/Fencing/razor-wall/meshco-razor-wall-mesh-1.webp',
@@ -2905,7 +3073,7 @@ const productDetailData: Record<string, ProductDetail> = {
     specifications: [
       {
         label: 'Available Sizes',
-        value: '1.0 x 6.0m\n2.1 x 6.0m\n2.4 x 6.0m',
+        value: '1.8 x 6.0m\n2.1 x 6.0m\n2.4 x 6.0m',
         format: 'list',
       },
       {
@@ -2975,7 +3143,7 @@ const productDetailData: Record<string, ProductDetail> = {
           'Airports, power stations, and water plants',
           'Mining and industrial perimeters',
           'High-security commercial zones',
-          'Government sites and embassies',
+          'Government sites',
         ],
       },
       {
@@ -3232,6 +3400,11 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       '<b>Keep Your Lines Straight and Strong</b>\n\n\nSteel Droppers are the ideal solution for maintaining tension and spacing between wires along long stretches of fencing. Used between main posts, these lightweight components prevent sagging, extend fence life, and improve overall stability without adding major cost or complexity.',
     layoutType: 'simple',
+    images: [
+      '/products/Fencing/droppers/meshco-steel-fence-dropper-1.webp',
+      '/products/Fencing/droppers/meshco-steel-dropper-2.webp',
+      '/products/Fencing/droppers/meshco-steel-dropper-3.webp',
+    ],
     specifications: [],
     applications: [
       'Field and game fencing',

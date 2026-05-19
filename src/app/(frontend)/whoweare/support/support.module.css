@@ -4,11 +4,28 @@
 }
 
 .heroSection {
-  background-color: #d0d2d3;
+  position: relative;
   height: 313px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 45, 47, 0.4);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
 
 .heroTitle {
@@ -17,7 +34,7 @@
   font-weight: 500;
   line-height: 1;
   letter-spacing: 2.5px;
-  color: #2a2d2f;
+  color: #ffffff;
   margin: 0;
   text-align: center;
 }
@@ -55,6 +72,18 @@
   background-size: 14%;
   background-position: center;
   opacity: 0.8;
+}
+
+.introImageFilled {
+  background-color: transparent;
+}
+
+.introImageFilled::after {
+  display: none;
+}
+
+.introImagePhoto {
+  object-fit: cover;
 }
 
 .introContent {

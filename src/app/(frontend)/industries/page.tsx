@@ -318,7 +318,7 @@ export default function IndustriesPage() {
           </p>
           <p className={styles.introText}>
             Whether reinforcing the foundations of a nation or securing its future, Meshco stands
-            behind every strand.
+            behind every wire.
           </p>
           <p className={styles.introHighlight}>Explore how we support these key sectors:</p>
         </div>

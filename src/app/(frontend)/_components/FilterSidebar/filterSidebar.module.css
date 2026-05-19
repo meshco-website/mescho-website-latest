@@ -1,5 +1,5 @@
 .filterSidebar {
-  width: 250px;
+  width: 280px;
   padding: 2rem 0;
   display: flex;
   flex-direction: column;
@@ -151,4 +151,59 @@
   height: 1px;
   background-color: #c0c0c0;
   margin-top: 0.5rem;
+}
+
+.industryGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.industryGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.industryGroupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+.industryExpandButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.industryLabel {
+  color: #2a2d2f;
+  font-family: var(--font-onest);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 32px;
+}
+
+.nestedFilterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding-left: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.nestedOptionText {
+  color: #2a2d2f;
+  font-family: var(--font-onest);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 28px;
 }

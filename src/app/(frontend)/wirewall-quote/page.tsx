@@ -1,10 +1,11 @@
 'use client'
 
-import React, { useActionState, useEffect, useRef } from 'react'
+import React, { useActionState, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import FormSubmitButton from '../_components/FormSubmitButton'
 import { submitWirewallQuoteForm, type FormState } from '../_actions/form-submissions'
+import MultiSelectField from './MultiSelectField'
 import styles from './wirewall-quote.module.css'
 
 const initialState: FormState = {
@@ -13,13 +14,23 @@ const initialState: FormState = {
   fields: {},
 }
 
+const SECURITY_OPTIONS = [
+  'Spike Strip',
+  'Under Dig',
+  'Electric Fencing',
+  'Razor Wire',
+  'None',
+] as const
+
 export default function WirewallQuotePage() {
   const [state, formAction] = useActionState(submitWirewallQuoteForm, initialState)
   const formRef = useRef<HTMLFormElement>(null)
+  const [securityOptions, setSecurityOptions] = useState<string[]>([])
 
   useEffect(() => {
     if (state.status === 'success') {
       formRef.current?.reset()
+      setSecurityOptions([])
     }
   }, [state.status])
 
@@ -150,13 +161,14 @@ export default function WirewallQuotePage() {
               <div className={styles.selectWrapper}>
                 <select id="panelType" name="panelType" className={styles.select}>
                   <option value="">Select</option>
-                  <option value="355">355 (4mm on 5.6mm - 75mm x 12.7mm)</option>
-                  <option value="358">358 (4mm on 4mm - 75mm x 12.7mm)</option>
-                  <option value="3510">3510 (3mm on 4mm - 75mm x 12.7mm)</option>
-                  <option value="3110">3110 (3mm on 4mm - 75mm x 25mm)</option>
-                  <option value="3210">3210 (3mm on 4mm - 75mm x 50mm)</option>
-                  <option value="af100">AF100 (4mm on 4mm - 50mm x 100mm)</option>
-                  <option value="doublewall">DoubleWall (12.5mm x 12.5mm)</option>
+                  <option value="DoubleWall">DoubleWall</option>
+                  <option value="355 (75 x 12.7mm)">355 (75 x 12.7mm)</option>
+                  <option value="358 (75 x 12.7mm)">358 (75 x 12.7mm)</option>
+                  <option value="3510 (75 x 12.7mm)">3510 (75 x 12.7mm)</option>
+                  <option value="3110 (75 x 25mm)">3110 (75 x 25mm)</option>
+                  <option value="3210 (75 x 50mm)">3210 (75 x 50mm)</option>
+                  <option value="3410 (75 x 100mm)">3410 (75 x 100mm)</option>
+                  <option value="AF100 (50 x 100mm)">AF100 (50 x 100mm)</option>
                 </select>
                 <span className={styles.selectArrow}>▼</span>
               </div>
@@ -169,31 +181,23 @@ export default function WirewallQuotePage() {
               <div className={styles.selectWrapper}>
                 <select id="coatingFinish" name="coatingFinish" className={styles.select}>
                   <option value="">Select</option>
-                  <option value="galvanised">Fully Galvanised 275g/m2</option>
-                  <option value="pvc-coated">PVC Coated (400 Microns min.)</option>
-                  <option value="polymer-coated">Polymer Coated</option>
-                  <option value="bare">Bare (No Coating)</option>
+                  <option value="Galvanised">Galvanised</option>
+                  <option value="Plastic Coated (Anthracite)">Plastic Coated (Anthracite)</option>
+                  <option value="Plastic Coated (Green)">Plastic Coated (Green)</option>
+                  <option value="Plastic Coated (Other)">Plastic Coated (Other)</option>
                 </select>
                 <span className={styles.selectArrow}>▼</span>
               </div>
             </div>
 
-            <div className={styles.formField}>
-              <label htmlFor="securityOptions" className={styles.label}>
-                Additional Security Options
-              </label>
-              <div className={styles.selectWrapper}>
-                <select id="securityOptions" name="securityOptions" className={styles.select}>
-                  <option value="">Select</option>
-                  <option value="spikes">Spikes</option>
-                  <option value="underdig">Underdig Panel</option>
-                  <option value="barbed-wire">Barbed Wire</option>
-                  <option value="razor-wire">Razor Wire</option>
-                  <option value="none">None</option>
-                </select>
-                <span className={styles.selectArrow}>▼</span>
-              </div>
-            </div>
+            <MultiSelectField
+              id="securityOptions"
+              name="securityOptions"
+              label="Additional Security Options"
+              options={SECURITY_OPTIONS}
+              value={securityOptions}
+              onChange={setSecurityOptions}
+            />
 
             <div className={styles.formField}>
               <label htmlFor="pedestrianGate" className={styles.label}>
@@ -202,8 +206,11 @@ export default function WirewallQuotePage() {
               <div className={styles.selectWrapper}>
                 <select id="pedestrianGate" name="pedestrianGate" className={styles.select}>
                   <option value="">Select</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="More">More</option>
                 </select>
                 <span className={styles.selectArrow}>▼</span>
               </div>
@@ -216,8 +223,11 @@ export default function WirewallQuotePage() {
               <div className={styles.selectWrapper}>
                 <select id="vehicleGate" name="vehicleGate" className={styles.select}>
                   <option value="">Select</option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="More">More</option>
                 </select>
                 <span className={styles.selectArrow}>▼</span>
               </div>

@@ -71,7 +71,7 @@ const getSpecificationImagePath = (heroImage: string): string | undefined => {
   }
 
   segments.pop()
-  segments.push('specifications.png')
+  segments.push('specifications.webp')
 
   return segments.join('/')
 }

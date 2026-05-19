@@ -38,7 +38,7 @@ export default function WireWallPage() {
         <h2 className={styles.introTitle}>The Post That Sets WireWall Apart</h2>
         <p className={styles.introSubtitle}>At the Core of Every WireWall Fence</p>
         <p className={styles.introText}>
-          At the heart of every WireWall is our patented post and clamping mechanism — purpose-built
+          At the heart of every WireWall is the patented post and clamping mechanism — purpose-built
           to deliver unmatched strength, clean aesthetics, and total tamper resistance, both from
           outside and inside the fence line.
         </p>
@@ -54,7 +54,8 @@ export default function WireWallPage() {
               <ul>
                 <li>The front cover plate secures the panel tightly against the post</li>
                 <li>
-                  A tie rod, round nut, washer, and shear nut form a robust, internal locking system
+                  The 304 stainless steel tie rod, round nut, washer, and shear nuts form the
+                  robust, internal locking system
                 </li>
                 <li>
                   All components are completely hidden from view, eliminating tamper points and
@@ -98,8 +99,8 @@ export default function WireWallPage() {
             <ul className={styles.featureList}>
               <li>UV-stabilised polypropylene cap prevents water ingress and internal corrosion</li>
               <li>
-                400-micron thermoplastic coating shields every part of the system from salt, UV, and
-                harsh environments
+                400-micron thermoplastic coating shields the galvanised steel components from salt,
+                UV, and harsh environments
               </li>
             </ul>
           </div>

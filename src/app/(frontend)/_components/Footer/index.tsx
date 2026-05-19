@@ -193,11 +193,18 @@ const Footer = () => {
                 <Link href="/contactus" className={styles.button}>
                   Contact Us
                 </Link>
+                <Image
+                  src="/ISO9001-certified.webp"
+                  alt="ISO 9001 certified"
+                  width={100}
+                  height={100}
+                  className={styles.isoLogo}
+                />
               </div>
             </div>
           </div>
           <div className={styles.bottomSection}>
-            <span>© 2025 MESHCO. All Rights Reserved.</span>
+            <span>© 2026 MESHCO. All Rights Reserved.</span>
             <div className={styles.bottomLinks}>
               <Link href="/terms" className={styles.bottomLink}>
                 Terms & Conditions

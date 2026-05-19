@@ -20,16 +20,18 @@ export interface ProductTypeConfig {
     name: string
     image: string
     slug: string
+    category: string
     type?: string
-    industry?: string
+    industry: string
   }>
   spanningProduct?: {
     id: string
     name: string
     image: string
     slug: string
+    category: string
     type?: string
-    industry?: string
+    industry: string
   }
 }
 
@@ -42,6 +44,7 @@ const toConfigProduct = (product: Product): ConfigProduct => ({
   name: product.name,
   image: product.image,
   slug: product.slug,
+  category: product.category,
   type: product.type,
   industry: product.industry,
 })
@@ -84,9 +87,8 @@ export const wireConfig: ProductTypeConfig = {
   backgroundImage: '/wire.jpg',
   hasFilter: false,
   cardSize: 'large',
-  layoutType: 'grid3x3WithSpan',
+  layoutType: 'grid3x3',
   products: getProductsByCategory('wire'),
-  spanningProduct: getSpanningProduct('high-strain-wire'),
 }
 
 export const fencingConfig: ProductTypeConfig = {
@@ -94,9 +96,8 @@ export const fencingConfig: ProductTypeConfig = {
   backgroundImage: '/fencing.png',
   hasFilter: false,
   cardSize: 'large',
-  layoutType: 'grid3x3WithSpan',
+  layoutType: 'grid3x3',
   products: getProductsByCategory('fencing'),
-  spanningProduct: getSpanningProduct('droppers'),
 }
 
 export const fastenersConfig: ProductTypeConfig = {
@@ -111,7 +112,8 @@ export const fastenersConfig: ProductTypeConfig = {
 
 export const miningSupportConfig: ProductTypeConfig = {
   title: 'Mining Support',
-  backgroundImage: '/placeholder.svg',
+  backgroundImage:
+    '/products/Mining Support/mining-support-mesh/meshco-underground-mining-support-mesh.webp',
   hasFilter: false,
   cardSize: 'large',
   layoutType: 'grid2x1',

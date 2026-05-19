@@ -129,6 +129,7 @@
   align-items: center;
   cursor: pointer;
   background-color: #ffffff;
+  overflow: hidden;
 }
 
 .fileInput {
@@ -143,6 +144,32 @@
   font-size: 16px;
   color: rgba(42, 45, 47, 0.5);
   pointer-events: none;
+}
+
+.fileName {
+  font-family: var(--font-onest);
+  font-size: 16px;
+  color: #2a2d2f;
+  pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.formMessage {
+  margin-top: 0.75rem;
+  font-family: var(--font-onest);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.formMessageSuccess {
+  color: #1a7f37;
+}
+
+.formMessageError {
+  color: #b42318;
 }
 
 .submitButton {
@@ -163,6 +190,11 @@
 
 .submitButton:hover {
   opacity: 0.9;
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .submitButton:focus-visible {

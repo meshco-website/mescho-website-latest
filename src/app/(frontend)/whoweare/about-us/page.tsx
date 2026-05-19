@@ -80,6 +80,16 @@ export default function AboutUsPage() {
   return (
     <div className={styles.aboutUsPage}>
       <section className={styles.heroSection}>
+        <Image
+          src="/about/meshco-factory-aerial-view.jpg"
+          alt="Meshco factory aerial view"
+          fill
+          priority
+          className={styles.heroImage}
+          sizes="(min-width: 1200px) 100vw, 100vw"
+          quality={85}
+        />
+        <div className={styles.heroOverlay} aria-hidden />
         <div className={styles.heroContent}>
           <h1 className={styles.heroTitle}>About MESHCO</h1>
         </div>
@@ -93,7 +103,7 @@ export default function AboutUsPage() {
               For over 60 years, Meshco has played a quiet, but essential role shaping the backbone
               of South Africa&apos;s infrastructure and security. As a third-generation Allen family
               business, we&apos;ve built a legacy based on unwavering quality, reliability, and a
-              deep understanding of your needs.
+              deep understanding of our Customer’s needs.
             </p>
           </div>
         </div>
@@ -132,7 +142,7 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      <section className={styles.valuesSection}>
+      {/* <section className={styles.valuesSection}>
         <div className={styles.valuesHeader}>
           <h2 className={styles.valuesTitle}>Company Values</h2>
           <Link href="/whoweare/about-us" className={styles.valuesLink}>
@@ -165,7 +175,7 @@ export default function AboutUsPage() {
             title="Driving progress for people in every community"
           />
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }

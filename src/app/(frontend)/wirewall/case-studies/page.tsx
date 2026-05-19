@@ -11,8 +11,8 @@ export default function CaseStudiesPage() {
     <div className={styles.caseStudiesPage}>
       <section className={styles.heroSection}>
         <Image
-          src="/getintouchback.png"
-          alt="Case Studies & References"
+          src="/case-studies/Aerial_CapeTown2.jpg"
+          alt="Aerial view of WireWall fencing in Cape Town"
           fill
           className={styles.heroImage}
           priority
@@ -21,10 +21,10 @@ export default function CaseStudiesPage() {
         <h1 className={styles.heroTitle}>Case Studies & References</h1>
       </section>
 
-      <section className={styles.caseStudiesSection}>
-        {caseStudies.map((caseStudy, index) => (
+      <section className={`${styles.caseStudiesSection} ${styles.caseStudiesSectionSingle}`}>
+        {caseStudies.map((caseStudy) => (
           <Link
-            key={index}
+            key={caseStudy.slug}
             href={`/wirewall/case-studies/${caseStudy.slug}`}
             className={styles.caseStudyCard}
           >
@@ -47,20 +47,6 @@ export default function CaseStudiesPage() {
             <div className={styles.cardContent}>
               <h3 className={styles.cardTitle}>{caseStudy.title}</h3>
               <p className={styles.cardDescription}>{caseStudy.description}</p>
-              <div className={styles.readMore}>
-                <span>Read More</span>
-                <div className={styles.arrowIcon}>
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path
-                      d="M5 0L10 5L5 10M10 5H0"
-                      stroke="#DEAF38"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
             </div>
           </Link>
         ))}

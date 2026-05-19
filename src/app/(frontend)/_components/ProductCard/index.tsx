@@ -34,6 +34,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const isPlaceholder = resolvedImage.includes('placeholder.svg')
   const isSmall = size === 'small'
 
+  // Match actual card width so Next.js serves a large enough srcset entry (avoids upscaling blur)
+  const imageSizes = isSmall
+    ? '(min-width: 1200px) 320px, (min-width: 768px) 33vw, 100vw'
+    : '(min-width: 1200px) 480px, (min-width: 768px) 50vw, 100vw'
+
   const imageSectionClassName = [
     styles.imageSection,
     isSmall ? styles.imageSectionSmall : styles.imageSectionLarge,
@@ -63,7 +68,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
             alt={name}
             fill
             className={styles.image}
-            sizes="(min-width: 1200px) 300px, (min-width: 768px) 33vw, 100vw"
+            sizes={imageSizes}
+            quality={90}
             onError={() => {
               if (!hasImageError) {
                 setHasImageError(true)

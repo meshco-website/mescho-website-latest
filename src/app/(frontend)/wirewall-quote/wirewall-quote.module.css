@@ -146,6 +146,60 @@
   color: #2a2d2f;
 }
 
+.multiSelectTrigger {
+  text-align: left;
+  background-color: white;
+}
+
+.multiSelectPlaceholder .multiSelectValue {
+  color: rgba(42, 45, 47, 0.5);
+}
+
+.multiSelectValue {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 24px;
+}
+
+.multiSelectMenu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: white;
+  border: 1px solid rgba(42, 45, 47, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(42, 45, 47, 0.12);
+}
+
+.multiSelectOption {
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 12px 20px;
+  font-family: var(--font-onest);
+  font-size: 15px;
+  color: #2a2d2f;
+  text-align: left;
+  cursor: pointer;
+}
+
+.multiSelectOption:hover {
+  background-color: rgba(42, 45, 47, 0.06);
+}
+
+.multiSelectOptionSelected {
+  background-color: rgba(222, 175, 56, 0.15);
+  font-weight: 500;
+}
+
 .bottomSection {
   display: flex;
   flex-direction: column;
@@ -260,6 +314,11 @@
   .radioInput {
     width: 20px;
     height: 20px;
+  }
+
+  .multiSelectOption {
+    padding: 10px 16px;
+    font-size: 14px;
   }
 
   .submitButton {

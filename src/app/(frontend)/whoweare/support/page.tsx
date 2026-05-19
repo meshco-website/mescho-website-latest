@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import Accordion from '../../_components/Accordion'
@@ -20,9 +21,9 @@ const ACCORDION_ITEMS = [
           project.
         </p>
         <p>Here are some of the services we can assist you with:</p>
-        <p>
+        {/* <p>
           <strong>One-on-one meetings</strong>
-        </p>
+        </p> */}
         <ul>
           <li>Sample drop offs</li>
           <li>Specification assistance</li>
@@ -75,7 +76,19 @@ export default function SupportPage() {
   return (
     <div className={styles.page}>
       <section className={styles.heroSection}>
-        <h1 className={styles.heroTitle}>Support</h1>
+        <Image
+          src="/case-studies/Aerial_CapeTown2.jpg"
+          alt="Aerial view of Meshco WireWall installation in Cape Town"
+          fill
+          priority
+          className={styles.heroImage}
+          sizes="(min-width: 1200px) 100vw, 100vw"
+          quality={85}
+        />
+        <div className={styles.heroOverlay} aria-hidden />
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Support</h1>
+        </div>
       </section>
 
       <section className={styles.introSection}>
@@ -119,13 +132,13 @@ export default function SupportPage() {
                 sales@meshco.co.za
               </a>
             </p>
-            <p className={styles.ctaText}>WhatsApp Business: XXXXXXX</p>
+            {/* <p className={styles.ctaText}>WhatsApp Business: XXXXXXX</p> */}
             <p className={styles.ctaText}>
               Office Hours: Monday–Thursday, 08:00–17:00 and Friday, 08:00–15:00
             </p>
-            <p className={styles.ctaText}>
+            {/* <p className={styles.ctaText}>
               Or contact us via the live chat at the bottom right of your screen.
-            </p>
+            </p> */}
           </article>
 
           <article className={styles.ctaCard}>

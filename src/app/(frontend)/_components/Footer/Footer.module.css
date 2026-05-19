@@ -1,5 +1,5 @@
 .getInTouch {
-  background: url('/getintouchback.png') lightgray 50% / cover no-repeat;
+  background: url('/wirewallHero.png') lightgray 50% / cover no-repeat;
   padding: 5rem 2rem;
   width: 100%;
   display: flex;
@@ -276,9 +276,17 @@
 
 .contactButtonContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.isoLogo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100px;
 }
 
 .bottomLinks {

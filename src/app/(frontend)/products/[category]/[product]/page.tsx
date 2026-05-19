@@ -2,6 +2,7 @@ import React from 'react'
 import { notFound } from 'next/navigation'
 import ProductDetailPage from '../../../_components/ProductDetailPage'
 import { productDetailConfigs } from '../../../_components/ProductDetailPage/configs'
+import { products } from '@/data/products'
 
 interface ProductPageProps {
   params: Promise<{
@@ -12,12 +13,10 @@ interface ProductPageProps {
 
 // Generate static params for all product pages
 export async function generateStaticParams() {
-  const allProducts = Object.keys(productDetailConfigs).map((key) => {
-    const [category, product] = key.split('-')
-    return { category, product }
-  })
-
-  return allProducts
+  return products.map((product) => ({
+    category: product.category,
+    product: product.slug,
+  }))
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {

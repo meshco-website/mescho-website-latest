@@ -1,6 +1,12 @@
 import React from 'react'
+import Image from 'next/image'
 
+import ResourcesList from './ResourcesList'
 import styles from './resources.module.css'
+
+const HERO_BANNER_IMAGE = '/resources/meshco-resources-page-banner.png'
+const INTRO_IMAGE = '/resources/meshco-wirewall-drawing.png'
+const MESHCO_PRODUCT_CATALOGUE_PDF = '/Meshco WireWall Brochure.pdf'
 
 const INTRO_PARAGRAPHS = [
   'From detailed product specs to installation guides and compliance documents, the Meshco Resources page is your go-to library for technical information and support materials.',
@@ -36,7 +42,11 @@ const RESOURCE_SECTIONS = [
     id: 'product-catalogs',
     heading: 'Brochures & Catalogues',
     items: [
-      { label: 'Full Meshco Product Catalogue', href: '#' },
+      {
+        label: 'Full Meshco Product Catalogue',
+        href: MESHCO_PRODUCT_CATALOGUE_PDF,
+        download: 'Meshco WireWall Brochure.pdf',
+      },
       { label: 'WireWall Brochure', href: '#' },
     ],
   },
@@ -46,7 +56,19 @@ export default function ResourcesPage() {
   return (
     <div className={styles.page}>
       <section className={styles.heroSection}>
-        <h1 className={styles.heroTitle}>Resources</h1>
+        <div className={styles.heroImageWrapper}>
+          <Image
+            src={HERO_BANNER_IMAGE}
+            alt="Meshco resources and technical documentation"
+            fill
+            sizes="100vw"
+            priority
+          />
+          <div className={styles.heroOverlay} />
+        </div>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>Resources</h1>
+        </div>
       </section>
 
       <section className={styles.introSection}>
@@ -59,7 +81,15 @@ export default function ResourcesPage() {
               </p>
             ))}
           </div>
-          <div className={styles.introImage} aria-hidden />
+          <div className={styles.introImage}>
+            <Image
+              src={INTRO_IMAGE}
+              alt="WireWall technical drawing"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className={styles.introImagePhoto}
+            />
+          </div>
         </div>
       </section>
 
@@ -69,23 +99,7 @@ export default function ResourcesPage() {
       </section>
 
       <section className={styles.resourcesSection}>
-        <div className={styles.resourcesContainer}>
-          {RESOURCE_SECTIONS.map((section) => (
-            <div className={styles.sectionBlock} id={section.id} key={section.heading}>
-              <h3 className={styles.sectionHeading}>{section.heading}</h3>
-              <div className={styles.resourceList}>
-                {section.items.map((item) => (
-                  <div className={styles.resourceRow} key={item.label}>
-                    <p className={styles.resourceName}>{item.label}</p>
-                    <a className={styles.downloadButton} href={item.href}>
-                      Download
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <ResourcesList sections={RESOURCE_SECTIONS} />
       </section>
 
       <section className={styles.infoSection}>
@@ -96,7 +110,7 @@ export default function ResourcesPage() {
             project or tender, we’re happy to assist.
           </p>
           <p className={styles.infoText}>
-            Contact our team via the live chat function in the bottom right or email{' '}
+            Contact our team via email{' '}
             <a className={styles.infoLink} href="mailto:sales@meshco.co.za">
               sales@meshco.co.za
             </a>

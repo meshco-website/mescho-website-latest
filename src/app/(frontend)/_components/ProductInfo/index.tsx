@@ -3,7 +3,14 @@
 import React, { useMemo, useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { productTypeConfigs } from '../ProductTypePage/configs'
 import styles from './productInfo.module.css'
+
+const formatCategorySlug = (slug: string) =>
+  slug
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
 
 // Thumbnail component that only renders if image loads successfully
 const ThumbnailImage: React.FC<{
@@ -98,6 +105,9 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
   )
 
   const isPlaceholder = resolvedHeroImage.includes('placeholder.svg')
+
+  const categoryHref = `/products/${category}`
+  const categoryLabel = productTypeConfigs[category]?.title ?? formatCategorySlug(category)
 
   // Detect if image has white background
   useEffect(() => {
@@ -207,8 +217,8 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
             Products
           </Link>
           <span className={styles.breadcrumbSeparator}>{' > '}</span>
-          <Link href={`/products/${category.toLowerCase()}`} className={styles.breadcrumbLink}>
-            {category.charAt(0).toUpperCase() + category.slice(1)}
+          <Link href={categoryHref} className={styles.breadcrumbLink}>
+            {categoryLabel}
           </Link>
           <span className={styles.breadcrumbSeparator}>{' > '}</span>
           <span className={styles.breadcrumbCurrent}>{name}</span>
@@ -264,7 +274,14 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
           <div className={styles.detailsColumn}>
             <div className={styles.detailsBlock}>
               <div className={styles.categoryLabel}>{category.toUpperCase()}</div>
-              <h1 className={styles.productTitle}>{title}</h1>
+              <h1 className={styles.productTitle}>
+                {title.split('\n').map((line, index, lines) => (
+                  <React.Fragment key={line}>
+                    {line}
+                    {index < lines.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+              </h1>
 
               <div className={styles.description}>
                 {(() => {

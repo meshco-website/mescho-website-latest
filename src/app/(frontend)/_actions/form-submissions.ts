@@ -164,6 +164,101 @@ export const submitQuoteForm = async (
   }
 }
 
+const CAREERS_TO_EMAIL = 'riaan@meshco.co.za'
+const MAX_RESUME_SIZE_BYTES = 5 * 1024 * 1024
+const ALLOWED_RESUME_TYPES = new Set([
+  'application/pdf',
+  'application/msword',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+])
+
+const getResumeFile = (formData: FormData): File | null => {
+  const value = formData.get('resume')
+  return value instanceof File && value.size > 0 ? value : null
+}
+
+export const submitCareersForm = async (
+  _prevState: FormState,
+  formData: FormData,
+): Promise<FormState> => {
+  const firstName = normalizeValue(formData.get('firstName'))
+  const lastName = normalizeValue(formData.get('lastName'))
+  const phone = normalizeValue(formData.get('phone'))
+  const email = normalizeValue(formData.get('email'))
+  const position = normalizeValue(formData.get('position'))
+  const additionalInfo = normalizeValue(formData.get('additionalInfo'))
+  const resume = getResumeFile(formData)
+
+  const fields = {
+    firstName,
+    lastName,
+    phone,
+    email,
+    position,
+    additionalInfo,
+  }
+
+  if (!firstName || !lastName || !email) {
+    return errorState(
+      'Please complete the required fields: first name, last name, and email.',
+      fields,
+    )
+  }
+
+  if (!resume) {
+    return errorState('Please upload your resume/CV.', fields)
+  }
+
+  if (resume.size > MAX_RESUME_SIZE_BYTES) {
+    return errorState('Your resume must be 5MB or smaller.', fields)
+  }
+
+  const resumeType = resume.type || ''
+  const resumeExtension = resume.name.split('.').pop()?.toLowerCase() ?? ''
+  const isAllowedType =
+    ALLOWED_RESUME_TYPES.has(resumeType) ||
+    ['pdf', 'doc', 'docx'].includes(resumeExtension)
+
+  if (!isAllowedType) {
+    return errorState('Please upload a PDF or Word document (.pdf, .doc, .docx).', fields)
+  }
+
+  try {
+    const resumeBuffer = Buffer.from(await resume.arrayBuffer())
+    const subject = `Careers Application: ${firstName} ${lastName}`
+    const html = buildEmailBody('Careers Form Submission', [
+      ['First Name', firstName],
+      ['Last Name', lastName],
+      ['Email', email],
+      ['Phone', phone],
+      ['Position at Current Job', position],
+      ['Additional Information', additionalInfo],
+      ['Resume/CV', resume.name],
+    ])
+
+    await sendEmail({
+      subject,
+      html,
+      replyTo: email,
+      to: CAREERS_TO_EMAIL,
+      attachments: [
+        {
+          filename: resume.name,
+          content: resumeBuffer,
+        },
+      ],
+    })
+
+    return successState('Thank you for your application. We will be in touch shortly.')
+  } catch (error) {
+    console.error('Failed to submit careers form', error)
+    return errorState(
+      'We could not send your application right now. Please try again in a moment.',
+      fields,
+    )
+  }
+}
+
 export const submitWirewallQuoteForm = async (
   _prevState: FormState,
   formData: FormData,
@@ -178,7 +273,11 @@ export const submitWirewallQuoteForm = async (
   const fenceHeight = normalizeValue(formData.get('fenceHeight'))
   const panelType = normalizeValue(formData.get('panelType'))
   const coatingFinish = normalizeValue(formData.get('coatingFinish'))
-  const securityOptions = normalizeValue(formData.get('securityOptions'))
+  const securityOptions = formData
+    .getAll('securityOptions')
+    .map((value) => (typeof value === 'string' ? value.trim() : ''))
+    .filter(Boolean)
+    .join(', ')
   const pedestrianGate = normalizeValue(formData.get('pedestrianGate'))
   const vehicleGate = normalizeValue(formData.get('vehicleGate'))
   const installation = normalizeValue(formData.get('installation'))

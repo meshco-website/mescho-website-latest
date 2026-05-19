@@ -272,6 +272,100 @@
   padding: 0;
 }
 
+/* Tighter layout for Types of Wall Ties (sectioned-bullet format) */
+.sectionedList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sectionedList .sectionedHeading {
+  margin-top: 1rem;
+}
+
+.sectionedList .sectionedHeading:first-child {
+  margin-top: 0;
+}
+
+.sectionedList .sectionedHeading .featureHeading {
+  margin-bottom: 0.5rem;
+}
+
+.sectionedList .sectionedItem .featureDescription {
+  margin-bottom: 0.2rem;
+  line-height: 1.35;
+}
+
+.sectionedList .sectionedHeading + .sectionedItem .featureDescription {
+  margin-top: 0.15rem;
+  margin-bottom: 0.25rem;
+}
+
+.sectionedList .sectionedHeading + .sectionedBulletList {
+  margin-top: 0.35rem;
+}
+
+.sectionedList .sectionedBulletList {
+  margin: 0.15rem 0 0.25rem 1.25rem;
+}
+
+.sectionedList .sectionedBulletList .bulletItem {
+  margin-bottom: 0.1rem;
+  line-height: 1.35;
+}
+
+.sectionedList .sectionedBulletList + .sectionedItem .featureDescription {
+  margin-top: 0.25rem;
+}
+
+.sectionedList
+  .featureItem:has(.featureDescription):not(:has(.featureHeading))
+  + .sectionedHeading {
+  margin-top: 1rem !important;
+}
+
+.sectionedList .sectionedFooterLine {
+  margin: 0;
+  padding: 0;
+}
+
+.sectionedList .sectionedFooterLine .featureDescription {
+  margin: 0 !important;
+  padding: 0;
+  line-height: 1.35;
+}
+
+.sectionedList .sectionedFooterLine + .sectionedFooterLine {
+  margin: 0 !important;
+  padding: 0;
+}
+
+.sectionedList .sectionedFooterLine + .sectionedFooterLine .featureDescription {
+  margin: 0 !important;
+  padding: 0;
+  line-height: 1.35;
+}
+
+/* Override global 2rem gap between consecutive description items */
+.sectionedList
+  .sectionedFooterLine:has(.featureDescription)
+  + .sectionedFooterLine:has(.featureDescription)
+  .featureDescription {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.sectionedList .sectionedBulletList + .sectionedFooterLine .featureDescription {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0 !important;
+}
+
+/* Gap before sizes/sale block when it follows a body paragraph (e.g. Calculate…) */
+.sectionedList .sectionedItem:not(.sectionedFooterLine) + .sectionedFooterLine .featureDescription {
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+
 .bulletItem {
   font-family: var(--font-onest);
   font-size: 18px;
