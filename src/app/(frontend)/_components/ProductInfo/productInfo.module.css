@@ -390,6 +390,10 @@
   line-height: 28px;
 }
 
+.listItem b {
+  font-weight: 700;
+}
+
 .quoteButton {
   display: flex;
   justify-content: flex-end;

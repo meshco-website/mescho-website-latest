@@ -8,6 +8,7 @@ interface TabData {
   id: string
   label: string
   content: string[]
+  html?: string
   image?: string | null
   format?: 'bullet' | 'heading-description' | 'heading-colon' | 'plain'
   imageMaxWidth?: string
@@ -162,11 +163,22 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                       />
                     </div>
                   </div>
-                ) : activeTabData.content &&
-                  Array.isArray(activeTabData.content) &&
-                  activeTabData.content.length > 0 ? (
+                ) : (activeTabData.content &&
+                    Array.isArray(activeTabData.content) &&
+                    activeTabData.content.length > 0) ||
+                  activeTabData.html?.trim() ? (
                   <div className={styles.featuresList}>
                     {(() => {
+                      if (activeTabData.id === 'nail-size-guide' && activeTabData.html?.trim()) {
+                        return [
+                          <div
+                            key="nail-size-guide-html"
+                            className={`${styles.richContent} ${styles.nailGuideContent}`}
+                            dangerouslySetInnerHTML={{ __html: activeTabData.html }}
+                          />,
+                        ]
+                      }
+
                       const isBulletFormat = activeTabData.format === 'bullet'
                       let currentHeading: string | null = null
                       let bulletItems: string[] = []
@@ -605,6 +617,16 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                             </ul>,
                           )
                         }
+                      }
+
+                      if (activeTabData.html?.trim()) {
+                        items.push(
+                          <div
+                            key="tab-html-content"
+                            className={styles.richContent}
+                            dangerouslySetInnerHTML={{ __html: activeTabData.html }}
+                          />,
+                        )
                       }
 
                       return items

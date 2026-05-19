@@ -623,9 +623,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({
                           )}
                           <div className={styles.specValueList}>
                             {spec.value.split('\n').map((item, itemIndex) => (
-                              <div key={itemIndex} className={styles.listItem}>
-                                {item}
-                              </div>
+                              <div
+                                key={itemIndex}
+                                className={styles.listItem}
+                                dangerouslySetInnerHTML={{ __html: item }}
+                              />
                             ))}
                           </div>
                         </div>,
