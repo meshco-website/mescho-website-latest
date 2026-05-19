@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useActionState, useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import FormSubmitButton from '../_components/FormSubmitButton'
+import ReCaptchaField, { type ReCaptchaFieldRef } from '../_components/ReCaptchaField'
 import { submitWirewallQuoteForm, type FormState } from '../_actions/form-submissions'
 import MultiSelectField from './MultiSelectField'
 import styles from './wirewall-quote.module.css'
@@ -25,12 +25,16 @@ const SECURITY_OPTIONS = [
 export default function WirewallQuotePage() {
   const [state, formAction] = useActionState(submitWirewallQuoteForm, initialState)
   const formRef = useRef<HTMLFormElement>(null)
+  const recaptchaRef = useRef<ReCaptchaFieldRef>(null)
   const [securityOptions, setSecurityOptions] = useState<string[]>([])
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
 
   useEffect(() => {
     if (state.status === 'success') {
       formRef.current?.reset()
+      recaptchaRef.current?.reset()
       setSecurityOptions([])
+      setCaptchaToken(null)
     }
   }, [state.status])
 
@@ -274,16 +278,13 @@ export default function WirewallQuotePage() {
               />
             </div>
 
-            <div className={styles.imageContainer}>
-              <Image
-                src="/placeholder.svg"
-                alt="Captcha"
-                width={200}
-                height={50}
-                className={styles.captchaImage}
-              />
-            </div>
-            <FormSubmitButton className={styles.submitButton} pendingLabel="Sending...">
+            <ReCaptchaField ref={recaptchaRef} onTokenChange={setCaptchaToken} />
+            <input type="hidden" name="g-recaptcha-response" value={captchaToken ?? ''} />
+            <FormSubmitButton
+              className={styles.submitButton}
+              pendingLabel="Sending..."
+              disabled={!captchaToken}
+            >
               Submit
             </FormSubmitButton>
             {shouldShowMessage && (

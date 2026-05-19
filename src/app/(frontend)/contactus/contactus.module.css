@@ -134,19 +134,6 @@
   resize: vertical;
 }
 
-.captcha {
-  width: 304px;
-  height: 76px;
-  border: 1px solid rgba(42, 45, 47, 0.2);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-onest);
-  font-size: 14px;
-  color: rgba(42, 45, 47, 0.6);
-}
-
 .submitButton {
   align-self: flex-start;
   background-color: #deaf38;
@@ -212,10 +199,6 @@
   .formRow {
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
-  }
-
-  .captcha {
-    width: 100%;
   }
 
   .submitButton {

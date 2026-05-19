@@ -2,6 +2,7 @@
 
 import React, { useActionState, useEffect, useRef, useState } from 'react'
 import FormSubmitButton from '../../_components/FormSubmitButton'
+import ReCaptchaField, { type ReCaptchaFieldRef } from '../../_components/ReCaptchaField'
 import { submitCareersForm, type FormState } from '../../_actions/form-submissions'
 import styles from './careers.module.css'
 
@@ -14,12 +15,16 @@ const initialState: FormState = {
 const CareersForm: React.FC = () => {
   const [state, formAction] = useActionState(submitCareersForm, initialState)
   const formRef = useRef<HTMLFormElement>(null)
+  const recaptchaRef = useRef<ReCaptchaFieldRef>(null)
   const [resumeFileName, setResumeFileName] = useState<string | null>(null)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
 
   useEffect(() => {
     if (state.status === 'success') {
       formRef.current?.reset()
+      recaptchaRef.current?.reset()
       setResumeFileName(null)
+      setCaptchaToken(null)
     }
   }, [state.status])
 
@@ -139,8 +144,15 @@ const CareersForm: React.FC = () => {
         />
       </div>
 
+      <ReCaptchaField ref={recaptchaRef} onTokenChange={setCaptchaToken} />
+      <input type="hidden" name="g-recaptcha-response" value={captchaToken ?? ''} />
+
       <div>
-        <FormSubmitButton className={styles.submitButton} pendingLabel="Sending...">
+        <FormSubmitButton
+          className={styles.submitButton}
+          pendingLabel="Sending..."
+          disabled={!captchaToken}
+        >
           Submit form
         </FormSubmitButton>
         {shouldShowMessage && (

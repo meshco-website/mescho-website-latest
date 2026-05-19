@@ -220,6 +220,7 @@
 }
 
 .submitButton {
+  align-self: flex-start;
   background-color: #deaf38;
   color: #2a2d2f;
   border: none;
@@ -232,7 +233,6 @@
   letter-spacing: 0.8px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  margin: 0 auto;
 }
 
 .submitButton:hover {

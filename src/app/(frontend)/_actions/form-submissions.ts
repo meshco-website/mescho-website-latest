@@ -1,6 +1,7 @@
 'use server'
 
 import { escapeHtml, sendEmail } from '@/lib/email'
+import { verifyRecaptcha } from '@/lib/recaptcha'
 
 export interface FormState {
   status: 'idle' | 'success' | 'error'
@@ -47,6 +48,20 @@ const errorState = (message: string, fields: Record<string, string>): FormState 
   fields,
 })
 
+const getCaptchaToken = (formData: FormData): string =>
+  normalizeValue(formData.get('g-recaptcha-response'))
+
+const validateCaptcha = async (
+  formData: FormData,
+  fields: Record<string, string>,
+): Promise<FormState | null> => {
+  const result = await verifyRecaptcha(getCaptchaToken(formData))
+  if (!result.ok) {
+    return errorState(result.error, fields)
+  }
+  return null
+}
+
 export const submitContactForm = async (
   _prevState: FormState,
   formData: FormData,
@@ -74,6 +89,11 @@ export const submitContactForm = async (
       'Please complete the required fields: first name, last name, email, and inquiry.',
       fields,
     )
+  }
+
+  const captchaError = await validateCaptcha(formData, fields)
+  if (captchaError) {
+    return captchaError
   }
 
   try {
@@ -135,6 +155,11 @@ export const submitQuoteForm = async (
       'Please complete the required fields: first name, last name, email, and inquiry.',
       fields,
     )
+  }
+
+  const captchaError = await validateCaptcha(formData, fields)
+  if (captchaError) {
+    return captchaError
   }
 
   try {
@@ -207,6 +232,11 @@ export const submitCareersForm = async (
 
   if (!resume) {
     return errorState('Please upload your resume/CV.', fields)
+  }
+
+  const captchaError = await validateCaptcha(formData, fields)
+  if (captchaError) {
+    return captchaError
   }
 
   if (resume.size > MAX_RESUME_SIZE_BYTES) {
@@ -306,6 +336,11 @@ export const submitWirewallQuoteForm = async (
       'Please complete the required fields: first name, last name, and email.',
       fields,
     )
+  }
+
+  const captchaError = await validateCaptcha(formData, fields)
+  if (captchaError) {
+    return captchaError
   }
 
   try {

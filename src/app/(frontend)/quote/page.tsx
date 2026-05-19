@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useActionState, useEffect, useRef } from 'react'
-import Image from 'next/image'
+import React, { useActionState, useEffect, useRef, useState } from 'react'
 import FormSubmitButton from '../_components/FormSubmitButton'
+import ReCaptchaField, { type ReCaptchaFieldRef } from '../_components/ReCaptchaField'
 import { submitQuoteForm, type FormState } from '../_actions/form-submissions'
 import styles from './quote.module.css'
 
@@ -15,10 +15,14 @@ const initialState: FormState = {
 export default function QuotePage() {
   const [state, formAction] = useActionState(submitQuoteForm, initialState)
   const formRef = useRef<HTMLFormElement>(null)
+  const recaptchaRef = useRef<ReCaptchaFieldRef>(null)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
 
   useEffect(() => {
     if (state.status === 'success') {
       formRef.current?.reset()
+      recaptchaRef.current?.reset()
+      setCaptchaToken(null)
     }
   }, [state.status])
 
@@ -169,16 +173,13 @@ export default function QuotePage() {
             />
           </div>
 
-          <div className={styles.imageContainer}>
-            <Image
-              src="/placeholder.svg"
-              alt="Captcha"
-              width={200}
-              height={50}
-              className={styles.captchaImage}
-            />
-          </div>
-          <FormSubmitButton className={styles.submitButton} pendingLabel="Sending...">
+          <ReCaptchaField ref={recaptchaRef} onTokenChange={setCaptchaToken} />
+          <input type="hidden" name="g-recaptcha-response" value={captchaToken ?? ''} />
+          <FormSubmitButton
+            className={styles.submitButton}
+            pendingLabel="Sending..."
+            disabled={!captchaToken}
+          >
             Submit
           </FormSubmitButton>
           {shouldShowMessage && (

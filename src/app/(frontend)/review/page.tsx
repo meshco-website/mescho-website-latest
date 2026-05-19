@@ -1,12 +1,14 @@
 'use client'
 
-import React, { useState } from 'react'
-import Image from 'next/image'
+import React, { useRef, useState } from 'react'
+import ReCaptchaField, { type ReCaptchaFieldRef } from '../_components/ReCaptchaField'
 import styles from './review.module.css'
 
 export default function ReviewPage() {
   const [rating, setRating] = useState(0)
   const [showFeedbackForm, setShowFeedbackForm] = useState(false)
+  const recaptchaRef = useRef<ReCaptchaFieldRef>(null)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -27,11 +29,14 @@ export default function ReviewPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!captchaToken) return
     if (rating === 5) {
       alert('Thank you for your 5-star rating!')
     } else {
       alert('Thank you for your feedback!')
     }
+    recaptchaRef.current?.reset()
+    setCaptchaToken(null)
   }
 
   const isFiveStars = rating === 5
@@ -142,17 +147,9 @@ export default function ReviewPage() {
               />
             </div>
 
-            <div className={styles.imageContainer}>
-              <Image
-                src="/placeholder.svg"
-                alt="Captcha"
-                width={200}
-                height={50}
-                className={styles.captchaImage}
-              />
-            </div>
+            <ReCaptchaField ref={recaptchaRef} onTokenChange={setCaptchaToken} />
 
-            <button type="submit" className={styles.submitButton}>
+            <button type="submit" className={styles.submitButton} disabled={!captchaToken}>
               Submit
             </button>
           </form>

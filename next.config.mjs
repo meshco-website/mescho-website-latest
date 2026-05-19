@@ -2,6 +2,9 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: {
+    NEXT_PUBLIC_GOOGLE_CAPTCHA_SITE_KEY: process.env.GOOGLE_CAPTCHA_SITE_KEY,
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '5mb',

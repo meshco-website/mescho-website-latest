@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useActionState, useEffect, useRef } from 'react'
+import React, { useActionState, useEffect, useRef, useState } from 'react'
 import FormSubmitButton from '../_components/FormSubmitButton'
+import ReCaptchaField, { type ReCaptchaFieldRef } from '../_components/ReCaptchaField'
 import { submitContactForm, type FormState } from '../_actions/form-submissions'
 import styles from './contactus.module.css'
 
@@ -212,10 +213,14 @@ const COUNTRIES = [
 const ContactForm: React.FC = () => {
   const [state, formAction] = useActionState(submitContactForm, initialState)
   const formRef = useRef<HTMLFormElement>(null)
+  const recaptchaRef = useRef<ReCaptchaFieldRef>(null)
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null)
 
   useEffect(() => {
     if (state.status === 'success') {
       formRef.current?.reset()
+      recaptchaRef.current?.reset()
+      setCaptchaToken(null)
     }
   }, [state.status])
 
@@ -292,8 +297,15 @@ const ContactForm: React.FC = () => {
         <textarea id="inquiry" name="inquiry" className={styles.textarea} required />
       </div>
 
+      <ReCaptchaField ref={recaptchaRef} onTokenChange={setCaptchaToken} />
+      <input type="hidden" name="g-recaptcha-response" value={captchaToken ?? ''} />
+
       <div>
-        <FormSubmitButton className={styles.submitButton} pendingLabel="Sending...">
+        <FormSubmitButton
+          className={styles.submitButton}
+          pendingLabel="Sending..."
+          disabled={!captchaToken}
+        >
           Submit
         </FormSubmitButton>
         {shouldShowMessage && (

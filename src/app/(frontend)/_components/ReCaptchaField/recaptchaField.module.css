@@ -1,0 +1,10 @@
+.wrapper {
+  display: block;
+}
+
+.missing {
+  margin: 0;
+  font-family: var(--font-onest);
+  font-size: 14px;
+  color: rgba(42, 45, 47, 0.6);
+}
