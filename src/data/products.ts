@@ -118,7 +118,7 @@ export const products: Product[] = [
     title: 'Galvanised Wire',
     otherTitle: 'Galvanised Wire (Coils)',
     imageFolder: '/products/Wire/galvanised-wire',
-    image: '/products/Wire/galvanised-wire/meshco-galvanised-wire-coil-1.jpg',
+    image: '/products/Wire/galvanised-wire/meshco-galvanised-wire-coil-1.webp',
     slug: 'galvanised-wire',
     type: 'Wire',
     industry: 'Construction',
@@ -186,7 +186,7 @@ export const products: Product[] = [
     name: 'DoubleWall (12.5mm x 12.5mm)',
     title: 'DoubleWall (12.5mm x 12.5mm)',
     imageFolder: '/products/WireWall/doublewall',
-    image: '/products/WireWall/doublewall/doublewall.png',
+    image: '/products/WireWall/doublewall/doublewall.webp',
     slug: 'doublewall',
     type: 'WireWall',
     industry: 'Property',
@@ -197,7 +197,7 @@ export const products: Product[] = [
     name: '355 (75 x 12.7mm)',
     title: '355 Panel (75x12.7mm)',
     imageFolder: '/products/WireWall/355-panel',
-    image: '/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.jpg',
+    image: '/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.webp',
     slug: '355',
     type: 'WireWall',
     industry: 'Property',
@@ -264,7 +264,7 @@ export const products: Product[] = [
     name: 'Gates',
     title: 'Gates',
     imageFolder: '/products/WireWall/gates',
-    image: '/products/WireWall/gates/meshco-wirewall-gate.jpg',
+    image: '/products/WireWall/gates/meshco-wirewall-gate.webp',
     slug: 'gates',
     type: 'WireWall',
     industry: 'Property',
@@ -286,7 +286,7 @@ export const products: Product[] = [
     name: 'UnderDigs',
     title: 'UnderDig Panel',
     imageFolder: '/products/WireWall/underdig-panel',
-    image: '/products/WireWall/underdig-panel/meshco-wirewall-underdig.png',
+    image: '/products/WireWall/underdig-panel/meshco-wirewall-underdig.webp',
     slug: 'underdig-panel',
     type: 'WireWall',
     industry: 'Property',
@@ -810,7 +810,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'applications',
         label: 'Applications',
         imageMaxWidth: '80%',
-        image: '/products/Wire/hard-drawn-wire/applications.png',
+        image: '/products/Wire/hard-drawn-wire/applications.webp',
         content: [
           'Hard drawn wire is a staple across industries where strength, stiffness, and cost-efficiency matter. Common applications include:',
           'Reinforcing components in welded mesh and precast concrete',
@@ -823,7 +823,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'advantages',
         label: 'Advantages',
-        image: '/products/Wire/hard-drawn-wire/meshco-advantages.png',
+        image: '/products/Wire/hard-drawn-wire/advantages.webp',
         imageMaxWidth: '60%',
         content: [
           'Higher tensile strength - than annealed wire for improved rigidity and load-bearing',
@@ -835,7 +835,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'customisation',
         label: 'Customisation',
-        image: '/products/Wire/hard-drawn-wire/customisation.png',
+        image: '/products/Wire/hard-drawn-wire/customisation.webp',
         content: [
           'Available in various coil weights and internal diameters to suit automated processing',
           'Can be straightened and cut to custom lengths upon request',
@@ -861,7 +861,7 @@ const productDetailData: Record<string, ProductDetail> = {
       "<b>Fully (Class A) and Lightly (Class C) Galvanised Wire Coils</b>\n\n\n<b>Strength in every wire</b>\n\n\nMeshco's <b>Galvanised Wire in Coils</b> is the gold standard for general-purpose wire across Southern Africa. Drawn and galvanised in-house with tight process control, this wire delivers consistent quality, excellent workability, and superior corrosion resistance. Conforming to SANS 10244-2:2010 standards, it's trusted for everything from binding and straining wire, to manufacturing display shelving and underground mining support mesh.",
     layoutType: 'standard',
     images: [
-      '/products/Wire/galvanised-wire/meshco-galvanised-wire-coil-1.jpg',
+      '/products/Wire/galvanised-wire/meshco-galvanised-wire-coil-1.webp',
       '/products/Wire/galvanised-wire/meshco-galvanised-wire-coil-2.webp',
       '/products/Wire/galvanised-wire/meshco-galvanised-wire-jumbo-coil-3.webp',
     ],
@@ -1053,7 +1053,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/Wire/black-annealed-wire/specifications.png',
+        image: '/products/Wire/black-annealed-wire/specifications.webp',
       },
       {
         id: 'applications',
@@ -1068,7 +1068,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'guide-for-fixing-on-site',
         label: 'Guide for Fixing on Site',
-        image: '/products/Wire/black-annealed-wire/meshco-guide.png',
+        image: '/products/Wire/black-annealed-wire/meshco-guide.webp',
         content: [
           'The quantity of black annealed tying wire required to secure reinforcement bars (rebar) on a construction site in South Africa depends on the diameter of the rebar being tied. The required amount can vary based on tying method, bar spacing, and site specifics. A general guideline is:',
           'Most projects:',
@@ -1142,12 +1142,12 @@ const productDetailData: Record<string, ProductDetail> = {
         label: 'Specifications',
         content: [],
         imageMaxWidth: '80%',
-        image: '/products/Wire/pvc-coated-wire/specifications.png',
+        image: '/products/Wire/pvc-coated-wire/specifications.webp',
       },
       {
         id: 'benefits',
         label: 'Benefits',
-        image: '/products/Wire/pvc-coated-wire/benefits.png',
+        image: '/products/Wire/pvc-coated-wire/benefits.webp',
         imageMaxWidth: '80%',
         content: [
           "Why Choose Meshco's PVC Coated Wire?",
@@ -1224,7 +1224,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'quality-assurance',
         label: 'Quality Assurance',
-        image: '/products/Wire/straight-and-cut-wire/meshco-quality.png',
+        image: '/products/Wire/straight-and-cut-wire/meshco-quality.webp',
         imageMaxWidth: '80%',
         content: [
           'Our straight and cut wire is:',
@@ -1353,7 +1353,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/WireWall/358-panel/specifications.png',
+        image: '/products/WireWall/358-panel/specifications.webp',
       },
       {
         id: 'features',
@@ -1392,7 +1392,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       '<b>Extreme perimeter protection for the highest security sites</b>\n\n\n<b>The WireWall 355 Supermax</b> panel is engineered for the most demanding security environments, <b>including supermax prisons, defence facilities, and high-risk government installations.</b>\n\nHistorically government specifications called for a double 4mm vertical wire panel. However the weld strength between the three wires was found to be inadequate, with welds coming apart on site either by themselves or through the application of minimal force. This led to requests for a new, superior specification. Enter the WireWall 355 Supermax. The weight per meter of the SuperMax panel is the same as the double 4mm wire option, but with superior weld strength and an increased difficulty to cut. The SuperMax design also allows the same security across the full height of panels while still allowing the top of the panel to be bowed.\n\nWith its <b>5.6mm vertical wires</b> combined with <b>4.0mm horizontal wires</b>, the 355 Supermax provides unparalleled rigidity and resistance to impact, forcing, and cutting.',
     layoutType: 'wirewall',
-    images: ['/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.jpg'],
+    images: ['/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.webp'],
     specifications: [],
     wireWallSpecifications: {
       height: ['1200', '1800', '2100', '2400', '3000'],
@@ -1442,13 +1442,13 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/WireWall/355-panel/specifications.png',
+        image: '/products/WireWall/355-panel/specifications.webp',
       },
       {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.jpg',
+          '/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.webp',
         ],
       },
       {
@@ -1511,7 +1511,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/WireWall/358-panel/specifications.png',
+        image: '/products/WireWall/358-panel/specifications.webp',
       },
       {
         id: 'gallery',
@@ -1588,20 +1588,20 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/WireWall/3510/specifications.png',
+        image: '/products/WireWall/3510/specifications.webp',
       },
       {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/3510/meshco-wirewall-3510-sanlam.jpg',
-          '/products/WireWall/3510/meshco-wirewall-3510-milnertonstables.jpg',
+          '/products/WireWall/3510/meshco-wirewall-3510-sanlam.webp',
+          '/products/WireWall/3510/meshco-wirewall-3510-milnertonstables.webp',
           '/products/WireWall/3510/meshco-wirewall-3510-foundrieshq.webp',
           '/products/WireWall/3510/meshco-wirewall-3510-stoop-enclosure.webp',
           '/products/WireWall/3510/meshco-wirewall-3510-electric.webp',
-          '/products/WireWall/3510/meshco-3510-warehouse-internal-store.JPG',
-          '/products/WireWall/3510/meshco-wirewall-3510-zetler-farm.jpg',
-          '/products/WireWall/3510/meshco-wirewall-3510-signage.jpg',
+          '/products/WireWall/3510/meshco-3510-warehouse-internal-store.webp',
+          '/products/WireWall/3510/meshco-wirewall-3510-zetler-farm.webp',
+          '/products/WireWall/3510/meshco-wirewall-3510-signage.webp',
           '/products/WireWall/3510/meshco-wirewall-3510-closeup.webp',
         ],
       },
@@ -1676,7 +1676,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/WireWall/3110/specifications.png',
+        image: '/products/WireWall/3110/specifications.webp',
       },
       {
         id: 'gallery',
@@ -1684,8 +1684,8 @@ const productDetailData: Record<string, ProductDetail> = {
         content: [
           '/products/WireWall/3110/meshco-wirewall-3110-medium-security-1.webp',
           '/products/WireWall/3110/meshco-wirewall-3110-medium-security-2.webp',
-          '/products/WireWall/3110/meshco-wirewall-3110-growthpoint.jpg',
-          '/products/WireWall/3110/meshco-wirewall-3110-deerpark.jpg',
+          '/products/WireWall/3110/meshco-wirewall-3110-growthpoint.webp',
+          '/products/WireWall/3110/meshco-wirewall-3110-deerpark.webp',
           '/products/WireWall/3110/meshco-wirewall-3110-electricfence.webp',
         ],
       },
@@ -1752,7 +1752,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/WireWall/3210/specifications.png',
+        image: '/products/WireWall/3210/specifications.webp',
       },
       {
         id: 'gallery',
@@ -1760,8 +1760,8 @@ const productDetailData: Record<string, ProductDetail> = {
         content: [
           '/products/WireWall/3210/meshco-wirewall-3210-medium-security-1.webp',
           '/products/WireWall/3210/meshco-wirewall-3210-medium-security-2.webp',
-          '/products/WireWall/3210/meshco-wirewall-3210-galvanised-faithcentre.jpg',
-          '/products/WireWall/3210/meshco-wirewall-3210-residential.jpg',
+          '/products/WireWall/3210/meshco-wirewall-3210-galvanised-faithcentre.webp',
+          '/products/WireWall/3210/meshco-wirewall-3210-residential.webp',
         ],
       },
       {
@@ -1834,7 +1834,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/WireWall/af-100/specifications.png',
+        image: '/products/WireWall/af-100/specifications.webp',
       },
       {
         id: 'gallery',
@@ -1842,8 +1842,8 @@ const productDetailData: Record<string, ProductDetail> = {
         content: [
           '/products/WireWall/af-100/meshco-wirewall-af100-1.webp',
           '/products/WireWall/af-100/meshco-wirewall-af100-2.webp',
-          '/products/WireWall/af-100/meshco-af100-airport.jpg',
-          '/products/WireWall/af-100/meshco-af100-green-plascoat.jpg',
+          '/products/WireWall/af-100/meshco-af100-airport.webp',
+          '/products/WireWall/af-100/meshco-af100-green-plascoat.webp',
         ],
       },
       {
@@ -1864,7 +1864,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       '<b>Seamless access with uncompromising security</b>\n\n\nMeshco offers a full range of <b>WireWall pedestrian and vehicular gates,</b> designed to integrate seamlessly with WireWall fencing systems. Built with the same high-strength anti-cut, anti-climb mesh panels and robust steel frames, our gates provide secure access points without compromising perimeter protection.\n\nAll WireWall gates are <b>made to order</b> to meet site-specific requirements, ensuring the perfect balance of strength, durability, and functionality.',
     layoutType: 'wirewall',
-    images: ['/products/WireWall/gates/meshco-wirewall-gate.jpg'],
+    images: ['/products/WireWall/gates/meshco-wirewall-gate.webp'],
     specifications: [],
     wireWallSpecifications: undefined,
     applications: [
@@ -1906,6 +1906,16 @@ const productDetailData: Record<string, ProductDetail> = {
           'Eliminates the need for a large swing area (clearance space) in front of or behind the gate. This makes them ideal when space is tight, like along roads, parking areas, or high-traffic sites.',
           'Available in widths of 4m and 6m, with custom sizes on request.',
           'Can be automated for access control integration',
+        ],
+      },
+      {
+        id: 'gallery',
+        label: 'Gallery',
+        content: [
+          '/products/WireWall/gates/meshco-sliding-gate-wirewall.webp',
+          '/products/WireWall/gates/meshco-wirewall-pedestrian-gate.webp',
+          '/products/WireWall/gates/meshco-wirewall-slide-gate.webp',
+          '/products/WireWall/gates/meshco-wirewall-pedestrian-gate2.webp',
         ],
       },
     ],
@@ -1986,7 +1996,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "<b>Prevent intrusions from below</b>\n\n\nMeshco's Underdig (Anti-burrow) panels are designed to prevent unauthorised entry by stopping attempts to dig underneath perimeter fences. Manufactured from high-strength welded mesh, these panels are buried below ground level and securely fixed to the main fence line, creating an effective underground barrier against intrusion.\n\nUsed in combination with above ground fencing systems such as WireWall, underdig panels ensure that perimeter security extends below ground as well as above it.",
     layoutType: 'wirewall',
-    images: ['/products/WireWall/underdig-panel/meshco-wirewall-underdig.png'],
+    images: ['/products/WireWall/underdig-panel/meshco-wirewall-underdig.webp'],
     specifications: [],
     wireWallSpecifications: undefined,
     applications: [
@@ -2148,7 +2158,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/Reinforcing/reinforcing-mesh/specifications.png',
+        image: '/products/Reinforcing/reinforcing-mesh/specifications.webp',
       },
     ],
     relatedProductKeys: [
@@ -2288,7 +2298,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'pro-tip',
         label: 'Pro-Tip',
-        image: '/products/Reinforcing/cavity-wall-ties/protip.png',
+        image: '/products/Reinforcing/cavity-wall-ties/protip.webp',
         content: [
           'How many wall ties to use? - As a rule of thumb, 2.5 wall ties per square meter is the standard density for masonry cavity walls, with the following specifics:',
           'Spacing:',
@@ -2453,7 +2463,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/Fencing/welded-fence-mesh/specifications.png',
+        image: '/products/Fencing/welded-fence-mesh/specifications.webp',
       },
       {
         id: 'features',
@@ -2679,7 +2689,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/Fencing/barbed-wire/specifications.png',
+        image: '/products/Fencing/barbed-wire/specifications.webp',
       },
       {
         id: 'applications',
@@ -2922,7 +2932,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'features',
         label: 'Features',
-        image: '/products/Fencing/razor-wall/features.png',
+        image: '/products/Fencing/razor-wall/features.webp',
         imageMaxWidth: '60%',
         content: [
           'Mean, aggressive appearance:',
@@ -2942,7 +2952,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'specifications',
         label: 'Specifications',
-        image: '/products/Fencing/razor-wall/specifications.png',
+        image: '/products/Fencing/razor-wall/specifications.webp',
         imageMaxWidth: '30%',
         content: [
           'Sheet Height:',
@@ -3021,7 +3031,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/Fencing/field-and-game-fence/specifications.png',
+        image: '/products/Fencing/field-and-game-fence/specifications.webp',
       },
       {
         id: 'features',
@@ -3096,7 +3106,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/Fencing/hexagonal-wire-netting/specifications.png',
+        image: '/products/Fencing/hexagonal-wire-netting/specifications.webp',
       },
       {
         id: 'features',
@@ -3194,7 +3204,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'benefits',
         label: 'Benefits',
-        image: '/products/Fencing/standards/benefits.png',
+        image: '/products/Fencing/standards/benefits.webp',
         imageMaxWidth: '81%',
         content: [
           'Why Choose Meshco?',
@@ -3260,7 +3270,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'benefits',
         label: 'Benefits',
-        image: '/products/Fencing/droppers/benefits.png',
+        image: '/products/Fencing/droppers/benefits.webp',
         content: [
           'Why Choose Meshco?',
           'Manufactured from high-strength steel for long service life',
@@ -3851,7 +3861,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'specifications',
         label: 'Specifications',
-        image: '/products/Mining Support/mining-support-mesh/specifications.png',
+        image: '/products/Mining Support/mining-support-mesh/specifications.webp',
         imageMaxWidth: '50%',
         content: [
           "(Meshco can customise to your mine's specifications)",
@@ -3985,7 +3995,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'specifications',
         label: 'Specifications',
         content: [],
-        image: '/products/Utility/precision-welded-mesh/specifications.png',
+        image: '/products/Utility/precision-welded-mesh/specifications.webp',
       },
       {
         id: 'applications',
@@ -4043,7 +4053,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
-        image: '/products/Utility/growing-stakes/applications.png',
+        image: '/products/Utility/growing-stakes/applications.webp',
         content: [
           'Support for young trees and saplings',
           'Training of grapevines and fruit trees',
@@ -4060,7 +4070,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'benefits',
         label: 'Benefits',
         imageMaxWidth: '70%',
-        image: '/products/Utility/growing-stakes/benefits.png',
+        image: '/products/Utility/growing-stakes/benefits.webp',
         content: [
           'Why Choose Meshco Growing Stakes?',
           'Durable steel core provides superior strength over bamboo or wooden stakes',
@@ -4107,7 +4117,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         imageMaxWidth: '60%',
-        image: '/products/Utility/specimesh-panels/features.png',
+        image: '/products/Utility/specimesh-panels/features.webp',
         content: [
           'Wire Diameter:',
           '2.0mm to 6.0mm',
@@ -4123,7 +4133,7 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'applications',
         label: 'Applications',
-        image: '/products/Utility/specimesh-panels/applications.png',
+        image: '/products/Utility/specimesh-panels/applications.webp',
         content: [
           'SpeciMesh is trusted across industries for its adaptability and structural reliability. Typical applications include:',
           'Machine and equipment guards',
@@ -4139,7 +4149,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'customisation',
         label: 'Customisation',
         imageMaxWidth: '60%',
-        image: '/products/Utility/specimesh-panels/customisation.png',
+        image: '/products/Utility/specimesh-panels/customisation.webp',
         content: [
           'Panel length, width, and wire spacing tailored to project requirements',
           'Edge trimming or overhangs available',
@@ -4150,7 +4160,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'benefits',
         label: 'Benefits',
         imageMaxWidth: '50%',
-        image: '/products/Utility/specimesh-panels/benefits.png',
+        image: '/products/Utility/specimesh-panels/benefits.webp',
         content: [
           "Why Choose Meshco's SpeciMesh?",
           'Precision welding ensures strength and rigidity',
@@ -4163,7 +4173,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'packaging',
         label: 'Packaging',
         imageMaxWidth: '80%',
-        image: '/products/Utility/specimesh-panels/packaging.png',
+        image: '/products/Utility/specimesh-panels/packaging.webp',
         content: [
           'Packaging & Delivery:',
           'Supplied flat or stacked in bulk',
