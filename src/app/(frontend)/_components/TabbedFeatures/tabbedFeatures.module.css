@@ -285,6 +285,103 @@
   font-weight: 700;
 }
 
+.richContent {
+  font-family: var(--font-onest);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #2a2d2f;
+  margin-top: 0.5rem;
+}
+
+.richContent p {
+  margin: 0 0 1rem;
+}
+
+.richContent :global(p.titleGroup) {
+  margin: 0 0 1rem;
+  line-height: 1.35;
+}
+
+.richContent :global(p.titleGroup br) {
+  display: block;
+  margin: 0;
+  line-height: 0;
+}
+
+.richContent p:last-child {
+  margin-bottom: 0;
+}
+
+.richContent ul {
+  list-style-type: disc;
+  margin: 0 0 1.25rem 1.5rem;
+  padding: 0;
+}
+
+.richContent li {
+  margin-bottom: 0.35rem;
+}
+
+.richContent b {
+  font-weight: 700;
+}
+
+.nailGuideContent :global(.nailGuideTitle) {
+  font-family: var(--font-orbitron);
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 1rem;
+}
+
+.nailGuideContent :global(.nailGuideIntro) {
+  margin: 0 0 1.5rem;
+}
+
+.nailGuideContent :global(.nailGuideTable) {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 6rem;
+  row-gap: 0;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 1.5rem;
+  align-items: start;
+}
+
+/* Rows use display:contents so all cells share one grid — right column aligns vertically */
+.nailGuideContent :global(.nailGuideRow) {
+  display: contents;
+}
+
+.nailGuideContent :global(.nailGuideRow > p:nth-child(2)) {
+  justify-self: start;
+  text-align: left;
+}
+
+.nailGuideContent :global(.nailGuideRow:not(.nailGuideHeader) p) {
+  margin: 0 0 0.5rem;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.nailGuideContent :global(.nailGuideHeader p) {
+  font-family: var(--font-orbitron);
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.nailGuideContent :global(.nailGuideSectionTitle) {
+  margin: 1rem 0 0.75rem;
+}
+
+.nailGuideContent :global(.nailGuideSectionTitle + p) {
+  margin-top: 0;
+}
+
 /* Reduce bottom margin of descriptions that come before "Applications" */
 .featureItem:has(.featureDescription):not(:has(.featureDescription .featureHeading)):has(
     + .featureItem:has(.featureDescription .featureHeading)
@@ -386,6 +483,19 @@
 
   .featureDescription {
     font-size: 16px;
+  }
+
+  .nailGuideContent :global(.nailGuideTable) {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nailGuideContent :global(.nailGuideRow) {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 0.25rem;
+    margin-bottom: 0.75rem;
   }
 
   .galleryGrid {

@@ -44,6 +44,7 @@ export interface TabData {
   id: string
   label: string
   content: string[]
+  html?: string
   image?: string | null
   format?: 'bullet' | 'heading-description' | 'heading-colon' | 'plain'
   imageMaxWidth?: string
@@ -185,7 +186,7 @@ export const products: Product[] = [
     name: 'DoubleWall (12.5mm x 12.5mm)',
     title: 'DoubleWall (12.5mm x 12.5mm)',
     imageFolder: '/products/WireWall/doublewall',
-    image: '/products/WireWall/doublewall/meshco-wirewall-post-baseplate.webp',
+    image: '/products/WireWall/doublewall/doublewall.png',
     slug: 'doublewall',
     type: 'WireWall',
     industry: 'Property',
@@ -196,7 +197,7 @@ export const products: Product[] = [
     name: '355 (75 x 12.7mm)',
     title: '355 Panel (75x12.7mm)',
     imageFolder: '/products/WireWall/355-panel',
-    image: '/products/WireWall/355-panel/meshco-wirewall-355.webp',
+    image: '/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.jpg',
     slug: '355',
     type: 'WireWall',
     industry: 'Property',
@@ -207,7 +208,7 @@ export const products: Product[] = [
     name: '358 (75x 12.7mm)',
     title: '358 Panel (75x12.7mm)',
     imageFolder: '/products/WireWall/358-panel',
-    image: '/products/WireWall/358-panel/meshco-wirewall-358.webp',
+    image: '/products/WireWall/3510/meshco-wirewall-3510-high-security-1.webp',
     slug: '358',
     type: 'WireWall',
     industry: 'Property',
@@ -263,7 +264,7 @@ export const products: Product[] = [
     name: 'Gates',
     title: 'Gates',
     imageFolder: '/products/WireWall/gates',
-    image: '/products/WireWall/gates/meshco-wirewall-gates.webp',
+    image: '/products/WireWall/gates/meshco-wirewall-gate.jpg',
     slug: 'gates',
     type: 'WireWall',
     industry: 'Property',
@@ -285,7 +286,7 @@ export const products: Product[] = [
     name: 'UnderDigs',
     title: 'UnderDig Panel',
     imageFolder: '/products/WireWall/underdig-panel',
-    image: '/products/WireWall/underdig-panel/meshco-wirewall-underdig.webp',
+    image: '/products/WireWall/underdig-panel/meshco-wirewall-underdig.png',
     slug: 'underdig-panel',
     type: 'WireWall',
     industry: 'Property',
@@ -687,7 +688,7 @@ for (const product of products) {
 }
 
 const cloneTabs = (tabs?: TabData[]): TabData[] | undefined =>
-  tabs?.map((tab) => ({ ...tab, content: [...tab.content] }))
+  tabs?.map((tab) => ({ ...tab, content: [...tab.content], html: tab.html }))
 
 const cloneWireWallSpecifications = (
   specs?: WireWallSpecification,
@@ -1318,13 +1319,17 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wirewall-doublewall': {
     description:
-      'WireWall DoubleWall panels deliver high-security performance with a compact 12.5mm x 12.5mm aperture and dual vertical wire design. Engineered for installations that demand maximum anti-climb resistance and structural strength.',
+      'WireWall DoubleWall panels deliver high-security performance with a compact 12.5mm x 12.5mm aperture and double welded panel design. Engineered for installations that demand maximum anti-climb resistance and structural strength.',
     layoutType: 'wirewall',
     specifications: [
       { label: 'Panel Type', value: 'DoubleWall (12.5mm x 12.5mm)' },
-      { label: 'Wire Configuration', value: 'Double 4.0mm vertical, 4.0mm horizontal' },
+      {
+        label: 'Wire Configuration',
+        value:
+          'Double 4.0mm vertical, 4.0mm horizontal OR Double 4.0mm vertical, 3.00mm horizontal',
+      },
       { label: 'Aperture', value: '12.5mm x 12.5mm' },
-      { label: 'Coating', value: 'Fully Galvanised 275g/m² with optional PVC' },
+      { label: 'Coating', value: 'Fully Galvanised 275g/m² with optional thermoplastic coating' },
       { label: 'Security Level', value: 'Maximum anti-climb deterrence' },
     ],
     wireWallSpecifications: undefined,
@@ -1354,26 +1359,26 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'features',
         label: 'Features',
         content: [
-          'Ultra-tight 12.5mm aperture for anti-climb performance',
-          'Double vertical wire construction for strength',
-          'Galvanised protection with optional PVC coating',
+          'Ultra-tight 12.7mm aperture for anti-climb performance',
+          // 'Double vertical wire construction for strength',
+          'Galvanised protection with optional thermoplastic coating',
           'Engineered for high-risk installations',
           'Compatible with WireWall accessories',
           'Supports electric fencing integration',
         ],
       },
-      {
-        id: 'benefits',
-        label: 'Benefits',
-        content: [
-          'Maximum perimeter deterrence',
-          'High structural rigidity',
-          'Long service life in harsh climates',
-          'Low maintenance requirements',
-          'Custom heights available',
-          'Integrates with WireWall gates and spikes',
-        ],
-      },
+      // {
+      //   id: 'benefits',
+      //   label: 'Benefits',
+      //   content: [
+      //     'Maximum perimeter deterrence',
+      //     'High structural rigidity',
+      //     'Long service life in harsh climates',
+      //     'Low maintenance requirements',
+      //     'Custom heights available',
+      //     'Integrates with WireWall gates and spikes',
+      //   ],
+      // },
     ],
     relatedProductKeys: [
       'wirewall-355',
@@ -1387,6 +1392,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       '<b>Extreme perimeter protection for the highest security sites</b>\n\n\n<b>The WireWall 355 Supermax</b> panel is engineered for the most demanding security environments, <b>including supermax prisons, defence facilities, and high-risk government installations.</b>\n\nHistorically government specifications called for a double 4mm vertical wire panel. However the weld strength between the three wires was found to be inadequate, with welds coming apart on site either by themselves or through the application of minimal force. This led to requests for a new, superior specification. Enter the WireWall 355 Supermax. The weight per meter of the SuperMax panel is the same as the double 4mm wire option, but with superior weld strength and an increased difficulty to cut. The SuperMax design also allows the same security across the full height of panels while still allowing the top of the panel to be bowed.\n\nWith its <b>5.6mm vertical wires</b> combined with <b>4.0mm horizontal wires</b>, the 355 Supermax provides unparalleled rigidity and resistance to impact, forcing, and cutting.',
     layoutType: 'wirewall',
+    images: ['/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.jpg'],
     specifications: [],
     wireWallSpecifications: {
       height: ['1200', '1800', '2100', '2400', '3000'],
@@ -1433,11 +1439,6 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     tabs: [
       {
-        id: 'downloads',
-        label: 'Downloads',
-        content: [],
-      },
-      {
         id: 'specifications',
         label: 'Specifications',
         content: [],
@@ -1446,6 +1447,13 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'gallery',
         label: 'Gallery',
+        content: [
+          '/products/WireWall/355-panel/meshco-wirewall-355-6m-bowed%20panels-DCS-Prison-1.jpg',
+        ],
+      },
+      {
+        id: 'downloads',
+        label: 'Downloads',
         content: [],
       },
     ],
@@ -1461,6 +1469,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       'The 358 Heavy panel incorporates thicker wire than the 3510, with both vertical and horizontal wires measuring 4.0mm, delivering extreme cut resistance and increased perimeter security. Sometimes referred to as bullet proof mesh, the gap between crosswires is less than 9mm.',
     layoutType: 'wirewall',
+    images: ['/products/WireWall/3510/meshco-wirewall-3510-high-security-1.webp'],
     specifications: [],
     wireWallSpecifications: {
       height: ['1800', '2100', '2400', '3000'],
@@ -1499,11 +1508,6 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     tabs: [
       {
-        id: 'downloads',
-        label: 'Downloads',
-        content: [],
-      },
-      {
         id: 'specifications',
         label: 'Specifications',
         content: [],
@@ -1512,6 +1516,11 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'gallery',
         label: 'Gallery',
+        content: [],
+      },
+      {
+        id: 'downloads',
+        label: 'Downloads',
         content: [],
       },
     ],
@@ -1576,11 +1585,6 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     tabs: [
       {
-        id: 'downloads',
-        label: 'Downloads',
-        content: [],
-      },
-      {
         id: 'specifications',
         label: 'Specifications',
         content: [],
@@ -1590,9 +1594,21 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          '/products/WireWall/3510/meshco-wirewall-3510-high-security-1.webp',
-          '/products/WireWall/3510/meshco-wirewall-3510-high-security-2.webp',
+          '/products/WireWall/3510/meshco-wirewall-3510-sanlam.jpg',
+          '/products/WireWall/3510/meshco-wirewall-3510-milnertonstables.jpg',
+          '/products/WireWall/3510/meshco-wirewall-3510-foundrieshq.webp',
+          '/products/WireWall/3510/meshco-wirewall-3510-stoop-enclosure.webp',
+          '/products/WireWall/3510/meshco-wirewall-3510-electric.webp',
+          '/products/WireWall/3510/meshco-3510-warehouse-internal-store.JPG',
+          '/products/WireWall/3510/meshco-wirewall-3510-zetler-farm.jpg',
+          '/products/WireWall/3510/meshco-wirewall-3510-signage.jpg',
+          '/products/WireWall/3510/meshco-wirewall-3510-closeup.webp',
         ],
+      },
+      {
+        id: 'downloads',
+        label: 'Downloads',
+        content: [],
       },
     ],
     relatedProductKeys: [
@@ -1657,11 +1673,6 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     tabs: [
       {
-        id: 'downloads',
-        label: 'Downloads',
-        content: [],
-      },
-      {
         id: 'specifications',
         label: 'Specifications',
         content: [],
@@ -1673,7 +1684,15 @@ const productDetailData: Record<string, ProductDetail> = {
         content: [
           '/products/WireWall/3110/meshco-wirewall-3110-medium-security-1.webp',
           '/products/WireWall/3110/meshco-wirewall-3110-medium-security-2.webp',
+          '/products/WireWall/3110/meshco-wirewall-3110-growthpoint.jpg',
+          '/products/WireWall/3110/meshco-wirewall-3110-deerpark.jpg',
+          '/products/WireWall/3110/meshco-wirewall-3110-electricfence.webp',
         ],
+      },
+      {
+        id: 'downloads',
+        label: 'Downloads',
+        content: [],
       },
     ],
     relatedProductKeys: [
@@ -1730,11 +1749,6 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     tabs: [
       {
-        id: 'downloads',
-        label: 'Downloads',
-        content: [],
-      },
-      {
         id: 'specifications',
         label: 'Specifications',
         content: [],
@@ -1746,7 +1760,14 @@ const productDetailData: Record<string, ProductDetail> = {
         content: [
           '/products/WireWall/3210/meshco-wirewall-3210-medium-security-1.webp',
           '/products/WireWall/3210/meshco-wirewall-3210-medium-security-2.webp',
+          '/products/WireWall/3210/meshco-wirewall-3210-galvanised-faithcentre.jpg',
+          '/products/WireWall/3210/meshco-wirewall-3210-residential.jpg',
         ],
+      },
+      {
+        id: 'downloads',
+        label: 'Downloads',
+        content: [],
       },
     ],
     relatedProductKeys: [
@@ -1810,11 +1831,6 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     tabs: [
       {
-        id: 'downloads',
-        label: 'Downloads',
-        content: [],
-      },
-      {
         id: 'specifications',
         label: 'Specifications',
         content: [],
@@ -1824,10 +1840,16 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'gallery',
         label: 'Gallery',
         content: [
-          // '/products/WireWall/af-100/meshco-af-100_1.png',
           '/products/WireWall/af-100/meshco-wirewall-af100-1.webp',
           '/products/WireWall/af-100/meshco-wirewall-af100-2.webp',
+          '/products/WireWall/af-100/meshco-af100-airport.jpg',
+          '/products/WireWall/af-100/meshco-af100-green-plascoat.jpg',
         ],
+      },
+      {
+        id: 'downloads',
+        label: 'Downloads',
+        content: [],
       },
     ],
     relatedProductKeys: [
@@ -1842,6 +1864,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       '<b>Seamless access with uncompromising security</b>\n\n\nMeshco offers a full range of <b>WireWall pedestrian and vehicular gates,</b> designed to integrate seamlessly with WireWall fencing systems. Built with the same high-strength anti-cut, anti-climb mesh panels and robust steel frames, our gates provide secure access points without compromising perimeter protection.\n\nAll WireWall gates are <b>made to order</b> to meet site-specific requirements, ensuring the perfect balance of strength, durability, and functionality.',
     layoutType: 'wirewall',
+    images: ['/products/WireWall/gates/meshco-wirewall-gate.jpg'],
     specifications: [],
     wireWallSpecifications: undefined,
     applications: [
@@ -1873,7 +1896,7 @@ const productDetailData: Record<string, ProductDetail> = {
           '',
           'Vehicular Gates',
           'Single and Double Leaf Swing Gates',
-          'Available in standard clear openings of 4m and 6m, with customer sizes on request.',
+          'Available in standard clear openings of 4m and 6m, with custom sizes on request.',
           'Designed for medium- to large-vehicle access.',
           'Heavy-duty hinges and lock systems ensure long service life.',
           'Ideal where space allows for swing operation.',
@@ -1896,7 +1919,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'wirewall-spikes': {
     description:
-      "Meshco's Spike Strips are designed for maximum deterrence, to enhance perimeter protection by preventing climbing or tampering on WireWall and other fencing systems. Manufactured from heavy-duty steel and engineered for durability, our spike strips provide a sharp, visible, and highly effective deterrent to intrusion.\n\nAvailable in four profiles — Standard Spike, Heavy Spike, Raptor Tooth, and Assegai — Meshco spike strips deliver a layered security solution for any site, from commercial to high-security infrastructure.",
+      "Meshco's Spike Strips are designed for maximum deterrence, to enhance perimeter protection by preventing climbing or tampering on WireWall and other fencing systems. Manufactured from heavy-duty steel and engineered for durability, our spike strips provide a sharp, visible, and highly effective deterrent to intrusion.\n\nAvailable in four profiles — Standard Spike, Heavy Spike, Ragged Tooth, and Assegai — Meshco spike strips deliver a layered security solution for any site, from commercial to high-security infrastructure.",
     layoutType: 'wirewall',
     images: [
       '/products/WireWall/spikes/meshco-wirewall-heavy-spike-1.webp',
@@ -1909,7 +1932,7 @@ const productDetailData: Record<string, ProductDetail> = {
     applications: [
       'Standard Spike - General perimeter protection',
       'Heavy Spike - Reinforced deterrence for high-risk sites',
-      'Raptor Tooth - Aggressive anti-climb performance',
+      'Ragged Tooth - Aggressive anti-climb performance',
       'Assegai - Extended spear-point for extreme resistance',
     ],
     technicalData: [
@@ -1941,8 +1964,8 @@ const productDetailData: Record<string, ProductDetail> = {
           '',
           'Assegai',
           'Long, tapered spear-point design inspired by traditional assegai blades.',
-          'Provides extreme anti-climb resistance with striking visual presence.',
-          'Applications: Military, airports, critical infrastructure.',
+          'Provides anti-climb resistance with striking visual presence.',
+          // 'Applications: Military, airports, critical infrastructure.',
         ],
       },
       {
@@ -1963,6 +1986,7 @@ const productDetailData: Record<string, ProductDetail> = {
     description:
       "<b>Prevent intrusions from below</b>\n\n\nMeshco's Underdig (Anti-burrow) panels are designed to prevent unauthorised entry by stopping attempts to dig underneath perimeter fences. Manufactured from high-strength welded mesh, these panels are buried below ground level and securely fixed to the main fence line, creating an effective underground barrier against intrusion.\n\nUsed in combination with above ground fencing systems such as WireWall, underdig panels ensure that perimeter security extends below ground as well as above it.",
     layoutType: 'wirewall',
+    images: ['/products/WireWall/underdig-panel/meshco-wirewall-underdig.png'],
     specifications: [],
     wireWallSpecifications: undefined,
     applications: [
@@ -3309,42 +3333,90 @@ const productDetailData: Record<string, ProductDetail> = {
           'DIY and maintenance work',
           '',
           'Key features of round wire nails:',
-          '',
-          'Shank: The round shank is smooth, which can reduce splitting in the material being nailed.',
-          '',
-          'Head: The flat, consistently round, head provides a surface for a hammer to strike, helping drive the nail into materials.',
-          '',
-          'Material: Manufactured from the highest quality, low carbon steel.',
         ],
+        html: `<p class="titleGroup"><b>Shank</b><br /><b>Precision-drawn smooth shank with consistent diameter</b></p>
+<p>Manufactured from cold-drawn wire to achieve a <b>uniform, smooth surface finish and tight dimensional tolerances,</b> ensuring predictable driving performance.</p>
+<p><b>Benefits:</b></p>
+<ul>
+<li>Reduces the risk of splitting in softer and medium-density timbers.</li>
+<li>Enables smoother driving with less resistance and effort.</li>
+<li>Minimises bending during installation.</li>
+<li>Provides consistent performance across applications.</li>
+</ul>
+<p class="titleGroup"><b>Head</b><br /><b>Uniform flat head for efficient impact transfer</b></p>
+<p>The head is consistently formed to provide a stable striking surface, allowing effective transfer of hammer force into the nail.</p>
+<p><b>Benefits:</b></p>
+<ul>
+<li>Improves driving accuracy and control</li>
+<li>Reduces the likelihood of glancing blows</li>
+<li>Allows for clean, flush finishes</li>
+<li>Supports faster, more efficient installation</li>
+</ul>
+<p class="titleGroup"><b>Material</b><br /><b>High-quality low carbon steel for ductility and toughness</b></p>
+<p>Manufactured from controlled low carbon steel, optimised to provide the right balance between strength and flexibility.</p>
+<p><b>Benefits:</b></p>
+<ul>
+<li>Resists brittle failure during installation</li>
+<li>Allows slight deformation without snapping under load</li>
+<li>Improves durability in general construction use</li>
+<li>Ensures consistent mechanical performance</li>
+</ul>
+<p class="titleGroup"><b>Manufacturing Consistency</b><br /><b>Produced under controlled wire drawing and forming processes</b></p>
+<p>Each nail is manufactured to maintain consistent geometry and material properties, ensuring reliability across batches.</p>
+<p><b>Benefits:</b></p>
+<ul>
+<li>Predictable performance during installation</li>
+<li>Reduced variability on site</li>
+<li>Improved overall product reliability</li>
+<li>Suitable for high-volume, repetitive use</li>
+</ul>`,
       },
       {
         id: 'nail-size-guide',
         label: 'Nail Size Guide',
-        content: [
-          'Choosing the Right Round Wire Nail Size',
-          '',
-          'Application:',
-          'Light Carpentry (e.g., frames, trims)',
-          'Roofing Battens',
-          'General Timber Work',
-          'Pallets & Crates',
-          'Heavy Construction (e.g., beams, trusses)',
-          'Formwork & Shuttering',
-          'Fencing',
-          '',
-          'Recommended Nail Size:',
-          '30–40 mm length, 2.0–2.5 mm diameter',
-          '50 mm length, 3.0mm diameter',
-          '50–75 mm length, 3.0–3.5 mm diameter',
-          '75 mm length, 3.5 mm diameter',
-          '100–125 mm length, 4.0–5.0 mm diameter',
-          '75–100 mm length, 3.5–4.0 mm diameter',
-          '40–75 mm length, galvanised nails recommended',
-        ],
+        content: [],
+        html: `<p class="nailGuideTitle"><b>Choosing the Right Round Wire Nail Size</b></p>
+<p class="nailGuideIntro">The following recommendations provide general guidance for selecting nail size based on typical applications. Final selection should consider timber density, load requirements, and environmental conditions.</p>
+<div class="nailGuideTable">
+<div class="nailGuideRow nailGuideHeader">
+<p>Application</p>
+<p>Recommended Nail Size</p>
+</div>
+<div class="nailGuideRow">
+<p>Light Carpentry (e.g. framing, finishing)</p>
+<p>30–40mm length, 2.0–2.5mm diameter</p>
+</div>
+<div class="nailGuideRow">
+<p>Roofing Battens</p>
+<p>50mm length, 3.0mm diameter</p>
+</div>
+<div class="nailGuideRow">
+<p>General Structural Timber</p>
+<p>50–75mm length, 3.0–3.5mm diameter</p>
+</div>
+<div class="nailGuideRow">
+<p>Pallets &amp; Crates</p>
+<p>75mm length, 3.5mm diameter</p>
+</div>
+<div class="nailGuideRow">
+<p>Heavy Structural Applications (e.g. beams, trusses)</p>
+<p>100–125mm length, 4.0–5.0mm diameter</p>
+</div>
+<div class="nailGuideRow">
+<p>Formwork &amp; Shuttering</p>
+<p>75–100mm length, 3.5–4.0mm diameter</p>
+</div>
+<div class="nailGuideRow">
+<p>Fencing Applications</p>
+<p>40–75mm length, galvanised finish recommended</p>
+</div>
+</div>
+<p class="nailGuideSectionTitle"><b>Selection Guidance</b></p>
+<p>As a general guideline, nail length is typically selected to provide penetration of approximately <b>2.5 to 3 times the thickness of the material being fixed</b>, helping to ensure adequate holding strength in the base material.</p>`,
       },
       {
         id: 'pro-tip',
-        label: 'Pro-Tip',
+        label: 'Pro-Tips',
         content: [
           "2.5 to 3 times Material Thickness Rule - Choose a nail length about 2.5 to 3 times the thickness of the material you\'re fixing.",
           'Galvanised Nails - Always recommended for outdoor, fencing, or exposed areas.',
@@ -3404,7 +3476,7 @@ const productDetailData: Record<string, ProductDetail> = {
           'Durable - Manufactured from high-quality galvanised steel for superior resistance to rust, corrosion, and wear.',
           'Secure Fastening - Designed to securely install wire and fencing products, preventing sagging and ensuring long-term stability.',
           'Easy Installation - Sharp points for easy penetration into posts and quick installation, saving you time and effort.',
-          'Increased hold - Both our plain and barbed staples are designed for maximum hold strength with the posts. The barbed staples offer further increased strength, leading to a more secure installation',
+          'Increased Hold - Both our plain and barbed staples are designed for maximum hold strength with the posts. The barbed staples offer further increased strength, leading to a more secure installation',
         ],
       },
     ],
@@ -3434,8 +3506,7 @@ const productDetailData: Record<string, ProductDetail> = {
       },
       {
         label: '',
-        value:
-          'These are sold in a box of 25kgs, inside the 25kg box there are packs of 1kgs x 25.',
+        value: 'Supplied in 25kg boxes, consisting of 25 × 1kg packs.',
         format: 'inline',
       },
     ],
@@ -3491,8 +3562,8 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         label: '',
         value:
-          '16mm hog ring when installed leaves an inner dimension of 6mm. 20mm hog ring when installed leaves an inner dimension of 8mm.',
-        format: 'inline',
+          '16mm hog ring when installed leaves an inner dimension of 6mm.\n20mm hog ring when installed leaves an inner dimension of 8mm.',
+        format: 'list',
       },
     ],
     applications: [
@@ -3516,11 +3587,11 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'applications',
         label: 'Applications',
         content: [
-          'Livestock Fencing - Secure wires to mesh or other fencing materials in livestock enclosures.',
-          'Garden Fencing - Quickly and securely fasten wire or mesh fencing for garden boundaries.',
-          'Security Fencing - Ideal for high-tensile wire security fences or razor wire installations.',
-          'Industrial and Commercial Fencing - Use for building strong, durable fences around commercial properties, construction sites, and agricultural facilities.',
-          'General Wire Netting Projects - Fasten wire mesh or netting to various structures for a range of applications. For example, many farmers choose to fasten the netting structure to the stay wire with 20mm hog rings.',
+          'Livestock Fencing - Secure wire mesh and fencing materials to line wires and support structures in livestock enclosures.',
+          'Garden Fencing - Fasten wire or mesh fencing to supporting wires or frames for garden and boundary applications.',
+          'Security Fencing - Suitable for securing mesh and wire components in high-security fencing systems, including razor wire and high-tensile wire installations.',
+          'Industrial and Commercial Fencing - Used to fix mesh and wire fencing in commercial, industrial, and construction environments where durability and reliability are required.',
+          'General Wire Netting Projects - Hog rings are commonly used to fasten wire mesh or netting to supporting wires and adjacent mesh panels across a range of applications.',
         ],
       },
     ],
@@ -3543,8 +3614,9 @@ const productDetailData: Record<string, ProductDetail> = {
     ],
     specifications: [
       {
-        label: 'AVAILABLE IN THE FOLLOWING TWO SIZES:',
-        value: 'TOP GRAF PLIER\nBABY GRAF PLIER',
+        label: 'Available in the following variants:',
+        value:
+          '<b>Top Graf Plier</b> – for higher-volume or heavier-duty applications\n<b>Baby Graf Plier</b> – compact option for lighter or more precise work',
         format: 'list',
       },
     ],
@@ -3588,12 +3660,12 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'application',
         label: 'Application',
         content: [
-          'Why Choose EDMA Hog Ring Pliers?',
-          'Livestock Fencing - Secure wires to mesh or other fencing materials in livestock enclosures.',
-          'Garden Fencing - Quickly and securely fasten wire or mesh fencing for garden boundaries.',
-          'Security Fencing - Ideal for high-tensile wire security fences or razor wire installations.',
-          'Industrial and Commercial Fencing - Use for building strong, durable fences around commercial properties, construction sites, and agricultural facilities.',
-          'General Wire Netting Projects - Fasten wire mesh or netting to various structures for a range of applications.',
+          // 'Why Choose EDMA Hog Ring Pliers?',
+          'Livestock Fencing - Secure wire mesh and fencing materials to line wires and support structures in livestock enclosures.',
+          'Garden Fencing - Fasten wire or mesh fencing to supporting wires or frames for garden and boundary applications.',
+          'Security Fencing - Suitable for securing mesh and wire components in high-security fencing systems, including razor wire and high-tensile wire installations.',
+          'Industrial and Commercial Fencing - Used to fix mesh and wire fencing in commercial, industrial, and construction environments where durability and reliability are required.',
+          'General Wire Netting Projects - Hog rings are commonly used to fasten wire mesh or netting to supporting wires and adjacent mesh panels across a range of applications.',
         ],
       },
     ],
@@ -3681,8 +3753,9 @@ const productDetailData: Record<string, ProductDetail> = {
     images: ['/products/Fasteners/cutting-nippers/meshco-cutting-nippers.webp'],
     specifications: [
       {
-        label: 'AVAILABLE IN THE FOLLOWING TWO SIZES:',
-        value: 'CUTTING NIPPERS 220MM\nCUTTING NIPPERS 250MM',
+        label: 'AVAILABLE IN THE FOLLOWING SIZES:',
+        value:
+          '<b>220mm</b> – compact and suitable for lighter-duty cutting\n<b>250mm</b> – increased leverage for heavier wire and tougher materials',
         format: 'list',
       },
     ],
@@ -3711,16 +3784,16 @@ const productDetailData: Record<string, ProductDetail> = {
           'Precision Cutting - Clean, accurate cuts minimise fraying and damage to fencing wire and mesh.',
         ],
       },
-      {
-        id: 'benefits',
-        label: 'Benefits',
-        content: [
-          'Why Choose EDMA Cutting Nippers?',
-          'Powerful Cutting Action - Easily slice through tough fencing materials with minimal effort.',
-          'Durable and Long-Lasting - Built to perform under heavy use on fencing and construction sites.',
-          'Precision Cuts - Helps achieve a professional finish on every fence installation or repair.',
-        ],
-      },
+      // {
+      //   id: 'benefits',
+      //   label: 'Benefits',
+      //   content: [
+      //     'Why Choose EDMA Cutting Nippers?',
+      //     'Powerful Cutting Action - Easily slice through tough fencing materials with minimal effort.',
+      //     'Durable and Long-Lasting - Built to perform under heavy use on fencing and construction sites.',
+      //     'Precision Cuts - Helps achieve a professional finish on every fence installation or repair.',
+      //   ],
+      // },
       {
         id: 'application',
         label: 'Application',

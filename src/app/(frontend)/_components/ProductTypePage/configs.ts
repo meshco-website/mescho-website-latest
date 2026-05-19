@@ -71,11 +71,11 @@ export const reinforcingConfig: ProductTypeConfig = {
 export const wirewallConfig: ProductTypeConfig = {
   title: 'WireWall',
   backgroundImage: '/wirewallfencing.jpg',
-  hasFilter: true,
+  hasFilter: false,
   cardSize: 'small',
   layoutType: 'grid4x3',
   showTypesFilter: false,
-  showIndustriesFilter: true,
+  showIndustriesFilter: false,
   products: getProductsByCategory('wirewall'),
 }
 
