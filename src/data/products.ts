@@ -4076,7 +4076,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'mining-support-backfill-mesh': {
     description:
-      "<b>Reliable backfill reinforcement for mining operations</b>\n\n\nMeshco's <b>Backfill Mesh</b> is a high-strength welded mesh designed to provide reliable containment and reinforcement in backfilling operations. In underground mining, backfilling is critical to maintaining ground stability, preventing subsidence, and improving safety during ore extraction.\n\nManufactured from heavy-duty steel wire and precision-welded for strength, Backfill Mesh is engineered to withstand harsh underground conditions and dynamic loads. It ensures that backfill material is securely contained within stopes and voids, reducing the risk of collapse and improving long-term excavation stability.",
+      "<b>Reliable backfill reinforcement for mining operations</b>\n\n\nMeshco's <b>Backfill Mesh</b> is a high-strength welded mesh designed to provide reliable containment and reinforcement in backfilling operations. Backfilling is critical to maintaining ground stability, preventing subsidence, and improving safety.\n\nManufactured from heavy-duty steel wire and precision-welded for strength, Backfill Mesh is engineered to withstand harsh conditions and dynamic loads. It ensures that backfill material is securely contained within stopes and voids, reducing the risk of collapse and improving long-term excavation stability.",
     layoutType: 'standard',
     specifications: [],
     applications: [
@@ -4102,23 +4102,8 @@ const productDetailData: Record<string, ProductDetail> = {
           'Precision welding ensures consistent strength and performance.',
           'Corrosion-resistant finishes available (galvanised or coated).',
           'High load-bearing capacity to contain cemented and uncemented backfill.',
-          'Supplied in flat sheets for easy handling and installation underground.',
+          'Supplied in flat sheets for easy handling and installation.',
         ],
-      },
-      {
-        id: 'specifications',
-        label: 'Specifications',
-        content: [],
-      },
-      {
-        id: 'applications',
-        label: 'Applications',
-        content: [],
-      },
-      {
-        id: 'benefits',
-        label: 'Benefits',
-        content: [],
       },
     ],
     relatedProductKeys: [
@@ -4131,7 +4116,7 @@ const productDetailData: Record<string, ProductDetail> = {
   },
   'utility-precision-welded-mesh': {
     description:
-      "<b>Engineered accuracy. Consistent performance.</b>\n\n\nMeshco's <b>Precision Welded Mesh</b> is a high-quality wire mesh manufactured with tight tolerances and precisely welded intersections for exceptional uniformity and strength. Designed for applications that demand reliability, repeatability, and structural integrity, this mesh is widely used in construction, manufacturing, mining, security, and agricultural industries.",
+      "<b>Engineered accuracy. Consistent performance.</b>\n\n\nMeshco's <b>Precision Welded Mesh</b> is a high-quality wire mesh manufactured with tight tolerances and precisely welded intersections for exceptional uniformity and strength. Designed for applications that demand reliability, repeatability and a small aperture.",
     layoutType: 'standard',
     images: ['/products/Utility/precision-welded-mesh/meshco-precision-weld-mesh-galvanised.webp'],
     specifications: [],
