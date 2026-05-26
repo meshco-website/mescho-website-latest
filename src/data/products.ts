@@ -171,7 +171,7 @@ export const products: Product[] = [
   {
     id: '7',
     name: 'Slab Wire',
-    title: 'Slab Wire (Straight & Cut Wire for Precast Concrete)',
+    title: 'Slab Wire',
     imageFolder: '/products/Wire/slab-wire',
     image: '/products/Wire/slab-wire/meshco-slab-wire.webp',
     slug: 'slab-wire',
