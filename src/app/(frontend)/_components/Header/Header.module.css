@@ -1,6 +1,12 @@
 .header {
+  position: relative;
+  z-index: 1000;
   background-color: #2a2d2f; /* Dark gray background for full width */
   width: 100%;
+}
+
+.headerNavArea {
+  position: relative;
 }
 
 .topBar {

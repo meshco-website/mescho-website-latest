@@ -1,19 +1,19 @@
 /* Dropdown Container Styles */
 .dropdownContainer {
   position: relative;
-  display: inline-block;
-  height: 100%;
+  display: inline-flex;
+  align-items: center;
 }
 
-.dropdownContainer::after {
+/* Bridge from Products link down through nav padding to the mega menu */
+.fullwidthTrigger::after {
   content: '';
   position: absolute;
-  bottom: -40px; /* Bridge the gap */
+  top: 100%;
   left: 0;
-  width: 100%;
-  height: 40px;
-  background: transparent;
-  z-index: 10;
+  right: 0;
+  height: 48px;
+  pointer-events: auto;
 }
 
 /* Show class for dropdown animations */

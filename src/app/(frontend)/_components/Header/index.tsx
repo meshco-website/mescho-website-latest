@@ -3,9 +3,9 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import NavLink from '../NavLink'
-import { useRouter } from 'next/navigation'
 import { products } from '@/data/products'
 import DropdownContainer from '../DropdownContainer'
+import FullWidthDropdown from '../FullWidthDropdown'
 import MobileMenu from '../MobileMenu'
 import styles from './Header.module.css'
 
@@ -53,18 +53,22 @@ const productSections: DropdownSection[] = PRODUCT_CATEGORY_CONFIG.reduce(
 )
 
 const Header = () => {
-  const _router = useRouter()
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null)
+  const hoverTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  React.useEffect(() => {
+  const updateHeaderHeight = React.useCallback(() => {
     const header = document.querySelector('header')
     if (header) {
-      const headerHeight = header.offsetHeight
-      document.documentElement.style.setProperty('--header-height', `${headerHeight}px`)
+      document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`)
     }
   }, [])
+
+  React.useEffect(() => {
+    updateHeaderHeight()
+    window.addEventListener('resize', updateHeaderHeight)
+    return () => window.removeEventListener('resize', updateHeaderHeight)
+  }, [updateHeaderHeight, activeDropdown])
 
   React.useEffect(() => {
     if (activeDropdown === 'products') {
@@ -81,47 +85,54 @@ const Header = () => {
   React.useEffect(() => {
     const handleRouteChange = () => {
       setActiveDropdown(null)
-      if (hoverTimeout) {
-        clearTimeout(hoverTimeout)
-        setHoverTimeout(null)
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current)
+        hoverTimeoutRef.current = null
       }
     }
 
     window.addEventListener('popstate', handleRouteChange)
-
     window.addEventListener('beforeunload', handleRouteChange)
 
     return () => {
       window.removeEventListener('popstate', handleRouteChange)
       window.removeEventListener('beforeunload', handleRouteChange)
     }
-  }, [hoverTimeout])
+  }, [])
+
+  const clearHoverTimeout = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current)
+      hoverTimeoutRef.current = null
+    }
+  }
 
   const handleDropdownEnter = (dropdown: string) => {
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout)
-      setHoverTimeout(null)
-    }
+    clearHoverTimeout()
     setActiveDropdown(dropdown)
   }
 
+  const handleDropdownClose = () => {
+    clearHoverTimeout()
+    setActiveDropdown(null)
+  }
+
   const handleDropdownLeave = () => {
-    const timeout = setTimeout(() => {
+    clearHoverTimeout()
+    hoverTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null)
+      hoverTimeoutRef.current = null
     }, 300)
-    setHoverTimeout(timeout)
+  }
+
+  const handleProductsPanelEnter = () => {
+    clearHoverTimeout()
+    setActiveDropdown('products')
   }
 
   const handleMenuItemClick = () => {
     setActiveDropdown(null)
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout)
-      setHoverTimeout(null)
-    }
-  }
-
-  const handleDropdownToggle = (dropdown: string) => {
-    setActiveDropdown(activeDropdown === dropdown ? null : dropdown)
+    clearHoverTimeout()
   }
 
   const wireWallItems = [
@@ -154,20 +165,21 @@ const Header = () => {
     { label: 'Product Catalogs', href: '/resources#product-catalogs' },
   ]
 
-  const _handleDropdownClose = () => {
-    setActiveDropdown(null)
-  }
-
   return (
     <header className={styles.header}>
-      <div className={styles.topBar}>
+      <div className={styles.topBar} onMouseEnter={handleDropdownClose}>
         <a href="mailto:sales@meshco.co.za" className={styles.topBarLink}>
           sales@meshco.co.za
         </a>
         <span className={styles.topBarText}>+27 21 905 1205</span>
       </div>
+      <div className={styles.headerNavArea}>
       <nav className={styles.nav}>
-        <Link href="/" className={styles.logoLink}>
+        <Link
+          href="/"
+          className={styles.logoLink}
+          onMouseEnter={handleDropdownClose}
+        >
           <div className={styles.logo}>
             <svg
               width="226"
@@ -203,7 +215,6 @@ const Header = () => {
             onMouseLeave={handleDropdownLeave}
             onItemClick={handleMenuItemClick}
             dropdownType="fullwidth"
-            sections={productSections}
             dropdownSize="large"
           >
             Products
@@ -222,7 +233,11 @@ const Header = () => {
             WireWall
           </DropdownContainer>
 
-          <NavLink href="/industries" onClick={handleMenuItemClick}>
+          <NavLink
+            href="/industries"
+            onClick={handleMenuItemClick}
+            onMouseEnter={handleDropdownClose}
+          >
             Industries
           </NavLink>
 
@@ -252,7 +267,11 @@ const Header = () => {
             Resources
           </DropdownContainer>
 
-          <Link href="/contactus" className={styles.button}>
+          <Link
+            href="/contactus"
+            className={styles.button}
+            onMouseEnter={handleDropdownClose}
+          >
             Contact Us
           </Link>
         </div>
@@ -263,6 +282,15 @@ const Header = () => {
           <span className={styles.hamburgerLine}></span>
         </button>
       </nav>
+
+      <FullWidthDropdown
+        isOpen={activeDropdown === 'products'}
+        sections={productSections}
+        onMouseEnter={handleProductsPanelEnter}
+        onMouseLeave={handleDropdownLeave}
+        onItemClick={handleMenuItemClick}
+      />
+      </div>
 
       <MobileMenu
         isOpen={isMobileMenuOpen}

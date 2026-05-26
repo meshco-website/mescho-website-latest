@@ -5,9 +5,10 @@
   background-color: #2a2d2f; /* Dark gray matching design */
   border-radius: 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  z-index: 1001;
   min-width: 280px;
   padding: 1.5rem;
+  margin-top: 4px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -15,6 +16,16 @@
     opacity 0.2s ease,
     visibility 0.2s ease,
     transform 0.2s ease;
+}
+
+/* Invisible hover bridge in the gap between nav link and panel */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 4px;
 }
 
 .dropdown.show {

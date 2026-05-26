@@ -1159,8 +1159,8 @@ const productDetailData: Record<string, ProductDetail> = {
       { key: 'fencing-standards', displayTitle: 'Steel Fencing Y-Standards' },
       { key: 'fencing-droppers', displayTitle: 'Steel Droppers' },
       { key: 'fasteners-staples', displayTitle: 'Fence Staples' },
-      'wire-slab-wire',
-      'wire-hard-drawn-wire',
+      { key: 'fencing-field-game-fence', displayTitle: 'Field & Game Fence' },
+      { key: 'fencing-hexagonal-netting', displayTitle: 'Hexagonal Wire Netting' },
     ],
   },
   'wire-black-annealed-wire': {
@@ -1247,6 +1247,7 @@ const productDetailData: Record<string, ProductDetail> = {
     images: [
       '/products/Wire/pvc-coated-wire/meshco-green-pvc-wire-5kg.webp',
       '/products/Wire/pvc-coated-wire/meshco-green-pvc-wire-50kg.webp',
+      '/products/Wire/pvc-coated-wire/meshco-black-pvc-binding-straining-wire.webp',
     ],
     specifications: [
       {
@@ -1312,14 +1313,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      'wire-slab-wire',
-      { key: 'wire-galvanised-wire', displayTitle: 'Galvanised Wire (Coils)' },
-      'wire-hard-drawn-wire',
-      {
-        key: 'wire-black-annealed-wire',
-        displayTitle: 'Black Annealed Wire (including Autobale Wire)',
-      },
-      'wire-high-strain-wire',
+      { key: 'fencing-diamond-mesh', displayTitle: 'Diamond Mesh' },
+      { key: 'fasteners-staples', displayTitle: 'Staples' },
+      { key: 'fasteners-hog-rings', displayTitle: 'Hogrings' },
+      { key: 'fencing-welded-fence-mesh-pvc', displayTitle: 'PVC-Coated Welded Fence Mesh' },
+      { key: 'fencing-standards', displayTitle: 'Standards' },
     ],
   },
   'wire-straight-cut-wire': {

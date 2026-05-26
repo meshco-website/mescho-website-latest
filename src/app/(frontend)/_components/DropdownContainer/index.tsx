@@ -1,7 +1,6 @@
 import React from 'react'
 import NavLink from '../NavLink'
 import DropdownMenu from '../DropdownMenu'
-import FullWidthDropdown from '../FullWidthDropdown'
 import styles from './dropdownContainer.module.css'
 
 interface DropdownItem {
@@ -24,7 +23,6 @@ interface DropdownContainerProps {
   onItemClick: () => void
   dropdownType: 'regular' | 'fullwidth'
   items?: DropdownItem[]
-  sections?: DropdownSection[]
   dropdownSize?: 'small' | 'medium' | 'large'
 }
 
@@ -37,29 +35,26 @@ const DropdownContainer: React.FC<DropdownContainerProps> = ({
   onItemClick,
   dropdownType,
   items = [],
-  sections = [],
   dropdownSize = 'medium',
 }) => {
+  const isFullWidth = dropdownType === 'fullwidth'
+
   return (
     <div
-      className={styles.dropdownContainer}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      className={`${styles.dropdownContainer} ${isFullWidth ? styles.fullwidthTrigger : ''}`}
+      onMouseLeave={isFullWidth ? undefined : onMouseLeave}
     >
-      <NavLink href={href} isActive={isActive} hasDropdown={true} onClick={onItemClick}>
+      <NavLink
+        href={href}
+        isActive={isActive}
+        hasDropdown={true}
+        onClick={onItemClick}
+        onMouseEnter={onMouseEnter}
+      >
         {children}
       </NavLink>
 
-      {dropdownType === 'fullwidth' ? (
-        <FullWidthDropdown
-          isOpen={isActive}
-          sections={sections}
-          className={`${styles[dropdownSize]} ${isActive ? styles.show : ''}`}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          onItemClick={onItemClick}
-        />
-      ) : (
+      {dropdownType === 'regular' && (
         <DropdownMenu
           isOpen={isActive}
           items={items}
