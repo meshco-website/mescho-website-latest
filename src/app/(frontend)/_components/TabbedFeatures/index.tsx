@@ -373,6 +373,10 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                         const parts = feature.split(' - ')
                         const hasHeadingWithDescription = parts.length === 2
 
+                        // Check if item is wrapped in ** for bold paragraph (no size change)
+                        const isBoldText =
+                          feature.startsWith('**') && feature.endsWith('**') && feature.length > 4
+
                         // Check if this is a main heading (bigger, bold) - can be with or without description
                         const isMainHeading =
                           parts[0]?.match(
@@ -602,6 +606,8 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                                 <p className={styles.subHeading}>{renderHeadingText(feature)}</p>
                               ) : isStandaloneHeading ? (
                                 <p className={styles.featureHeading}>{renderHeadingText(feature)}</p>
+                              ) : isBoldText ? (
+                                <p className={styles.featureDescription} style={{ fontWeight: 'bold' }}>{feature.slice(2, -2)}</p>
                               ) : (
                                 <p className={styles.featureDescription}>{feature}</p>
                               )}
