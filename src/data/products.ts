@@ -4168,7 +4168,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'benefits',
         label: 'Benefits',
         content: [
-          "Why Choose Meshco's Precision Welded Mesh?",
+          "**Why Choose Meshco's Precision Welded Mesh?**",
           'At Meshco, we understand that in demanding environments, consistency is everything. Our precision welded mesh is manufactured under strict quality control, using premium wire and cutting-edge welding equipment to deliver uniform results; every time.',
           "With over 60 years of industry expertise, we're the trusted partner for engineered mesh solutions that are as dependable as they are versatile.",
         ],
@@ -4178,8 +4178,8 @@ const productDetailData: Record<string, ProductDetail> = {
       { key: 'utility-specimesh-panels', displayTitle: 'Specimesh' },
       { key: 'fasteners-staples', displayTitle: 'Fencing Staples' },
       { key: 'wire-galvanised-wire', displayTitle: 'Galvanised Wire (Coils)' },
-      'wire-slab-wire',
-      'wire-hard-drawn-wire',
+      { key: 'fencing-welded-fence-mesh', displayTitle: 'Welded Fence Mesh' },
+      { key: 'fencing-hexagonal-netting', displayTitle: 'Hexagonal Wire Netting' },
     ],
   },
   'utility-growing-stakes': {
@@ -4238,7 +4238,7 @@ const productDetailData: Record<string, ProductDetail> = {
       { key: 'fencing-standards', displayTitle: 'Steel Fencing Y-Standards' },
       { key: 'fencing-droppers', displayTitle: 'Steel Fencing Droppers' },
       'utility-precision-welded-mesh',
-      'wire-hard-drawn-wire',
+      'wire-high-strain-wire',
     ],
   },
   'utility-specimesh-panels': {
