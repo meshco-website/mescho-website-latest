@@ -4069,11 +4069,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      { key: 'utility-specimesh-panels', displayTitle: 'Specimesh' },
+      'mining-support-backfill-mesh',
       { key: 'wirewall-3510', displayTitle: 'WireWall' },
       { key: 'fencing-diamond-mesh', displayTitle: 'Diamond Mesh' },
-      'utility-precision-welded-mesh',
-      'wire-hard-drawn-wire',
+      'fencing-standards',
+      'fencing-droppers',
     ],
   },
   'mining-support-backfill-mesh': {
@@ -4124,11 +4124,11 @@ const productDetailData: Record<string, ProductDetail> = {
       },
     ],
     relatedProductKeys: [
-      { key: 'utility-specimesh-panels', displayTitle: 'Specimesh' },
+      'mining-support-mining-mesh',
       { key: 'wirewall-3510', displayTitle: 'WireWall' },
       { key: 'fencing-diamond-mesh', displayTitle: 'Diamond Mesh' },
-      'utility-precision-welded-mesh',
-      'wire-hard-drawn-wire',
+      'fencing-standards',
+      'fencing-droppers',
     ],
   },
   'utility-precision-welded-mesh': {
