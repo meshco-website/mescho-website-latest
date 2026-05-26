@@ -4247,8 +4247,8 @@ const productDetailData: Record<string, ProductDetail> = {
     layoutType: 'standard',
     images: [
       '/products/Utility/specimesh-panels/meshco-specimesh-panel-p4-1.webp',
-      'public/products/Utility/specimesh-panels/meshco-specimesh-panel-padel-court-2.webp',
-      'public/products/Utility/specimesh-panels/meshco-specimesh-panel-cage-3.webp',
+      '/products/Utility/specimesh-panels/meshco-specimesh-panel-padel-court-2.webp',
+      '/products/Utility/specimesh-panels/meshco-specimesh-panel-cage-3.webp',
     ],
     specifications: [],
     applications: [
