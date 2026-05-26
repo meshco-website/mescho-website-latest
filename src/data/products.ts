@@ -4031,8 +4031,6 @@ const productDetailData: Record<string, ProductDetail> = {
       {
         id: 'specifications',
         label: 'Specifications',
-        image: '/products/Mining Support/mining-support-mesh/specifications.webp',
-        imageMaxWidth: '50%',
         content: [
           "(Meshco can customise to your mine's specifications)",
           'Wire Diameter:',
@@ -4040,7 +4038,7 @@ const productDetailData: Record<string, ProductDetail> = {
           'Aperture Size:',
           '100 x 100mm | 100 x 150mm | 150 x 150mm',
           'Sheet Size:',
-          '2.4m x 1.2m | 2.4m x 1.5m | 3.0m x 1.5m (custom sizes available)',
+          '2.4m x 3.0m | 2.4m x 3.5m | 2.4m x 4m | Custom sizes available',
           'Finish:',
           'Black (raw steel), Galvanised and Powder coated',
         ],
@@ -4062,7 +4060,7 @@ const productDetailData: Record<string, ProductDetail> = {
         id: 'benefits',
         label: 'Benefits',
         content: [
-          "Why Choose Meshco's Mining Mesh?",
+          "**Why Choose Meshco's Mining Mesh?**",
           "With over 60 years of experience in wire manufacturing, Meshco delivers support mesh you can trust—whether you're mining gold in Gauteng, platinum in Rustenburg, or coal in Mpumalanga. Our mining mesh is manufactured to strict tolerances, tested for durability, and backed by the technical support and supply reliability that mining operations demand.",
           'We reinforce more than ground.. we reinforce confidence.:',
         ],
