@@ -111,7 +111,7 @@ export default function HomePage() {
               link="/products/reinforcing"
             />
             <ExploreProductsCard
-              image="/miningsupport.png"
+              image="/products/Mining Support/mining-support-mesh/meshco-underground-mining-support-mesh.webp"
               title="Mining Support"
               link="/products/mining-support"
             />
@@ -121,7 +121,7 @@ export default function HomePage() {
               link="/products/fasteners"
             />
 
-            <ExploreProductsCard image="/utility.png" title="Utility" link="/products/utility" />
+            <ExploreProductsCard image="/products/Utility/specimesh-panels/meshco-specimesh-panel-padel-court-2.webp" title="Utility" link="/products/utility" imagePosition="center top" />
           </div>
         </div>
       </section>

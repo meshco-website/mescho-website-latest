@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
+import Image from 'next/image'
 import { filterProducts } from '@/data/products'
 import styles from './productTypePage.module.css'
 import FilterSidebar from '../FilterSidebar'
@@ -24,6 +25,7 @@ interface FilterOption {
 interface ProductTypePageProps {
   title: string
   backgroundImage: string
+  backgroundPosition?: string
   hasFilter: boolean
   cardSize: 'large' | 'small'
   layoutType:
@@ -45,6 +47,7 @@ interface ProductTypePageProps {
 const ProductTypePage: React.FC<ProductTypePageProps> = ({
   title,
   backgroundImage,
+  backgroundPosition,
   hasFilter,
   cardSize,
   layoutType,
@@ -75,11 +78,17 @@ const ProductTypePage: React.FC<ProductTypePageProps> = ({
   return (
     <div className={styles.productTypePage}>
       <div className={styles.heroSection}>
-        <div
+        <Image
+          src={backgroundImage}
+          alt={title}
+          fill
           className={styles.heroBackground}
           style={{
-            backgroundImage: `url("${encodeURI(backgroundImage)}")`,
+            objectFit: 'cover',
+            objectPosition: backgroundPosition ?? 'center center',
           }}
+          priority
+          unoptimized
         />
         <div className={styles.heroOverlay} />
         <h1 className={styles.heroTitle}>{title}</h1>

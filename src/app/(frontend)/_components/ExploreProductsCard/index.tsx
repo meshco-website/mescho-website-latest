@@ -10,11 +10,13 @@ const ExploreProductsCard = ({
   title,
   link,
   description,
+  imagePosition,
 }: {
   image: string
   title: string
   link: string
   description?: string
+  imagePosition?: string
 }) => {
   const [hasImageError, setHasImageError] = React.useState(false)
 
@@ -28,6 +30,7 @@ const ExploreProductsCard = ({
             width={420}
             height={350}
             onError={() => setHasImageError(true)}
+            style={imagePosition ? { objectFit: 'cover', objectPosition: imagePosition } : undefined}
           />
         ) : null}
       </div>

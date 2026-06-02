@@ -31,6 +31,7 @@ export default async function ProductCategoryPage({ params }: ProductCategoryPag
     <ProductTypePage
       title={config.title}
       backgroundImage={config.backgroundImage}
+      backgroundPosition={config.backgroundPosition}
       hasFilter={config.hasFilter}
       cardSize={config.cardSize}
       layoutType={config.layoutType}

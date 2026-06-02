@@ -47,7 +47,7 @@ const RESOURCE_SECTIONS = [
         href: MESHCO_PRODUCT_CATALOGUE_PDF,
         download: 'Meshco WireWall Brochure.pdf',
       },
-      { label: 'WireWall Brochure', href: '#' },
+      { label: 'WireWall Brochure', href: MESHCO_PRODUCT_CATALOGUE_PDF, download: 'Meshco WireWall Brochure.pdf' },
     ],
   },
 ]

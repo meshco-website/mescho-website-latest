@@ -33,14 +33,18 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
   industryGroups = [],
 }) => {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
-  const [selectedProductKeys, setSelectedProductKeys] = useState<string[]>([])
+  const [selectedIndustries, setSelectedIndustries] = useState<string[]>([])
   const [isTypesExpanded, setIsTypesExpanded] = useState(true)
   const [isIndustriesExpanded, setIsIndustriesExpanded] = useState(true)
-  const [expandedIndustries, setExpandedIndustries] = useState<string[]>(
-    industryGroups.map((group) => group.industry),
-  )
 
-  const emitChange = (types: string[], productKeys: string[]) => {
+  const emitChange = (types: string[], industries: string[]) => {
+    const productKeys = [
+      ...new Set(
+        industryGroups
+          .filter((group) => industries.includes(group.industry))
+          .flatMap((group) => group.products.map((p) => p.key)),
+      ),
+    ]
     onFilterChange({ types, productKeys })
   }
 
@@ -48,47 +52,16 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
     const newTypes = selectedTypes.includes(type)
       ? selectedTypes.filter((t) => t !== type)
       : [...selectedTypes, type]
-
     setSelectedTypes(newTypes)
-    emitChange(newTypes, selectedProductKeys)
+    emitChange(newTypes, selectedIndustries)
   }
 
-  const handleProductKeyToggle = (key: string) => {
-    const newKeys = selectedProductKeys.includes(key)
-      ? selectedProductKeys.filter((k) => k !== key)
-      : [...selectedProductKeys, key]
-
-    setSelectedProductKeys(newKeys)
-    emitChange(selectedTypes, newKeys)
-  }
-
-  const handleIndustryToggle = (group: IndustryFilterGroup) => {
-    const groupKeys = group.products.map((product) => product.key)
-    const allSelected = groupKeys.every((key) => selectedProductKeys.includes(key))
-
-    const newKeys = allSelected
-      ? selectedProductKeys.filter((key) => !groupKeys.includes(key))
-      : [...new Set([...selectedProductKeys, ...groupKeys])]
-
-    setSelectedProductKeys(newKeys)
-    emitChange(selectedTypes, newKeys)
-  }
-
-  const toggleIndustryExpanded = (industry: string) => {
-    setExpandedIndustries((prev) =>
-      prev.includes(industry) ? prev.filter((i) => i !== industry) : [...prev, industry],
-    )
-  }
-
-  const isIndustryChecked = (group: IndustryFilterGroup) =>
-    group.products.length > 0 &&
-    group.products.every((product) => selectedProductKeys.includes(product.key))
-
-  const isIndustryIndeterminate = (group: IndustryFilterGroup) => {
-    const selectedCount = group.products.filter((product) =>
-      selectedProductKeys.includes(product.key),
-    ).length
-    return selectedCount > 0 && selectedCount < group.products.length
+  const handleIndustryToggle = (industry: string) => {
+    const newIndustries = selectedIndustries.includes(industry)
+      ? selectedIndustries.filter((i) => i !== industry)
+      : [...selectedIndustries, industry]
+    setSelectedIndustries(newIndustries)
+    emitChange(selectedTypes, newIndustries)
   }
 
   return (
@@ -182,69 +155,19 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
           </div>
           {isIndustriesExpanded && (
             <div className={styles.industryGroups}>
-              {industryGroups.map((group) => {
-                const isExpanded = expandedIndustries.includes(group.industry)
-
-                return (
-                  <div key={group.industry} className={styles.industryGroup}>
-                    <div className={styles.industryGroupHeader}>
-                      <label className={styles.filterOption}>
-                        <input
-                          type="checkbox"
-                          checked={isIndustryChecked(group)}
-                          ref={(input) => {
-                            if (input) {
-                              input.indeterminate = isIndustryIndeterminate(group)
-                            }
-                          }}
-                          onChange={() => handleIndustryToggle(group)}
-                          className={styles.checkbox}
-                        />
-                        <span className={styles.industryLabel}>{group.industry}</span>
-                      </label>
-                      <button
-                        type="button"
-                        className={styles.industryExpandButton}
-                        onClick={() => toggleIndustryExpanded(group.industry)}
-                        aria-expanded={isExpanded}
-                        aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${group.industry} products`}
-                      >
-                        <svg
-                          className={`${styles.dropdownArrow} ${isExpanded ? styles.expanded : ''}`}
-                          width="14"
-                          height="7"
-                          viewBox="0 0 14 7"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M1 1L7 5L13 1"
-                            stroke="#2a2d2f"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                    {isExpanded && (
-                      <div className={styles.nestedFilterOptions}>
-                        {group.products.map((product) => (
-                          <label key={`${group.industry}-${product.key}`} className={styles.filterOption}>
-                            <input
-                              type="checkbox"
-                              checked={selectedProductKeys.includes(product.key)}
-                              onChange={() => handleProductKeyToggle(product.key)}
-                              className={styles.checkbox}
-                            />
-                            <span className={styles.nestedOptionText}>{product.label}</span>
-                          </label>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                )
-              })}
+              {industryGroups.map((group) => (
+                <div key={group.industry} className={styles.industryGroup}>
+                  <label className={styles.filterOption}>
+                    <input
+                      type="checkbox"
+                      checked={selectedIndustries.includes(group.industry)}
+                      onChange={() => handleIndustryToggle(group.industry)}
+                      className={styles.checkbox}
+                    />
+                    <span className={styles.industryLabel}>{group.industry}</span>
+                  </label>
+                </div>
+              ))}
             </div>
           )}
           <div className={styles.sectionBorder} />

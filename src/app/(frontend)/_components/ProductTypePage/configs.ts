@@ -3,6 +3,7 @@ import { products, type Product } from '@/data/products'
 export interface ProductTypeConfig {
   title: string
   backgroundImage: string
+  backgroundPosition?: string
   hasFilter: boolean
   cardSize: 'large' | 'small'
   layoutType:
@@ -122,7 +123,8 @@ export const miningSupportConfig: ProductTypeConfig = {
 
 export const utilityConfig: ProductTypeConfig = {
   title: 'Utility',
-  backgroundImage: '/placeholder.svg',
+  backgroundImage: '/products/Utility/specimesh-panels/meshco-specimesh-panel-padel-court-2.webp',
+  backgroundPosition: 'center top',
   hasFilter: false,
   cardSize: 'large',
   layoutType: 'grid3x1',
