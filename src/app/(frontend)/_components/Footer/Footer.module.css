@@ -324,14 +324,19 @@
   }
 
   .linksColumns {
-    /* Keep side-by-side even on tablet/mobile if space permits, 
-       but centering suggests we might want them stacked or just centered. 
-       Let's keep them side-by-side but centered container */
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
     text-align: left;
-    gap: 2rem;
+    gap: 3rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .preFooterContainer {
+    padding: 0 1rem;
   }
 
   .contactButtonContainer {
@@ -363,13 +368,21 @@
 
 @media (max-width: 480px) {
   .linksColumns {
-    flex-direction: row; /* Still keep side by side if possible, otherwise stack */
+    flex-direction: row;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 3rem;
     width: 100%;
   }
-  
+
   .column {
     flex: 1;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .preFooterContainer {
+    padding: 0 1rem;
   }
 }

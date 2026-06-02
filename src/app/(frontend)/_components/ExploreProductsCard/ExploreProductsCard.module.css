@@ -68,7 +68,7 @@
 .titleText {
   flex: 0 1 auto;
   min-width: 0;
-  word-break: break-word;
+  white-space: nowrap;
 }
 
 .arrowIcon {
@@ -103,4 +103,16 @@
   font-weight: 400;
   line-height: 30px;
   margin: 0;
+}
+
+@media (max-width: 768px) {
+  .productLabel {
+    font-size: 14px;
+    bottom: 0.75rem;
+  }
+
+  .arrowIcon svg {
+    width: 14px;
+    height: 14px;
+  }
 }

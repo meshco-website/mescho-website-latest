@@ -58,9 +58,22 @@
 
 .specificationImageInner {
   width: 100%;
-  max-width: 90%;
+  max-width: 83%;
   overflow: visible;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .specificationImageWrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .specificationImageInner {
+    max-width: none !important;
+    min-width: 780px;
+    width: 780px;
+  }
 }
 
 .specificationImage {
@@ -417,7 +430,8 @@
   margin-bottom: 0.35rem;
 }
 
-.richContent b {
+.richContent b,
+.richContent strong {
   font-weight: 700;
 }
 

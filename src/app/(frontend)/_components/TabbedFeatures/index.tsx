@@ -198,11 +198,11 @@ const TabbedFeatures: React.FC<TabbedFeaturesProps> = ({ tabs }) => {
                   activeTabData.html?.trim() ? (
                   <div className={styles.featuresList}>
                     {(() => {
-                      if (activeTabData.id === 'nail-size-guide' && activeTabData.html?.trim()) {
+                      if (activeTabData.html?.trim()) {
                         return [
                           <div
-                            key="nail-size-guide-html"
-                            className={`${styles.richContent} ${styles.nailGuideContent}`}
+                            key={`${activeTabData.id}-html`}
+                            className={`${styles.richContent}${activeTabData.id === 'nail-size-guide' ? ` ${styles.nailGuideContent}` : ''}`}
                             dangerouslySetInnerHTML={{ __html: activeTabData.html }}
                           />,
                         ]
