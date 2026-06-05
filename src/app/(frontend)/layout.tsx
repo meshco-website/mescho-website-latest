@@ -14,10 +14,47 @@ const onest = Onest({
   variable: '--font-onest',
 })
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.meshco.co.za'
+
 export const metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Meshco',
+    template: '%s | Meshco',
+  },
   description:
-    'Meshco is a leading manufacturers of quality wire, fencing and reinforcing products.',
-  title: 'Meshco',
+    'Meshco is a leading South African manufacturer of quality wire, fencing, reinforcing and WireWall security fencing products.',
+  keywords: [
+    'wire products',
+    'fencing',
+    'reinforcing',
+    'wirewall',
+    'security fencing',
+    'South Africa',
+    'wire manufacturer',
+    'barbed wire',
+    'mesh fencing',
+  ],
+  openGraph: {
+    type: 'website',
+    siteName: 'Meshco',
+    locale: 'en_ZA',
+    url: siteUrl,
+    title: 'Meshco',
+    description:
+      'Meshco is a leading South African manufacturer of quality wire, fencing, reinforcing and WireWall security fencing products.',
+    images: [{ url: '/logo.png', width: 226, height: 75, alt: 'Meshco' }],
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Meshco',
+    description:
+      'Meshco is a leading South African manufacturer of quality wire, fencing, reinforcing and WireWall security fencing products.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {

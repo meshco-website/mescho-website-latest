@@ -268,7 +268,7 @@ const Header = () => {
           </DropdownContainer>
 
           <Link
-            href="/contactus"
+            href="/contact-us"
             className={styles.button}
             onMouseEnter={handleDropdownClose}
           >

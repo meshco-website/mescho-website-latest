@@ -51,7 +51,7 @@ export default async function CaseDetailPage({ params }: CaseDetailPageProps) {
           <p className={styles.ctaDescription}>
             Contact us for expert advice, pricing, and custom solutions.
           </p>
-          <Link href="/contactus" className={styles.ctaButton}>
+          <Link href="/contact-us" className={styles.ctaButton}>
             Contact Us
           </Link>
         </div>

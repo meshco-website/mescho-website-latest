@@ -222,7 +222,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       </div>
 
       <footer className={styles.footer}>
-        <Link href="/contactus" className={styles.contactButton} onClick={onClose}>
+        <Link href="/contact-us" className={styles.contactButton} onClick={onClose}>
           Contact Us
         </Link>
         <div className={styles.socialIcons}>

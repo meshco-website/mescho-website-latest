@@ -41,7 +41,7 @@ export const sendEmail = async ({ subject, html, replyTo, to, attachments }: Sen
   const resend = getResendClient()
   const recipients = to ? (Array.isArray(to) ? to : [to]) : [DEFAULT_TO_EMAIL]
 
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: DEFAULT_FROM_EMAIL,
     to: recipients,
     subject,
@@ -52,6 +52,10 @@ export const sendEmail = async ({ subject, html, replyTo, to, attachments }: Sen
       content,
     })),
   })
+
+  if (error) {
+    throw new Error(error.message)
+  }
 }
 
 

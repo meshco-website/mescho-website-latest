@@ -8,7 +8,7 @@ import styles from './Footer.module.css'
 
 const Footer = () => {
   const pathname = usePathname()
-  const isContactUsPage = pathname === '/contactus'
+  const isContactUsPage = pathname === '/contact-us'
 
   return (
     <footer className={styles.footer}>
@@ -18,7 +18,7 @@ const Footer = () => {
           <p className={styles.getInTouchText}>
             Contact us for expert advice, pricing, and custom solutions.
           </p>
-          <Link href="/contactus" className={styles.button}>
+          <Link href="/contact-us" className={styles.button}>
             Contact Us
           </Link>
         </section>
@@ -190,7 +190,7 @@ const Footer = () => {
                 </div>
               </div>
               <div className={styles.contactButtonContainer}>
-                <Link href="/contactus" className={styles.button}>
+                <Link href="/contact-us" className={styles.button}>
                   Contact Us
                 </Link>
                 <Image
