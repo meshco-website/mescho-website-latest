@@ -5,6 +5,20 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_GOOGLE_CAPTCHA_SITE_KEY: process.env.GOOGLE_CAPTCHA_SITE_KEY,
   },
+  async redirects() {
+    return [
+      {
+        source: '/products/security/welded-mesh-product',
+        destination: '/products/fencing/welded-fence-mesh',
+        permanent: true,
+      },
+      {
+        source: '/products/item/2-about-meshco',
+        destination: '/whoweare/about-us',
+        permanent: true,
+      },
+    ]
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '5mb',
