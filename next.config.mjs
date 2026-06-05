@@ -17,6 +17,11 @@ const nextConfig = {
         destination: '/whoweare/about-us',
         permanent: true,
       },
+      {
+        source: '/wire/item/2-about-meshco',
+        destination: '/whoweare/about-us',
+        permanent: true,
+      },
     ]
   },
   experimental: {
