@@ -35,8 +35,12 @@ export default function WirewallQuotePage() {
       recaptchaRef.current?.reset()
       setSecurityOptions([])
       setCaptchaToken(null)
+    } else if (state.status === 'error') {
+      setSecurityOptions(
+        state.fields.securityOptions ? state.fields.securityOptions.split(', ').filter(Boolean) : [],
+      )
     }
-  }, [state.status])
+  }, [state])
 
   const shouldShowMessage = state.status !== 'idle' && Boolean(state.message)
   const messageClassName = state.status === 'success' ? styles.successMessage : styles.errorMessage
@@ -68,6 +72,7 @@ export default function WirewallQuotePage() {
                 className={styles.input}
                 placeholder=""
                 required
+                defaultValue={state.fields.firstName}
               />
             </div>
 
@@ -82,6 +87,7 @@ export default function WirewallQuotePage() {
                 className={styles.input}
                 placeholder=""
                 required
+                defaultValue={state.fields.lastName}
               />
             </div>
 
@@ -89,7 +95,14 @@ export default function WirewallQuotePage() {
               <label htmlFor="phone" className={styles.label}>
                 Phone Number
               </label>
-              <input type="tel" id="phone" name="phone" className={styles.input} placeholder="" />
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                className={styles.input}
+                placeholder=""
+                defaultValue={state.fields.phone}
+              />
             </div>
 
             <div className={styles.formField}>
@@ -103,6 +116,7 @@ export default function WirewallQuotePage() {
                 className={styles.input}
                 placeholder=""
                 required
+                defaultValue={state.fields.email}
               />
             </div>
 
@@ -116,6 +130,7 @@ export default function WirewallQuotePage() {
                 name="company"
                 className={styles.input}
                 placeholder=""
+                defaultValue={state.fields.company}
               />
             </div>
 
@@ -129,6 +144,7 @@ export default function WirewallQuotePage() {
                 name="suburb"
                 className={styles.input}
                 placeholder=""
+                defaultValue={state.fields.suburb}
               />
             </div>
 
@@ -142,6 +158,7 @@ export default function WirewallQuotePage() {
                 name="fenceLength"
                 className={styles.input}
                 placeholder=""
+                defaultValue={state.fields.fenceLength}
               />
             </div>
 
@@ -155,6 +172,7 @@ export default function WirewallQuotePage() {
                 name="fenceHeight"
                 className={styles.input}
                 placeholder=""
+                defaultValue={state.fields.fenceHeight}
               />
             </div>
 
@@ -163,7 +181,12 @@ export default function WirewallQuotePage() {
                 Panel Type
               </label>
               <div className={styles.selectWrapper}>
-                <select id="panelType" name="panelType" className={styles.select}>
+                <select
+                  id="panelType"
+                  name="panelType"
+                  className={styles.select}
+                  defaultValue={state.fields.panelType ?? ''}
+                >
                   <option value="">Select</option>
                   <option value="DoubleWall">DoubleWall</option>
                   <option value="355 (75 x 12.7mm)">355 (75 x 12.7mm)</option>
@@ -183,7 +206,12 @@ export default function WirewallQuotePage() {
                 Coating Finish
               </label>
               <div className={styles.selectWrapper}>
-                <select id="coatingFinish" name="coatingFinish" className={styles.select}>
+                <select
+                  id="coatingFinish"
+                  name="coatingFinish"
+                  className={styles.select}
+                  defaultValue={state.fields.coatingFinish ?? ''}
+                >
                   <option value="">Select</option>
                   <option value="Galvanised">Galvanised</option>
                   <option value="Plastic Coated (Anthracite)">Plastic Coated (Anthracite)</option>
@@ -208,7 +236,12 @@ export default function WirewallQuotePage() {
                 Pedestrian Gate required?
               </label>
               <div className={styles.selectWrapper}>
-                <select id="pedestrianGate" name="pedestrianGate" className={styles.select}>
+                <select
+                  id="pedestrianGate"
+                  name="pedestrianGate"
+                  className={styles.select}
+                  defaultValue={state.fields.pedestrianGate ?? ''}
+                >
                   <option value="">Select</option>
                   <option value="0">0</option>
                   <option value="1">1</option>
@@ -225,7 +258,12 @@ export default function WirewallQuotePage() {
                 Vehicle Gate required?
               </label>
               <div className={styles.selectWrapper}>
-                <select id="vehicleGate" name="vehicleGate" className={styles.select}>
+                <select
+                  id="vehicleGate"
+                  name="vehicleGate"
+                  className={styles.select}
+                  defaultValue={state.fields.vehicleGate ?? ''}
+                >
                   <option value="">Select</option>
                   <option value="0">0</option>
                   <option value="1">1</option>
@@ -248,6 +286,7 @@ export default function WirewallQuotePage() {
                     name="installation"
                     value="yes"
                     className={styles.radioInput}
+                    defaultChecked={state.fields.installation === 'yes'}
                   />
                   <span className={styles.radioLabel}>Yes</span>
                 </label>
@@ -257,6 +296,7 @@ export default function WirewallQuotePage() {
                     name="installation"
                     value="no"
                     className={styles.radioInput}
+                    defaultChecked={state.fields.installation === 'no'}
                   />
                   <span className={styles.radioLabel}>No</span>
                 </label>
@@ -275,6 +315,7 @@ export default function WirewallQuotePage() {
                 className={styles.textarea}
                 rows={12}
                 placeholder=""
+                defaultValue={state.fields.additionalInfo}
               />
             </div>
 

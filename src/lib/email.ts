@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY
 const DEFAULT_FROM_EMAIL = process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev'
-const DEFAULT_TO_EMAIL = process.env.RESEND_TO_EMAIL ?? 'meshco.website@gmail.com'
+const DEFAULT_TO_EMAIL = 'sales@meshco.co.za'
 
 let resendClient: Resend | null = null
 

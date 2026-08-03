@@ -235,13 +235,27 @@ const ContactForm: React.FC = () => {
           <label htmlFor="firstName" className={styles.label}>
             First Name
           </label>
-          <input type="text" id="firstName" name="firstName" className={styles.input} required />
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            className={styles.input}
+            required
+            defaultValue={state.fields.firstName}
+          />
         </div>
         <div className={styles.formField}>
           <label htmlFor="lastName" className={styles.label}>
             Last Name
           </label>
-          <input type="text" id="lastName" name="lastName" className={styles.input} required />
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            className={styles.input}
+            required
+            defaultValue={state.fields.lastName}
+          />
         </div>
       </div>
 
@@ -250,13 +264,26 @@ const ContactForm: React.FC = () => {
           <label htmlFor="phone" className={styles.label}>
             Phone Number <span className={styles.optional}>(optional)</span>
           </label>
-          <input type="tel" id="phone" name="phone" className={styles.input} />
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            className={styles.input}
+            defaultValue={state.fields.phone}
+          />
         </div>
         <div className={styles.formField}>
           <label htmlFor="email" className={styles.label}>
             Email
           </label>
-          <input type="email" id="email" name="email" className={styles.input} required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className={styles.input}
+            required
+            defaultValue={state.fields.email}
+          />
         </div>
       </div>
 
@@ -265,7 +292,13 @@ const ContactForm: React.FC = () => {
           <label htmlFor="company" className={styles.label}>
             Company <span className={styles.optional}>(optional)</span>
           </label>
-          <input type="text" id="company" name="company" className={styles.input} />
+          <input
+            type="text"
+            id="company"
+            name="company"
+            className={styles.input}
+            defaultValue={state.fields.company}
+          />
         </div>
         <div className={styles.formField}>
           <label htmlFor="country" className={styles.label}>
@@ -276,7 +309,7 @@ const ContactForm: React.FC = () => {
               id="country"
               name="country"
               className={styles.select}
-              defaultValue="south-africa"
+              defaultValue={state.fields.country || 'south-africa'}
             >
               <option value="">Select</option>
               {COUNTRIES.map((country) => (
@@ -294,7 +327,13 @@ const ContactForm: React.FC = () => {
         <label htmlFor="inquiry" className={styles.label}>
           Tell us about your inquiry
         </label>
-        <textarea id="inquiry" name="inquiry" className={styles.textarea} required />
+        <textarea
+          id="inquiry"
+          name="inquiry"
+          className={styles.textarea}
+          required
+          defaultValue={state.fields.inquiry}
+        />
       </div>
 
       <ReCaptchaField ref={recaptchaRef} onTokenChange={setCaptchaToken} />

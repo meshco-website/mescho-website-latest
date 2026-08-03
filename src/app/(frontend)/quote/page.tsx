@@ -46,7 +46,12 @@ export default function QuotePage() {
                 Product
               </label>
               <div className={styles.selectWrapper}>
-                <select id="product" name="product" className={styles.select}>
+                <select
+                  id="product"
+                  name="product"
+                  className={styles.select}
+                  defaultValue={state.fields.product ?? ''}
+                >
                   <option value="">Select</option>
                   <option value="wire">Wire</option>
                   <option value="reinforcing">Reinforcing</option>
@@ -71,6 +76,7 @@ export default function QuotePage() {
                 name="quantity"
                 className={styles.input}
                 placeholder=""
+                defaultValue={state.fields.quantity}
               />
             </div>
           </div>
@@ -87,6 +93,7 @@ export default function QuotePage() {
                 className={styles.input}
                 placeholder=""
                 required
+                defaultValue={state.fields.firstName}
               />
             </div>
 
@@ -101,6 +108,7 @@ export default function QuotePage() {
                 className={styles.input}
                 placeholder=""
                 required
+                defaultValue={state.fields.lastName}
               />
             </div>
           </div>
@@ -110,7 +118,14 @@ export default function QuotePage() {
               <label htmlFor="phone" className={styles.label}>
                 Phone Number
               </label>
-              <input type="tel" id="phone" name="phone" className={styles.input} placeholder="" />
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                className={styles.input}
+                placeholder=""
+                defaultValue={state.fields.phone}
+              />
             </div>
 
             <div className={styles.formField}>
@@ -124,6 +139,7 @@ export default function QuotePage() {
                 className={styles.input}
                 placeholder=""
                 required
+                defaultValue={state.fields.email}
               />
             </div>
           </div>
@@ -139,6 +155,7 @@ export default function QuotePage() {
                 name="company"
                 className={styles.input}
                 placeholder=""
+                defaultValue={state.fields.company}
               />
             </div>
 
@@ -147,7 +164,12 @@ export default function QuotePage() {
                 Country
               </label>
               <div className={styles.selectWrapper}>
-                <select id="country" name="country" className={styles.select} defaultValue="south-africa">
+                <select
+                  id="country"
+                  name="country"
+                  className={styles.select}
+                  defaultValue={state.fields.country || 'south-africa'}
+                >
                   <option value="">Select</option>
                   {COUNTRIES.map((country) => (
                     <option key={country} value={country.toLowerCase().replace(/\s+/g, '-')}>
@@ -169,7 +191,8 @@ export default function QuotePage() {
               name="inquiry"
               className={styles.textarea}
               rows={10}
-                required
+              required
+              defaultValue={state.fields.inquiry}
             />
           </div>
 

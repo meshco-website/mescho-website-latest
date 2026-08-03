@@ -12,6 +12,10 @@ export type RecaptchaVerificationResult =
 export const verifyRecaptcha = async (
   token: string | null | undefined,
 ): Promise<RecaptchaVerificationResult> => {
+  if (process.env.NEXT_PUBLIC_DISABLE_CAPTCHA === 'true') {
+    return { ok: true }
+  }
+
   const secret = process.env.GOOGLE_CAPTCHA_SECRET_KEY
 
   if (!secret) {

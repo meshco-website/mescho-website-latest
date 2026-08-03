@@ -10,6 +10,7 @@ import {
 import styles from './recaptchaField.module.css'
 
 const SITE_KEY = process.env.NEXT_PUBLIC_GOOGLE_CAPTCHA_SITE_KEY
+const CAPTCHA_DISABLED = process.env.NEXT_PUBLIC_DISABLE_CAPTCHA === 'true'
 const SCRIPT_SRC = 'https://www.google.com/recaptcha/api.js?render=explicit'
 
 type Grecaptcha = {
@@ -115,6 +116,10 @@ const ReCaptchaField = forwardRef<ReCaptchaFieldRef, ReCaptchaFieldProps>(functi
   onTokenChangeRef.current = onTokenChange
 
   const resetWidget = useCallback(() => {
+    if (CAPTCHA_DISABLED) {
+      onTokenChangeRef.current('captcha-disabled')
+      return
+    }
     if (widgetIdRef.current !== null && window.grecaptcha) {
       window.grecaptcha.reset(widgetIdRef.current)
     }
@@ -122,6 +127,10 @@ const ReCaptchaField = forwardRef<ReCaptchaFieldRef, ReCaptchaFieldProps>(functi
   }, [])
 
   useEffect(() => {
+    if (CAPTCHA_DISABLED) {
+      onTokenChangeRef.current('captcha-disabled')
+      return
+    }
     if (!SITE_KEY) return
 
     let cancelled = false
@@ -161,6 +170,10 @@ const ReCaptchaField = forwardRef<ReCaptchaFieldRef, ReCaptchaFieldProps>(functi
     }),
     [resetWidget],
   )
+
+  if (CAPTCHA_DISABLED) {
+    return null
+  }
 
   if (!SITE_KEY) {
     return (
